@@ -1,0 +1,234 @@
+[
+    {
+      "category": "Dogs",
+      "image": "https://i.ibb.co/dgBBn5B/dog.jpg",
+      "tips": [
+        {
+          "title": "Basic Dog Training",
+          "description": "Learn the essentials of dog training to build a strong bond and ensure a well-behaved companion.",
+          "link": "/dog-training-tips"
+        },
+        {
+          "title": "Healthy Diet for Your Dog",
+          "description": "Discover the best foods for your dog’s health and how to maintain a balanced diet.",
+          "link": "/dog-diet-tips"
+        },
+        {
+          "title": "Dog Grooming 101",
+          "description": "Find out the best grooming practices for your dog to keep them clean, healthy, and comfortable.",
+          "link": "/dog-grooming-tips"
+        },
+        {
+          "title": "Exercise and Play for Dogs",
+          "description": "Exercise is key to keeping your dog healthy. Discover fun activities and exercise routines for your dog.",
+          "link": "/dog-exercise-tips"
+        },
+        {
+          "title": "Common Health Issues in Dogs",
+          "description": "Learn about common health issues in dogs and how to identify signs of illness.",
+          "link": "/dog-health-tips"
+        },
+        {
+          "title": "Traveling with Your Dog",
+          "description": "Tips for safely traveling with your dog, whether on a road trip or flying.",
+          "link": "/dog-travel-tips"
+        },
+        {
+          "title": "Socializing Your Dog",
+          "description": "Learn how to socialize your dog with other pets and people for a well-adjusted, friendly companion.",
+          "link": "/dog-socialization-tips"
+        }
+      ]
+    },
+    {
+      "category": "Cats",
+      "image": "https://i.ibb.co/prBBfDs/Cats.jpg",
+      "tips": [
+        {
+          "title": "Understanding Cat Behavior",
+          "description": "Get tips on how to understand your cat’s body language and behavior to better care for them.",
+          "link": "/cat-behavior-tips"
+        },
+        {
+          "title": "Creating a Safe Space for Your Cat",
+          "description": "Learn how to create a safe and comfortable environment for your cat to thrive in.",
+          "link": "/cat-safe-space-tips"
+        },
+        {
+          "title": "Grooming Your Cat",
+          "description": "Important cat grooming tips for maintaining a healthy coat and nails.",
+          "link": "/cat-grooming-tips"
+        },
+        {
+          "title": "Training Your Cat",
+          "description": "Training cats can be tricky, but with patience, you can teach them essential behaviors.",
+          "link": "/cat-training-tips"
+        },
+        {
+          "title": "Keeping Your Cat Active",
+          "description": "Cats need mental and physical stimulation. Learn ways to keep your cat entertained and active.",
+          "link": "/cat-activity-tips"
+        },
+        {
+          "title": "Creating Vertical Spaces for Cats",
+          "description": "Cats love to climb and explore. Learn how to create vertical spaces to keep your cat entertained.",
+          "link": "/vertical-spaces-for-cats"
+        },
+        {
+          "title": "Preventing Cat Boredom",
+          "description": "Bored cats can become destructive. Learn tips to prevent boredom and keep your cat happy.",
+          "link": "/preventing-cat-boredom"
+        }
+      ]
+    },
+    {
+      "category": "Rabbits",
+      "image": "https://i.ibb.co/BBSWngv/Rabbits.jpg",
+      "tips": [
+        {
+          "title": "Setting Up a Rabbit Habitat",
+          "description": "Everything you need to know about setting up a comfortable and safe space for your rabbit.",
+          "link": "/rabbit-habitat-tips"
+        },
+        {
+          "title": "Rabbit Nutrition Basics",
+          "description": "Learn about the right foods and proper diet for your rabbit’s health.",
+          "link": "/rabbit-nutrition-tips"
+        },
+        {
+          "title": "Handling and Bonding with Your Rabbit",
+          "description": "Tips for building trust and bonding with your rabbit while keeping them calm and comfortable.",
+          "link": "/rabbit-handling-tips"
+        },
+        {
+          "title": "Rabbit Health Checkups",
+          "description": "Routine health checkups are essential. Learn how to monitor your rabbit's health.",
+          "link": "/rabbit-health-tips"
+        },
+        {
+          "title": "Enrichment for Rabbits",
+          "description": "Rabbits need mental stimulation. Here’s how to enrich your rabbit’s environment with fun activities.",
+          "link": "/rabbit-enrichment-tips"
+        },
+        {
+          "title": "Training Your Rabbit",
+          "description": "Rabbits can learn tricks too! Here are some basic training tips for your bunny.",
+          "link": "/rabbit-training-tips"
+        },
+        {
+          "title": "Socializing Your Rabbit",
+          "description": "Learn how to introduce your rabbit to other pets and humans for a calm and sociable rabbit.",
+          "link": "/rabbit-socialization-tips"
+        }
+      ]
+    },
+    {
+      "category": "Fish",
+      "image": "https://i.ibb.co/MG1q1cL/Fish.jpg",
+      "tips": [
+        {
+          "title": "Setting Up the Perfect Fish Tank",
+          "description": "Learn how to set up a beautiful and healthy environment for your fish.",
+          "link": "/fish-tank-setup-tips"
+        },
+        {
+          "title": "Choosing the Right Fish",
+          "description": "Not all fish are compatible. Discover how to select the best fish for your aquarium.",
+          "link": "/choosing-fish-tips"
+        },
+        {
+          "title": "Maintaining Water Quality",
+          "description": "Clean water is crucial for fish health. Here’s how to maintain the perfect water quality for your fish.",
+          "link": "/water-quality-tips"
+        },
+        {
+          "title": "Feeding Your Fish",
+          "description": "Learn about proper fish feeding habits and avoid overfeeding.",
+          "link": "/fish-feeding-tips"
+        },
+        {
+          "title": "Fish Health and Disease Prevention",
+          "description": "Keep your fish healthy by learning to recognize signs of illness and prevent common diseases.",
+          "link": "/fish-health-tips"
+        },
+        {
+          "title": "Setting Up a Saltwater Aquarium",
+          "description": "Tips for setting up and maintaining a thriving saltwater aquarium with corals and fish.",
+          "link": "/saltwater-aquarium-tips"
+        },
+        {
+          "title": "Aquarium Decorations and Plants",
+          "description": "Learn how to choose and care for aquarium decorations and plants to create a natural environment for your fish.",
+          "link": "/aquarium-decorations-tips"
+        }
+      ]
+    },
+    {
+      "category": "Exotic Pets",
+      "image": "https://i.ibb.co/VS4zZnp/Exotic-Pets.jpg",
+      "tips": [
+        {
+          "title": "Caring for Exotic Pets",
+          "description": "Exotic pets require special care. Learn the basics of caring for reptiles, birds, and other exotic pets.",
+          "link": "/exotic-pet-care-tips"
+        },
+        {
+          "title": "Setting Up a Reptile Habitat",
+          "description": "Whether you have a lizard, snake, or turtle, setting up their habitat properly is key to their well-being.",
+          "link": "/reptile-habitat-setup-tips"
+        },
+        {
+          "title": "Handling Birds",
+          "description": "Learn how to handle and bond with your pet bird, ensuring their comfort and trust.",
+          "link": "/bird-handling-tips"
+        },
+        {
+          "title": "Exotic Pet Nutrition",
+          "description": "Learn about the unique dietary needs of exotic pets and how to keep them healthy.",
+          "link": "/exotic-pet-nutrition-tips"
+        },
+        {
+          "title": "Creating a Stimulating Environment for Exotic Pets",
+          "description": "Exotic pets need mental stimulation. Learn how to create a stimulating environment for your pet.",
+          "link": "/exotic-pet-environment-tips"
+        },
+        {
+          "title": "Choosing the Right Exotic Pet",
+          "description": "Not all exotic pets are suitable for every household. Learn how to choose the right one for your lifestyle.",
+          "link": "/choosing-exotic-pet-tips"
+        }
+      ]
+    },
+    {
+      "category": "General Pet Care",
+      "image": "https://i.ibb.co/2c7LFzP/General-Pet-Care.jpg",
+      "tips": [
+        {
+          "title": "Building a Strong Bond with Your Pet",
+          "description": "Building a strong relationship with your pet will ensure a happy and healthy life together.",
+          "link": "/bonding-with-pet-tips"
+        },
+        {
+          "title": "Creating a Safe Home for Your Pet",
+          "description": "Safety is a top priority for your pet. Learn how to create a pet-proof home.",
+          "link": "/pet-safety-tips"
+        },
+        {
+          "title": "Pet Insurance: Is It Worth It?",
+          "description": "Understand the importance of pet insurance and how it can benefit your pet’s health.",
+          "link": "/pet-insurance-tips"
+        },
+        {
+          "title": "Choosing the Right Pet for Your Family",
+          "description": "Not every pet is right for every home. Learn how to choose the best pet based on your lifestyle.",
+          "link": "/choosing-the-right-pet"
+        },
+        {
+          "title": "Pet Emergency Preparedness",
+          "description": "Learn how to prepare for pet emergencies, whether natural disasters or sudden health issues.",
+          "link": "/pet-emergency-tips"
+        }
+      ]
+    }
+  ]
+  
