@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
+/* Tooltip on hover */
+.user-info:hover .user-name {
+  opacity: 1;
+}
+#logo {
+  font-family: "Caveat", cursive;
+}
+.active {
+  font-family: "Caveat", cursive;
+}
+
+svg.star-svg {
+  display: inline;
+}
+@layer base {
+  body {
+    background:  linear-gradient(to right, #c6c3f7c9,#f3f4f6 , #e4eefa);
+    color: #111827;
+    font-family: "Chakra Petch";
+  }
+
+  .dark body {
+    background: #212121;
+    color: #f3f4f6;
+  }
+}
