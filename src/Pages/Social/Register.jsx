@@ -7,6 +7,7 @@ import Lottie from "lottie-react";
 
 import reg from "../../assets/lottie/reg.json";
 import GoogleLogin from "./SocialLogin/GoogleLogin";
+import { saveUser } from "../../api/utils";
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const Registration = () => {
     const name = form.name.value;
     const photo = form.image.value;
     const pass = form.password.value;
+    console.log(name,photo)
     //    validation
     if (pass.length < 6) {
       setError("Password must contain at least 6 characters");
@@ -40,13 +42,9 @@ const Registration = () => {
 
       await updateUserProfile(name, photo);
       setUser({ ...result.user, photoURL: photo, displayName: name });
+       // save user info in db if the user is new
+       await saveUser({ ...result?.user, displayName: name })
 
-      // const userData = {
-      //   email: email,
-      //   name: name,
-      // };
-
-      // await axios.post(` ${import.meta.env.VITE_API_URL}/users`, userData);
 
       Swal.fire({
         position: "top-end",

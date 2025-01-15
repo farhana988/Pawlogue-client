@@ -7,6 +7,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 
 import logo from "../../../assets/images/google-logo.png";
 import Swal from "sweetalert2";
+import { saveUser } from "../../../api/utils";
 
 
 const GoogleLogin = () => {
@@ -16,8 +17,8 @@ const GoogleLogin = () => {
 
   const handleGoogleSignIn = async () => {
     try {
-      await signInWithGoogle();
-
+    const data =  await signInWithGoogle();
+      await saveUser(data?.user)
       Swal.fire({
         position: "top-end",
         icon: "success",
