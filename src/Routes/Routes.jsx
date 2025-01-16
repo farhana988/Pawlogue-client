@@ -8,6 +8,9 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import MyPets from "../Pages/Dashboard/MyPets/MyPets";
 import AddPet from "../Pages/Dashboard/AddPet/AddPet";
 import PrivateRoute from "./PrivateRoute";
+import UpdatePet from "../Pages/Dashboard/MyPets/UpdatePet";
+
+import Donation from "../Pages/Dashboard/Donation/Donation";
 
 
 export const router = createBrowserRouter([
@@ -43,12 +46,16 @@ export const router = createBrowserRouter([
         element:<PrivateRoute> <MyPets></MyPets></PrivateRoute> ,
       }, 
       {
+        path: "updatePet/:id",
+        element:<PrivateRoute> <UpdatePet></UpdatePet></PrivateRoute> ,
+      }, 
+      {
         path: "adoption-requests",
         element:<PrivateRoute>           </PrivateRoute> ,
       }, 
       {
         path: "create-donation",
-        element: <PrivateRoute>          </PrivateRoute> ,
+        element: <PrivateRoute>    <Donation></Donation>     </PrivateRoute> ,
       }, 
       {
         path: "my-donations",
@@ -57,6 +64,10 @@ export const router = createBrowserRouter([
       {
         path: "my-donation-campaigns",
         element: <PrivateRoute>            </PrivateRoute> ,
+      }, 
+      {
+        path: "donation-campaigns",
+        element: <PrivateRoute>         </PrivateRoute> ,
       }, 
     ]
   }, 

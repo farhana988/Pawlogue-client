@@ -22,6 +22,7 @@ import {
 import { useState } from "react";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useNavigate } from "react-router-dom";
 // import Swal from "sweetalert2";
 
 const columnHelper = createColumnHelper();
@@ -57,7 +58,8 @@ const columns = [
   }),
 ];
 
-const MyPetsTable = ({ pets,handleEdit ,handleStatus}) => {
+const MyPetsTable = ({ pets}) => {
+  const navigate = useNavigate(); 
   const axiosSecure = useAxiosSecure();
   const [data, setData] = useState([...pets]);
   const [sorting, setSorting] = useState([]);
@@ -122,6 +124,9 @@ const MyPetsTable = ({ pets,handleEdit ,handleStatus}) => {
     }
   };
   
+  const handleEdit = (petId) => {
+    navigate(`/dashboard/updatePet/${petId}`); // Navigate to the update page with petId
+  };
 
   return (
     <div>
@@ -193,7 +198,7 @@ const MyPetsTable = ({ pets,handleEdit ,handleStatus}) => {
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 space-x-2">
                     <button
                       className="bg-blue-500 text-white px-4 py-2 rounded-md"
-                      onClick={() => handleEdit(row.original.id)}
+                      onClick={() => handleEdit(row.original._id)}
                     >
                       <Edit size={16} />
                     </button>
@@ -208,7 +213,7 @@ const MyPetsTable = ({ pets,handleEdit ,handleStatus}) => {
                     </button>
                     <button
                       className="bg-green-500 text-white px-4 py-2 rounded-md"
-                      onClick={() => handleStatus(row.original.id)}
+                      // onClick={() => handleStatus(row.original.id)}
                     >
                       <Check size={16} />
                     </button>

@@ -9,9 +9,11 @@ import LoadingSpinner from "../../../Components/Reusable/LoadingSpinner";
 
 
 
+
 const MyPets = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
+
 
 
   const {
@@ -36,17 +38,6 @@ const MyPets = () => {
   if (error) return <div>Error loading pets</div>;
 
 
-
-  // edit function
-  const handleEdit = () => {
-    console.log("edit");
-  };
-
-  // status change
-  const handleStatus = () => {
-    console.log("status");
-  };
-
   return (
     <div>
       Total Pets: {pets?.length}
@@ -57,8 +48,7 @@ const MyPets = () => {
              pets={pets}
           
        
-              handleEdit ={ handleEdit }
-              handleStatus={ handleStatus}
+        
               
               />
           </div>
