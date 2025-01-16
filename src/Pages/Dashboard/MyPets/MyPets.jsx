@@ -17,7 +17,7 @@ const MyPets = () => {
       const { data } = await axiosSecure(
         `${import.meta.env.VITE_API_URL}/pets/${user?.email}`
       );
-      console.log(data); // Log the data to verify it's being fetched
+    //   console.log(data); // Log the data to verify it's being fetched
       return data;
     },
   });
@@ -30,9 +30,12 @@ const MyPets = () => {
       Total Pets: {pets?.length}
       {pets && pets.length > 0 ? (
         <div className="pt-12 ">
-          {pets.map((pet) => (
+          {/* {pets.map((pet) => (
             <MyPetsTable key={pet._id} pet={pet} />
-          ))}
+          ))} */}
+           <div className="pt-12">
+          <MyPetsTable pets={pets} /> {/* Pass the entire pets array */}
+        </div>
         </div>
       ) : (
         <NoData />

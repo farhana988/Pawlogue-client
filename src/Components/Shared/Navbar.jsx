@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import ThemeToggle from "./ThemeToggle";
 import { AuthContext } from "../../Provider/AuthProvider";
+import logo from "../../assets/images/logo.png"
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -45,9 +46,12 @@ const Navbar = () => {
       <nav className="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="text-2xl font-semibold">
-          <a href="/" className="hover:text-gray-200">
-            BrandName
-          </a>
+          {/* website logo */}
+          <Link to={'/'}>
+           <img 
+           className="w-10 lg:w-16"
+            src={logo} alt="" />
+          </Link>
         </div>
 
         {/* Desktop Navigation Links */}
