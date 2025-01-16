@@ -7,6 +7,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+
 import {
   ArrowUpDown,
   ChevronLeft,
@@ -19,6 +20,9 @@ import {
   Check,
 } from "lucide-react";
 import { useState } from "react";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+// import Swal from "sweetalert2";
 
 const columnHelper = createColumnHelper();
 
@@ -53,7 +57,8 @@ const columns = [
   }),
 ];
 
-const MyPetsTable = ({ pets,handleEdit, handleDelete ,handleStatus}) => {
+const MyPetsTable = ({ pets,handleEdit ,handleStatus}) => {
+  const axiosSecure = useAxiosSecure();
   const [data, setData] = useState([...pets]);
   const [sorting, setSorting] = useState([]);
   const [globalFilter, setGlobalFilter] = useState("");
@@ -85,6 +90,38 @@ const MyPetsTable = ({ pets,handleEdit, handleDelete ,handleStatus}) => {
   const handlePageChange = (newPageIndex) => {
     setPageIndex(newPageIndex);
   };
+
+  const handleDelete = async (petId) => {
+    console.log(`Attempting to delete pet with ID: ${petId}`);
+    
+    try {
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      });
+  
+      if (result.isConfirmed) {
+        const response = await axiosSecure.delete(
+          `${import.meta.env.VITE_API_URL}/pet/${petId}`
+        );
+  
+        if (response.data.deletedCount > 0) {
+          const updatedPets = data.filter((pet) => pet._id !== petId);
+        setData(updatedPets);
+          Swal.fire("Deleted!", "Your pet has been deleted.", "success");
+        }
+      }
+    } catch (error) {
+      console.error("Error while deleting pet:", error);
+      Swal.fire("Error", "An error occurred while deleting the pet.", "error");
+    }
+  };
+  
 
   return (
     <div>
@@ -161,9 +198,12 @@ const MyPetsTable = ({ pets,handleEdit, handleDelete ,handleStatus}) => {
                       <Edit size={16} />
                     </button>
                     <button
-                      className="bg-red-500 text-white px-4 py-2 rounded-md"
-                      onClick={() => handleDelete(row.original.id)}
-                    >
+                       className="bg-red-500 text-white px-4 py-2 rounded-md"
+                       onClick={() => {
+                      
+                         handleDelete(row.original._id)
+                       }}
+                     >
                       <Trash size={16} />
                     </button>
                     <button
