@@ -3,18 +3,18 @@ import Sidebar from "../Pages/Dashboard/Sidebar";
 
 const DashboardLayout = () => {
   return (
-    <div className="flex h-screen">
+    <div className="flex min-h-full">
       {/* Sidebar */}
       <Sidebar />
 
-      {/* Main Content */}
-      <div className="flex-1 ml-0 md:ml-64 transition-all duration-300">
+    
+    
         {/* Page Content */}
-        <div className="p-6">
+        <div className="">
           <Outlet />
         </div>
       </div>
-    </div>
+  
   );
 };
 

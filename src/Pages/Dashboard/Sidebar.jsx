@@ -10,7 +10,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex">
       {/* Sidebar */}
       <div
         className={`bg-gray-800 text-white w-64 p-4 space-y-6 fixed md:relative md:w-64 transition-all duration-300 ${
