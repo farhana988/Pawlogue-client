@@ -6,7 +6,8 @@ import Login from "../Pages/Social/Login";
 import Registration from "../Pages/Social/Register";
 import DashboardLayout from "../Layout/DashboardLayout";
 import MyPets from "../Pages/Dashboard/MyPets";
-import AddPet from "../Pages/Dashboard/AddPet";
+import AddPet from "../Pages/Dashboard/AddPet/AddPet";
+// import AddPet from "../Pages/Dashboard/AddPet
 
 export const router = createBrowserRouter([
   {
