@@ -5,8 +5,9 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Social/Login";
 import Registration from "../Pages/Social/Register";
 import DashboardLayout from "../Layout/DashboardLayout";
-import MyPets from "../Pages/Dashboard/MyPets";
+import MyPets from "../Pages/Dashboard/MyPets/MyPets";
 import AddPet from "../Pages/Dashboard/AddPet/AddPet";
+import PrivateRoute from "./PrivateRoute";
 // import AddPet from "../Pages/Dashboard/AddPet
 
 export const router = createBrowserRouter([
@@ -31,31 +32,31 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: <PrivateRoute> <DashboardLayout></DashboardLayout></PrivateRoute>,
     children:[
       {
         path: "add-pet",
-        element: <AddPet></AddPet>,
+        element: <PrivateRoute><AddPet></AddPet></PrivateRoute> ,
       }, 
       {
         path: "my-pets",
-        element: <MyPets></MyPets>,
+        element:<PrivateRoute> <MyPets></MyPets></PrivateRoute> ,
       }, 
       {
         path: "adoption-requests",
-        element: <Home></Home>,
+        element:<PrivateRoute>           </PrivateRoute> ,
       }, 
       {
         path: "create-donation",
-        element: <Home></Home>,
+        element: <PrivateRoute>          </PrivateRoute> ,
       }, 
       {
         path: "my-donations",
-        element: <Home></Home>,
+        element: <PrivateRoute>         </PrivateRoute> ,
       }, 
       {
         path: "my-donation-campaigns",
-        element: <Home></Home>,
+        element: <PrivateRoute>            </PrivateRoute> ,
       }, 
     ]
   }, 
