@@ -18,6 +18,7 @@ import {
   Edit,
   Trash,
   Check,
+  CheckCheck,
 } from "lucide-react";
 import { useState } from "react";
 import Swal from "sweetalert2";
@@ -123,8 +124,38 @@ const MyPetsTable = ({ pets }) => {
   };
 
   const handleEdit = (petId) => {
-    navigate(`/dashboard/updatePet/${petId}`); // Navigate to the update page with petId
+    navigate(`/dashboard/updatePet/${petId}`); 
   };
+
+
+    const handleStatus = async (petId) => {
+      try {
+        const result = await Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, update it!",
+        });
+        if (result.isConfirmed) {
+          const response = await axiosSecure.patch(`/changeAdopt/${petId}`);
+          console.log(response);
+          const updatedPets = data.filter((pet) => pet._id !== petId);
+          setData(updatedPets);
+          Swal.fire(
+            "congo!",
+            "You have accepted the adoption request.",
+            "success"
+          );
+        }
+      } catch (error) {
+        console.error("Error deleting adoption info:", error);
+        alert("Failed to delete adoption information.");
+      }
+    };
+  
 
   return (
     <div>
@@ -210,9 +241,14 @@ const MyPetsTable = ({ pets }) => {
                     </button>
                     <button
                       className="bg-green-500 text-white px-4 py-2 rounded-md"
-                      // onClick={() => handleStatus(row.original.id)}
+                      onClick={() => handleStatus(row.original._id)}
                     >
-                      <Check size={16} />
+                      {row.original.adopted=== false? 
+                      <Check size={16} />:
+                      <CheckCheck size={16} />
+                    }
+                      
+                     
                     </button>
                   </td>
                 </tr>
