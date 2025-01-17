@@ -11,7 +11,20 @@ const DonationCampaignForm = ({ handleSubmit, uploadImage, setUploadImage, loadi
             <div className='space-y-6'>
               
          
-             
+             {/* Name */}
+            <div className='space-y-1 text-sm'>
+              <label htmlFor='name' className='block text-gray-600'>
+                Name
+              </label>
+              <input
+                className='w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white'
+                name='name'
+                id='name'
+                type='text'
+                placeholder='Plant Name'
+                required
+              />
+            </div>
               {/* Short Description */}
               <div className='space-y-1 text-sm'>
                 <label htmlFor='shortDescription' className='block text-gray-600'>

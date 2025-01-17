@@ -2,11 +2,12 @@
 import { handleImageUpload } from "../../../api/utils";
 import DonationCampaignForm from "./DonationCampaignForm";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 
 const DonationCampaign = () => {
-   
+   const {user} = useContext(AuthContext)
     const axiosSecure = useAxiosSecure()
     const [uploadImage, setUploadImage] = useState({
       image: { name: 'Upload Button' },
@@ -17,7 +18,7 @@ const DonationCampaign = () => {
         e.preventDefault()
         setLoading(true)
         const form = e.target
-      
+        const name = form.name.value
         const shortDescription = form.shortDescription.value
         const longDescription = form.longDescription.value
         const date = form.date.value
@@ -31,7 +32,8 @@ const DonationCampaign = () => {
 
         const donationData = {
        
-         
+         email: user?.email,
+         name,
           shortDescription,
           longDescription,
           date,
