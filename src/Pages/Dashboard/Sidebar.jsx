@@ -66,12 +66,41 @@ const Sidebar = () => {
             </li>
             <li>
               <Link
+                to="/dashboard/my-donations-camp"
+                className="block py-2 px-4 hover:bg-gray-700 rounded"
+              >
+                My Donations Campaigns
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/dashboard/my-donations"
                 className="block py-2 px-4 hover:bg-gray-700 rounded"
               >
                 My Donations
               </Link>
             </li>
+            <li>
+              <Link
+                to="/dashboard/adoptionReq"
+                className="block py-2 px-4 hover:bg-gray-700 rounded"
+              >
+                Adoption Request
+              </Link>
+            </li>
+             {/* home */}
+
+             <Link
+                  to={"/"}
+                  className="text-4xl md:text-5xl lg:text-6xl absolute 
+                  left-10 bottom-2 z-50"
+                >
+                  <FcHome />
+                </Link>
+
+                <span className=" absolute bottom-5 md:bottom-9 z-50">
+                <ThemeToggle></ThemeToggle>
+                </span>
 
             {/* admin pages only */}
 
@@ -101,19 +130,7 @@ const Sidebar = () => {
                     All Donations
                   </Link>
                 </li>
-                {/* home */}
-
-                <Link
-                  to={"/"}
-                  className="text-4xl md:text-5xl lg:text-6xl absolute 
-                  left-10 bottom-2 z-50"
-                >
-                  <FcHome />
-                </Link>
-
-                <span className=" absolute bottom-5 md:bottom-9 z-50">
-                <ThemeToggle></ThemeToggle>
-                </span>
+               
               </>
             )}
           </ul>

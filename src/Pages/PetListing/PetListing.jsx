@@ -99,7 +99,7 @@ const PetListing = () => {
                     {pet?.age}
                   </p>
                   <button className="flex justify-end"> 
-                    <Link to={''}>pet details</Link>
+                    <Link to={`/petDetails/${pet._id}`}>pet details</Link>
                   </button>
                 </div>
            
