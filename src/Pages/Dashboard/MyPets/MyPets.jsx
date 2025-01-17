@@ -7,9 +7,6 @@ import MyPetsTable from "./MyPetsTable";
 import LoadingSpinner from "../../../Components/Reusable/LoadingSpinner";
 
 
-
-
-
 const MyPets = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
@@ -24,7 +21,7 @@ const MyPets = () => {
     queryKey: ["pets", user?.email],
     queryFn: async () => {
       const { data } = await axiosSecure(
-        `${import.meta.env.VITE_API_URL}/pets/${user?.email}`
+        `/pets/${user?.email}`
       );
 
       return data;

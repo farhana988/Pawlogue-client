@@ -109,7 +109,7 @@ const MyPetsTable = ({ pets}) => {
   
       if (result.isConfirmed) {
         const response = await axiosSecure.delete(
-          `${import.meta.env.VITE_API_URL}/pet/${petId}`
+          `/pet/${petId}`
         );
   
         if (response.data.deletedCount > 0) {

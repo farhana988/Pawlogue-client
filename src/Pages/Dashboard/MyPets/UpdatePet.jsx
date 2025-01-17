@@ -1,18 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { handleImageUpload } from "../../../api/utils";
 import UpdatePetForm from "./UpdatePetForm";
 import { useParams} from "react-router-dom";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useQueryClient } from "@tanstack/react-query";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const UpdatePet = () => {
   const { id } = useParams(); 
+  const { user } = useContext(AuthContext); 
   const axiosSecure = useAxiosSecure();
   const [petData, setPetData] = useState(null); 
   const [uploading, setUploading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
+  const queryClient = useQueryClient(); 
 
   const petCategories = [
     { value: "dog", label: "Dog" },
@@ -26,8 +30,9 @@ const UpdatePet = () => {
     
     const fetchPetData = async () => {
       try {
-        const response = await axiosSecure.get(`${import.meta.env.VITE_API_URL}/pet/${id}`);
+        const response = await axiosSecure.get(`/pet/${id}`);
         setPetData(response.data); 
+
       } catch {
         setErrorMsg("Failed to fetch pet data.");
       }
@@ -87,9 +92,11 @@ const UpdatePet = () => {
       };
 
 
-      await axiosSecure.put(`${import.meta.env.VITE_API_URL}/updatePet/${id}`, updatedPetData);
+      await axiosSecure.put(`/updatePet/${id}`, updatedPetData);
 
       setSuccessMsg("Pet updated successfully!");
+        // Invalidate the query to force a refetch of the pets list in MyPets
+        queryClient.invalidateQueries(["pets", user?.email]); 
     
     } catch (error) {
       setErrorMsg(error.response?.data?.message || "Something went wrong");

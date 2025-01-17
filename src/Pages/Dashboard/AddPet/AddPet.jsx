@@ -73,7 +73,7 @@ const AddPet = () => {
         owner,
       };
 
-      await axiosSecure.post(`${import.meta.env.VITE_API_URL}/pets`, petData);
+      await axiosSecure.post(`/pets`, petData);
 
       setSuccessMsg("Pet added successfully!");
       resetForm();
