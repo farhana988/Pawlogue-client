@@ -40,6 +40,7 @@ const PetDetails = () => {
       adoptEmail: user?.email, 
       phone,
       address,
+      petName:petDetails.name
     };
 console.log(adoptionData)
     try {

@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import LoadingSpinner from "../../../Components/Reusable/LoadingSpinner";
 import { useQuery } from "@tanstack/react-query";
 import NoData from "../../../Components/Reusable/NoData";
+import Swal from "sweetalert2";
 
 const AdoptionRequest = () => {
   const { user } = useContext(AuthContext);
@@ -29,37 +30,61 @@ const AdoptionRequest = () => {
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
   if (error) return <div>Error loading pets</div>;
 
-
-// delete function
+  // delete function
   const handleDeleteAdoptInfo = async (petId) => {
     try {
-    
-      await axiosSecure.put(`/removeAdoptPet/${petId}`);
-      
-    
-      refetch();  
-      alert("Adoption information removed successfully.");
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, update it!",
+      });
+      if (result.isConfirmed) {
+        const response = await axiosSecure.put(`/removeAdoptPet/${petId}`);
+        console.log(response);
+        refetch();
+        Swal.fire(
+          "congo!",
+          "You have accepted the adoption request.",
+          "success"
+        );
+      }
     } catch (error) {
       console.error("Error deleting adoption info:", error);
       alert("Failed to delete adoption information.");
     }
   };
-// edit function
+  // edit function
   const handleUpdateAdoptInfo = async (petId) => {
     try {
-     
-      await axiosSecure.patch(`/removeAdoptPet/${petId}`);
-      
-   
-      refetch(); 
-      alert("Adoption information removed successfully.");
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, update it!",
+      });
+      if (result.isConfirmed) {
+        const response = await axiosSecure.patch(`/changeAdopt/${petId}`);
+        console.log(response);
+        refetch();
+        Swal.fire(
+          "congo!",
+          "You have accepted the adoption request.",
+          "success"
+        );
+      }
     } catch (error) {
       console.error("Error deleting adoption info:", error);
       alert("Failed to delete adoption information.");
     }
   };
-  
-  
+
   return (
     <div className="max-w-7xl mx-auto p-6">
       <h2 className="text-2xl font-semibold text-gray-800 mb-4">
@@ -70,6 +95,9 @@ const AdoptionRequest = () => {
           <table className="min-w-full table-auto">
             <thead className="bg-gray-100 border-b">
               <tr>
+                <th className="py-3 px-4 text-left text-sm font-medium text-gray-600">
+                  Pet Name
+                </th>
                 <th className="py-3 px-4 text-left text-sm font-medium text-gray-600">
                   Adopt Req By
                 </th>
@@ -93,6 +121,9 @@ const AdoptionRequest = () => {
                   {pet?.adoptUser ? (
                     <>
                       <td className="py-4 px-4 text-sm font-medium text-gray-700">
+                        {pet.petName}
+                      </td>
+                      <td className="py-4 px-4 text-sm font-medium text-gray-700">
                         {pet.adoptUser}
                       </td>
                       <td className="py-4 px-4 text-sm text-gray-600">
@@ -107,13 +138,20 @@ const AdoptionRequest = () => {
                       <td className="py-4 px-4 text-sm text-gray-600 flex space-x-2">
                         <button
                           onClick={() => handleDeleteAdoptInfo(pet._id)}
-                        className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 focus:outline-none">
+                          className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 focus:outline-none"
+                        >
                           Delete
                         </button>
-                        <button 
-                         onClick={() => handleUpdateAdoptInfo(pet._id)}
-                        className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 focus:outline-none">
-                          Accept
+                        <button
+                          onClick={() => handleUpdateAdoptInfo(pet._id)}
+                          disabled={pet.adopted === "true"}
+                          className={`px-4 py-2 rounded-md text-white ${
+                            pet.adopted === "true"
+                              ? "bg-gray-400 cursor-not-allowed"
+                              : "bg-green-600 hover:bg-green-700"
+                          }`}
+                        >
+                          {pet.adopted === "true" ? "Accepted" : "Accept"}
                         </button>
                       </td>
                     </>

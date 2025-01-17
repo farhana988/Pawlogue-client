@@ -5,7 +5,7 @@ import axios from "axios";
 
 const usePets = () => {
     const {data: pet = [], isPending: loading, refetch} = useQuery({
-        queryKey: ['menu'], 
+        queryKey: ['pet'], 
         queryFn: async() =>{
             const res = await axios.get(`${import.meta.env.VITE_API_URL}/pet`)
            
