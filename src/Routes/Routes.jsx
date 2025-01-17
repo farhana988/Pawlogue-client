@@ -13,6 +13,7 @@ import DonationCampaign from "../Pages/Dashboard/DonationCampaign/DonationCampai
 import MyDonationCampaign from "../Pages/Dashboard/MyDonationCampaign/MyDonationCampaign";
 import UpdateDonation from "../Pages/Dashboard/MyDonationCampaign/UpdateDonation";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import AllPets from "../Pages/AllPets/AllPets";
 
 
 export const router = createBrowserRouter([
@@ -77,7 +78,7 @@ export const router = createBrowserRouter([
       }, 
       {
         path: "allPets",
-        element: <PrivateRoute>       </PrivateRoute> ,
+        element: <PrivateRoute>    <AllPets></AllPets>   </PrivateRoute> ,
       }, 
       {
         path: "allDonations",
