@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AllDonations = () => {
   const axiosSecure = useAxiosSecure();
@@ -26,6 +27,33 @@ const AllDonations = () => {
 
 
 
+      const handleDelete = async (donationId) => {
+        console.log(`Attempting to delete donation with ID: ${donationId}`);
+    
+        try {
+          const result = await Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+          });
+    
+          if (result.isConfirmed) {
+            const response = await axiosSecure.delete(`/donationCampaign/${donationId}`);
+    
+            if (response.data.deletedCount > 0) {
+              refetch()
+              Swal.fire("Deleted!", "Your donation campaign has been deleted.", "success");
+            }
+          }
+        } catch (error) {
+          console.error("Error while deleting donation:", error);
+          Swal.fire("Error", "An error occurred while deleting the donation.", "error");
+        }
+      };
 
 
   return (
@@ -71,7 +99,7 @@ const AllDonations = () => {
                       {/* {paused[donation._id] || donation.isPaused ? 'Unpause' : 'Pause'} */}
                     </button>
                     <button
-                      // onClick={() => handleDelete(donation._id)}
+                      onClick={() => handleDelete(donation._id)}
                       className="px-3 py-1 rounded-md bg-red-500 text-white hover:bg-red-600"
                     >
                       Delete
