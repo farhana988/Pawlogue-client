@@ -52,6 +52,35 @@ const AllPets = () => {
     }
   };
 
+
+
+    const handleAdopt = async (petId) => {
+      try {
+        const result = await Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, update it!",
+        });
+        if (result.isConfirmed) {
+          const response = await axiosSecure.patch(`/changeAdopt/${petId}`);
+          console.log(response);
+          refetch();
+          Swal.fire(
+            "congo!",
+            "You have accepted the adoption request.",
+            "success"
+          );
+        }
+      } catch (error) {
+        console.error("Error deleting adoption info:", error);
+        alert("Failed to delete adoption information.");
+      }
+    };
+
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-semibold mb-6">All Pets</h1>
@@ -88,6 +117,9 @@ const AllPets = () => {
                 <td className="px-4 py-2">{pet.longDescription}</td>
                 <td className="px-4 py-2">
                   <button
+                   onClick={() => {
+                    handleAdopt(pet._id);
+                  }}
                     className={`px-4 py-2 rounded-full text-white ${
                       pet.adopted ? "bg-green-500" : "bg-yellow-500"
                     }`}
