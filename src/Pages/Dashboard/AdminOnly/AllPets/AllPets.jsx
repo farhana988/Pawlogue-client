@@ -1,67 +1,59 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-
-
-
 const AllPets = () => {
+  const axiosSecure = useAxiosSecure();
+  const {
+    data: pets = [],
+    isLoading,
+    error,
+    refetch,
+  } = useQuery({
+    queryKey: ["pets"],
+    queryFn: async () => {
+      const { data } = await axiosSecure(`/pets`);
 
-    const axiosSecure = useAxiosSecure();
-    const {
-      data: pets  = [],
-      isLoading,
-      error,
-      refetch,
-    } = useQuery({
-      queryKey: ["pets"],
-      queryFn: async () => {
-        const { data } = await axiosSecure(`/pets`);
-  
-        return data;
-      },
-      onSuccess: (data) => {
-        console.log("Successfully fetched pets:", data);
-      },
-    });
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error.message}</div>;
-  
+      return data;
+    },
+    onSuccess: (data) => {
+      console.log("Successfully fetched pets:", data);
+    },
+  });
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
+  const handleDelete = async (petId) => {
+    console.log(`Attempting to delete pet with ID: ${petId}`);
 
-      const handleDelete = async (petId) => {
-        console.log(`Attempting to delete pet with ID: ${petId}`);
-    
-        try {
-          const result = await Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
-          });
-    
-          if (result.isConfirmed) {
-            const response = await axiosSecure.delete(`/pet/${petId}`);
-    
-            if (response.data.deletedCount > 0) {
-              refetch()
-              Swal.fire("Deleted!", "Your pet has been deleted.", "success");
-            }
-          }
-        } catch (error) {
-          console.error("Error while deleting pet:", error);
-          Swal.fire("Error", "An error occurred while deleting the pet.", "error");
+    try {
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      });
+
+      if (result.isConfirmed) {
+        const response = await axiosSecure.delete(`/pet/${petId}`);
+
+        if (response.data.deletedCount > 0) {
+          refetch();
+          Swal.fire("Deleted!", "Your pet has been deleted.", "success");
         }
-      };
+      }
+    } catch (error) {
+      console.error("Error while deleting pet:", error);
+      Swal.fire("Error", "An error occurred while deleting the pet.", "error");
+    }
+  };
 
-
-
-    return (
-        <div className="container mx-auto p-6">
+  return (
+    <div className="container mx-auto p-6">
       <h1 className="text-3xl font-semibold mb-6">All Pets</h1>
       <div className="overflow-x-auto">
         <table className="min-w-full table-auto border-collapse border border-gray-300">
@@ -112,12 +104,8 @@ const AllPets = () => {
                   >
                     Delete
                   </button>
-                  <button
-                    className="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700"
-                  >
+                  <button className="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700">
                     <Link to={`/dashboard/updatePet/${pet._id}`}> Update</Link>
-                  
-                   
                   </button>
                 </td>
               </tr>
@@ -126,7 +114,7 @@ const AllPets = () => {
         </table>
       </div>
     </div>
-    );
+  );
 };
 
 export default AllPets;

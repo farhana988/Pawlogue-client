@@ -27,13 +27,13 @@ const Navbar = () => {
         Home
       </a>
       <a
-        href="/"
+        href="/petListing"
         className="text-lg font-medium hover:text-gray-300 transition"
       >
         Pet Listing
       </a>
       <a
-        href="/"
+        href="/donationCampaigns"
         className="text-lg font-medium hover:text-gray-300 transition"
       >
         Donation Campaigns

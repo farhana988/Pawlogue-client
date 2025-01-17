@@ -71,6 +71,7 @@ const AddPet = () => {
         longDescription: values.longDescription,
         adopted: false,
         owner,
+        date: new Date().toISOString(),
       };
 
       await axiosSecure.post(`/pets`, petData);

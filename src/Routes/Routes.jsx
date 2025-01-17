@@ -9,13 +9,14 @@ import MyPets from "../Pages/Dashboard/MyPets/MyPets";
 import AddPet from "../Pages/Dashboard/AddPet/AddPet";
 import PrivateRoute from "./PrivateRoute";
 import UpdatePet from "../Pages/Dashboard/MyPets/UpdatePet";
-import DonationCampaign from "../Pages/Dashboard/DonationCampaign/DonationCampaign";
+import DonationCampaign from "../Pages/Dashboard/AddDonationCampaign/DonationCampaign";
 import MyDonationCampaign from "../Pages/Dashboard/MyDonationCampaign/MyDonationCampaign";
 import UpdateDonation from "../Pages/Dashboard/MyDonationCampaign/UpdateDonation";
-import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
-import AllPets from "../Pages/AllPets/AllPets";
-import AllDonations from "../Pages/AllDonations/AllDonations";
-
+import AllUsers from "../Pages/Dashboard/AdminOnly/AllUsers/AllUsers";
+import AllPets from "../Pages/Dashboard/AdminOnly/AllPets/AllPets";
+import AllDonations from "../Pages/Dashboard/AdminOnly/AllDonations/AllDonations";
+import PetListing from "../Pages/PetListing/PetListing";
+import AllDonationCampaigns from "../Pages/AllDonationCampaigns/AllDonationCampaigns";
 
 export const router = createBrowserRouter([
   {
@@ -26,66 +27,117 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-      }, 
+      },
       {
         path: "/login",
-        element:<Login></Login>,
-      }, 
+        element: <Login></Login>,
+      },
       {
         path: "/register",
         element: <Registration></Registration>,
+      },
+      {
+        path: "/petListing",
+        element: <PetListing></PetListing>,
+      },
+      {
+        path: "/donationCampaigns",
+        element: <AllDonationCampaigns></AllDonationCampaigns>,
       },
     ],
   },
   {
     path: "/dashboard",
-    element:<DashboardLayout></DashboardLayout>,
-    children:[
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
       {
         path: "add-pet",
-        element: <PrivateRoute><AddPet></AddPet></PrivateRoute> ,
-      }, 
+        element: (
+          <PrivateRoute>
+            <AddPet></AddPet>
+          </PrivateRoute>
+        ),
+      },
       {
         path: "my-pets",
-        element:<PrivateRoute> <MyPets></MyPets></PrivateRoute> ,
-      }, 
+        element: (
+          <PrivateRoute>
+            {" "}
+            <MyPets></MyPets>
+          </PrivateRoute>
+        ),
+      },
       {
         path: "updatePet/:id",
-        element:<PrivateRoute> <UpdatePet></UpdatePet></PrivateRoute> ,
-      }, 
+        element: (
+          <PrivateRoute>
+            {" "}
+            <UpdatePet></UpdatePet>
+          </PrivateRoute>
+        ),
+      },
       {
         path: "adoption-requests",
-        element:<PrivateRoute>           </PrivateRoute> ,
-      }, 
+        element: <PrivateRoute> </PrivateRoute>,
+      },
       {
         path: "create-donation",
-        element: <PrivateRoute>   <DonationCampaign></DonationCampaign>   </PrivateRoute> ,
-      }, 
+        element: (
+          <PrivateRoute>
+            {" "}
+            <DonationCampaign></DonationCampaign>{" "}
+          </PrivateRoute>
+        ),
+      },
       {
         path: "my-donations",
-        element: <PrivateRoute>    <MyDonationCampaign></MyDonationCampaign>     </PrivateRoute> ,
-      }, 
+        element: (
+          <PrivateRoute>
+            {" "}
+            <MyDonationCampaign></MyDonationCampaign>{" "}
+          </PrivateRoute>
+        ),
+      },
       {
         path: "updateDonation/:id",
-        element: <PrivateRoute>   <UpdateDonation></UpdateDonation>  </PrivateRoute> ,
-      }, 
+        element: (
+          <PrivateRoute>
+            {" "}
+            <UpdateDonation></UpdateDonation>{" "}
+          </PrivateRoute>
+        ),
+      },
       {
         path: "my-donation-campaigns",
-        element: <PrivateRoute>            </PrivateRoute> ,
-      }, 
+        element: <PrivateRoute> </PrivateRoute>,
+      },
       {
         path: "allUsers",
-        element: <PrivateRoute>   <AllUsers></AllUsers>        </PrivateRoute> ,
-      }, 
+        element: (
+          <PrivateRoute>
+            {" "}
+            <AllUsers></AllUsers>{" "}
+          </PrivateRoute>
+        ),
+      },
       {
         path: "allPets",
-        element: <PrivateRoute>    <AllPets></AllPets>   </PrivateRoute> ,
-      }, 
+        element: (
+          <PrivateRoute>
+            {" "}
+            <AllPets></AllPets>{" "}
+          </PrivateRoute>
+        ),
+      },
       {
         path: "allDonations",
-        element: <PrivateRoute>    <AllDonations></AllDonations>      </PrivateRoute> ,
-      }, 
-    
-    ]
-  }, 
+        element: (
+          <PrivateRoute>
+            {" "}
+            <AllDonations></AllDonations>{" "}
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
 ]);

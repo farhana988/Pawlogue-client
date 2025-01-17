@@ -1,43 +1,35 @@
-import {  useState } from "react";
+import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import useAdmin from "../../hooks/useAdmin";
 
+import { FcHome } from "react-icons/fc";
+import ThemeToggle from "../../Components/Shared/ThemeToggle";
 
 const Sidebar = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen); 
+    setIsSidebarOpen(!isSidebarOpen);
   };
-
-
 
   const [isAdmin] = useAdmin();
 
-
   return (
     <div className="flex">
-      
       {/* Sidebar */}
       <div
         className={`bg-gray-800 text-white w-64 p-4 space-y-6 fixed md:relative md:w-64 transition-all duration-300 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0 md:h-auto ${
           isSidebarOpen ? "h-full" : "h-full"
-        } z-50`} 
-      >   <h1 className="text-2xl font-bold text-center"></h1>
-      
+        } z-50`}
+      >
+        {" "}
+        <h1 className="text-2xl font-bold text-center"></h1>
         <span className="font-medium">
-
-        {
-          isAdmin ?
-        "Admin Dashboard":"User Dashboard"   
-           }
+          {isAdmin ? "Admin Dashboard" : "User Dashboard"}
         </span>
- 
-       
-
         <nav>
           <ul className="space-y-4">
             <li>
@@ -81,39 +73,49 @@ const Sidebar = () => {
               </Link>
             </li>
 
-           {/* admin pages only */}
+            {/* admin pages only */}
 
-           {
-            isAdmin && <>
-             <li>
-              <Link
-                to="/dashboard/allUsers"
-                className="block py-2 px-4 hover:bg-gray-700 rounded"
-              >
-               All Users
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/dashboard/allPets"
-                className="block py-2 px-4 hover:bg-gray-700 rounded"
-              >
-               All Pets
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/dashboard/allDonations"
-                className="block py-2 px-4 hover:bg-gray-700 rounded"
-              >
-               All Donations
-              </Link>
-            </li>
-            </>
-           }
+            {isAdmin && (
+              <>
+                <li>
+                  <Link
+                    to="/dashboard/allUsers"
+                    className="block py-2 px-4 hover:bg-gray-700 rounded"
+                  >
+                    All Users
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/dashboard/allPets"
+                    className="block py-2 px-4 hover:bg-gray-700 rounded"
+                  >
+                    All Pets
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/dashboard/allDonations"
+                    className="block py-2 px-4 hover:bg-gray-700 rounded"
+                  >
+                    All Donations
+                  </Link>
+                </li>
+                {/* home */}
 
+                <Link
+                  to={"/"}
+                  className="text-4xl md:text-5xl lg:text-6xl absolute 
+                  left-10 bottom-2 z-50"
+                >
+                  <FcHome />
+                </Link>
 
-
+                <span className=" absolute bottom-5 md:bottom-9 z-50">
+                <ThemeToggle></ThemeToggle>
+                </span>
+              </>
+            )}
           </ul>
         </nav>
       </div>
@@ -125,8 +127,6 @@ const Sidebar = () => {
       >
         <GiHamburgerMenu />
       </button>
-
-    
     </div>
   );
 };
