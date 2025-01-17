@@ -63,6 +63,30 @@ const Sidebar = () => {
                 My Donations
               </Link>
             </li>
+            <li>
+              <Link
+                to="/dashboard/allUsers"
+                className="block py-2 px-4 hover:bg-gray-700 rounded"
+              >
+               All Users
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/dashboard/allPets"
+                className="block py-2 px-4 hover:bg-gray-700 rounded"
+              >
+               All Pets
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/dashboard/allDonations"
+                className="block py-2 px-4 hover:bg-gray-700 rounded"
+              >
+               All Donations
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

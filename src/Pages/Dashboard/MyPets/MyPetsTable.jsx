@@ -58,8 +58,8 @@ const columns = [
   }),
 ];
 
-const MyPetsTable = ({ pets}) => {
-  const navigate = useNavigate(); 
+const MyPetsTable = ({ pets }) => {
+  const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
   const [data, setData] = useState([...pets]);
   const [sorting, setSorting] = useState([]);
@@ -95,7 +95,7 @@ const MyPetsTable = ({ pets}) => {
 
   const handleDelete = async (petId) => {
     console.log(`Attempting to delete pet with ID: ${petId}`);
-    
+
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
@@ -106,15 +106,13 @@ const MyPetsTable = ({ pets}) => {
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!",
       });
-  
+
       if (result.isConfirmed) {
-        const response = await axiosSecure.delete(
-          `/pet/${petId}`
-        );
-  
+        const response = await axiosSecure.delete(`/pet/${petId}`);
+
         if (response.data.deletedCount > 0) {
           const updatedPets = data.filter((pet) => pet._id !== petId);
-        setData(updatedPets);
+          setData(updatedPets);
           Swal.fire("Deleted!", "Your pet has been deleted.", "success");
         }
       }
@@ -123,7 +121,7 @@ const MyPetsTable = ({ pets}) => {
       Swal.fire("Error", "An error occurred while deleting the pet.", "error");
     }
   };
-  
+
   const handleEdit = (petId) => {
     navigate(`/dashboard/updatePet/${petId}`); // Navigate to the update page with petId
   };
@@ -203,12 +201,11 @@ const MyPetsTable = ({ pets}) => {
                       <Edit size={16} />
                     </button>
                     <button
-                       className="bg-red-500 text-white px-4 py-2 rounded-md"
-                       onClick={() => {
-                      
-                         handleDelete(row.original._id)
-                       }}
-                     >
+                      className="bg-red-500 text-white px-4 py-2 rounded-md"
+                      onClick={() => {
+                        handleDelete(row.original._id);
+                      }}
+                    >
                       <Trash size={16} />
                     </button>
                     <button
@@ -238,7 +235,7 @@ const MyPetsTable = ({ pets}) => {
 
               <button
                 className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
-                onClick={() => handlePageChange(pageIndex - 1)} 
+                onClick={() => handlePageChange(pageIndex - 1)}
                 disabled={pageIndex === 0}
               >
                 <ChevronLeft size={20} />
@@ -246,7 +243,7 @@ const MyPetsTable = ({ pets}) => {
 
               <button
                 className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
-                onClick={() => handlePageChange(pageIndex + 1)} 
+                onClick={() => handlePageChange(pageIndex + 1)}
                 disabled={pageIndex === table.getPageCount() - 1}
               >
                 <ChevronRight size={20} />
@@ -254,7 +251,7 @@ const MyPetsTable = ({ pets}) => {
 
               <button
                 className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
-                onClick={() => handlePageChange(table.getPageCount() - 1)} 
+                onClick={() => handlePageChange(table.getPageCount() - 1)}
                 disabled={pageIndex === table.getPageCount() - 1}
               >
                 <ChevronsRight size={20} />
