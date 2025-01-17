@@ -30,7 +30,34 @@ const AdoptionRequest = () => {
   if (error) return <div>Error loading pets</div>;
 
 
-
+// delete function
+  const handleDeleteAdoptInfo = async (petId) => {
+    try {
+    
+      await axiosSecure.put(`/removeAdoptPet/${petId}`);
+      
+    
+      refetch();  
+      alert("Adoption information removed successfully.");
+    } catch (error) {
+      console.error("Error deleting adoption info:", error);
+      alert("Failed to delete adoption information.");
+    }
+  };
+// edit function
+  const handleUpdateAdoptInfo = async (petId) => {
+    try {
+     
+      await axiosSecure.patch(`/removeAdoptPet/${petId}`);
+      
+   
+      refetch(); 
+      alert("Adoption information removed successfully.");
+    } catch (error) {
+      console.error("Error deleting adoption info:", error);
+      alert("Failed to delete adoption information.");
+    }
+  };
   
   
   return (
