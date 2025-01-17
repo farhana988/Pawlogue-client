@@ -37,78 +37,71 @@ const PetListing = () => {
   //   };
 
   return (
-    <div>
-      <Container>
-        <div>
-          <Container>
-            {/* Filters Section */}
-            <div className="flex items-center gap-4 mb-6">
-              <input
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)} // Update search state
-                placeholder="Search pets by name"
-                className="border border-gray-300 rounded px-4 py-2 w-full"
+    <div className="pt-20">
+    <Container>
+      {/* Filters Section */}
+      <div className="flex items-center gap-4 mb-6">
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)} // Update search state
+          placeholder="Search pets by name"
+          className="border border-gray-300 rounded px-4 py-2 w-full"
+        />
+
+        <select
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)} // Update filter state
+          className="border border-gray-300 rounded px-4 py-2"
+        >
+          <option value="">All Categories</option>
+          <option value="reptile">Reptile</option>
+          <option value="mammal">Mammal</option>
+          <option value="bird">Bird</option>
+          {/* Add other categories as needed */}
+        </select>
+      </div>
+
+      {/* Pet Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {allPets
+          .filter((pet) => pet.adopted === false) // Filter pets with adopted status 'false'
+          .map((pet) => (
+            <div
+              key={pet?._id}
+              className="border border-gray-300 rounded shadow-lg p-4 relative"
+            >
+              {/* image */}
+              <img
+                src={pet?.image}
+                alt={pet?.name}
+                className="w-full h-48 object-cover rounded mb-4"
               />
+              {/* name */}
+              <h3 className="text-lg font-semibold">{pet?.name}</h3>
 
-              <select
-                value={filter}
-                onChange={(e) => setFilter(e.target.value)} // Update filter state
-                className="border border-gray-300 rounded px-4 py-2"
-              >
-                <option value="">All Categories</option>
-                <option value="reptile">Reptile</option>
-                <option value="mammal">Mammal</option>
-                <option value="bird">Bird</option>
-                {/* Add other categories as needed */}
-              </select>
-            </div>
+              {/* location */}
+              <p className="text-sm text-gray-500 flex gap-2">
+                <FaLocationDot />
+                {pet?.location}
+              </p>
 
-            {/* Pet Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {allPets.map((pet) => (
-                <div
-                  key={pet?._id}
-                  className="border border-gray-300 rounded shadow-lg p-4 relative"
-                >
-                  {/* image */}
-                  <img
-                    src={pet?.image}
-                    alt={pet?.name}
-                    className="w-full h-48 object-cover rounded mb-4"
-                  />
-                  {/* date */}
-                  {/* <p className="text-sm text-gray-500">
-                 {formatDate(pet.date)}
-              </p> */}
-                  {/* name */}
-                  <h3 className="text-lg font-semibold">{pet?.name}</h3>
-
-                  {/* location*/}
-                  <p className="text-sm text-gray-500 flex gap-2">
-                    <FaLocationDot />
-                    {pet?.location}
-                  </p>
-
-                  {/* age */}
-                  <p
-                    className="absolute text-black font-semibold bg-red-400 px-5 py-1 
+              {/* age */}
+              <p
+                className="absolute text-black font-semibold bg-red-400 px-5 py-1 
               rounded-bl-2xl
               top-0 right-0"
-                  >
-                    {pet?.age}
-                  </p>
-                  <button className="flex justify-end"> 
-                    <Link to={`/petDetails/${pet._id}`}>pet details</Link>
-                  </button>
-                </div>
-           
-              ))}
+              >
+                {pet?.age}
+              </p>
+              <button className="flex justify-end">
+                <Link to={`/petDetails/${pet._id}`}>Pet details</Link>
+              </button>
             </div>
-          </Container>
-        </div>
-      </Container>
-    </div>
+          ))}
+      </div>
+    </Container>
+  </div>
   );
 };
 
