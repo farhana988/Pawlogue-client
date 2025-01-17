@@ -1,6 +1,8 @@
-import { useState } from "react";
+import {  useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import useAdmin from "../../hooks/useAdmin";
+
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); 
@@ -9,8 +11,14 @@ const Sidebar = () => {
     setIsSidebarOpen(!isSidebarOpen); 
   };
 
+
+
+  const [isAdmin] = useAdmin();
+
+
   return (
     <div className="flex">
+      
       {/* Sidebar */}
       <div
         className={`bg-gray-800 text-white w-64 p-4 space-y-6 fixed md:relative md:w-64 transition-all duration-300 ${
@@ -18,8 +26,17 @@ const Sidebar = () => {
         } md:translate-x-0 md:h-auto ${
           isSidebarOpen ? "h-full" : "h-full"
         } z-50`} 
-      >
-        <h1 className="text-2xl font-bold text-center">Dashboard</h1>
+      >   <h1 className="text-2xl font-bold text-center"></h1>
+      
+        <span className="font-medium">
+
+        {
+          isAdmin ?
+        "Admin Dashboard":"User Dashboard"   
+           }
+        </span>
+ 
+       
 
         <nav>
           <ul className="space-y-4">
@@ -63,7 +80,12 @@ const Sidebar = () => {
                 My Donations
               </Link>
             </li>
-            <li>
+
+           {/* admin pages only */}
+
+           {
+            isAdmin && <>
+             <li>
               <Link
                 to="/dashboard/allUsers"
                 className="block py-2 px-4 hover:bg-gray-700 rounded"
@@ -87,6 +109,11 @@ const Sidebar = () => {
                All Donations
               </Link>
             </li>
+            </>
+           }
+
+
+
           </ul>
         </nav>
       </div>
