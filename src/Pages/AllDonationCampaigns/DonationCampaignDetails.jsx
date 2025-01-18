@@ -4,6 +4,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import DonationModal from "./DonationModal";
+import RecommendedCampaigns from "./RecommendedCampaigns";
 
 const DonationCampaignDetails = () => {
   const axiosSecure = useAxiosSecure();
@@ -84,6 +85,9 @@ const DonationCampaignDetails = () => {
             </button>
           </div>
         </div>
+
+         {/* Recommended Campaigns Section */}
+         <RecommendedCampaigns></RecommendedCampaigns>
       </Container>
 
       {/*  donation  Modal*/}

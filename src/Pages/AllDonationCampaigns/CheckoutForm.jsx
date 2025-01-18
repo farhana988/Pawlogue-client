@@ -3,7 +3,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { useNavigate } from "react-router-dom";
+
 import Swal from "sweetalert2";
 
 const CheckoutForm = ({ donationAmount, donationDetails, onClose }) => {
@@ -17,7 +17,7 @@ const CheckoutForm = ({ donationAmount, donationDetails, onClose }) => {
 
   const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
+
 
   useEffect(() => {
     if (donationAmount > 0) {
@@ -100,7 +100,7 @@ const CheckoutForm = ({ donationAmount, donationDetails, onClose }) => {
           });
           // close modal
           onClose();
-          navigate("/dashboard/my-donations");
+         
         }
       }
     }
