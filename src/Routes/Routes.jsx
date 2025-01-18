@@ -65,27 +65,19 @@ export const router = createBrowserRouter([
       {
         path: "add-pet",
         element: (
-          <PrivateRoute>
-            <AddPet></AddPet>
-          </PrivateRoute>
+          <PrivateRoute><AddPet></AddPet></PrivateRoute>
         ),
       },
       {
         path: "my-pets",
         element: (
-          <PrivateRoute>
-            {" "}
-            <MyPets></MyPets>
-          </PrivateRoute>
+          <PrivateRoute>  <MyPets></MyPets>  </PrivateRoute>
         ),
       },
       {
         path: "updatePet/:id",
         element: (
-          <PrivateRoute>
-            {" "}
-            <UpdatePet></UpdatePet>
-          </PrivateRoute>
+          <PrivateRoute> <UpdatePet></UpdatePet>   </PrivateRoute>
         ),
       },
       {
@@ -95,28 +87,19 @@ export const router = createBrowserRouter([
       {
         path: "create-donation",
         element: (
-          <PrivateRoute>
-            {" "}
-            <DonationCampaign></DonationCampaign>{" "}
-          </PrivateRoute>
+          <PrivateRoute>     <DonationCampaign></DonationCampaign>  </PrivateRoute>
         ),
       },
       {
         path: "my-donations-camp",
         element: (
-          <PrivateRoute>
-            {" "}
-            <MyDonationCampaign></MyDonationCampaign>{" "}
-          </PrivateRoute>
+          <PrivateRoute>   <MyDonationCampaign></MyDonationCampaign>  </PrivateRoute>
         ),
       },
       {
         path: "updateDonation/:id",
         element: (
-          <PrivateRoute>
-            {" "}
-            <UpdateDonation></UpdateDonation>{" "}
-          </PrivateRoute>
+          <PrivateRoute>    <UpdateDonation></UpdateDonation>  </PrivateRoute>
         ),
       },
       {
@@ -130,28 +113,19 @@ export const router = createBrowserRouter([
       {
         path: "allUsers",
         element: (
-          <PrivateRoute>
-            {" "}
-            <AllUsers></AllUsers>{" "}
-          </PrivateRoute>
+          <PrivateRoute>   <AllUsers></AllUsers>  </PrivateRoute>
         ),
       },
       {
         path: "allPets",
         element: (
-          <PrivateRoute>
-            {" "}
-            <AllPets></AllPets>{" "}
-          </PrivateRoute>
+          <PrivateRoute>   <AllPets></AllPets>   </PrivateRoute>
         ),
       },
       {
         path: "allDonations",
         element: (
-          <PrivateRoute>
-            {" "}
-            <AllDonations></AllDonations>{" "}
-          </PrivateRoute>
+          <PrivateRoute>  <AllDonations></AllDonations>     </PrivateRoute>
         ),
       },
     ],
