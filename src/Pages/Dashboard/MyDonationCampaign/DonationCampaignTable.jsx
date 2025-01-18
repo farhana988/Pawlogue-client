@@ -1,8 +1,12 @@
 /* eslint-disable react/prop-types */
 import  { useState } from 'react';
 import { Link } from 'react-router-dom';
+import DonatorsModal from './DonatorsModal';
 
 const DonationCampaignTable = ({  myDonationCampaign }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+
   const { 
     _id,
     name, 
@@ -23,10 +27,21 @@ const DonationCampaignTable = ({  myDonationCampaign }) => {
   };
 
 
+// modal for donors
+  const openModal = () => {
+    setIsModalOpen(true); 
+};
+
+const closeModal = () => {
+    setIsModalOpen(false); 
+};
+
+
   const progress = goalAmount > 0 ? (raisedAmount / goalAmount) * 100 : 0;
   const clampedProgress = Math.min(Math.max(progress, 0), 100); 
 
   return (
+<>
     <tr>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <div className='flex items-center'>
@@ -66,7 +81,7 @@ const DonationCampaignTable = ({  myDonationCampaign }) => {
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         {/* View Donators button */}
         <span
-        //   onClick={() => {}}
+          onClick={openModal}
           className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'
         >
           <span
@@ -104,6 +119,10 @@ const DonationCampaignTable = ({  myDonationCampaign }) => {
         </span>
       </td>
     </tr>
+      {/* Modal for Donators List */}
+      {isModalOpen && <DonatorsModal campaignId={_id} onClose={closeModal} />}
+
+      </>
   );
 };
 
