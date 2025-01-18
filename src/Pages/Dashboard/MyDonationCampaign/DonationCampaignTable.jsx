@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
-import  { useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import DonatorsModal from './DonatorsModal';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const DonationCampaignTable = ({  myDonationCampaign }) => {
+  const axiosSecure = useAxiosSecure();
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [totalDonationAmount, setTotalDonationAmount] = useState(0);
 
   const { 
     _id,
@@ -14,11 +16,10 @@ const DonationCampaignTable = ({  myDonationCampaign }) => {
     longDescription, 
     date, 
     amount: goalAmount, 
-    raisedAmount,
     image 
   } = myDonationCampaign || {};
 
-
+// pause function
   const [isPaused, setIsPaused] = useState(false);
 
   const togglePause = () => {
@@ -36,8 +37,29 @@ const closeModal = () => {
     setIsModalOpen(false); 
 };
 
+ // Fetch donations for the current campaign
+ useEffect(() => {
+  const fetchDonations = async () => {
+    try {
+      const response = await axiosSecure(`/donations/${_id}`);
+        const data = response.data;
+       
+        // Calculate total donation amount
+        const totalAmount = data.reduce((sum, donation) => sum + parseFloat(donation.donatedAmount || 0), 0);
+        setTotalDonationAmount(totalAmount);
+     
+    } catch (error) {
+      console.error("Error fetching donations:", error);
+    }
+  };
 
-  const progress = goalAmount > 0 ? (raisedAmount / goalAmount) * 100 : 0;
+  fetchDonations();
+}, [_id, axiosSecure]);
+
+
+
+
+  const progress = goalAmount > 0 ? (totalDonationAmount / goalAmount) * 100 : 0;
   const clampedProgress = Math.min(Math.max(progress, 0), 100); 
 
   return (
@@ -63,7 +85,7 @@ const closeModal = () => {
         <p className='text-gray-900 whitespace-no-wrap'>{shortDescription}</p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>${raisedAmount} / ${goalAmount}</p>
+        <p className='text-gray-900 whitespace-no-wrap'>${totalDonationAmount} / ${goalAmount}</p>
         <div className='w-full bg-gray-200 rounded-full'>
           <div
             className='bg-blue-500 h-2 rounded-full'
