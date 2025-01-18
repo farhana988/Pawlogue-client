@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { Link } from "react-router-dom";
 import useAdmin from "../../hooks/useAdmin";
-
 import { FcHome } from "react-icons/fc";
 import ThemeToggle from "../../Components/Shared/ThemeToggle";
+import { Link, NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -26,60 +25,78 @@ const Sidebar = () => {
         } z-50`}
       >
         {" "}
-        <h1 className="text-2xl font-bold text-center"></h1>
-        <span className="font-medium">
+        <h1 className=""></h1>
+        <span className="text-2xl font-bold text-center ">
           {isAdmin ? "Admin Dashboard" : "User Dashboard"}
         </span>
         <nav>
           <ul className="space-y-4">
             <li>
-              <Link
+              <NavLink
                 to="/dashboard/add-pet"
-                className="block py-2 px-4 hover:bg-gray-700 rounded"
+                  className={({ isActive }) =>
+                  `block py-2 px-4 rounded ${isActive ? "bg-gray-700" : ""}`
+                }
+                    
               >
                 Add a Pet
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/dashboard/my-pets"
-                className="block py-2 px-4 hover:bg-gray-700 rounded"
+                  className={({ isActive }) =>
+                  `block py-2 px-4 rounded ${isActive ? "bg-gray-700" : ""}`
+                }
+                    
               >
                 My Added Pets
-              </Link>
+              </NavLink>
             </li>
            
             <li>
-              <Link
+              <NavLink
                 to="/dashboard/create-donation"
-                className="block py-2 px-4 hover:bg-gray-700 rounded"
+                  className={({ isActive }) =>
+                  `block py-2 px-4 rounded ${isActive ? "bg-gray-700" : ""}`
+                }
+                    
               >
                 Create Donation Campaign
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/dashboard/my-donations-camp"
-                className="block py-2 px-4 hover:bg-gray-700 rounded"
+                  className={({ isActive }) =>
+                  `block py-2 px-4 rounded ${isActive ? "bg-gray-700" : ""}`
+                }
+                    
               >
                 My Donations Campaigns
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/dashboard/my-donations"
-                className="block py-2 px-4 hover:bg-gray-700 rounded"
+                  className={({ isActive }) =>
+                  `block py-2 px-4 rounded ${isActive ? "bg-gray-700" : ""}`
+                }
+                    
               >
                 My Donations
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/dashboard/adoptionReq"
-                className="block py-2 px-4 hover:bg-gray-700 rounded"
+                  className={({ isActive }) =>
+                  `block py-2 px-4 rounded ${isActive ? "bg-gray-700" : ""}`
+                }
+                    
               >
                 Adoption Request
-              </Link>
+              </NavLink>
             </li>
              {/* home */}
 
@@ -100,28 +117,37 @@ const Sidebar = () => {
             {isAdmin && (
               <>
                 <li>
-                  <Link
+                  <NavLink
                     to="/dashboard/allUsers"
-                    className="block py-2 px-4 hover:bg-gray-700 rounded"
+                  className={({ isActive }) =>
+                  `block py-2 px-4 rounded ${isActive ? "bg-gray-700" : ""}`
+                }
+                    
                   >
                     All Users
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
                     to="/dashboard/allPets"
-                    className="block py-2 px-4 hover:bg-gray-700 rounded"
+                  className={({ isActive }) =>
+                  `block py-2 px-4 rounded ${isActive ? "bg-gray-700" : ""}`
+                }
+                    
                   >
                     All Pets
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
                     to="/dashboard/allDonations"
-                    className="block py-2 px-4 hover:bg-gray-700 rounded"
+                  className={({ isActive }) =>
+                  `block py-2 px-4 rounded ${isActive ? "bg-gray-700" : ""}`
+                }
+                    
                   >
                     All Donations
-                  </Link>
+                  </NavLink>
                 </li>
                
               </>

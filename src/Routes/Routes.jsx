@@ -22,6 +22,7 @@ import MyDonation from "../Pages/Dashboard/MyDonation/MyDonation";
 import AdoptionRequest from "../Pages/Dashboard/AdoptionRequest/AdoptionRequest";
 import DonationCampaignDetails from "../Pages/AllDonationCampaigns/DonationCampaignDetails";
 import AdminRoute from "./AdminRoute";
+import Statistics from "../Pages/Dashboard/Statistics";
 
 export const router = createBrowserRouter([
   {
@@ -63,6 +64,14 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     element: <DashboardLayout></DashboardLayout>,
     children: [
+      {
+        index: true,
+        element: (
+          <PrivateRoute>
+            <Statistics></Statistics>
+          </PrivateRoute>
+        ),
+      },
       {
         path: "add-pet",
         element: (
