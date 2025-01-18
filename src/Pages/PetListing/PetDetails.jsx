@@ -48,7 +48,7 @@ console.log(adoptionData)
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Your work has been saved",
+        title: "adoption request sent",
         showConfirmButton: false,
         timer: 1500
       });
@@ -92,10 +92,7 @@ console.log(adoptionData)
           <p className="text-lg mb-2">
             <strong>Location:</strong> {petDetails.location}
           </p>
-          <p className="text-lg mb-2">
-            <strong>Status:</strong>{" "}
-            {petDetails.adopted ? "Adopted" : "Available for Adoption"}
-          </p>
+         
           <p className="text-lg mb-2">
             <strong>Date Added:</strong> {formatDate(petDetails.date)}
           </p>
@@ -119,8 +116,6 @@ console.log(adoptionData)
     {/* Modal */}
     <AdoptModal
       petDetails={petDetails}
-      userName="User Name" // Replace with dynamic user data
-      userEmail="user@example.com" // Replace with dynamic user email
       isOpen={isModalOpen}
       onClose={() => setIsModalOpen(false)}
       onSubmit={handleAdoptSubmit}

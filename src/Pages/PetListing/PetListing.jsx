@@ -92,7 +92,7 @@ const PetListing = () => {
               rounded-bl-2xl
               top-0 right-0"
               >
-                {pet?.age}
+               age: {pet?.age}
               </p>
               <button className="flex justify-end">
                 <Link to={`/petDetails/${pet._id}`}>Pet details</Link>

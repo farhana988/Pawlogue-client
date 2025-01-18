@@ -7,11 +7,11 @@ import Lottie from "lottie-react";
 
 import reg from "../../assets/lottie/reg.json";
 import GoogleLogin from "./SocialLogin/GoogleLogin";
-import { saveUser } from "../../api/utils";
+import { handleImageUpload, saveUser } from "../../api/utils";
 
 const Registration = () => {
   const navigate = useNavigate();
-  const { createUser, updateUserProfile, setUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile, } = useContext(AuthContext);
   const [error, setError] = useState("");
 
   const handleSignUp = async (e) => {
@@ -19,9 +19,14 @@ const Registration = () => {
     const form = e.target;
     const email = form.email.value;
     const name = form.name.value;
-    const photo = form.image.value;
     const pass = form.password.value;
-    console.log(name,photo)
+    const image = form.image.files[0]
+
+    //1. send image data to imgbb
+    const photoURL = await handleImageUpload(image)
+
+
+
     //    validation
     if (pass.length < 6) {
       setError("Password must contain at least 6 characters");
@@ -40,10 +45,10 @@ const Registration = () => {
       // User Registration
       const result = await createUser(email, pass);
 
-      await updateUserProfile(name, photo);
-      setUser({ ...result.user, photoURL: photo, displayName: name });
+      await updateUserProfile(name, photoURL);
+      // setUser({ ...result.user, photoURL: photo, displayName: name });
        // save user info in db if the user is new
-       await saveUser({ ...result?.user, displayName: name })
+       await saveUser({ ...result?.user, displayName: name ,photoURL })
 
 
       Swal.fire({
@@ -117,13 +122,15 @@ const Registration = () => {
               <div>
                 <label className="label">
                   <span className="label-text text-xl text-gray-600 dark:text-ivory font-bold">
-                    Photo URL
+                  Select Image:
                   </span>
                 </label>
                 <input
-                  type="url"
-                  name="image"
-                  placeholder="Your Photo URL"
+                   
+                    type='file'
+                    id='image'
+                    name='image'
+                    accept='image/*'
                   className="input input-bordered w-full py-3 px-4 bg-gray-100 dark:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   required
                 />
@@ -152,7 +159,7 @@ const Registration = () => {
               <div>
                 <button
                   type="submit"
-                  className="btn btn-primary w-full py-3 text-white text-xl font-bold rounded-md"
+                  className="btn btn-primary w-full py-3 text-xl font-bold rounded-md"
                 >
                   Register
                 </button>

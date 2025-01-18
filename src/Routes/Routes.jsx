@@ -81,10 +81,7 @@ export const router = createBrowserRouter([
           <PrivateRoute> <UpdatePet></UpdatePet>   </PrivateRoute>
         ),
       },
-      {
-        path: "adoption-requests",
-        element: <PrivateRoute> </PrivateRoute>,
-      },
+     
       {
         path: "create-donation",
         element: (

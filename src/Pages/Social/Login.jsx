@@ -100,7 +100,7 @@ const Login = () => {
               </div>
 
               <div className="form-control mt-6">
-                <button className="btn btn-primary w-full py-3 text-white font-bold text-xl rounded-md">
+                <button className="btn btn-primary w-full py-3  font-bold text-xl rounded-md">
                   Login
                 </button>
               </div>
