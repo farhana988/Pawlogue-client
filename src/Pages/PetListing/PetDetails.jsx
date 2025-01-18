@@ -99,9 +99,9 @@ console.log(adoptionData)
           <p className="text-lg mb-4">
             <strong>Short Description:</strong> {petDetails.shortDescription}
           </p>
-          <p className="text-lg">
+          {/* <p className="text-lg">
             <strong>Long Description:</strong> {petDetails.longDescription}
-          </p>
+          </p> */}
 
           <button
             onClick={() => setIsModalOpen(true)}

@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 
 import { ErrorMessage, Field, Form } from "formik";
+import ReactQuill from "react-quill";
 import Select from "react-select";
+import "react-quill/dist/quill.snow.css";
 
 const AddPetForm = ({
   petCategories,
@@ -115,12 +117,13 @@ const AddPetForm = ({
         />
       </div>
 
-      {/* Long Description */}
+    
+      {/* Long Description - WYSIWYG Editor */}
       <div>
         <label className="block mb-1">Long Description</label>
-        <Field
-          as="textarea"
-          name="longDescription"
+        <ReactQuill
+          value={values.longDescription}
+          onChange={(content) => setFieldValue("longDescription", content)}
           className="w-full p-2 border rounded"
           placeholder="Enter detailed information"
         />
@@ -130,6 +133,7 @@ const AddPetForm = ({
           className="text-red-500 text-sm"
         />
       </div>
+
 
       {/* Submit Button */}
       <div>
