@@ -38,6 +38,7 @@ const Navbar = () => {
       >
         Donation Campaigns
       </a>
+      
     </>
   );
 
@@ -45,22 +46,24 @@ const Navbar = () => {
     <header className=" text-black dark:text-white  shadow-md sticky top-0 z-10">
       <nav className="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="text-2xl font-semibold">
+        <div className="text-2xl flex justify-center items-center gap-2 font-semibold">
           {/* website logo */}
           <Link to={'/'}>
            <img 
-           className="w-10 lg:w-16"
+           className="w-10 lg:w-14"
             src={logo} alt="" />
           </Link>
+           {/* Theme Toggle */}
+       
+           <ThemeToggle />
         </div>
+        
 
         {/* Desktop Navigation Links */}
         <div className="hidden md:flex space-x-8 items-center">
           {links}
 
-          {/* Theme Toggle */}
-          <ThemeToggle />
-
+         
           {/* Displayed when the user is logged in */}
           {user ? (
             <div className="relative">
@@ -105,7 +108,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center">
-          <ThemeToggle />
+        
           <button
             onClick={handleToggleMenu}
             className="text-black dark:text-white focus:outline-none"
@@ -159,8 +162,11 @@ const Navbar = () => {
               </Link>
             </>
           )}
+          
         </div>
+        
       )}
+      
     </header>
   );
 };

@@ -44,14 +44,14 @@ const PetListing = () => {
         <input
           type="text"
           value={search}
-          onChange={(e) => setSearch(e.target.value)} // Update search state
+          onChange={(e) => setSearch(e.target.value)} 
           placeholder="Search pets by name"
           className="border border-gray-300 rounded px-4 py-2 w-full"
         />
 
         <select
           value={filter}
-          onChange={(e) => setFilter(e.target.value)} // Update filter state
+          onChange={(e) => setFilter(e.target.value)} 
           className="border border-gray-300 rounded px-4 py-2"
         >
           <option value="">All Categories</option>
@@ -65,7 +65,7 @@ const PetListing = () => {
       {/* Pet Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {allPets
-          .filter((pet) => pet.adopted === false) // Filter pets with adopted status 'false'
+          .filter((pet) => pet.adopted === false) 
           .map((pet) => (
             <div
               key={pet?._id}
