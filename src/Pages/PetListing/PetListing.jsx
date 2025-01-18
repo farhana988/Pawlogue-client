@@ -1,41 +1,44 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery,} from "@tanstack/react-query";
 import Container from "../../Components/Reusable/Container";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useState } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-
+import { useInView } from "react-intersection-observer";
 const PetListing = () => {
   const axiosSecure = useAxiosSecure();
   const [filter, setFilter] = useState("");
   const [search, setSearch] = useState("");
+
+  const { ref, inView } = useInView(); 
+
   const {
-    data: allPets = [],
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
     isLoading,
     error,
-  } = useQuery({
-    queryKey: ["allPets", filter, search],
-    queryFn: async () => {
+  } = useInfiniteQuery({
+    queryKey: ["allPets", { filter, search }],
+    queryFn: async ({ pageParam = 1 }) => {
       const { data } = await axiosSecure(
-        `/allPets?filter=${filter}&search=${search}`
+        `/allPets?filter=${filter}&search=${search}&page=${pageParam}&limit=6`
       );
-
       return data;
     },
-    onSuccess: (data) => {
-      console.log("Successfully fetched allPets:", data);
+    getNextPageParam: (lastPage, allPages) => {
+      return lastPage.hasMore ? allPages.length + 1 : undefined;
     },
   });
+
+ 
+  if (inView && hasNextPage) {
+    fetchNextPage();
+  }
+
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-  console.log(allPets);
-
-  // format the date
-  // const formatDate = (isoString) => {
-  //     const options = { year: "numeric", month: "short", day: "numeric" };
-  //     return new Date(isoString).toLocaleDateString(undefined, options);
-  //   };
-
   return (
     <div className="pt-20">
     <Container>
@@ -44,14 +47,14 @@ const PetListing = () => {
         <input
           type="text"
           value={search}
-          onChange={(e) => setSearch(e.target.value)} 
+          onChange={(e) => setSearch(e.target.value)}
           placeholder="Search pets by name"
           className="border border-gray-300 rounded px-4 py-2 w-full"
         />
 
         <select
           value={filter}
-          onChange={(e) => setFilter(e.target.value)} 
+          onChange={(e) => setFilter(e.target.value)}
           className="border border-gray-300 rounded px-4 py-2"
         >
           <option value="">All Categories</option>
@@ -64,9 +67,8 @@ const PetListing = () => {
 
       {/* Pet Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {allPets
-          .filter((pet) => pet.adopted === false) 
-          .map((pet) => (
+        {data.pages.map((page) =>
+          page.pets.map((pet) => (
             <div
               key={pet?._id}
               className="border border-gray-300 rounded shadow-lg p-4 relative"
@@ -89,16 +91,31 @@ const PetListing = () => {
               {/* age */}
               <p
                 className="absolute text-black font-semibold bg-red-400 px-5 py-1 
-              rounded-bl-2xl
-              top-0 right-0"
+                rounded-bl-2xl
+                top-0 right-0"
               >
-               age: {pet?.age}
+                Age: {pet?.age}
               </p>
               <button className="flex justify-end">
                 <Link to={`/petDetails/${pet._id}`}>Pet details</Link>
               </button>
             </div>
-          ))}
+          ))
+        )}
+      </div>
+
+      {/* Loader */}
+      <div ref={ref} className="flex justify-center mt-6">
+        {isFetchingNextPage ? (
+          <div>Loading more...</div>
+        ) : hasNextPage ? (
+          <button onClick={() => fetchNextPage()} className="px-4 py-2 bg-blue-500
+           text-white rounded">
+            Load More 
+          </button>
+        ) : (
+          <div>No more pets to load.</div>
+        )}
       </div>
     </Container>
   </div>
