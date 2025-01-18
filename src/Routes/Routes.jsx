@@ -20,6 +20,7 @@ import AllDonationCampaigns from "../Pages/AllDonationCampaigns/AllDonationCampa
 import PetDetails from "../Pages/PetListing/PetDetails";
 import MyDonation from "../Pages/Dashboard/MyDonation/MyDonation";
 import AdoptionRequest from "../Pages/Dashboard/AdoptionRequest/AdoptionRequest";
+import DonationCampaignDetails from "../Pages/AllDonationCampaigns/DonationCampaignDetails";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
       {
         path: "/donationCampaigns",
         element: <AllDonationCampaigns></AllDonationCampaigns>,
+      },
+      {
+        path: "/donationCampaignDetails/:id",
+        element: <DonationCampaignDetails></DonationCampaignDetails>,
       },
     ],
   },
