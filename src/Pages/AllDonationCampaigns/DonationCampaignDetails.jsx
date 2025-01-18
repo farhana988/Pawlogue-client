@@ -10,7 +10,6 @@ const DonationCampaignDetails = () => {
   const { id } = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-
   const {
     data: donationDetails = [],
     isLoading,
@@ -29,10 +28,10 @@ const DonationCampaignDetails = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
-  const handleDonationSuccess = () => {
-    alert("Thank you for your donation!");
-    setIsModalOpen(false);
-  };
+  // Check if the campaign is paused
+  const isPaused = donationDetails?.paused;
+
+
 
   return (
     <div className="pt-20">
@@ -75,11 +74,13 @@ const DonationCampaignDetails = () => {
               <span className="font-semibold">Created By:</span>{" "}
               {donationDetails?.email}
             </p>
-            <button
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+           {/* Donate Button */}
+           <button
+              className={`bg-blue-600 text-white px-4 py-2 rounded ${isPaused ? "bg-gray-400 cursor-not-allowed" : ""}`}
               onClick={() => setIsModalOpen(true)}
+              disabled={isPaused} 
             >
-              Donate Now
+              {isPaused ? "Campaign Paused" : "Donate Now"}
             </button>
           </div>
         </div>
@@ -90,7 +91,7 @@ const DonationCampaignDetails = () => {
         <DonationModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
-          onDonationSuccess={handleDonationSuccess}
+         
           donationDetails={donationDetails}
         />
       )}
