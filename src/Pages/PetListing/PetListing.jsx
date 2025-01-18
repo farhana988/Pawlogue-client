@@ -2,9 +2,8 @@ import { useInfiniteQuery,} from "@tanstack/react-query";
 import Container from "../../Components/Reusable/Container";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useState } from "react";
-import { FaLocationDot } from "react-icons/fa6";
-import { Link } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
+import PetListingCard from "./PetListingCard";
 const PetListing = () => {
   const axiosSecure = useAxiosSecure();
   const [filter, setFilter] = useState("");
@@ -68,39 +67,12 @@ const PetListing = () => {
       {/* Pet Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {data.pages.map((page) =>
-          page.pets.map((pet) => (
-            <div
-              key={pet?._id}
-              className="border border-gray-300 rounded shadow-lg p-4 relative"
-            >
-              {/* image */}
-              <img
-                src={pet?.image}
-                alt={pet?.name}
-                className="w-full h-48 object-cover rounded mb-4"
-              />
-              {/* name */}
-              <h3 className="text-lg font-semibold">{pet?.name}</h3>
-
-              {/* location */}
-              <p className="text-sm text-gray-500 flex gap-2">
-                <FaLocationDot />
-                {pet?.location}
-              </p>
-
-              {/* age */}
-              <p
-                className="absolute text-black font-semibold bg-red-400 px-5 py-1 
-                rounded-bl-2xl
-                top-0 right-0"
-              >
-                Age: {pet?.age}
-              </p>
-              <button className="flex justify-end">
-                <Link to={`/petDetails/${pet._id}`}>Pet details</Link>
-              </button>
-            </div>
-          ))
+          page.pets.map((pet) => 
+           <PetListingCard
+           key={pet?._id}
+           pet={pet}
+           ></PetListingCard>
+          )
         )}
       </div>
 
