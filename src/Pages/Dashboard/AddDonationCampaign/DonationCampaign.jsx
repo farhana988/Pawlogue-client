@@ -32,7 +32,7 @@ const DonationCampaign = () => {
       longDescription,
       date,
       amount,
-
+      paused: false,
       image: imageUrl,
       createdAt: new Date().toISOString(),
     };

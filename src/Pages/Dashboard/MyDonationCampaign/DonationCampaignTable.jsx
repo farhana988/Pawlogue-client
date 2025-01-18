@@ -8,6 +8,7 @@ const DonationCampaignTable = ({  myDonationCampaign }) => {
   const axiosSecure = useAxiosSecure();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [totalDonationAmount, setTotalDonationAmount] = useState(0);
+ 
 
   const { 
     _id,
@@ -15,18 +16,27 @@ const DonationCampaignTable = ({  myDonationCampaign }) => {
     shortDescription, 
     longDescription, 
     date, 
+    paused,
     amount: goalAmount, 
     image 
   } = myDonationCampaign || {};
 
-// pause function
-  const [isPaused, setIsPaused] = useState(false);
 
-  const togglePause = () => {
-    setIsPaused(!isPaused);
+ // pause function
+ const [isPaused, setIsPaused] = useState(paused ||false);
 
+
+  // Toggle Pause
+  const togglePause = async () => {
+    try {
+      const newPausedState = !isPaused;
+      setIsPaused(newPausedState);
+
+      await axiosSecure.patch(`/donationCampaign/${_id}`, { paused: newPausedState });
+    } catch (error) {
+      console.error("Error updating paused state:", error);
+    }
   };
-
 
 // modal for donors
   const openModal = () => {
@@ -115,15 +125,16 @@ const closeModal = () => {
 
         {/* Pause/Unpause button */}
         <span
-          onClick={togglePause}
-          className={`relative cursor-pointer inline-block px-3 py-1 font-semibold text-${isPaused ? 'gray' : 'green'}-900 leading-tight`}
-        >
-          <span
-            aria-hidden='true'
-            className={`absolute inset-0 bg-${isPaused ? 'gray' : 'green'}-200 opacity-50 rounded-full`}
-          ></span>
-          <span className='relative'>{isPaused ? 'Unpause' : 'Pause'}</span>
-        </span>
+            onClick={togglePause}
+            className={`relative cursor-pointer inline-block px-3 py-1 font-semibold text-${isPaused ? 'gray' : 'green'}-900 leading-tight`}
+          >
+            <span
+              aria-hidden='true'
+              className={`absolute inset-0 bg-${isPaused ? 'gray' : 'green'}-200 opacity-50 rounded-full`}
+            ></span>
+            <span className='relative'>{isPaused ? 'Unpause' : 'Pause'}</span>
+          </span>
+
 
         {/* Edit button */}
         <span
@@ -133,7 +144,9 @@ const closeModal = () => {
           <span
             aria-hidden='true'
             className='absolute inset-0 bg-green-200 opacity-50 rounded-full'
-          ></span>
+          >
+           
+          </span>
           <span className='relative'>
             <Link to={`/dashboard/updateDonation/${_id}`}>  Edit
             </Link>
