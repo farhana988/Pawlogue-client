@@ -1,14 +1,16 @@
 /* eslint-disable react/prop-types */
-import  { useEffect, useState } from 'react';
+import  {useState } from 'react';
 import { Link } from 'react-router-dom';
 import DonatorsModal from './DonatorsModal';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useDonations from '../../../hooks/useDonations';
 
 const DonationCampaignTable = ({  myDonationCampaign }) => {
   const axiosSecure = useAxiosSecure();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [totalDonationAmount, setTotalDonationAmount] = useState(0);
- 
+
+   // total donation amount from the custom hook
+   const totalDonationAmount = useDonations(myDonationCampaign._id);
 
   const { 
     _id,
@@ -46,27 +48,6 @@ const DonationCampaignTable = ({  myDonationCampaign }) => {
 const closeModal = () => {
     setIsModalOpen(false); 
 };
-
- // Fetch donations for the current campaign
- useEffect(() => {
-  const fetchDonations = async () => {
-    try {
-      const response = await axiosSecure(`/donations/${_id}`);
-        const data = response.data;
-       
-        // Calculate total donation amount
-        const totalAmount = data.reduce((sum, donation) => sum + parseFloat(donation.donatedAmount || 0), 0);
-        setTotalDonationAmount(totalAmount);
-     
-    } catch (error) {
-      console.error("Error fetching donations:", error);
-    }
-  };
-
-  fetchDonations();
-}, [_id, axiosSecure]);
-
-
 
 
   const progress = goalAmount > 0 ? (totalDonationAmount / goalAmount) * 100 : 0;
