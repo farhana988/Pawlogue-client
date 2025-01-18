@@ -48,14 +48,7 @@ const Sidebar = () => {
                 My Added Pets
               </Link>
             </li>
-            <li>
-              <Link
-                to="/dashboard/adoption-requests"
-                className="block py-2 px-4 hover:bg-gray-700 rounded"
-              >
-                Adoption Requests
-              </Link>
-            </li>
+           
             <li>
               <Link
                 to="/dashboard/create-donation"

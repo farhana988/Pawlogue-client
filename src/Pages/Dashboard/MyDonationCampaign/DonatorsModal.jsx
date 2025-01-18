@@ -20,19 +20,20 @@ const DonatorsModal = ({ campaignId, onClose }) => {
     }, [campaignId, axiosSecure]);
 
     return (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">
-                {/* Close Button */}
-                <button
-                    onClick={onClose}
-                    className="text-gray-400 text-3xl hover:text-gray-600 absolute top-4 right-4"
-                >
-                    &times;
-                </button>
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center 
+        items-center z-50">
+        <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">
+            {/* Close Button */}
+            <button
+                onClick={onClose}
+                className="text-gray-400 text-3xl hover:text-gray-600 absolute top-4 right-4"
+            >
+                &times;
+            </button>
 
-                <h3 className="text-xl font-bold text-gray-800 mb-4">Donators List</h3>
+            <h3 className="text-xl font-bold text-gray-800 mb-4">Donators List</h3>
 
-                {/* Donator Table */}
+            {donators.length > 0 ? (
                 <table className="min-w-full">
                     <thead>
                         <tr>
@@ -49,8 +50,13 @@ const DonatorsModal = ({ campaignId, onClose }) => {
                         ))}
                     </tbody>
                 </table>
-            </div>
+            ) : (
+                
+                <p className="text-gray-600 text-center mt-4">No donations have
+                <br /> been made yet.</p>
+            )}
         </div>
+    </div>
     );
 };
 

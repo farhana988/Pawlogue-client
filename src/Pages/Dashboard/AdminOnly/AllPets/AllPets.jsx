@@ -92,9 +92,6 @@ const AllPets = () => {
               <th className="px-4 py-2 border-b">Name</th>
               <th className="px-4 py-2 border-b">Age</th>
               <th className="px-4 py-2 border-b">Category</th>
-              <th className="px-4 py-2 border-b">Location</th>
-              <th className="px-4 py-2 border-b">Short Description</th>
-              <th className="px-4 py-2 border-b">Long Description</th>
               <th className="px-4 py-2 border-b">Status</th>
               <th className="px-4 py-2 border-b">Actions</th>
             </tr>
@@ -112,9 +109,6 @@ const AllPets = () => {
                 <td className="px-4 py-2">{pet.name}</td>
                 <td className="px-4 py-2">{pet.age}</td>
                 <td className="px-4 py-2">{pet.category}</td>
-                <td className="px-4 py-2">{pet.location}</td>
-                <td className="px-4 py-2">{pet.shortDescription}</td>
-                <td className="px-4 py-2">{pet.longDescription}</td>
                 <td className="px-4 py-2">
                   <button
                    onClick={() => {
@@ -123,6 +117,7 @@ const AllPets = () => {
                     className={`px-4 py-2 rounded-full text-white ${
                       pet.adopted ? "bg-green-500" : "bg-yellow-500"
                     }`}
+                    disabled={pet.adopted}
                   >
                     {pet.adopted ? "Adopted" : "Not Adopted"}
                   </button>

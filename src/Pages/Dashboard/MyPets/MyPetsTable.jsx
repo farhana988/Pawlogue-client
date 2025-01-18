@@ -141,16 +141,20 @@ const MyPetsTable = ({ pets }) => {
         });
         if (result.isConfirmed) {
           const response = await axiosSecure.patch(`/changeAdopt/${petId}`);
-          console.log(response);
-          const updatedPets = data.filter((pet) => pet._id !== petId);
-          setData(updatedPets);
-          Swal.fire(
-            "congo!",
-            "You have accepted the adoption request.",
-            "success"
-          );
+          if (response.data.modifiedCount > 0) {
+            const updatedPets = data.map((pet) =>
+              pet._id === petId ? { ...pet, adopted: !pet.adopted } : pet
+            );
+            setData(updatedPets);
+    
+            Swal.fire(
+              "Success!",
+              "You have updated the adoption status.",
+              "success"
+            );
+          }
         }
-      } catch (error) {
+      }catch (error) {
         console.error("Error deleting adoption info:", error);
         alert("Failed to delete adoption information.");
       }
