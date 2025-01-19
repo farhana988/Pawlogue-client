@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import LoadingSpinner from "../../../Components/Reusable/LoadingSpinner";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { useContext } from "react";
 import DonationCampaignTable from "./DonationCampaignTable";
@@ -10,7 +9,6 @@ const MyDonationCampaign = () => {
   const { user } = useContext(AuthContext);
   const {
     data: myDonationCampaigns = [],
-    isLoading,
     refetch,
   } = useQuery({
     queryKey: ["myDonationCampaign"],
@@ -21,7 +19,7 @@ const MyDonationCampaign = () => {
     },
   });
 
-  if (isLoading) return <LoadingSpinner />;
+
   return (
     <div>
       <div className="container mx-auto px-4 sm:px-8">

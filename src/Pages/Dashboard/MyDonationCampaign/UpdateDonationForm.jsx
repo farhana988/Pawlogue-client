@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 
+import SkeletonLoader from "../../../Components/Reusable/SkeletonLoader";
+
 const UpdateDonationForm = ({
     campaignData,
     handleSubmit,
@@ -148,7 +150,9 @@ const UpdateDonationForm = ({
                   className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-blue-500"
                 >
                   {loading ? (
-                    <div className="animate-spin m-auto">Loading...</div>
+                    <div className="animate-spin m-auto">
+                      <SkeletonLoader></SkeletonLoader>
+                    </div>
                   ) : (
                     "Save & Continue"
                   )}

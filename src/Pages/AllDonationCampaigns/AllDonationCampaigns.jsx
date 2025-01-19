@@ -2,6 +2,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import AllDonationCampaignsCard from "./AllDonationCampaignsCard";
+import CardSkeleton from "../../Components/Reusable/CardSkeleton";
 
 const AllDonationCampaigns = () => {
   const axiosSecure = useAxiosSecure();
@@ -31,7 +32,7 @@ const AllDonationCampaigns = () => {
     fetchNextPage();
   }
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <CardSkeleton></CardSkeleton>;
   if (error) return <div>Error: {error.message}</div>;
 
   return (

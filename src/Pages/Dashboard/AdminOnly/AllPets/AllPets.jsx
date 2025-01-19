@@ -7,7 +7,7 @@ const AllPets = () => {
   const axiosSecure = useAxiosSecure();
   const {
     data: pets = [],
-    isLoading,
+
     error,
     refetch,
   } = useQuery({
@@ -19,7 +19,7 @@ const AllPets = () => {
     },
  
   });
-  if (isLoading) return <div>Loading...</div>;
+
   if (error) return <div>Error: {error.message}</div>;
 
   const handleDelete = async (petId) => {

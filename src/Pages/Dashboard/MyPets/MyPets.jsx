@@ -4,7 +4,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import NoData from "../../../Components/Reusable/NoData";
 import MyPetsTable from "./MyPetsTable";
-import LoadingSpinner from "../../../Components/Reusable/LoadingSpinner";
+
 
 
 const MyPets = () => {
@@ -15,7 +15,7 @@ const MyPets = () => {
 
   const {
     data: pets,
-    isLoading,
+
     error,
   } = useQuery({
     queryKey: ["pets", user?.email],
@@ -30,7 +30,7 @@ const MyPets = () => {
   
   });
 
-  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
+
   if (error) return <div>Error loading pets</div>;
 
 

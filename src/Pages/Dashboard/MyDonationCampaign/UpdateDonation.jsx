@@ -5,6 +5,7 @@ import {useParams } from "react-router-dom";
 import { handleImageUpload } from "../../../api/utils";
 import UpdateDonationForm from "./UpdateDonationForm";
 import Swal from "sweetalert2";
+import SkeletonLoader from "../../../Components/Reusable/SkeletonLoader";
 
 
 const UpdateDonation = () => {
@@ -70,7 +71,7 @@ const UpdateDonation = () => {
   };
 
   if (!campaignData) {
-    return <div>Loading...</div>; 
+    return <SkeletonLoader></SkeletonLoader> 
   }
 
   return (

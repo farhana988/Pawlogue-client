@@ -7,6 +7,7 @@ import DonationModal from "./DonationModal";
 import RecommendedCampaigns from "./RecommendedCampaigns";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import LoadingSpinner from "../../Components/Reusable/LoadingSpinner";
 
 const DonationCampaignDetails = () => {
   const axiosSecure = useAxiosSecure();
@@ -27,7 +28,7 @@ const DonationCampaignDetails = () => {
     },
    
   });
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
   if (error) return <div>Error: {error.message}</div>;
 
   const isExpired = new Date(donationDetails?.date) < new Date();

@@ -3,14 +3,14 @@ import { Navigate, useLocation } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import LoadingSpinner from "../Components/Reusable/LoadingSpinner";
+import SkeletonLoader from "../Components/Reusable/SkeletonLoader";
 
 const AdminRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const [isAdmin, isAdminLoading] = useAdmin();
   const location = useLocation();
   if (loading || isAdminLoading) {
-    return <LoadingSpinner></LoadingSpinner>;
+    return <SkeletonLoader></SkeletonLoader>;
   }
   if (user && isAdmin) {
     return children;

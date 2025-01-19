@@ -7,6 +7,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import AdoptModal from "./AdoptModal";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import LoadingSpinner from "../../Components/Reusable/LoadingSpinner";
 
 const PetDetails = () => {
   const axiosSecure = useAxiosSecure();
@@ -29,7 +30,7 @@ const PetDetails = () => {
     },
  
   });
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
   if (error) return <div>Error: {error.message}</div>;
 
 

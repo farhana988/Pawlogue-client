@@ -7,7 +7,7 @@ const AllDonations = () => {
   const axiosSecure = useAxiosSecure();
   const {
     data: donations = [],
-    isLoading,
+   
     error,
     refetch,
   } = useQuery({
@@ -19,7 +19,7 @@ const AllDonations = () => {
     },
    
   });
-  if (isLoading) return <div>Loading...</div>;
+  
   if (error) return <div>Error: {error.message}</div>;
 
   const handleDelete = async (donationId) => {

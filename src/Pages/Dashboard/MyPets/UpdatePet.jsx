@@ -7,6 +7,7 @@ import { useParams} from "react-router-dom";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQueryClient } from "@tanstack/react-query";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import SkeletonLoader from "../../../Components/Reusable/SkeletonLoader";
 
 const UpdatePet = () => {
   const { id } = useParams(); 
@@ -42,7 +43,7 @@ const UpdatePet = () => {
   }, [axiosSecure, id]); 
 
   if (!petData) {
-    return <div>Loading...</div>; 
+    return <SkeletonLoader></SkeletonLoader>; 
   }
 
 

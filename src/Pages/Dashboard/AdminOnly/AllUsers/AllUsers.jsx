@@ -6,7 +6,7 @@ const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
   const {
     data: users = [],
-    isLoading,
+
     error,
     refetch,
   } = useQuery({
@@ -18,7 +18,7 @@ const AllUsers = () => {
     },
    
   });
-  if (isLoading) return <div>Loading...</div>;
+
   if (error) return <div>Error: {error.message}</div>;
 
   const handleMakeAdmin = async (email) => {

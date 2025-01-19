@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import LoadingSpinner from "../../../Components/Reusable/LoadingSpinner";
 import { useQuery } from "@tanstack/react-query";
 import NoData from "../../../Components/Reusable/NoData";
 import Swal from "sweetalert2";
+import SkeletonLoader from "../../../Components/Reusable/SkeletonLoader";
 
 const AdoptionRequest = () => {
   const { user } = useContext(AuthContext);
@@ -25,7 +25,7 @@ const AdoptionRequest = () => {
   
   });
 
-  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
+  if (isLoading) return <SkeletonLoader></SkeletonLoader>;
   if (error) return <div>Error loading pets</div>;
 
   // delete function

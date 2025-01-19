@@ -4,6 +4,7 @@ import Container from "../../../Components/Reusable/Container";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import NoData from "../../../Components/Reusable/NoData";
+import CardSkeleton from "../../../Components/Reusable/CardSkeleton";
 
 const PetsCategory = () => {
   const [selectedCategory, setSelectedCategory] = useState("cat");
@@ -24,7 +25,7 @@ const PetsCategory = () => {
     (pet) => pet.category === selectedCategory && pet.adopted === false
   );
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <CardSkeleton></CardSkeleton>;
   if (error) return <div>Error loading pets data.</div>;
 
   return (

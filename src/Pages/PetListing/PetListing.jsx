@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import PetListingCard from "./PetListingCard";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import CardSkeleton from "../../Components/Reusable/CardSkeleton";
 const PetListing = () => {
   const axiosPublic = useAxiosPublic();
   const [filter, setFilter] = useState("");
@@ -36,7 +37,7 @@ const PetListing = () => {
     fetchNextPage();
   }
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <CardSkeleton></CardSkeleton>;
   if (error) return <div>Error: {error.message}</div>;
   return (
     <div className="pt-20">
