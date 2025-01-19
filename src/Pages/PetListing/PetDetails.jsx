@@ -8,14 +8,15 @@ import AdoptModal from "./AdoptModal";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import LoadingSpinner from "../../Components/Reusable/LoadingSpinner";
+import Heading from "../../Components/Reusable/Heading";
+import PetDetailsCard from "./PetDetailsCard";
 
 const PetDetails = () => {
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const {user} = useContext(AuthContext)
-
+  const { user } = useContext(AuthContext);
 
   const {
     data: petDetails = [],
@@ -28,20 +29,17 @@ const PetDetails = () => {
 
       return data;
     },
- 
   });
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
   if (error) return <div>Error: {error.message}</div>;
 
-
-
   const handleAdoptSubmit = async ({ phone, address }) => {
     const adoptionData = {
       adoptUser: user?.displayName,
-      adoptEmail: user?.email, 
+      adoptEmail: user?.email,
       phone,
       address,
-      petName:petDetails.name
+      petName: petDetails.name,
     };
 
     try {
@@ -51,7 +49,7 @@ const PetDetails = () => {
         icon: "success",
         title: "adoption request sent",
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
       setIsModalOpen(false);
     } catch (err) {
@@ -65,63 +63,33 @@ const PetDetails = () => {
     return new Date(isoString).toLocaleDateString(undefined, options);
   };
 
-
-
-
   return (
     <div>
-    <Container>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Pet Image */}
-        <div className="flex justify-center">
-          <img
-            src={petDetails.image}
-            alt={petDetails.name}
-            className="rounded-lg shadow-lg w-full max-w-md object-cover"
-          />
-        </div>
+      <Heading title={"Pet Details"}></Heading>
+      <Container>
+       
+          <PetDetailsCard
+          petDetails={petDetails}
+          formatDate={formatDate}
+          ></PetDetailsCard>
+         <button
+              onClick={() => setIsModalOpen(true)}
+              className="font-semibold px-3 lg:px-5 py-1 lg:py-2 rounded-full
+                text-sm lg:text-base md:ml-7 lg:ml-0
+               bg-lBtn dark:bg-dBtn"
+            >
+              Adopt
+            </button>
+      </Container>
 
-        {/* Pet Details */}
-        <div>
-          <h1 className="text-3xl font-bold mb-4">{petDetails.name}</h1>
-          <p className="text-lg mb-2">
-            <strong>Age:</strong> {petDetails.age} years
-          </p>
-          <p className="text-lg mb-2">
-            <strong>Category:</strong> {petDetails.category}
-          </p>
-          <p className="text-lg mb-2">
-            <strong>Location:</strong> {petDetails.location}
-          </p>
-         
-          <p className="text-lg mb-2">
-            <strong>Date Added:</strong> {formatDate(petDetails.date)}
-          </p>
-          <p className="text-lg mb-4">
-            <strong>Short Description:</strong> {petDetails.shortDescription}
-          </p>
-          {/* <p className="text-lg">
-            <strong>Long Description:</strong> {petDetails.longDescription}
-          </p> */}
-
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="mt-4 px-6 py-2 bg-blue-500 text-white rounded shadow-lg hover:bg-blue-600"
-          >
-            Adopt
-          </button>
-        </div>
-      </div>
-    </Container>
-
-    {/* Modal */}
-    <AdoptModal
-      petDetails={petDetails}
-      isOpen={isModalOpen}
-      onClose={() => setIsModalOpen(false)}
-      onSubmit={handleAdoptSubmit}
-    />
-  </div>
+      {/* Modal */}
+      <AdoptModal
+        petDetails={petDetails}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSubmit={handleAdoptSubmit}
+      />
+    </div>
   );
 };
 

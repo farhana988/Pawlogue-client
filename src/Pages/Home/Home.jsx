@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import AboutUs from "./AboutUs";
 import Banner from "./Banner";
 import CallToAction from "./CallToAction";
@@ -7,6 +8,14 @@ import SuccessStories from "./SuccessStories/SuccessStories";
 // import Volunteer from "./Volunteer";
 
 const Home = () => {
+  const location = useLocation();
+
+  // dynamic title
+  if (location.pathname === "/") {
+    document.title = "Pawlogue | Home";
+  }
+
+
   return (
     <div>
       <Banner></Banner>

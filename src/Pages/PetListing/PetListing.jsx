@@ -6,8 +6,10 @@ import PetListingCard from "./PetListingCard";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import CardSkeleton from "../../Components/Reusable/CardSkeleton";
 import Heading from "../../Components/Reusable/Heading";
+import { useLocation } from "react-router-dom";
 
 const PetListing = () => {
+  const location = useLocation();
   const axiosPublic = useAxiosPublic();
   const [filter, setFilter] = useState("");
   const [search, setSearch] = useState("");
@@ -40,10 +42,14 @@ const PetListing = () => {
 
   if (isLoading) return <CardSkeleton></CardSkeleton>;
   if (error) return <div>Error: {error.message}</div>;
+
+  // dynamic title
+  if (location.pathname === "/petListing") {
+    document.title = "Pawlogue | Pet Listing";
+  }
+
   return (
-    <div
-     
-    >
+    <div>
       <Heading title={"Available Pets For Adoption"}></Heading>
       <Container>
         <div>
