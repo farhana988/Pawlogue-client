@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { ErrorMessage, Field, Form } from "formik";
+import { FaSpinner } from "react-icons/fa";
 import ReactQuill from "react-quill";
 import Select from "react-select";
 
@@ -12,7 +13,7 @@ const UpdatePetForm = ({
   values,
 }) => {
   return (
-    <Form className="space-y-4">
+    <Form className="space-y-4 mx-5 md:mx-0 p-6 mb-20 bg-lCard dark:bg-dCard ">
       {/* Pet Image */}
       <div>
         <label className="block mb-1">Pet Image</label>
@@ -30,7 +31,7 @@ const UpdatePetForm = ({
           onChange={(event) =>
             setFieldValue("image", event.currentTarget.files[0])
           }
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded bg-lCard dark:bg-dCard "
         />
         <ErrorMessage
           name="image"
@@ -45,7 +46,7 @@ const UpdatePetForm = ({
         <Field
           type="text"
           name="name"
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded bg-lCard dark:bg-dCard "
           placeholder="Enter pet name"
         />
         <ErrorMessage
@@ -61,7 +62,7 @@ const UpdatePetForm = ({
         <Field
           type="number"
           name="age"
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded bg-lCard dark:bg-dCard "
           placeholder="Enter pet age"
         />
         <ErrorMessage
@@ -79,6 +80,7 @@ const UpdatePetForm = ({
           options={petCategories}
           onChange={(option) => setFieldValue("category", option.value)}
           placeholder="Select category"
+          className="text-black"
         />
         <ErrorMessage
           name="category"
@@ -93,7 +95,7 @@ const UpdatePetForm = ({
         <Field
           type="text"
           name="location"
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded bg-lCard dark:bg-dCard "
           placeholder="Enter pet location"
         />
         <ErrorMessage
@@ -109,7 +111,7 @@ const UpdatePetForm = ({
         <Field
           type="text"
           name="shortDescription"
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded bg-lCard dark:bg-dCard "
           placeholder="Enter a short description"
         />
         <ErrorMessage
@@ -125,7 +127,7 @@ const UpdatePetForm = ({
         <ReactQuill
           value={values.longDescription}
           onChange={(content) => setFieldValue("longDescription", content)}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded bg-lCard dark:bg-dCard "
           placeholder="Enter detailed information"
         />
         <ErrorMessage
@@ -139,10 +141,15 @@ const UpdatePetForm = ({
       <div>
         <button
           type="submit"
-          className="w-full p-3 bg-blue-500 text-white rounded"
+          className=" p-3   rounded
+          font-semibold px-3 lg:px-5 py-1 lg:py-2 
+                text-sm lg:text-base 
+               bg-lBtn dark:bg-dBtn"
           disabled={isSubmitting || uploading}
         >
-          {isSubmitting || uploading ? "Submitting..." : "Update Pet"}
+          {isSubmitting || uploading ? 
+          <FaSpinner className="animate-spin" /> 
+          : "Update Pet"}
         </button>
       </div>
     </Form>
