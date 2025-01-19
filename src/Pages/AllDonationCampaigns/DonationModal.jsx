@@ -14,18 +14,18 @@ const DonationModal = ({
   const [donationAmount, setDonationAmount] = useState(false);
   return (
     <div>
-      <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
-        <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">
+      <div className="fixed inset-0  bg-black bg-opacity-50 flex justify-center items-center z-50">
+        <div className="bg-ivory dark:bg-[#212121] rounded-lg shadow-lg w-full max-w-md p-6 relative">
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="text-gray-400 text-3xl hover:text-gray-600 absolute top-4 right-4"
+            className=" text-3xl hover:text-gray-600 absolute top-4 right-4"
           >
             &times;
           </button>
 
           {/* Modal Title */}
-          <h3 className="text-xl font-bold text-gray-800 mb-4">Donate Now</h3>
+          <h3 className="text-xl font-bold text-center mb-4">Donate Now</h3>
 
           {/* Donation Form */}
 
@@ -39,7 +39,8 @@ const DonationModal = ({
             }}
             placeholder="Donation Amount"
             name="Donation Amount"
-            className="border border-gray-300 rounded px-4 py-2 w-full"
+            className="border border-gray-300 rounded px-4 py-2 my-5 w-full
+              bg-lCard dark:bg-dCard "
             required
           />
 

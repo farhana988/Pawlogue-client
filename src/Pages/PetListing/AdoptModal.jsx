@@ -4,7 +4,6 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-
 const AdoptModal = ({
     petDetails,
     isOpen,

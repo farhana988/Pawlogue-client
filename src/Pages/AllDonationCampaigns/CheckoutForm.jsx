@@ -126,7 +126,9 @@ const CheckoutForm = ({ donationAmount, donationDetails, onClose }) => {
           }}
         />
         <button
-          className="btn btn-sm btn-primary my-4"
+          className="font-semibold px-3 lg:px-5 py-1 lg:py-2 rounded-full
+                text-sm lg:text-base 
+               bg-lBtn dark:bg-dBtn my-4"
           type="submit"
           disabled={!stripe || !clientSecret}
         >
