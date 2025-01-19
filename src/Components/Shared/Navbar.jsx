@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import ThemeToggle from "./ThemeToggle";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -20,31 +20,56 @@ const Navbar = () => {
 
   const links = (
     <>
-      <a
-        href="/"
-        className="text-lg font-medium hover:text-gray-300 transition"
+        {/* home */}
+        <NavLink
+        to="/"
+        className={({ isActive }) =>
+          ` ${
+            isActive
+              ? "active text-nav dark:text-ivory md:text-xl lg:text-2xl font-extrabold"
+              : "font-medium md:text-lg lg:text-xl text-nav dark:text-ivory hover:text-[#536493] dark:hover:text-slate-300"
+          }`
+        }
       >
         Home
-      </a>
-      <a
-        href="/petListing"
-        className="text-lg font-medium hover:text-gray-300 transition"
+      </NavLink>
+
+      {/*  Pet Listing */}
+      <NavLink
+        to="/petListing"
+        className={({ isActive }) =>
+          ` ${
+            isActive
+              ? "active text-nav dark:text-ivory md:text-xl lg:text-2xl font-extrabold"
+              : "font-medium md:text-lg lg:text-xl text-nav dark:text-ivory hover:text-[#536493] dark:hover:text-slate-300"
+          }`
+        }
       >
         Pet Listing
-      </a>
-      <a
-        href="/donationCampaigns"
-        className="text-lg font-medium hover:text-gray-300 transition"
+      </NavLink>
+
+      {/* Donation Campaigns */}
+      <NavLink
+        to="/donationCampaigns"
+        className={({ isActive }) =>
+          ` ${
+            isActive
+              ? "active text-nav dark:text-ivory md:text-xl lg:text-2xl font-extrabold"
+              : "font-medium md:text-lg lg:text-xl text-nav dark:text-ivory hover:text-[#536493] dark:hover:text-slate-300"
+          }`
+        }
       >
         Donation Campaigns
-      </a>
+      </NavLink>
       
     </>
   );
 
   return (
-    <header className=" text-black dark:text-white  shadow-md sticky top-0 z-10">
-      <nav className="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
+    <header className=" text-black dark:text-white  backdrop-blur-xl bg-ivory/50 
+     shadow-md sticky top-0 z-10
+    ">
+      <nav className="max-w-screen-xl mx-auto px-5 lg:px-0 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="text-2xl flex justify-center items-center gap-2 font-semibold">
           {/* website logo */}
@@ -78,16 +103,17 @@ const Navbar = () => {
 
               {/* Dropdown Menu for user options (Dashboard, Logout) */}
               {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 text-black dark:text-white  shadow-lg rounded-md">
+                <div className="absolute right-0 mt-2 w-48 text-black dark:text-white  
+                bg-ivory dark:bg-black shadow-lg rounded-md">
                   <Link
                     to="/dashboard"
-                    className="block px-4 py-2 text-sm hover:bg-gray-200"
+                    className="block px-4 py-2 text-sm hover:bg-slate-300 dark:hover:bg-gray-800"
                   >
                     Dashboard
                   </Link>
                   <div
                     onClick={logOut}
-                    className="block px-4 py-2 text-sm cursor-pointer hover:bg-gray-200"
+                    className="block px-4 py-2 text-sm cursor-pointer hover:bg-slate-300 dark:hover:bg-gray-800"
                   >
                     Logout
                   </div>
@@ -141,13 +167,13 @@ const Navbar = () => {
             <>
               <Link
                 to="/dashboard"
-                className="block text-lg font-medium py-2 hover:bg-gray-200"
+                className="block text-lg font-medium py-2 hover:bg-slate-300 dark:hover:bg-gray-800"
               >
                 Dashboard
               </Link>
               <div
                 onClick={logOut}
-                className="block text-lg font-medium py-2 cursor-pointer hover:bg-gray-200"
+                className="block text-lg font-medium py-2 cursor-pointer hover:bg-slate-300 dark:hover:bg-gray-800"
               >
                 Logout
               </div>
@@ -156,7 +182,7 @@ const Navbar = () => {
             <>
               <Link
                 to="/login"
-                className="block text-lg font-medium py-2 hover:bg-gray-200"
+                className="block text-lg font-medium py-2 hover:bg-slate-300 dark:hover:bg-gray-800"
               >
                 Login
               </Link>
