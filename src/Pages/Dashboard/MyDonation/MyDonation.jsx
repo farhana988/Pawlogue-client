@@ -54,9 +54,9 @@ const MyDonation = () => {
   };
 
   return (
-    <>
-    <div className="max-w-[420px] md:max-w-[610px] lg:max-w-7xl mx-auto px-5 py-8 overflow-x-auto">
+    <div>
       <Heading title={"  My Donations"}></Heading>
+    <div className="max-w-[420px] md:max-w-[610px] lg:max-w-7xl mx-auto px-5 overflow-x-auto">
       {donations.length === 0 ? (
         <DashboardNoData
         title={'No Donation Found'}
@@ -111,7 +111,7 @@ const MyDonation = () => {
         </table>
       )}
     </div>
-    </>
+    </div>
   );
 };
 
