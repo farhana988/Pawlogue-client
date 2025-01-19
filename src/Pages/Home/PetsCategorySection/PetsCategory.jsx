@@ -55,7 +55,7 @@ const PetsCategory = () => {
                       lg:text-2xl ${
                         selectedCategory === category
                           ? "bg-lBtn dark:bg-dBtn  text-white"
-                          : "bg-gray-200 text-gray-700"
+                          : "bg-gray-200 text-gray-700 dark:bg-dCard dark:text-ivory"
                       } hover:bg-lBtn hover:dark:bg-dBtn  transition duration-300`}
               >
                 {category}

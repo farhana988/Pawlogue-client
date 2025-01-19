@@ -18,12 +18,12 @@ import Container from "../Reusable/Container";
 
 const FooterComp = () => {
   return (
-    <div className="pt-20">
-      <Footer container>
+    <div className="pt-20 ">
+      <Footer container className="bg-inherit dark:bg-inherit">
         <Container>
           <div
             className=" grid w-full justify-between sm:flex sm:justify-between
-           md:flex md:grid-cols-1"
+           md:flex md:grid-cols-1 "
           >
             {/* details */}
             <div

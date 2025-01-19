@@ -30,7 +30,7 @@ const SuccessStoriesCard =  ({story
              className="italic mb-2 text-xs lg:text-sm ml-10"
              title={quote}
            >
-             {description.substring(0, 60)}...
+             {description.substring(0, 59)}...
            </p>
 
         
