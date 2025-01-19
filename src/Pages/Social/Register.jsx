@@ -76,21 +76,23 @@ const Registration = () => {
   }
 
   return (
-    <div className="pt-20 px-5">
-      <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-14 text-primary dark:text-ivory text-center">
+    <div className="pt-10 px-5">
+      <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-14
+       text-lBtn dark:text-dBtn text-center">
         Registration Form
       </h2>
       <div className="flex flex-col lg:flex-row justify-center items-center space-y-10 lg:space-y-0">
         <div className="w-96 lg:w-1/3">
           <Lottie animationData={reg} loop={true} />
         </div>
-        <div className="flex-col w-full lg:w-2/3">
-          <div className="bg-white dark:bg-gray-900 w-full max-w-lg p-8 shadow-xl rounded-lg">
+        <div className="flex-col w-full lg:w-1/3">
+          <div className="bg-lCard dark:bg-dCard w-full max-w-lg p-8 md:ml-32 lg:ml-0
+           shadow-xl rounded-lg">
             <form onSubmit={handleSignUp} className="space-y-6 mx-auto w-full">
               {/* Name Field */}
               <div>
                 <label className="label">
-                  <span className="label-text text-xl text-gray-600 dark:text-ivory font-bold">
+                  <span className="label-text text-xl dark:text-ivory font-bold">
                     Name
                   </span>
                 </label>
@@ -98,7 +100,7 @@ const Registration = () => {
                   type="text"
                   name="name"
                   placeholder="Your Name"
-                  className="input input-bordered w-full py-3 px-4 bg-gray-100 dark:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="input input-bordered w-full py-3 px-4 bg-lCard dark:bg-dCard rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   required
                 />
               </div>
@@ -106,7 +108,7 @@ const Registration = () => {
               {/* Email Field */}
               <div>
                 <label className="label">
-                  <span className="label-text text-xl text-gray-600 dark:text-ivory font-bold">
+                  <span className="label-text text-xl dark:text-ivory font-bold">
                     Email
                   </span>
                 </label>
@@ -114,7 +116,7 @@ const Registration = () => {
                   type="email"
                   name="email"
                   placeholder="Your Email"
-                  className="input input-bordered w-full py-3 px-4 bg-gray-100 dark:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="input input-bordered w-full py-3 px-4 bg-lCard dark:bg-dCard rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   required
                 />
               </div>
@@ -122,7 +124,7 @@ const Registration = () => {
               {/* Photo URL Field */}
               <div>
                 <label className="label">
-                  <span className="label-text text-xl text-gray-600 dark:text-ivory font-bold">
+                  <span className="label-text text-xl dark:text-ivory font-bold">
                   Select Image:
                   </span>
                 </label>
@@ -132,7 +134,7 @@ const Registration = () => {
                     id='image'
                     name='image'
                     accept='image/*'
-                  className="input input-bordered w-full py-3 px-4 bg-gray-100 dark:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="input input-bordered w-full py-3 px-4 bg-lCard dark:bg-dCard rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   required
                 />
               </div>
@@ -140,7 +142,7 @@ const Registration = () => {
               {/* Password Field */}
               <div>
                 <label className="label">
-                  <span className="label-text text-xl text-gray-600 dark:text-ivory font-bold">
+                  <span className="label-text text-xl dark:text-ivory font-bold">
                     Password
                   </span>
                 </label>
@@ -148,7 +150,7 @@ const Registration = () => {
                   type="password"
                   name="password"
                   placeholder="Your Password"
-                  className="input input-bordered w-full py-3 px-4 bg-gray-100 dark:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="input input-bordered w-full py-3 px-4 bg-lCard dark:bg-dCard rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   required
                 />
               </div>
@@ -160,8 +162,10 @@ const Registration = () => {
               <div>
                 <button
                   type="submit"
-                  className="btn btn-primary w-full py-3 text-xl font-bold rounded-md"
-                >
+                  className=" w-full  rounded-md
+                  font-semibold px-5 py-2  bg-lBtn dark:bg-dBtn
+                  text-sm lg:text-base "
+                  >
                   Register
                 </button>
               </div>
@@ -169,15 +173,17 @@ const Registration = () => {
               {/* Already Have Account */}
               <h2 className="text-lg mt-3 text-center">
                 Already have an account?{" "}
-                <Link to="/login" className="text-primary font-extrabold">
+                <Link to="/login" className="text-lBtn dark:text-ivory font-extrabold">
                   Log in
                 </Link>
               </h2>
             </form>
 
-            <div className="divider text-primary dark:text-ivory font-bold text-xl">
-              OR
+            <h2 className="text-center font-bold text-xl italic"> OR</h2>
+            <div className="text-center border-b-2 border-dashed pb-3 dark:opacity-50  dark:text-ivory ">
+             
             </div>
+            <hr className="pb-3 opacity-0" />
 
             {/* Google Sign-In Button */}
             <GoogleLogin></GoogleLogin>
