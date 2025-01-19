@@ -84,6 +84,7 @@ const DonationCampaignDetails = () => {
 
         {/* Recommended Campaigns Section */}
         <RecommendedCampaigns></RecommendedCampaigns>
+        
       </Container>
 
       {/*  donation  Modal*/}
