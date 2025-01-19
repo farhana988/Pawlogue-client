@@ -5,7 +5,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const PetListingCard = ({pet}) => {
- 
+  const {_id,image,age,name,location}=pet || {}
     return (
         <div>
             <div
@@ -15,17 +15,17 @@ const PetListingCard = ({pet}) => {
             >
               {/* image */}
               <img
-                src={pet?.image}
-                alt={pet?.name}
+                src={image}
+                alt={name}
                 className="w-full h-48 object-cover rounded-xl mb-2"
               />
               {/* name */}
-              <h3 className="text-lg font-semibold mb-2">{pet?.name?.substring(0,30)}</h3>
+              <h3 className="text-lg font-semibold mb-2">{name?.substring(0,30)}</h3>
 
               {/* location */}
               <p className="text-sm opacity-80 flex gap-2 mb-2">
                 <FaLocationDot />
-                {pet?.location?.substring(0,39)}
+                {location?.substring(0,39)}
               </p>
 
               {/* age */}
@@ -34,12 +34,12 @@ const PetListingCard = ({pet}) => {
                 rounded-bl-2xl  bg-lBtn dark:bg-dBtn text-black dark:text-ivory 
                 top-0 right-0"
               >
-                Age: {pet?.age}
+                Age: {age}
               </p>
               <button className="font-semibold px-3 lg:px-5 py-1 lg:py-2 rounded-full
                 text-sm lg:text-base 
                bg-lBtn dark:bg-dBtn">
-                <Link to={`/petDetails/${pet._id}`}>Pet details</Link>
+                <Link to={`/petDetails/${_id}`}>Pet details</Link>
               </button>
             </div>
         </div>

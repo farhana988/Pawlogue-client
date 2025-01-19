@@ -3,6 +3,8 @@ import { useInView } from "react-intersection-observer";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import AllDonationCampaignsCard from "./AllDonationCampaignsCard";
 import CardSkeleton from "../../Components/Reusable/CardSkeleton";
+import Container from "../../Components/Reusable/Container";
+import Heading from "../../Components/Reusable/Heading";
 
 const AllDonationCampaigns = () => {
   const axiosSecure = useAxiosSecure();
@@ -36,10 +38,10 @@ const AllDonationCampaigns = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-6">
-        All Donation Campaigns ({data.pages.flat().length})
-      </h2>
+    <div >
+      
+      <Heading title={" All Donation Campaigns "}></Heading>
+      <Container>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {data.pages.map((page) =>
           page.campaigns.map((campaign) => (
@@ -63,6 +65,7 @@ const AllDonationCampaigns = () => {
           <div>No more campaigns to load.</div>
         )}
       </div>
+      </Container>
     </div>
   );
 };
