@@ -17,6 +17,8 @@ export default {
         ivory: "#F5F5F5",
         dCard: "#38363694",
         lCard: "#ffffff7a",
+        dBtn: "#A94A4A",
+        lBtn: "#6db39f",
       },
       fontFamily: {
         exo: ["Exo 2"],

@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 import { AuthContext } from "../../Provider/AuthProvider";
 import logo from "../../assets/images/logo.png"
+import def from "../../assets/images/default.jpg"
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -96,7 +97,9 @@ const Navbar = () => {
               <img
                 className="rounded-full cursor-pointer w-8 h-8 object-cover"
                 referrerPolicy="no-referrer"
-                src={user.photoURL ? user.photoURL : "avatarImg"} // Default image
+                src={user.photoURL ? user.photoURL : 
+                  <><img src={def} alt="" /></>
+                } // Default image
                 alt="profile"
                 onClick={handleDropdownToggle}
               />
@@ -124,7 +127,9 @@ const Navbar = () => {
             <>
               <Link
                 to="/login"
-                className="text-lg font-medium hover:text-gray-300 transition"
+                className="font-semibold px-5 py-2 rounded-full
+                text-sm lg:text-base 
+                bg-lBtn dark:bg-dBtn transition"
               >
                 Login
               </Link>
@@ -182,7 +187,8 @@ const Navbar = () => {
             <>
               <Link
                 to="/login"
-                className="block text-lg font-medium py-2 hover:bg-slate-300 dark:hover:bg-gray-800"
+                className="block text-lg font-medium py-2 hover:bg-slate-300
+                 dark:hover:bg-gray-800"
               >
                 Login
               </Link>
