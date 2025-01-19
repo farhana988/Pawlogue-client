@@ -8,6 +8,7 @@ import Lottie from "lottie-react";
 import log from "../../assets/lottie/login.json";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import GoogleLogin from "./SocialLogin/GoogleLogin";
+import GithubLOgin from "./SocialLogin/GithubLOgin";
 
 
 
@@ -118,6 +119,7 @@ const Login = () => {
             <div className="divider text-primary dark:text-ivory font-bold text-xl">OR</div>
 
             <GoogleLogin />
+            <GithubLOgin></GithubLOgin>
           </div>
         </div>
       </div>

@@ -8,6 +8,7 @@ import Lottie from "lottie-react";
 import reg from "../../assets/lottie/reg.json";
 import GoogleLogin from "./SocialLogin/GoogleLogin";
 import { handleImageUpload, saveUser } from "../../api/utils";
+import GithubLOgin from "./SocialLogin/GithubLOgin";
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -180,6 +181,8 @@ const Registration = () => {
 
             {/* Google Sign-In Button */}
             <GoogleLogin></GoogleLogin>
+
+            <GithubLOgin></GithubLOgin>
           </div>
         </div>
       </div>
