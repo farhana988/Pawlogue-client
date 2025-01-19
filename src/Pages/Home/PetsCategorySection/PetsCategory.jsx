@@ -5,6 +5,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import NoData from "../../../Components/Reusable/NoData";
 import CardSkeleton from "../../../Components/Reusable/CardSkeleton";
+import Heading from "../../../Components/Reusable/Heading";
+
 
 const PetsCategory = () => {
   const [selectedCategory, setSelectedCategory] = useState("cat");
@@ -33,9 +35,10 @@ const PetsCategory = () => {
       <Container>
         {/* Category Buttons */}
         <section className="max-w-7xl mx-auto p-6">
-          <h2 className="text-3xl font-bold text-green-500 dark:text-red-600 text-center mb-8">
-            Explore Pet Categories
-          </h2>
+         
+          <Heading
+          title={' Explore Pet Categories'}
+          ></Heading>
           <div className="flex flex-wrap justify-center mb-6 gap-4">
             {["cat", "dog", "rabbit", "fish", "reptile", "bird"].map(
               (category) => (
