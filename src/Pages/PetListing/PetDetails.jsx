@@ -6,9 +6,11 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import AdoptModal from "./AdoptModal";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const PetDetails = () => {
   const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
   const { id } = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {user} = useContext(AuthContext)
@@ -21,7 +23,7 @@ const PetDetails = () => {
   } = useQuery({
     queryKey: ["petDetails"],
     queryFn: async () => {
-      const { data } = await axiosSecure(`/pet/${id}`);
+      const { data } = await axiosPublic(`/pet/${id}`);
 
       return data;
     },

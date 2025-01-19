@@ -1,11 +1,11 @@
 import { useInfiniteQuery,} from "@tanstack/react-query";
 import Container from "../../Components/Reusable/Container";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import PetListingCard from "./PetListingCard";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 const PetListing = () => {
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
   const [filter, setFilter] = useState("");
   const [search, setSearch] = useState("");
 
@@ -21,7 +21,7 @@ const PetListing = () => {
   } = useInfiniteQuery({
     queryKey: ["allPets", { filter, search }],
     queryFn: async ({ pageParam = 1 }) => {
-      const { data } = await axiosSecure(
+      const { data } = await axiosPublic(
         `/allPets?filter=${filter}&search=${search}&page=${pageParam}&limit=6`
       );
       return data;
