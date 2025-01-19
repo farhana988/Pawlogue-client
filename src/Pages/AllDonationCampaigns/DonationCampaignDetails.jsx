@@ -54,9 +54,15 @@ const DonationCampaignDetails = () => {
     setIsModalOpen(true);
   };
 
+    // dynamic title
+    if (location.pathname === `/donationCampaignDetails/${id}`) {
+      document.title = "Pawlogue | Donation Campaign Details";
+    }
+  
+
   return (
     <div className="">
-         <Heading title={"Donation Details"}></Heading>
+         <Heading title={"Donation Campaign Details"}></Heading>
       <Container>
 
         {/* donation card  */}

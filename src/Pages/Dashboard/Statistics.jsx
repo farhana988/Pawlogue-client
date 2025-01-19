@@ -8,10 +8,10 @@ const Statistics = () => {
           {/* Welcome Message */}
           <div className="mb-6">
             <FaHandHoldingHeart className="text-6xl text-pink-500 mx-auto mb-4" />
-            <h1 className="text-4xl font-bold text-gray-800 mb-2">
+            <h1 className="text-4xl font-bold text-gray-800 dark:text-ivory mb-2">
               Welcome to Dashboard!
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl opacity-50">
               We are delighted to have you here. Lets make a positive impact
               together!
             </p>

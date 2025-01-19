@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import Container from "../../Components/Reusable/Container";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
@@ -12,6 +12,7 @@ import Heading from "../../Components/Reusable/Heading";
 import PetDetailsCard from "./PetDetailsCard";
 
 const PetDetails = () => {
+  const location = useLocation();
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
@@ -32,6 +33,11 @@ const PetDetails = () => {
   });
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
   if (error) return <div>Error: {error.message}</div>;
+
+  // dynamic title
+  if (location.pathname === `/petDetails/${id}`) {
+    document.title = "Pawlogue | Pet Details";
+  }
 
   const handleAdoptSubmit = async ({ phone, address }) => {
     const adoptionData = {
@@ -67,19 +73,18 @@ const PetDetails = () => {
     <div>
       <Heading title={"Pet Details"}></Heading>
       <Container>
-       
-          <PetDetailsCard
+        <PetDetailsCard
           petDetails={petDetails}
           formatDate={formatDate}
-          ></PetDetailsCard>
-         <button
-              onClick={() => setIsModalOpen(true)}
-              className="font-semibold px-3 lg:px-5 py-1 lg:py-2 rounded-full
+        ></PetDetailsCard>
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="font-semibold px-3 lg:px-5 py-1 lg:py-2 rounded-full
                 text-sm lg:text-base md:ml-7 lg:ml-0
                bg-lBtn dark:bg-dBtn"
-            >
-              Adopt
-            </button>
+        >
+          Adopt
+        </button>
       </Container>
 
       {/* Modal */}
