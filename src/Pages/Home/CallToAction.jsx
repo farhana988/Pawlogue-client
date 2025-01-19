@@ -1,31 +1,40 @@
 import Container from "../../Components/Reusable/Container";
+import Heading from "../../Components/Reusable/Heading";
+import call from "../../assets/images/call-to-action.jpg";
 
 const CallToAction = () => {
   return (
     <Container>
-      <section className="bg-blue-50 py-12">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center">
+      <Heading title={"Call to action"}></Heading>
+      <section className="">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:gap-7 items-center px-4">
           {/* Text Section */}
           <div className="md:w-1/2 text-center md:text-left">
-            <h2 className="text-4xl font-bold text-blue-800 mb-6">
+            <h2 className="text-3xl lg:text-5xl font-bold  text-[#299173] dark:text-[#ff5959fa]  mb-6 tracking-tight">
               Give Them a Loving Home
             </h2>
-            <p className="text-lg text-gray-700 mb-6">
+            <p className="text-sm md:text-base lg:text-xl opacity-80 mb-6 leading-relaxed">
               Adopting a pet is more than just taking in an animal; its giving
               them a second chance at life. Provide a safe, loving home to these
-              adorable companions and make a positive impact.
+              adorable companions and make a lasting positive impact.
             </p>
-            <button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition">
+            <button
+              className="font-semibold px-5 py-2 rounded-full
+                text-sm lg:text-base 
+               bg-lBtn dark:bg-dBtn transition transform hover:scale-105"
+            >
               Adopt Now
             </button>
           </div>
 
           {/* Image Section */}
-          <div className="md:w-1/2 mt-6 md:mt-0 flex justify-center">
+          <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center">
             <img
-              src="adopt-pet.jpg"
+              src={call}
               alt="Adopt a pet"
-              className="w-full h-auto rounded-lg shadow-lg"
+              className="w-full h-72 md:h-60 lg:h-96 object-cover rounded-b-[190px] rounded-l-[190px] rounded-tr-xl
+               shadow-2xl 
+              transform transition-all hover:scale-105"
             />
           </div>
         </div>

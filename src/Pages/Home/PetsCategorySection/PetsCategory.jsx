@@ -66,7 +66,7 @@ const PetsCategory = () => {
           {/* Pets Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPets.length > 0 ? (
-              filteredPets.map((pet) => (
+              filteredPets.slice(0,3).map((pet) => (
                 <div
                   key={pet._id}
                   className="bg-lCard dark:bg-dCard  shadow-lg rounded-lg overflow-hidden 
