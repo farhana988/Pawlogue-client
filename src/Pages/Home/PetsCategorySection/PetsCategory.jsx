@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import NoData from "../../../Components/Reusable/NoData";
 import CardSkeleton from "../../../Components/Reusable/CardSkeleton";
 import Heading from "../../../Components/Reusable/Heading";
-
+import { FaLocationDot } from "react-icons/fa6";
 
 const PetsCategory = () => {
   const [selectedCategory, setSelectedCategory] = useState("cat");
@@ -33,28 +33,34 @@ const PetsCategory = () => {
   return (
     <div>
       <Container>
-        {/* Category Buttons */}
-        <section className="max-w-7xl mx-auto p-6">
-         
-          <Heading
-          title={' Explore Pet Categories'}
-          ></Heading>
-          <div className="flex flex-wrap justify-center mb-6 gap-4">
-            {["cat", "dog", "rabbit", "fish", "reptile", "bird"].map(
-              (category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded ${
-                    selectedCategory === category
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-200 text-gray-700"
-                  } hover:bg-blue-400 transition duration-300`}
-                >
-                  {category}
-                </button>
-              )
-            )}
+        <section className="max-w-7xl mx-auto ">
+          <Heading title={" Explore Pet Categories"}></Heading>
+
+          {/* Category Buttons */}
+          <div className="flex flex-wrap justify-center mb-10 gap-4 p-6">
+            {[
+              "cat",
+              "dog",
+              "rabbit",
+              "fish",
+              "reptile",
+              "bird",
+              "livestock",
+              "Exotic Pets",
+            ].map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-5 lg:px-8 py-2 rounded-full border-2 border-lBtn dark:border-dBtn
+                      lg:text-2xl ${
+                        selectedCategory === category
+                          ? "bg-lBtn dark:bg-dBtn  text-white"
+                          : "bg-gray-200 text-gray-700"
+                      } hover:bg-lBtn hover:dark:bg-dBtn  transition duration-300`}
+              >
+                {category}
+              </button>
+            ))}
           </div>
 
           {/* Pets Grid */}
@@ -63,26 +69,39 @@ const PetsCategory = () => {
               filteredPets.map((pet) => (
                 <div
                   key={pet._id}
-                  className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                  className="bg-lCard dark:bg-dCard  shadow-lg rounded-lg overflow-hidden 
+                  hover:shadow-xl relative
+                  transition-shadow duration-300"
                 >
                   <img
                     src={pet.image}
                     alt={pet.name}
                     className="w-full h-40 object-cover"
                   />
-                  <div className="p-4">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                      {pet.name}
+                  <div className="px-6 py-4">
+                    <h3 className="text-lg font-semibold  mb-2">
+                      {pet.name?.substring(0, 30)}
                     </h3>
-                    <p className="text-sm text-gray-600">
-                      Age: {pet.age} | Location: {pet.location}
+
+                    {/* age */}
+                    <p
+                      className="absolute text-black font-semibold  px-5 py-1 
+                        rounded-bl-2xl z-10 bg-lBtn dark:bg-dBtn
+                        top-0 right-0"
+                    >
+                      Age: {pet?.age}
                     </p>
-                    <p className="text-sm text-gray-600">
-                      {pet.shortDescription}
+                    <p className="text-sm lg:text-base flex gap-2 my-2">
+                      <FaLocationDot /> {pet.location?.substring(0, 35)}
+                    </p>
+                    <p className="text-sm mb-5">
+                      {pet.shortDescription?.substring(0, 40)}
                     </p>
                     <Link
                       to={`/petDetails/${pet._id}`}
-                      className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+                      className="mt-4 font-semibold px-5 py-2 rounded-full
+                text-sm lg:text-base 
+               bg-lBtn dark:bg-dBtn"
                     >
                       Details
                     </Link>
@@ -90,8 +109,8 @@ const PetsCategory = () => {
                 </div>
               ))
             ) : (
-              <div className=" md:ml-80 lg:ml-[600px]">
-                <NoData></NoData>
+              <div className=" ">
+                <NoData title={"No pets found !"}></NoData>
               </div>
             )}
           </div>
