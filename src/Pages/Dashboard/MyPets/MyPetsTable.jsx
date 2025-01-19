@@ -164,14 +164,17 @@ const MyPetsTable = ({ pets }) => {
   return (
     <div>
       {/* Table container */}
-      <div className="flex flex-col min-h-screen max-w-7xl mx-auto px-4 ">
+      <div className="flex flex-col min-h-screen max-w-[420px] md:max-w-[610px] lg:max-w-7xl
+       mx-auto px-5 ">
         {/*  search */}
         <div className="mb-4 relative">
           <input
             value={globalFilter ?? ""}
             onChange={(e) => setGlobalFilter(e.target.value)}
             placeholder="Search..."
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md 
+             bg-lCard dark:bg-dCard shadow-sm focus:ring-indigo-500
+              focus:border-indigo-500 "
           />
           <Search
             className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
@@ -180,15 +183,16 @@ const MyPetsTable = ({ pets }) => {
         </div>
 
         {/* Table */}
-        <div className="overflow-x-auto bg-white shadow-md rounded-lg">
+        <div className="overflow-x-auto  bg-lCard dark:bg-dCard  shadow-md rounded-lg mt-5">
           <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+            <thead className=" bg-lCard dark:bg-dCard ">
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (
                     <th
                       key={header.id}
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      className="px-6 py-3 text-left text-xs font-medium
+                        uppercase tracking-wider"
                     >
                       <div
                         {...{
@@ -209,13 +213,13 @@ const MyPetsTable = ({ pets }) => {
                 </tr>
               ))}
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className=" bg-lCard dark:bg-dCard  divide-y divide-gray-200">
               {table.getRowModel().rows.map((row) => (
-                <tr key={row.id} className="hover:bg-gray-50">
+                <tr key={row.id} className="hover:bg-gray-200 dark:hover:bg-zinc-800">
                   {row.getVisibleCells().map((cell) => (
                     <td
                       key={cell.id}
-                      className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      className="px-6 py-4 whitespace-nowrap text-sm "
                     >
                       {/* Adjusted row numbering */}
                       {cell.column.id === "id"
@@ -228,7 +232,7 @@ const MyPetsTable = ({ pets }) => {
                   ))}
                   {/* action buttons */}
 
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 space-x-2">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm  space-x-2">
                     <button
                       className="bg-blue-500 text-white px-4 py-2 rounded-md"
                       onClick={() => handleEdit(row.original._id)}
@@ -263,10 +267,12 @@ const MyPetsTable = ({ pets }) => {
 
         {/* Pagination controls */}
         {data.length > pageSize && (
-          <div className="flex flex-col sm:flex-row justify-between items-center mt-4 text-sm text-gray-700">
+          <div className="flex flex-col sm:flex-row justify-between items-center mt-4 text-sm
+           mb-20">
             <div className="flex items-center space-x-2">
               <button
-                className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
+                className="p-2 rounded-md bg-lCard dark:bg-dCard dark:text-ivory
+                 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
                 onClick={() => handlePageChange(0)}
                 disabled={pageIndex === 0}
               >
@@ -274,7 +280,8 @@ const MyPetsTable = ({ pets }) => {
               </button>
 
               <button
-                className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
+                className="p-2 rounded-md bg-lCard dark:bg-dCard dark:text-ivory
+                 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
                 onClick={() => handlePageChange(pageIndex - 1)}
                 disabled={pageIndex === 0}
               >
@@ -282,7 +289,8 @@ const MyPetsTable = ({ pets }) => {
               </button>
 
               <button
-                className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
+                className="p-2 rounded-md bg-lCard dark:bg-dCard dark:text-ivory
+                 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
                 onClick={() => handlePageChange(pageIndex + 1)}
                 disabled={pageIndex === table.getPageCount() - 1}
               >
@@ -290,7 +298,8 @@ const MyPetsTable = ({ pets }) => {
               </button>
 
               <button
-                className="p-2 rounded-md bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
+                className="p-2 rounded-md bg-lCard dark:bg-dCard dark:text-ivory
+                 text-gray-600 hover:bg-gray-200 disabled:opacity-50"
                 onClick={() => handlePageChange(table.getPageCount() - 1)}
                 disabled={pageIndex === table.getPageCount() - 1}
               >

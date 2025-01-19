@@ -2,8 +2,9 @@ import { useQuery, } from "@tanstack/react-query";
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import NoData from "../../../Components/Reusable/NoData";
 import MyPetsTable from "./MyPetsTable";
+import Heading from "../../../Components/Reusable/Heading";
+import DashboardNoData from "../../../Components/Reusable/DashboardNoData";
 
 
 
@@ -36,21 +37,19 @@ const MyPets = () => {
 
   return (
     <div>
-      Total Pets: {pets?.length}
+       <Heading title={"My Added Pets"}></Heading>
       {pets && pets.length > 0 ? (
-        <div className="pt-12 ">
-          <div className="pt-12">
+        <div className=" ">
+          <div className="">
             <MyPetsTable
              pets={pets}
-          
-       
-        
               
               />
           </div>
         </div>
       ) : (
-        <NoData />
+        <DashboardNoData 
+        title={'No Pets Found !'}/>
       )}
     </div>
   );
