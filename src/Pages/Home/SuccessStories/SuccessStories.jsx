@@ -57,9 +57,9 @@ const SuccessStories = () => {
       };
     return (
         <div>
-             <section className="pt-10">
+            <Heading title={" Success Stories of Little Paw Paw"} />
       <Container>
-        <Heading title={" Success Stories of Little Paw Paw"} />
+      
 
         {/* React Slick Carousel */}
         <Slider {...sliderSettings}>
@@ -70,7 +70,7 @@ const SuccessStories = () => {
           ))}
         </Slider>
       </Container>
-    </section>
+    
         </div>
     );
 };

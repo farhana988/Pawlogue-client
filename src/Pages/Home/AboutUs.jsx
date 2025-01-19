@@ -1,11 +1,11 @@
-import Container from "../../Components/Reusable/Container";
+
 import Heading from "../../Components/Reusable/Heading";
 import bg from "../../assets/images/about.png";
 
 const AboutUs = () => {
   return (
-    <div className="pt-20">
-      <Container>
+    <div className="pt-20 container mx-auto">
+    
         <div
           className="relative bg-center bg-fixed pb-20"
           style={{
@@ -30,7 +30,7 @@ const AboutUs = () => {
             </p>
           </div>
         </div>
-      </Container>
+    
     </div>
   );
 };

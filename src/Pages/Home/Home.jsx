@@ -4,7 +4,7 @@ import CallToAction from "./CallToAction";
 import PawCareTips from "./PawCareTips/PawCareTips";
 import PetsCategory from "./PetsCategorySection/PetsCategory";
 import SuccessStories from "./SuccessStories/SuccessStories";
-import Volunteer from "./Volunteer";
+// import Volunteer from "./Volunteer";
 
 const Home = () => {
   return (
@@ -15,7 +15,7 @@ const Home = () => {
       <AboutUs></AboutUs>
       <SuccessStories></SuccessStories>
       <PawCareTips></PawCareTips>
-      <Volunteer></Volunteer>
+      {/* <Volunteer></Volunteer> */}
     </div>
   );
 };
