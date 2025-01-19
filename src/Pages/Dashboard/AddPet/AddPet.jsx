@@ -5,6 +5,7 @@ import { handleImageUpload } from "../../../api/utils";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import AddPetForm from "./AddPetForm";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Heading from "../../../Components/Reusable/Heading";
 
 const AddPet = () => {
   const axiosSecure = useAxiosSecure();
@@ -16,11 +17,14 @@ const AddPet = () => {
   const fileInputRef = useRef(null);
 
   const petCategories = [
-    { value: "dog", label: "Dog" },
     { value: "cat", label: "Cat" },
-    { value: "bird", label: "Bird" },
+    { value: "dog", label: "Dog" },
+    { value: "rabbit", label: "Rabbit" },
+    { value: "fish", label: "Fish" },
     { value: "reptile", label: "Reptile" },
-    { value: "other", label: "Other" },
+    { value: "bird", label: "Bird" },
+    { value: "livestock", label: "Livestock" },
+   
   ];
 
   const initialValues = {
@@ -88,11 +92,13 @@ const AddPet = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded">
-      <h2 className="text-2xl font-bold mb-4">Add a Pet</h2>
-
+    <>
+      <h2 className="text-2xl font-bold mb-4"></h2>
+   
+    <div className="lg:max-w-7xl mx-auto rounded">
+    <Heading title={"Add a Pet"}></Heading>
       {errorMsg && <p className="text-red-500 mb-4">{errorMsg}</p>}
-      {successMsg && <p className="text-green-500 mb-4">{successMsg}</p>}
+      {successMsg && <p className="text-green-500 text-xl mx-5 md:mx-0 mb-4">{successMsg}</p>}
 
       <Formik
         initialValues={initialValues}
@@ -112,6 +118,7 @@ const AddPet = () => {
         )}
       </Formik>
     </div>
+    </>
   );
 };
 

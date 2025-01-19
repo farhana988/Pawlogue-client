@@ -4,6 +4,7 @@ import { ErrorMessage, Field, Form } from "formik";
 import ReactQuill from "react-quill";
 import Select from "react-select";
 import "react-quill/dist/quill.snow.css";
+import { FaSpinner } from "react-icons/fa";
 
 const AddPetForm = ({
   petCategories,
@@ -14,7 +15,7 @@ const AddPetForm = ({
   values,
 }) => {
   return (
-    <Form className="space-y-4">
+    <Form className="space-y-4 mx-5 md:mx-0 p-6 mb-20 bg-lCard dark:bg-dCard ">
       {/* Pet Image */}
       <div>
         <label className="block mb-1">Pet Image</label>
@@ -40,7 +41,7 @@ const AddPetForm = ({
         <Field
           type="text"
           name="name"
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded bg-lCard dark:bg-dCard "
           placeholder="Enter pet name"
         />
         <ErrorMessage
@@ -56,7 +57,7 @@ const AddPetForm = ({
         <Field
           type="number"
           name="age"
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded bg-lCard dark:bg-dCard "
           placeholder="Enter pet age"
         />
         <ErrorMessage
@@ -68,7 +69,7 @@ const AddPetForm = ({
 
       {/* Pet Category */}
       <div>
-        <label className="block mb-1">Pet Category</label>
+        <label className="block mb-1 ">Pet Category</label>
         <Select
           value={
             petCategories.find((option) => option.value === values.category) ||
@@ -77,6 +78,7 @@ const AddPetForm = ({
           options={petCategories}
           onChange={(option) => setFieldValue("category", option.value)}
           placeholder="Select category"
+        className=" text-black"
         />
         <ErrorMessage
           name="category"
@@ -91,7 +93,7 @@ const AddPetForm = ({
         <Field
           type="text"
           name="location"
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded bg-lCard dark:bg-dCard "
           placeholder="Enter pet location"
         />
         <ErrorMessage
@@ -107,7 +109,7 @@ const AddPetForm = ({
         <Field
           type="text"
           name="shortDescription"
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded bg-lCard dark:bg-dCard "
           placeholder="Enter a short description"
         />
         <ErrorMessage
@@ -124,7 +126,7 @@ const AddPetForm = ({
         <ReactQuill
           value={values.longDescription}
           onChange={(content) => setFieldValue("longDescription", content)}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border rounded  "
           placeholder="Enter detailed information"
         />
         <ErrorMessage
@@ -139,10 +141,15 @@ const AddPetForm = ({
       <div>
         <button
           type="submit"
-          className="w-full p-3 bg-blue-500 text-white rounded"
+          className=" p-3   rounded
+          font-semibold px-3 lg:px-5 py-1 lg:py-2 
+                text-sm lg:text-base 
+               bg-lBtn dark:bg-dBtn"
           disabled={isSubmitting || uploading}
         >
-          {isSubmitting || uploading ? "Submitting..." : "Add Pet"}
+          {isSubmitting || uploading ? 
+          <FaSpinner className="animate-spin" />
+          : "Add Pet"}
         </button>
       </div>
     </Form>
