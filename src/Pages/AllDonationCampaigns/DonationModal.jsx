@@ -35,7 +35,7 @@ const DonationModal = ({
             value={donationAmount}
             onChange={(e) => {
               setDonationAmount(e.target.value);
-              console.log(e.target.value);
+          
             }}
             placeholder="Donation Amount"
             name="Donation Amount"

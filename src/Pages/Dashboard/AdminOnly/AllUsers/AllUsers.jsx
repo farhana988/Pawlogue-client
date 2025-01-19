@@ -16,15 +16,13 @@ const AllUsers = () => {
 
       return data;
     },
-    onSuccess: (data) => {
-      console.log("Successfully fetched pets:", data);
-    },
+   
   });
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   const handleMakeAdmin = async (email) => {
-    console.log(`Attempting to update role with ID: ${email}`);
+   
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
@@ -37,8 +35,8 @@ const AllUsers = () => {
       });
 
       if (result.isConfirmed) {
-        const response = await axiosSecure.patch(`/user/role/${email}`);
-        console.log(response);
+       await axiosSecure.patch(`/user/role/${email}`);
+   
         refetch();
         Swal.fire("congo!", "Your role has been updated.", "success");
       }

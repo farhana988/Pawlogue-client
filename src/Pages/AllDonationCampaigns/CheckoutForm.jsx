@@ -7,7 +7,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const CheckoutForm = ({ donationAmount, donationDetails, onClose }) => {
-  console.log(donationDetails._id);
+
 
   const stripe = useStripe();
   const elements = useElements();
@@ -24,7 +24,7 @@ const CheckoutForm = ({ donationAmount, donationDetails, onClose }) => {
       axiosSecure
         .post("/create-payment-intent", { price: donationAmount })
         .then((res) => {
-          console.log(res.data.clientSecret);
+        
           setClientSecret(res.data.clientSecret);
         });
     }
@@ -49,7 +49,7 @@ const CheckoutForm = ({ donationAmount, donationDetails, onClose }) => {
     });
 
     if (error) {
-      console.log("payment error", error);
+    
       setError(error.message);
     } else {
       console.log("payment method", paymentMethod);
@@ -74,7 +74,7 @@ const CheckoutForm = ({ donationAmount, donationDetails, onClose }) => {
       console.log("payment intent", paymentIntent);
 
       if (paymentIntent.status === "succeeded") {
-        console.log("transaction id", paymentIntent.id);
+     
         setTransactionId(paymentIntent.id);
 
         const payment = {
@@ -88,7 +88,7 @@ const CheckoutForm = ({ donationAmount, donationDetails, onClose }) => {
         };
 
         const res = await axiosSecure.post(`/donate`, payment);
-        console.log("payment saved", res.data);
+       
 
         if (res.data?.insertedId) {
           Swal.fire({

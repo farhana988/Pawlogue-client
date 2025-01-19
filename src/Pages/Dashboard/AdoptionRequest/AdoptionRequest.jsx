@@ -22,9 +22,7 @@ const AdoptionRequest = () => {
 
       return data;
     },
-    onSuccess: (data) => {
-      console.log("Successfully fetched adopted req pets:", data);
-    },
+  
   });
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
@@ -43,8 +41,8 @@ const AdoptionRequest = () => {
         confirmButtonText: "Yes, update it!",
       });
       if (result.isConfirmed) {
-        const response = await axiosSecure.put(`/removeAdoptPet/${petId}`);
-        console.log(response);
+       await axiosSecure.put(`/removeAdoptPet/${petId}`);
+     
         refetch();
         Swal.fire(
           "congo!",
@@ -70,8 +68,8 @@ const AdoptionRequest = () => {
         confirmButtonText: "Yes, update it!",
       });
       if (result.isConfirmed) {
-        const response = await axiosSecure.patch(`/changeAdopt/${petId}`);
-        console.log(response);
+         await axiosSecure.patch(`/changeAdopt/${petId}`);
+     
         refetch();
         Swal.fire(
           "congo!",

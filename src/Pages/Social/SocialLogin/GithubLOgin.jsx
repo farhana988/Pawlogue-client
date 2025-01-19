@@ -23,8 +23,8 @@ const GithubLOgin = () => {
             timer: 1500,
           });
           navigate("/");
-        } catch(err) {
-            console.log(err)
+        } catch {
+  
           Swal.fire({
             icon: "error",
             title: "GitHub Login Failed",

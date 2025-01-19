@@ -95,7 +95,7 @@ const MyPetsTable = ({ pets }) => {
   };
 
   const handleDelete = async (petId) => {
-    console.log(`Attempting to delete pet with ID: ${petId}`);
+
 
     try {
       const result = await Swal.fire({

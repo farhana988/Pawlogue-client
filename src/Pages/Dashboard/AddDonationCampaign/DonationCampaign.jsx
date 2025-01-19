@@ -3,6 +3,7 @@ import DonationCampaignForm from "./DonationCampaignForm";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const DonationCampaign = () => {
   const { user } = useContext(AuthContext);
@@ -10,7 +11,7 @@ const DonationCampaign = () => {
   const [uploadImage, setUploadImage] = useState({
     image: { name: "Upload Button" },
   });
-  console.log(uploadImage);
+
   const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,8 +42,10 @@ const DonationCampaign = () => {
 
     try {
       await axiosSecure.post("/donationCampaign", donationData);
-    } catch (err) {
-      console.log(err);
+    } catch{
+ 
+      Swal.fire("Something went wrong!");
+
     } finally {
       setLoading(false);
     }

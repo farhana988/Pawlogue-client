@@ -27,9 +27,7 @@ const PetDetails = () => {
 
       return data;
     },
-    onSuccess: (data) => {
-      console.log("Successfully fetched petDetails:", data);
-    },
+ 
   });
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
@@ -44,7 +42,7 @@ const PetDetails = () => {
       address,
       petName:petDetails.name
     };
-console.log(adoptionData)
+
     try {
       await axiosSecure.put(`/adoptPet/${id}`, adoptionData);
       Swal.fire({

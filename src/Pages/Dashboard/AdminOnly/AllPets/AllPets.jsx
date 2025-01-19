@@ -17,15 +17,13 @@ const AllPets = () => {
 
       return data;
     },
-    onSuccess: (data) => {
-      console.log("Successfully fetched pets:", data);
-    },
+ 
   });
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   const handleDelete = async (petId) => {
-    console.log(`Attempting to delete pet with ID: ${petId}`);
+  
 
     try {
       const result = await Swal.fire({
@@ -66,8 +64,8 @@ const AllPets = () => {
           confirmButtonText: "Yes, update it!",
         });
         if (result.isConfirmed) {
-          const response = await axiosSecure.patch(`/changeAdopt/${petId}`);
-          console.log(response);
+          await axiosSecure.patch(`/changeAdopt/${petId}`);
+        
           refetch();
           Swal.fire(
             "congo!",

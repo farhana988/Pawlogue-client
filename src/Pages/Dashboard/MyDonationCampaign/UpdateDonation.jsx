@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import {useParams } from "react-router-dom";
 import { handleImageUpload } from "../../../api/utils";
 import UpdateDonationForm from "./UpdateDonationForm";
+import Swal from "sweetalert2";
 
 
 const UpdateDonation = () => {
@@ -24,7 +25,7 @@ const UpdateDonation = () => {
         setCampaignData(response.data); 
 
       } catch {
-        console.log("Failed to fetch pet data.");
+           Swal.fire("Something went wrong!");
       }
     };
 
@@ -61,8 +62,8 @@ const UpdateDonation = () => {
     try {
       await axiosSecure.put(`/updateDonationCampaign/${id}`, updatedCampaignData);
 
-    } catch (err) {
-      console.log(err);
+    } catch  {
+        Swal.fire("Something went wrong!");
     } finally {
       setLoading(false);
     }
@@ -71,7 +72,7 @@ const UpdateDonation = () => {
   if (!campaignData) {
     return <div>Loading...</div>; 
   }
-console.log(campaignData)
+
   return (
     <div>
       <h1 className="text-2xl text-center my-5">Update Donation Campaign</h1>

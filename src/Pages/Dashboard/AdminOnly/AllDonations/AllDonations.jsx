@@ -17,15 +17,13 @@ const AllDonations = () => {
 
       return data;
     },
-    onSuccess: (data) => {
-      console.log("Successfully fetched donations:", data);
-    },
+   
   });
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   const handleDelete = async (donationId) => {
-    console.log(`Attempting to delete donation with ID: ${donationId}`);
+  
 
     try {
       const result = await Swal.fire({

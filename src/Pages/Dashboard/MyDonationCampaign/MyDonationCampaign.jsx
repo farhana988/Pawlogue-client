@@ -20,7 +20,7 @@ const MyDonationCampaign = () => {
       return data;
     },
   });
-  // console.log(myDonationCampaigns);
+
   if (isLoading) return <LoadingSpinner />;
   return (
     <div>

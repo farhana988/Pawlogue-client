@@ -27,8 +27,7 @@ const MyPets = () => {
       return data;
     
     },
-    onSuccess: (data) => {
-      console.log("Successfully fetched pets:", data);}
+  
   });
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
