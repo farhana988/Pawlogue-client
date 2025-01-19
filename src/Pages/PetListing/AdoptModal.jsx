@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const AdoptModal = ({
@@ -11,8 +13,20 @@ const AdoptModal = ({
   }) => {
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
-
+    const navigate = useNavigate();
       const {user} = useContext(AuthContext)
+      if (!user) {
+        Swal.fire({
+          position: "top-end",
+          width: 250,
+          color: "#d82222",
+          title: "please login to adopt",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        navigate("/login");
+        return;
+      }
   
     if (!isOpen) return null;
     return (

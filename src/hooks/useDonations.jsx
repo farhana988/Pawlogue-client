@@ -1,16 +1,17 @@
 
 
 import { useState, useEffect } from 'react';
-import useAxiosSecure from './useAxiosSecure';  // Make sure to import your axios instance
+
+import useAxiosPublic from './useAxiosPublic';
 
 const useDonations = (campaignId) => {
   const [totalDonationAmount, setTotalDonationAmount] = useState(0);
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
     const fetchDonations = async () => {
       try {
-        const response = await axiosSecure(`/donations/${campaignId}`);
+        const response = await axiosPublic(`/donations/${campaignId}`);
         const data = response.data;
 
         // Calculate total donation amount
@@ -27,7 +28,7 @@ const useDonations = (campaignId) => {
     if (campaignId) {
       fetchDonations();
     }
-  }, [campaignId, axiosSecure]);
+  }, [campaignId, axiosPublic]);
 
   return totalDonationAmount;
 };
