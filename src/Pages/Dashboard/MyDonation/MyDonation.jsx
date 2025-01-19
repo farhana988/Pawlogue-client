@@ -2,8 +2,9 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import NoData from "../../../Components/Reusable/NoData";
 import Swal from "sweetalert2";
+import Heading from "../../../Components/Reusable/Heading";
+import DashboardNoData from "../../../Components/Reusable/DashboardNoData";
 
 const MyDonation = () => {
   const { user } = useContext(AuthContext);
@@ -53,45 +54,53 @@ const MyDonation = () => {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">My Donations</h1>
+    <>
+    <div className="max-w-[420px] md:max-w-[610px] lg:max-w-7xl mx-auto px-5 py-8 overflow-x-auto">
+      <Heading title={"  My Donations"}></Heading>
       {donations.length === 0 ? (
-        <NoData></NoData>
+        <DashboardNoData
+        title={'No Donation Found'}
+        ></DashboardNoData>
       ) : (
-        <table className="table-auto w-full border-collapse border border-gray-300">
+        <table className="table-auto w-full border-collapse  bg-lCard dark:bg-dCard  text-gray-700 dark:text-gray-300">
           <thead>
             <tr>
-              <th className="border border-gray-300 px-4 py-2">Pet Image</th>
-              <th className="border border-gray-300 px-4 py-2">Pet Name</th>
-              <th className="border border-gray-300 px-4 py-2">
-                Donated Amount
+              <th className="px-6 py-4 text-left border-b dark:border-gray-700  text-gray-800 dark:text-gray-300 font-semibold">
+                Image
               </th>
-              <th className="border border-gray-300 px-4 py-2">Action</th>
+              <th className="px-6 py-4 text-left border-b dark:border-gray-700  text-gray-800 dark:text-gray-300 font-semibold">
+                Name
+              </th>
+              <th className="px-6 py-4 text-left border-b dark:border-gray-700  text-gray-800 dark:text-gray-300 font-semibold">
+                Amount
+              </th>
+              <th className="px-6 py-4 text-center border-b dark:border-gray-700  text-gray-800 dark:text-gray-300 font-semibold">
+                Action
+              </th>
             </tr>
           </thead>
           <tbody>
             {donations.map((donation) => (
-              <tr key={donation.transactionId}>
-                <td className="border border-gray-300 px-4 py-2">
+              <tr key={donation.transactionId} className="">
+                <td className="px-6 py-4 border-b dark:border-gray-700">
                   <img
                     src={donation.petImage}
                     alt={donation.petName}
-                    className="h-16 w-16 object-cover rounded-full"
+                    className="w-12 h-12 md:w-16 md:h-16 object-cover rounded-full border border-gray-200 dark:border-gray-700"
                   />
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
-                  {donation.petName}
+                <td className="px-6 py-4 border-b dark:border-gray-700">
+                  {donation.petName?.substring(0, 20)}
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
-                  $ {donation.donatedAmount} 
+                <td className="px-6 py-4 border-b dark:border-gray-700">
+                  <span className="font-semibold text-green-600 dark:text-green-400">
+                    $ {donation.donatedAmount}
+                  </span>
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="px-6 py-4 text-center border-b dark:border-gray-700">
                   <button
-                    onClick={() => {
-                      handleRefund(donation._id);
-                 
-                    }}
-                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                    onClick={() => handleRefund(donation._id)}
+                    className="bg-red-500 text-white font-medium px-4 py-2 rounded-lg text-sm lg:text-base hover:bg-red-600 transition"
                   >
                     Refund
                   </button>
@@ -102,6 +111,7 @@ const MyDonation = () => {
         </table>
       )}
     </div>
+    </>
   );
 };
 
