@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 
 import { useEffect, useState } from "react";
+import Heading from "../../../Components/Reusable/Heading";
+import { FaSpinner } from "react-icons/fa";
 
 const DonationCampaignForm = ({
   handleSubmit,
@@ -21,17 +23,19 @@ const DonationCampaignForm = ({
 
   return (
     <div>
-      <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
+         <Heading title={"Create Donation Campaign"}></Heading>
+      <div className="  flex flex-col justify-center mx-5 p-7 mb-20
+      items-center rounded-xl  bg-lCard dark:bg-dCard ">
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             <div className="space-y-6">
               {/* Name */}
               <div className="space-y-1 text-sm">
-                <label htmlFor="name" className="block text-gray-600">
+                <label htmlFor="name" className="block ">
                   Name
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                  className="w-full px-4 py-3   rounded-md  bg-lCard dark:bg-dCard "
                   name="name"
                   id="name"
                   type="text"
@@ -43,14 +47,14 @@ const DonationCampaignForm = ({
               <div className="space-y-1 text-sm">
                 <label
                   htmlFor="shortDescription"
-                  className="block text-gray-600"
+                  className="block "
                 >
                   Short Description
                 </label>
                 <textarea
                   id="shortDescription"
                   placeholder="Write plant description here..."
-                  className="block rounded-md focus:lime-300 w-full h-20 px-4 py-3 text-gray-800 border border-lime-300 bg-white focus:outline-lime-500"
+                  className="block rounded-md focus:lime-300 w-full h-20 px-4 py-3   bg-lCard dark:bg-dCard "
                   name="shortDescription"
                 ></textarea>
               </div>
@@ -58,14 +62,14 @@ const DonationCampaignForm = ({
               <div className="space-y-1 text-sm">
                 <label
                   htmlFor="longDescription"
-                  className="block text-gray-600"
+                  className="block "
                 >
                   Long Description
                 </label>
                 <textarea
                   id="longDescription"
                   placeholder="Write plant description here..."
-                  className="block rounded-md focus:lime-300 w-full h-32 px-4 py-3 text-gray-800 border border-lime-300 bg-white focus:outline-lime-500"
+                  className="block rounded-md focus:lime-300 w-full h-32 px-4 py-3  bg-lCard dark:bg-dCard  "
                   name="longDescription"
                 ></textarea>
               </div>
@@ -76,11 +80,11 @@ const DonationCampaignForm = ({
               <div className="flex justify-between gap-2">
                 {/* Maximum donation amount */}
                 <div className="space-y-1 text-sm">
-                  <label htmlFor="amount" className="block text-gray-600">
+                  <label htmlFor="amount" className="block ">
                     Maximum donation amount
                   </label>
                   <input
-                    className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                    className="w-full px-4 py-3   rounded-md  bg-lCard dark:bg-dCard "
                     name="amount"
                     id="amount"
                     type="number"
@@ -91,11 +95,11 @@ const DonationCampaignForm = ({
 
                 {/* Last date of donation */}
                 <div className="space-y-1 text-sm">
-                  <label htmlFor="date" className="block text-gray-600">
+                  <label htmlFor="date" className="block ">
                     Last date of donation
                   </label>
                   <input
-                    className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                    className="w-full px-4 py-3   rounded-md  bg-lCard dark:bg-dCard "
                     name="date"
                     id="date"
                     type="date"
@@ -124,7 +128,9 @@ const DonationCampaignForm = ({
                         id="image"
                         accept="image/*"
                       />
-                      <div className="bg-blue-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-blue-500">
+                      <div className="font-semibold px-3 lg:px-5 py-1 lg:py-2 rounded-full
+                text-sm lg:text-base 
+               bg-lBtn dark:bg-dBtn">
                         Upload Image
                       </div>
                     </label>
@@ -141,11 +147,12 @@ const DonationCampaignForm = ({
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full p-3 mt-5 text-center font-medium text-white 
-                transition duration-200 rounded shadow-md bg-blue-500"
+                className="font-semibold px-3 lg:px-5 py-1 lg:py-2 rounded-full
+                text-sm lg:text-base 
+               bg-lBtn dark:bg-dBtn"
               >
                 {loading ? (
-                  <h2 className="animate-spin m-auto" />
+                    <FaSpinner className="animate-spin m-auto" />
                 ) : (
                   "Save & Continue"
                 )}

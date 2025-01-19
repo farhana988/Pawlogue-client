@@ -42,6 +42,15 @@ const DonationCampaign = () => {
 
     try {
       await axiosSecure.post("/donationCampaign", donationData);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Donation created Successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      form.reset()
+      
     } catch{
  
       Swal.fire("Something went wrong!");

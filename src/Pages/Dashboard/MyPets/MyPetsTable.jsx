@@ -34,7 +34,7 @@ const columns = [
     header: () => <span className="flex items-center">Serial Number</span>,
   }),
   columnHelper.accessor("name", {
-    cell: (info) => info.getValue(),
+    cell: (info) => info.getValue().slice(0,20),
     header: () => <span className="flex items-center">Pet Name</span>,
   }),
   columnHelper.accessor("category", {
