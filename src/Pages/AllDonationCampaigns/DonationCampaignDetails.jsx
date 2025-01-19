@@ -1,16 +1,19 @@
-import { useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import Container from "../../Components/Reusable/Container";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import DonationModal from "./DonationModal";
 import RecommendedCampaigns from "./RecommendedCampaigns";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const DonationCampaignDetails = () => {
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext); 
   const {
     data: donationDetails = [],
     isLoading,
@@ -32,7 +35,22 @@ const DonationCampaignDetails = () => {
   // Check if the campaign is paused
   const isPaused = donationDetails?.paused;
 
-
+  // Handle the Donate Now button click
+  const handleDonateClick = () => {
+    if (!user) {
+      Swal.fire({
+        position: "top-end",
+        width: 250,
+        color: "#d82222",
+        title: "Please login to donate",
+        showConfirmButton: false,
+        timer: 1000,
+      });
+      navigate("/login"); 
+      return;
+    }
+    setIsModalOpen(true); 
+  };
 
   return (
     <div className="pt-20">
@@ -78,7 +96,7 @@ const DonationCampaignDetails = () => {
            {/* Donate Button */}
            <button
               className={`bg-blue-600 text-white px-4 py-2 rounded ${isPaused ? "bg-gray-400 cursor-not-allowed" : ""}`}
-              onClick={() => setIsModalOpen(true)}
+              onClick={handleDonateClick}
               disabled={isPaused} 
             >
               {isPaused ? "Campaign Paused" : "Donate Now"}
