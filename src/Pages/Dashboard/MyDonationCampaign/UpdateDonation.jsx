@@ -62,7 +62,13 @@ const UpdateDonation = () => {
 
     try {
       await axiosSecure.put(`/updateDonationCampaign/${id}`, updatedCampaignData);
-
+ Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Donation updated Successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } catch  {
         Swal.fire("Something went wrong!");
     } finally {
@@ -76,7 +82,7 @@ const UpdateDonation = () => {
 
   return (
     <div>
-      <h1 className="text-2xl text-center my-5">Update Donation Campaign</h1>
+    
       <UpdateDonationForm
         campaignData={campaignData}
         handleSubmit={handleSubmit}
