@@ -53,27 +53,27 @@ const DonationCampaignTable = ({ myDonationCampaign }) => {
   return (
     <>
       <tr>
-        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+        <td className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard  text-sm">
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <div className="block relative">
                 <img
                   alt="profile"
                   src={image}
-                  className="mx-auto object-cover rounded h-10 w-15 "
+                  className="w-16 h-16 object-cover rounded-full"
                 />
               </div>
             </div>
           </div>
         </td>
-        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-          <p className="text-gray-900 whitespace-no-wrap">{name}</p>
+        <td className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard  text-sm">
+          <p className=" whitespace-no-wrap">{name?.substring(0, 20)}</p>
         </td>
-        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-          <p className="text-gray-900 whitespace-no-wrap">{goalAmount}</p>
+        <td className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard  text-sm">
+          <p className=" whitespace-no-wrap">{goalAmount}</p>
         </td>
-        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-          <p className="text-gray-900 whitespace-no-wrap">
+        <td className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard  text-sm">
+          <p className=" whitespace-no-wrap">
             ${totalDonationAmount} / ${goalAmount}
           </p>
           <div className="w-full bg-gray-200 rounded-full">
@@ -84,15 +84,20 @@ const DonationCampaignTable = ({ myDonationCampaign }) => {
           </div>
         </td>
 
-        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+        {/* action buttons  */}
+        <td
+          className="space-y-3 lg:space-x-6 px-5 py-5 text-center
+        border-b border-gray-200  bg-lCard dark:bg-dCard  text-sm lg:text-base"
+        >
           {/* View Donators button */}
           <span
             onClick={openModal}
-            className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
+            className="relative cursor-pointer inline-block px-3 py-1 font-semibold  dark:text-ivory
+             leading-tight"
           >
             <span
               aria-hidden="true"
-              className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
+              className="absolute inset-0 bg-red-200  opacity-50 rounded-full"
             ></span>
             <span className="relative">Donators</span>
           </span>
@@ -100,7 +105,7 @@ const DonationCampaignTable = ({ myDonationCampaign }) => {
           {/* Pause/Unpause button */}
           <span
             onClick={togglePause}
-            className={`relative cursor-pointer inline-block px-3 py-1 font-semibold text-${
+            className={`relative cursor-pointer inline-block px-3 dark:text-ivory py-1 font-semibold text-${
               isPaused ? "gray" : "green"
             }-900 leading-tight`}
           >
@@ -114,10 +119,11 @@ const DonationCampaignTable = ({ myDonationCampaign }) => {
           </span>
 
           {/* Edit button */}
-          <span className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+          <span className="relative cursor-pointer inline-block px-3 py-1 font-semibold  dark:text-ivory
+           leading-tight">
             <span
               aria-hidden="true"
-              className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
+              className="absolute inset-0 bg-green-200  opacity-50 rounded-full"
             ></span>
             <span className="relative">
               <Link to={`/dashboard/updateDonation/${_id}`}> Edit</Link>

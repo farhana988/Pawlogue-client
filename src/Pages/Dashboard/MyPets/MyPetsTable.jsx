@@ -34,7 +34,7 @@ const columns = [
     header: () => <span className="flex items-center">Serial Number</span>,
   }),
   columnHelper.accessor("name", {
-    cell: (info) => info.getValue().slice(0,20),
+    cell: (info) => info.getValue().slice(0, 20),
     header: () => <span className="flex items-center">Pet Name</span>,
   }),
   columnHelper.accessor("category", {
@@ -95,8 +95,6 @@ const MyPetsTable = ({ pets }) => {
   };
 
   const handleDelete = async (petId) => {
-
-
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
@@ -124,48 +122,48 @@ const MyPetsTable = ({ pets }) => {
   };
 
   const handleEdit = (petId) => {
-    navigate(`/dashboard/updatePet/${petId}`); 
+    navigate(`/dashboard/updatePet/${petId}`);
   };
 
+  const handleStatus = async (petId) => {
+    try {
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, update it!",
+      });
+      if (result.isConfirmed) {
+        const response = await axiosSecure.patch(`/changeAdopt/${petId}`);
+        if (response.data.modifiedCount > 0) {
+          const updatedPets = data.map((pet) =>
+            pet._id === petId ? { ...pet, adopted: !pet.adopted } : pet
+          );
+          setData(updatedPets);
 
-    const handleStatus = async (petId) => {
-      try {
-        const result = await Swal.fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, update it!",
-        });
-        if (result.isConfirmed) {
-          const response = await axiosSecure.patch(`/changeAdopt/${petId}`);
-          if (response.data.modifiedCount > 0) {
-            const updatedPets = data.map((pet) =>
-              pet._id === petId ? { ...pet, adopted: !pet.adopted } : pet
-            );
-            setData(updatedPets);
-    
-            Swal.fire(
-              "Success!",
-              "You have updated the adoption status.",
-              "success"
-            );
-          }
+          Swal.fire(
+            "Success!",
+            "You have updated the adoption status.",
+            "success"
+          );
         }
-      }catch (error) {
-        console.error("Error deleting adoption info:", error);
-        alert("Failed to delete adoption information.");
       }
-    };
-  
+    } catch (error) {
+      console.error("Error deleting adoption info:", error);
+      alert("Failed to delete adoption information.");
+    }
+  };
 
   return (
     <div>
       {/* Table container */}
-      <div className="flex flex-col min-h-screen max-w-[420px] md:max-w-[610px] lg:max-w-7xl
-       mx-auto px-5 ">
+      <div
+        className="flex flex-col min-h-screen max-w-[420px] md:max-w-[610px] lg:max-w-7xl
+       mx-auto px-5 "
+      >
         {/*  search */}
         <div className="mb-4 relative">
           <input
@@ -215,7 +213,10 @@ const MyPetsTable = ({ pets }) => {
             </thead>
             <tbody className=" bg-lCard dark:bg-dCard  divide-y divide-gray-200">
               {table.getRowModel().rows.map((row) => (
-                <tr key={row.id} className="hover:bg-gray-200 dark:hover:bg-zinc-800">
+                <tr
+                  key={row.id}
+                  className="hover:bg-gray-200 dark:hover:bg-zinc-800"
+                >
                   {row.getVisibleCells().map((cell) => (
                     <td
                       key={cell.id}
@@ -251,12 +252,11 @@ const MyPetsTable = ({ pets }) => {
                       className="bg-green-500 text-white px-4 py-2 rounded-md"
                       onClick={() => handleStatus(row.original._id)}
                     >
-                      {row.original.adopted=== false? 
-                      <Check size={16} />:
-                      <CheckCheck size={16} />
-                    }
-                      
-                     
+                      {row.original.adopted === false ? (
+                        <Check size={16} />
+                      ) : (
+                        <CheckCheck size={16} />
+                      )}
                     </button>
                   </td>
                 </tr>
@@ -267,8 +267,10 @@ const MyPetsTable = ({ pets }) => {
 
         {/* Pagination controls */}
         {data.length > pageSize && (
-          <div className="flex flex-col sm:flex-row justify-between items-center mt-4 text-sm
-           mb-20">
+          <div
+            className="flex flex-col sm:flex-row justify-between items-center mt-4 text-sm
+           mb-20"
+          >
             <div className="flex items-center space-x-2">
               <button
                 className="p-2 rounded-md bg-lCard dark:bg-dCard dark:text-ivory
