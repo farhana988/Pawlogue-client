@@ -32,6 +32,8 @@ const DonationCampaignDetails = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
+  const isExpired = new Date(donationDetails?.date) < new Date();
+
   // Check if the campaign is paused
   const isPaused = donationDetails?.paused;
 
@@ -93,13 +95,19 @@ const DonationCampaignDetails = () => {
               <span className="font-semibold">Created By:</span>{" "}
               {donationDetails?.email}
             </p>
-           {/* Donate Button */}
-           <button
-              className={`bg-blue-600 text-white px-4 py-2 rounded ${isPaused ? "bg-gray-400 cursor-not-allowed" : ""}`}
+          {/* Donate Button */}
+          <button
+              className={`bg-blue-600 text-white px-4 py-2 rounded ${
+                isPaused || isExpired ? "bg-gray-400 cursor-not-allowed" : ""
+              }`}
               onClick={handleDonateClick}
-              disabled={isPaused} 
+              disabled={isPaused || isExpired}
             >
-              {isPaused ? "Campaign Paused" : "Donate Now"}
+              {isPaused
+                ? "Campaign Paused"
+                : isExpired
+                ? "Campaign Expired"
+                : "Donate Now"}
             </button>
           </div>
         </div>

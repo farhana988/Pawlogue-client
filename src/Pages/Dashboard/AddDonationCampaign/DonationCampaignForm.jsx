@@ -1,11 +1,24 @@
 /* eslint-disable react/prop-types */
 
+import { useEffect, useState } from "react";
+
 const DonationCampaignForm = ({
   handleSubmit,
   uploadImage,
   setUploadImage,
   loading,
 }) => {
+
+  const [minDate, setMinDate] = useState('');
+
+  useEffect(() => {
+    const today = new Date();
+    today.setDate(today.getDate() + 1); 
+    const formattedDate = today.toISOString().split('T')[0]; 
+    setMinDate(formattedDate); 
+  }, []);
+
+
   return (
     <div>
       <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
@@ -88,6 +101,7 @@ const DonationCampaignForm = ({
                     type="date"
                     placeholder="Available date"
                     required
+                    min={minDate} 
                   />
                 </div>
               </div>
