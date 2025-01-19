@@ -10,32 +10,35 @@ const PetListingCard = ({pet}) => {
         <div>
             <div
              
-              className="border border-gray-300 rounded shadow-lg p-4 relative"
+              className=" rounded shadow-lg p-4 relative
+               bg-lCard dark:bg-dCard "
             >
               {/* image */}
               <img
                 src={pet?.image}
                 alt={pet?.name}
-                className="w-full h-48 object-cover rounded mb-4"
+                className="w-full h-48 object-cover rounded-xl mb-2"
               />
               {/* name */}
-              <h3 className="text-lg font-semibold">{pet?.name}</h3>
+              <h3 className="text-lg font-semibold mb-2">{pet?.name?.substring(0,30)}</h3>
 
               {/* location */}
-              <p className="text-sm text-gray-500 flex gap-2">
+              <p className="text-sm opacity-80 flex gap-2 mb-2">
                 <FaLocationDot />
-                {pet?.location}
+                {pet?.location?.substring(0,39)}
               </p>
 
               {/* age */}
               <p
-                className="absolute text-black font-semibold bg-red-400 px-5 py-1 
-                rounded-bl-2xl
+                className="absolute font-semibold  px-5 py-1 
+                rounded-bl-2xl  bg-lBtn dark:bg-dBtn text-black dark:text-ivory 
                 top-0 right-0"
               >
                 Age: {pet?.age}
               </p>
-              <button className="flex justify-end">
+              <button className="font-semibold px-3 lg:px-5 py-1 lg:py-2 rounded-full
+                text-sm lg:text-base 
+               bg-lBtn dark:bg-dBtn">
                 <Link to={`/petDetails/${pet._id}`}>Pet details</Link>
               </button>
             </div>
