@@ -1,4 +1,4 @@
-import {  useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Container from "../../Components/Reusable/Container";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useContext, useState } from "react";
@@ -8,13 +8,15 @@ import RecommendedCampaigns from "./RecommendedCampaigns";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import LoadingSpinner from "../../Components/Reusable/LoadingSpinner";
+import DonationCampaignDetailsCard from "./DonationCampaignDetailsCard";
+import Heading from "../../Components/Reusable/Heading";
 
 const DonationCampaignDetails = () => {
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext); 
+  const { user } = useContext(AuthContext);
   const {
     data: donationDetails = [],
     isLoading,
@@ -26,7 +28,6 @@ const DonationCampaignDetails = () => {
 
       return data;
     },
-   
   });
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
   if (error) return <div>Error: {error.message}</div>;
@@ -47,72 +48,42 @@ const DonationCampaignDetails = () => {
         showConfirmButton: false,
         timer: 1000,
       });
-      navigate("/login"); 
+      navigate("/login");
       return;
     }
-    setIsModalOpen(true); 
+    setIsModalOpen(true);
   };
 
   return (
-    <div className="pt-20">
+    <div className="">
+         <Heading title={"Donation Details"}></Heading>
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Left Section: Image */}
-          <div>
-            <img
-              src={donationDetails?.image}
-              alt={donationDetails?.name}
-              className="w-full h-96 object-cover rounded"
-            />
-          </div>
 
-          {/* Right Section: Details */}
-          <div className="space-y-4">
-            {/* Pet Name */}
-            <h2 className="text-2xl font-bold text-gray-800">
-              {donationDetails?.name}
-            </h2>
+        {/* donation card  */}
+        <DonationCampaignDetailsCard
+        donationDetails={donationDetails}
+        ></DonationCampaignDetailsCard>
+        
+        {/* Donate Button */}
+        <button
+          className={`text-white md:ml-7 lg:ml-0
+            font-semibold px-3 lg:px-5 py-1 lg:py-2 rounded-full
+                text-sm lg:text-base  ${
+            isPaused || isExpired ? "bg-gray-400  cursor-not-allowed" : 
+            " bg-lBtn dark:bg-dBtn "
+          }`}
+          onClick={handleDonateClick}
+          disabled={isPaused || isExpired}
+        >
+          {isPaused
+            ? "Campaign Paused"
+            : isExpired
+            ? "Campaign Expired"
+            : "Donate Now"}
+        </button>
 
-            {/* Short Description */}
-            <p className="text-gray-600">{donationDetails?.shortDescription}</p>
-
-            {/* Long Description */}
-            <p className="text-gray-700">{donationDetails?.longDescription}</p>
-
-            {/* Donation Details */}
-            <p className="text-gray-600">
-              <span className="font-semibold">Maximum Donation:</span> $
-              {donationDetails?.amount}
-            </p>
-            <p className="text-gray-600">
-              <span className="font-semibold">Date:</span>{" "}
-              {new Date(donationDetails?.date).toLocaleDateString()}
-            </p>
-
-            {/* User Information */}
-            <p className="text-gray-600">
-              <span className="font-semibold">Created By:</span>{" "}
-              {donationDetails?.email}
-            </p>
-          {/* Donate Button */}
-          <button
-              className={`bg-blue-600 text-white px-4 py-2 rounded ${
-                isPaused || isExpired ? "bg-gray-400 cursor-not-allowed" : ""
-              }`}
-              onClick={handleDonateClick}
-              disabled={isPaused || isExpired}
-            >
-              {isPaused
-                ? "Campaign Paused"
-                : isExpired
-                ? "Campaign Expired"
-                : "Donate Now"}
-            </button>
-          </div>
-        </div>
-
-         {/* Recommended Campaigns Section */}
-         <RecommendedCampaigns></RecommendedCampaigns>
+        {/* Recommended Campaigns Section */}
+        <RecommendedCampaigns></RecommendedCampaigns>
       </Container>
 
       {/*  donation  Modal*/}
@@ -120,7 +91,6 @@ const DonationCampaignDetails = () => {
         <DonationModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
-         
           donationDetails={donationDetails}
         />
       )}

@@ -8,7 +8,7 @@ const PetDetailsCard = ({ petDetails, formatDate }) => {
   return (
     <div>
       <div
-        className="grid grid-cols-1 lg:grid-cols-2 gap-6 border-2 p-5 lg:p-9  md:mx-7 lg:mx-0
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-5 lg:p-9  md:mx-7 lg:mx-0
            bg-lCard dark:bg-dCard items-center mb-5"
       >
         {/* Pet Image */}
