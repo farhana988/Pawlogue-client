@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import SuccessStoriesCard from "./SuccessStoriesCard";
 import Heading from "../../../Components/Reusable/Heading";
 import Container from "../../../Components/Reusable/Container";
+import Swal from "sweetalert2";
 
 const SuccessStories = () => {
   const [stories, setStories] = useState([]);
@@ -18,7 +19,16 @@ const SuccessStories = () => {
         return response.json();
       })
       .then((data) => setStories(data))
-      .catch((error) => console.error("Error fetching stories:", error));
+      .catch( ()=>
+      {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Error fetching stories. Please try again later.',
+        
+        });
+      }
+        );
   }, []);
 
   const sliderSettings = {

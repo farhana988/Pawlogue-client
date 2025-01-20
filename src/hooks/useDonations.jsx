@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 
 import useAxiosPublic from './useAxiosPublic';
+import Swal from 'sweetalert2';
 
 const useDonations = (campaignId) => {
   const [totalDonationAmount, setTotalDonationAmount] = useState(0);
@@ -20,8 +21,13 @@ const useDonations = (campaignId) => {
           0
         );
         setTotalDonationAmount(totalAmount);
-      } catch (error) {
-        console.error('Error fetching donations:', error);
+      } catch  {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Error fetching donations. Please try again later.',
+        
+        });
       }
     };
 

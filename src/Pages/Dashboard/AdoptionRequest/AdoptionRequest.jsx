@@ -52,16 +52,20 @@ const AdoptionRequest = () => {
           "success"
         );
       }
-    } catch (error) {
-      console.error("Error deleting adoption info:", error);
-      alert("Failed to delete adoption information.");
+    } catch {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Failed to delete adoption information. Please try again later.',
+      
+      });
+     
     }
   };
 
 
   // edit function
   const handleUpdateAdoptInfo = async (petId) => {
-    console.log("Updating adoption status for petId:", petId); 
     try {
       const result = await Swal.fire({
         title: "Are you sure?",

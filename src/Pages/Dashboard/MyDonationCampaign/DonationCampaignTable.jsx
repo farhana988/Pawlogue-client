@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import DonatorsModal from "./DonatorsModal";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useDonations from "../../../hooks/useDonations";
+import Swal from "sweetalert2";
 
 const DonationCampaignTable = ({ myDonationCampaign }) => {
   const axiosSecure = useAxiosSecure();
@@ -32,8 +33,13 @@ const DonationCampaignTable = ({ myDonationCampaign }) => {
       await axiosSecure.patch(`/donationCampaign/${_id}`, {
         paused: newPausedState,
       });
-    } catch (error) {
-      console.error("Error updating paused state:", error);
+    } catch  {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Error updating paused state: Please try again later.',
+      
+      });
     }
   };
 

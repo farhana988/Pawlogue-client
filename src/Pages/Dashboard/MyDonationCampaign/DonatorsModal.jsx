@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const DonatorsModal = ({ campaignId, onClose }) => {
     const [donators, setDonators] = useState([]);
@@ -11,8 +12,14 @@ const DonatorsModal = ({ campaignId, onClose }) => {
             try {
                 const response = await axiosSecure.get(`/donations/${campaignId}`);
                 setDonators(response.data); 
-            } catch (error) {
-                console.error("Error fetching donators: ", error);
+            } catch {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Error fetching donators. Please try again later.',
+            
+                  });
+               
             }
         };
 

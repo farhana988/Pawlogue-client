@@ -50,8 +50,8 @@ const AllDonations = () => {
           );
         }
       }
-    } catch (error) {
-      console.error("Error while deleting donation:", error);
+    } catch  {
+  
       Swal.fire(
         "Error",
         "An error occurred while deleting the donation.",

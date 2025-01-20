@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 const AllDonationsTable = ({donation,handleDelete,refetch}) => {
@@ -22,8 +23,14 @@ const AllDonationsTable = ({donation,handleDelete,refetch}) => {
             paused: newPausedState,
           });
           refetch()
-        } catch (error) {
-          console.error("Error updating paused state:", error);
+        } catch {
+         
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error updating paused state. Please try again later.',
+         
+          });
         }
       };
     return (

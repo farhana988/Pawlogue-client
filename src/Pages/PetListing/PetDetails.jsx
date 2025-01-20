@@ -61,9 +61,14 @@ const PetDetails = () => {
         timer: 1500,
       });
       setIsModalOpen(false);
-    } catch (err) {
-      console.error("Error submitting adoption request:", err);
-      alert("Failed to submit adoption request.");
+    } catch{
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Failed to submit adoption request. Please try again later.',
+  
+      });
+    
     }
   };
 

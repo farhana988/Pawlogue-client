@@ -43,8 +43,8 @@ const AllPets = () => {
           Swal.fire("Deleted!", "Your pet has been deleted.", "success");
         }
       }
-    } catch (error) {
-      console.error("Error while deleting pet:", error);
+    } catch {
+  
       Swal.fire("Error", "An error occurred while deleting the pet.", "error");
     }
   };
@@ -72,9 +72,14 @@ const AllPets = () => {
 
       }
       }
-    } catch (error) {
-      console.error("Error deleting adoption info:", error);
-      alert("Failed to delete adoption information.");
+    } catch  {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Failed to delete adoption information. Please try again later.',
+       
+      });
+    
     }
   };
 

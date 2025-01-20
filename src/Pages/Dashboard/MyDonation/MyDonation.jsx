@@ -43,8 +43,8 @@ const MyDonation = () => {
           );
         }
       }
-    } catch (error) {
-      console.error("Refund Error:", error);
+    } catch {
+   
       Swal.fire(
         "Error!",
         "An error occurred while processing the refund.",

@@ -41,8 +41,8 @@ const AllUsers = () => {
         refetch();
         Swal.fire("congo!", "Your role has been updated.", "success");
       }
-    } catch (error) {
-      console.error("Error while updating role:", error);
+    } catch  {
+    
       Swal.fire("Error", "An error occurred while updating the role.", "error");
     }
   };

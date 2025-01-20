@@ -38,7 +38,7 @@ const DonationCampaign = () => {
       createdAt: new Date().toISOString(),
     };
 
-    console.table(donationData);
+    
 
     try {
       await axiosSecure.post("/donationCampaign", donationData);

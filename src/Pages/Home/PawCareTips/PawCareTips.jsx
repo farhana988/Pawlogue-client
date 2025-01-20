@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import PawCareTipsCard from "./PawCareTipsCard";
 import Heading from "../../../Components/Reusable/Heading";
 import Container from "../../../Components/Reusable/Container";
+import Swal from "sweetalert2";
 
 const PawCareTips = () => {
   const [data, setData] = useState([]);
@@ -15,7 +16,15 @@ const PawCareTips = () => {
 
         setSelectedCategory(data[0]?.category);
       })
-      .catch((error) => console.error("Error fetching data:", error));
+      .catch(() => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Error fetching data. Please try again later.',
+         
+        });
+        
+        });
   }, []);
 
   const handleCategoryClick = (category) => {
