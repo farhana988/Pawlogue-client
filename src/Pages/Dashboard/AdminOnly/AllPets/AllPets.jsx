@@ -61,14 +61,16 @@ const AllPets = () => {
         confirmButtonText: "Yes, update it!",
       });
       if (result.isConfirmed) {
-        await axiosSecure.patch(`/changeStatus/${petId}`);
-
+        const response = await axiosSecure.patch(`/changeAdopt/${petId}`);
+        if (response.status === 200) {
         refetch();
         Swal.fire(
           "congo!",
           "You have accepted the adoption request.",
           "success"
         );
+
+      }
       }
     } catch (error) {
       console.error("Error deleting adoption info:", error);
