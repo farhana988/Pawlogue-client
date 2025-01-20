@@ -65,7 +65,7 @@ const AllUsers = () => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
+          {users?.map((user) => (
             <tr key={user._id} className="border-b ">
               <td className="px-6 py-4 text-sm ">{user.name?.substring(0,20)}</td>
               <td className="px-6 py-4 text-sm "

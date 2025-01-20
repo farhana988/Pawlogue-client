@@ -26,7 +26,7 @@ const MyDonationCampaign = () => {
        mx-auto px-5 mb-20"
       >
         <div className="">
-          {myDonationCampaigns.length > 0 ? (
+          {myDonationCampaigns?.length > 0 ? (
             <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 overflow-x-auto">
               <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
                 <table className="min-w-full leading-normal">
@@ -71,7 +71,7 @@ const MyDonationCampaign = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {myDonationCampaigns.map((myDonationCampaign) => (
+                    {myDonationCampaigns?.map((myDonationCampaign) => (
                       <DonationCampaignTable
                         key={myDonationCampaign?._id}
                         myDonationCampaign={myDonationCampaign}

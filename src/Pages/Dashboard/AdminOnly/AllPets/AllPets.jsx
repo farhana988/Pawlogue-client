@@ -102,7 +102,7 @@ const AllPets = () => {
             </tr>
           </thead>
           <tbody>
-            {pets.map((pet) => (
+            {pets?.map((pet) => (
               <tr key={pet._id} className="border-b ">
                 <td className="px-4 py-2">
                   <img

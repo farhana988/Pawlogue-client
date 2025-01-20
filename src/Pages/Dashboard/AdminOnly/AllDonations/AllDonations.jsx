@@ -78,7 +78,7 @@ const AllDonations = () => {
             </tr>
           </thead>
           <tbody>
-            {donations.map((donation) => 
+            {donations?.map((donation) => 
              <AllDonationsTable
              key={donation._id}
              donation={donation}

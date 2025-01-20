@@ -1,4 +1,4 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Container from "../../Components/Reusable/Container";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
@@ -18,6 +18,7 @@ const PetDetails = () => {
   const { id } = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const {
     data: petDetails = [],
@@ -46,9 +47,9 @@ const PetDetails = () => {
       phone,
       address,
       petName: petDetails?.name,
-      petId:petDetails?._id,
-      petOwnerEmail:petDetails?.owner?.email,
-      adopted:petDetails?.adopted
+      petId: petDetails?._id,
+      petOwnerEmail: petDetails?.owner?.email,
+      adopted: petDetails?.adopted,
     };
 
     try {
@@ -61,20 +62,35 @@ const PetDetails = () => {
         timer: 1500,
       });
       setIsModalOpen(false);
-    } catch{
+    } catch {
       Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Failed to submit adoption request. Please try again later.',
-  
+        icon: "error",
+        title: "Error",
+        text: "Failed to submit adoption request. Please try again later.",
       });
-    
     }
   };
 
   const formatDate = (isoString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(isoString).toLocaleDateString(undefined, options);
+  };
+
+  const handleAdoptButton = () => {
+    if (!user) {
+      Swal.fire({
+        position: "top-end",
+        width: 250,
+        color: "#d82222",
+        title: "please login to adopt",
+        showConfirmButton: false,
+        timer: 1000,
+      });
+      navigate("/login");
+      return;
+    } else {
+      setIsModalOpen(true);
+    }
   };
 
   return (
@@ -86,7 +102,7 @@ const PetDetails = () => {
           formatDate={formatDate}
         ></PetDetailsCard>
         <button
-          onClick={() => setIsModalOpen(true)}
+          onClick={handleAdoptButton}
           className="font-semibold px-3 lg:px-5 py-1 lg:py-2 rounded-full
                 text-sm lg:text-base md:ml-7 lg:ml-0
                bg-lBtn dark:bg-dBtn"

@@ -58,7 +58,7 @@ const MyDonation = () => {
       <Heading title={"  My Donations"}></Heading>
     <div className="max-w-[420px] md:max-w-[610px] lg:max-w-7xl mx-auto px-5 overflow-x-auto
     mb-20">
-      {donations.length === 0 ? (
+      {donations?.length === 0 ? (
         <DashboardNoData
         title={'No Donation Found'}
         ></DashboardNoData>
@@ -81,7 +81,7 @@ const MyDonation = () => {
             </tr>
           </thead>
           <tbody>
-            {donations.map((donation) => (
+            {donations?.map((donation) => (
               <tr key={donation.transactionId} className="">
                 <td className="px-6 py-4 border-b dark:border-gray-700">
                   <img
