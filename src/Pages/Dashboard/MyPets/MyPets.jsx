@@ -28,12 +28,8 @@ const MyPets = () => {
   return (
     <div>
       <Heading title={"My Added Pets"}></Heading>
-      {pets && pets.length > 0 ? (
-        <div className=" ">
-          <div className="">
-            <MyPetsTable pets={pets} />
-          </div>
-        </div>
+      {pets?.length > 0 ? (
+        <MyPetsTable pets={pets} />
       ) : (
         <DashboardNoData title={"No Pets Found !"} />
       )}

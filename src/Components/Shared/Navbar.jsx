@@ -69,7 +69,7 @@ const Navbar = () => {
   return (
     <header className=" text-black dark:text-white  backdrop-blur-xl bg-ivory/50 
     dark:bg-dCard
-     shadow-md sticky top-0 z-10
+     shadow-md sticky top-0 z-50
     ">
       <nav className="max-w-screen-xl mx-auto px-5 lg:px-0 py-4 flex items-center justify-between">
         {/* Logo */}

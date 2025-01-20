@@ -4,7 +4,7 @@ import useAdmin from "../../hooks/useAdmin";
 import { FcHome } from "react-icons/fc";
 import ThemeToggle from "../../Components/Shared/ThemeToggle";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
+// import logo from "../../assets/images/logo.png";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -25,15 +25,17 @@ const Sidebar = () => {
              isSidebarOpen ? "translate-x-0" : "-translate-x-full"
            } md:translate-x-0 md:h-auto ${
           isSidebarOpen ? "h-full w-64" : "h-full w-64"
-        } z-50`}
+        } z-40`}
       >
-        <div className="flex items-center gap-2 mb-6">
+
+        {/* logo */}  {/* name */}
+        {/* <div className="flex items-center gap-2 mb-6">
           {" "}
-          {/* logo */}
+          
           <img className="w-10 lg:w-16" src={logo} alt="" />
-          {/* name */}
+        
           <h2 className="lg:text-2xl font-bold">Pawlogue </h2>
-        </div>
+        </div> */}
 
        
         {/* name of the dashboard */}

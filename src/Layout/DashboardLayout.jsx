@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../Pages/Dashboard/Sidebar";
+import Navbar from "../Components/Shared/Navbar";
 
 const DashboardLayout = () => {
   const location = useLocation()
@@ -9,6 +10,8 @@ const DashboardLayout = () => {
     }
   
   return (
+    <>
+      <Navbar></Navbar>
     <div className="flex min-h-screen">
 
       {/* Sidebar */}
@@ -17,6 +20,7 @@ const DashboardLayout = () => {
       {/* Page Content */}
       <Outlet />
     </div>
+    </>
   );
 };
 
