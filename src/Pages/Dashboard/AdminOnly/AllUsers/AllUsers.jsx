@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import Heading from "../../../../Components/Reusable/Heading";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -47,11 +48,13 @@ const AllUsers = () => {
   };
   return (
     <div className="container mx-auto p-4">
-      <h2 className="text-3xl font-semibold text-center mb-6 text-gray-800">
-        All Users
-      </h2>
-      <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
-        <thead className="bg-green-500 text-white">
+   
+      
+   <Heading title={"  All Users"}></Heading>
+      <table className="max-w-[420px] md:max-w-[610px] lg:max-w-7xl mx-auto px-5 overflow-x-auto
+        bg-lCard dark:bg-dCard  border border-gray-200 
+      rounded-lg shadow-md">
+        <thead className=" bg-lCard dark:bg-dCard ">
           <tr>
             <th className="px-6 py-3 text-left text-sm font-medium">Name</th>
             <th className="px-6 py-3 text-left text-sm font-medium">Email</th>
@@ -63,9 +66,11 @@ const AllUsers = () => {
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user._id} className="border-b hover:bg-gray-50">
-              <td className="px-6 py-4 text-sm text-gray-800">{user.name}</td>
-              <td className="px-6 py-4 text-sm text-gray-800">{user.email}</td>
+            <tr key={user._id} className="border-b ">
+              <td className="px-6 py-4 text-sm ">{user.name?.substring(0,20)}</td>
+              <td className="px-6 py-4 text-sm "
+              title={user?.email}
+              >{user.email?.substring(0,20)}</td>
               <td className="px-6 py-4 text-center">
                 <img
                   src={user.image || "/default-avatar.png"}

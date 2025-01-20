@@ -127,7 +127,8 @@ const AdoptionRequest = () => {
                       <td className="py-4 px-4 text-sm font-medium ">
                         {pet.adoptUser?.substring(0, 20)}
                       </td>
-                      <td className="py-4 px-4 text-sm opacity-80">
+                      <td className="py-4 px-4 text-sm opacity-80"
+                      title={pet.adoptEmail}>
                         {pet.adoptEmail?.substring(0, 20)}
                       </td>
                       <td className="py-4 px-4 text-sm opacity-80">
