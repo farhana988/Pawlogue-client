@@ -45,11 +45,14 @@ const PetDetails = () => {
       adoptEmail: user?.email,
       phone,
       address,
-      petName: petDetails.name,
+      petName: petDetails?.name,
+      petId:petDetails?._id,
+      petOwnerEmail:petDetails?.owner?.email,
+      adopted:petDetails?.adopted
     };
 
     try {
-      await axiosSecure.put(`/adoptPet/${id}`, adoptionData);
+      await axiosSecure.post(`/adoptPet`, adoptionData);
       Swal.fire({
         position: "top-end",
         icon: "success",

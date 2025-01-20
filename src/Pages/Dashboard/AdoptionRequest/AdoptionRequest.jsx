@@ -2,10 +2,10 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import NoData from "../../../Components/Reusable/NoData";
 import Swal from "sweetalert2";
 import SkeletonLoader from "../../../Components/Reusable/SkeletonLoader";
 import Heading from "../../../Components/Reusable/Heading";
+import DashboardNoData from "../../../Components/Reusable/DashboardNoData";
 
 const AdoptionRequest = () => {
   const { user } = useContext(AuthContext);
@@ -19,7 +19,7 @@ const AdoptionRequest = () => {
   } = useQuery({
     queryKey: ["adoptPets", user?.email],
     queryFn: async () => {
-      const { data } = await axiosSecure(`/pets/${user?.email}`);
+      const { data } = await axiosSecure(`/adoptions/${user?.email}`);
 
       return data;
     },
@@ -41,7 +41,7 @@ const AdoptionRequest = () => {
         confirmButtonText: "Yes, update it!",
       });
       if (result.isConfirmed) {
-        await axiosSecure.put(`/removeAdoptPet/${petId}`);
+        await axiosSecure.delete(`/removeAdoptPet/${petId}`);
 
         refetch();
         Swal.fire(
@@ -55,8 +55,11 @@ const AdoptionRequest = () => {
       alert("Failed to delete adoption information.");
     }
   };
+
+
   // edit function
   const handleUpdateAdoptInfo = async (petId) => {
+    console.log("Updating adoption status for petId:", petId); 
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
@@ -68,27 +71,25 @@ const AdoptionRequest = () => {
         confirmButtonText: "Yes, update it!",
       });
       if (result.isConfirmed) {
-        await axiosSecure.patch(`/changeAdopt/${petId}`);
+        const response =   await axiosSecure.patch(`/changeAdopt/${petId}`);
 
-        refetch();
-        Swal.fire(
-          "congo!",
-          "You have accepted the adoption request.",
-          "success"
-        );
+        if (response.status === 200) {
+          refetch();
+          Swal.fire("Success!", "Adoption request accepted.", "success");
+        } else {
+          Swal.fire("Error!", "Failed to update adoption request.", "error");
+        }
       }
-    } catch (error) {
-      console.error("Error deleting adoption info:", error);
-      alert("Failed to delete adoption information.");
+    } catch  {
+      Swal.fire("Error!", "Sorry, Someone just Adopted it", "error");
     }
   };
 
   return (
     <div>
-       
-        <Heading title={" Adoption Requests for Your Pets"}></Heading>
-       <div className="max-w-[420px] md:max-w-[610px] lg:max-w-7xl mx-auto px-5 overflow-x-auto">
-        {adoptPets?.filter((pet) => pet.adoptUser).length > 0 ? (
+      <Heading title={" Adoption Requests for Your Pets"}></Heading>
+      <div className="max-w-[420px] md:max-w-[610px] lg:max-w-7xl mx-auto px-5 overflow-x-auto">
+        {adoptPets?.length > 0 ? (
           <div className="overflow-x-auto  bg-lCard dark:bg-dCard  shadow-lg rounded-lg">
             <table className="min-w-full table-auto">
               <thead className=" bg-lCard dark:bg-dCard  border-b">
@@ -115,23 +116,22 @@ const AdoptionRequest = () => {
               </thead>
               <tbody>
                 {adoptPets
-                  .filter((pet) => pet.adoptUser) 
                   .map((pet) => (
                     <tr key={pet._id} className="border-b ">
                       <td className="py-4 px-4 text-sm font-medium ">
-                        {pet.petName?.substring(0,20)}
+                        {pet.petName?.substring(0, 20)}
                       </td>
                       <td className="py-4 px-4 text-sm font-medium ">
-                        {pet.adoptUser?.substring(0,20)}
+                        {pet.adoptUser?.substring(0, 20)}
                       </td>
                       <td className="py-4 px-4 text-sm opacity-80">
-                        {pet.adoptEmail?.substring(0,20)}
+                        {pet.adoptEmail?.substring(0, 20)}
                       </td>
                       <td className="py-4 px-4 text-sm opacity-80">
                         {pet.phone}
                       </td>
                       <td className="py-4 px-4 text-sm opacity-80">
-                        {pet.address?.substring(0,20)}
+                        {pet.address?.substring(0, 20)}
                       </td>
                       <td className="py-4 px-4 text-sm opacity-80 flex space-x-2">
                         <button
@@ -141,15 +141,17 @@ const AdoptionRequest = () => {
                           Delete
                         </button>
                         <button
-                          onClick={() => handleUpdateAdoptInfo(pet._id)}
-                          disabled={pet.adopted === "true"}
+                          onClick={() => {handleUpdateAdoptInfo(pet.petId)
+                           
+                          }}
+                          disabled={pet.adopted === true}
                           className={`px-4 py-2 rounded-md text-white ${
-                            pet.adopted === "true"
+                            pet.adopted === true
                               ? "bg-gray-400 cursor-not-allowed"
                               : "bg-green-600 hover:bg-green-700"
                           }`}
                         >
-                          {pet.adopted === "true" ? "Accepted" : "Accept"}
+                          {pet.adopted === true ? "Accepted" : "Accept"}
                         </button>
                       </td>
                     </tr>
@@ -158,7 +160,9 @@ const AdoptionRequest = () => {
             </table>
           </div>
         ) : (
-          <NoData />
+         <DashboardNoData
+         title={'No Adoption Requests Found'}
+         ></DashboardNoData>
         )}
       </div>
     </div>
