@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import LoadingSpinner from "../../Components/Reusable/LoadingSpinner";
 
 
 const RecommendedCampaigns = () => {
@@ -18,7 +19,7 @@ const RecommendedCampaigns = () => {
     },
   });
 
-  if (isLoading) return <div>Loading recommended campaigns...</div>;
+  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
   if (error) return <div>Error: {error.message}</div>;
 
   return (

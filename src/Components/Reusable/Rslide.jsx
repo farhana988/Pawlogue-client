@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 
+import { Link } from "react-router-dom";
+
 const Rslide = ({ imageSrc, title, description, buttonText }) => {
   return (
     <div className="relative">
@@ -28,7 +30,10 @@ const Rslide = ({ imageSrc, title, description, buttonText }) => {
           <button className="mt-4 px-3 lg:px-5 lg:py-2 py-1 text-xs md:text-sm lg:text-lg
            text-white bg-dBtn
             rounded-full transition duration-300">
+            <Link to='/petListing'>
             {buttonText}
+            </Link>
+          
           </button>
         </div>
       </div>

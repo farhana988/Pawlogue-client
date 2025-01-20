@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Container from "../../Components/Reusable/Container";
 import Heading from "../../Components/Reusable/Heading";
 import call from "../../assets/images/call-to-action.jpg";
@@ -23,7 +24,10 @@ const CallToAction = () => {
                 text-sm lg:text-base 
                bg-lBtn dark:bg-dBtn transition transform hover:scale-105"
             >
+              <Link to='/petListing'>
               Adopt Now
+              </Link>
+             
             </button>
           </div>
 
