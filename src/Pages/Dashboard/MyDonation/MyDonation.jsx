@@ -56,7 +56,8 @@ const MyDonation = () => {
   return (
     <div>
       <Heading title={"  My Donations"}></Heading>
-    <div className="max-w-[420px] md:max-w-[610px] lg:max-w-7xl mx-auto px-5 overflow-x-auto">
+    <div className="max-w-[420px] md:max-w-[610px] lg:max-w-7xl mx-auto px-5 overflow-x-auto
+    mb-20">
       {donations.length === 0 ? (
         <DashboardNoData
         title={'No Donation Found'}

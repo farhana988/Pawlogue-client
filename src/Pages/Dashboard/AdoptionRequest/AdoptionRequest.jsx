@@ -95,7 +95,8 @@ const AdoptionRequest = () => {
   return (
     <div>
       <Heading title={" Adoption Requests for Your Pets"}></Heading>
-      <div className="max-w-[420px] md:max-w-[610px] lg:max-w-7xl mx-auto px-5 overflow-x-auto">
+      <div className="max-w-[420px] md:max-w-[610px] lg:max-w-7xl mx-auto px-5 
+      overflow-x-auto mb-20">
         {adoptPets?.length > 0 ? (
           <div className="overflow-x-auto  bg-lCard dark:bg-dCard  shadow-lg rounded-lg">
             <table className="min-w-full table-auto">

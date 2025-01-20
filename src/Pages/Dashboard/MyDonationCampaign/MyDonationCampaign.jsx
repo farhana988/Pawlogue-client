@@ -23,7 +23,7 @@ const MyDonationCampaign = () => {
       <Heading title={"My Donation Campaign"}></Heading>
       <div
         className=" max-w-[420px] md:max-w-[610px] lg:max-w-7xl
-       mx-auto px-5"
+       mx-auto px-5 mb-20"
       >
         <div className="">
           {myDonationCampaigns.length > 0 ? (

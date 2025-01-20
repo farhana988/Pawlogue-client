@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import AllDonationsTable from "./AllDonationsTable";
+import Heading from "../../../../Components/Reusable/Heading";
 
 const AllDonations = () => {
   const axiosSecure = useAxiosSecure();
@@ -62,14 +63,15 @@ const AllDonations = () => {
 
   return (
     <div>
-      <div className="container mx-auto p-6">
-        <h2 className="text-2xl font-semibold mb-4">Donation Campaigns</h2>
+      <div className="container mx-auto p-6 mb-20">
+      <Heading title={"Donation Campaigns"}></Heading>
+       
 
         <table className="min-w-full table-auto border-collapse border border-gray-200">
           <thead>
-            <tr className="bg-gray-100 text-left">
+            <tr className=" bg-lCard dark:bg-dCard  text-left">
               <th className="px-4 py-2 border border-gray-300">Name</th>
-              <th className="px-4 py-2 border border-gray-300">Description</th>
+           
               <th className="px-4 py-2 border border-gray-300">Amount</th>
               <th className="px-4 py-2 border border-gray-300">Status</th>
               <th className="px-4 py-2 border border-gray-300">Actions</th>
