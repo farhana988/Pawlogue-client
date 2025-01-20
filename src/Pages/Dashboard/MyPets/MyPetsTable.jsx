@@ -137,7 +137,7 @@ const MyPetsTable = ({ pets }) => {
         confirmButtonText: "Yes, update it!",
       });
       if (result.isConfirmed) {
-        const response = await axiosSecure.patch(`/changeAdopt/${petId}`);
+        const response = await axiosSecure.patch(`/changeStatus/${petId}`);
         if (response.data.modifiedCount > 0) {
           const updatedPets = data.map((pet) =>
             pet._id === petId ? { ...pet, adopted: !pet.adopted } : pet

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
@@ -10,6 +10,8 @@ import DashboardNoData from "../../../Components/Reusable/DashboardNoData";
 const AdoptionRequest = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
+
+  const [acceptedPets, setAcceptedPets] = useState({}); // Tracks accepted pets by petId
 
   const {
     data: adoptPets,
@@ -74,6 +76,7 @@ const AdoptionRequest = () => {
         const response =   await axiosSecure.patch(`/changeAdopt/${petId}`);
 
         if (response.status === 200) {
+          setAcceptedPets((prev) => ({ ...prev, [petId]: true })); // Mark petId as accepted
           refetch();
           Swal.fire("Success!", "Adoption request accepted.", "success");
         } else {
@@ -141,18 +144,16 @@ const AdoptionRequest = () => {
                           Delete
                         </button>
                         <button
-                          onClick={() => {handleUpdateAdoptInfo(pet.petId)
-                           
-                          }}
-                          disabled={pet.adopted === true}
-                          className={`px-4 py-2 rounded-md text-white ${
-                            pet.adopted === true
-                              ? "bg-gray-400 cursor-not-allowed"
-                              : "bg-green-600 hover:bg-green-700"
-                          }`}
-                        >
-                          {pet.adopted === true ? "Accepted" : "Accept"}
-                        </button>
+                        onClick={() => handleUpdateAdoptInfo(pet.petId)} 
+                        disabled={acceptedPets[pet.petId] || pet.adopted === true} 
+                        className={`px-4 py-2 rounded-md text-white ${
+                          acceptedPets[pet.petId] || pet.adopted === true
+                            ? "bg-gray-400 cursor-not-allowed"
+                            : "bg-green-600 hover:bg-green-700"
+                        }`}
+                      >
+                        {acceptedPets[pet.petId] || pet.adopted === true ? "Accepted" : "Accept"} 
+                      </button>
                       </td>
                     </tr>
                   ))}
