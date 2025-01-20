@@ -1,7 +1,7 @@
 
-# Pawlogue
+# Pawlogue (A pet adoption platform)
 
-A pet adoption platform where you can find and adopt your new furry friend while supporting donation campaigns to help pets in need.
+ Here you can find and adopt your new furry friend of your likes while supporting donation campaigns to help pets in need.
 
 ## Purpose
 The purpose of this project is to create a platform that connects individuals with pets in need of loving homes, while also allowing users to contribute to donation campaigns that support the well-being of these animals. The site aims to provide a user-friendly experience for pet adoption and charitable giving, making it easier for people to help pets in need and improve their lives.
