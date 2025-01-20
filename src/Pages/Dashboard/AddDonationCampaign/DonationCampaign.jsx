@@ -50,7 +50,7 @@ const DonationCampaign = () => {
         timer: 1500,
       });
       form.reset()
-      
+        setUploadImage({ image: { name: "Upload Button" } });
     } catch{
  
       Swal.fire("Something went wrong!");

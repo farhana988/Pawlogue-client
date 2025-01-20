@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import Container from "../../Components/Reusable/Container";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import PetListingCard from "./PetListingCard";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
@@ -8,11 +8,29 @@ import CardSkeleton from "../../Components/Reusable/CardSkeleton";
 import Heading from "../../Components/Reusable/Heading";
 import { useLocation } from "react-router-dom";
 
+const useDebounce = (value, delay) => {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+};
+
 const PetListing = () => {
   const location = useLocation();
   const axiosPublic = useAxiosPublic();
   const [filter, setFilter] = useState("");
   const [search, setSearch] = useState("");
+
+  const debouncedSearch = useDebounce(search, 800);
 
   const { ref, inView } = useInView();
 
@@ -24,7 +42,7 @@ const PetListing = () => {
     isLoading,
     error,
   } = useInfiniteQuery({
-    queryKey: ["allPets", { filter, search }],
+    queryKey: ["allPets", { filter, search: debouncedSearch }],
     queryFn: async ({ pageParam = 1 }) => {
       const { data } = await axiosPublic(
         `/allPets?filter=${filter}&search=${search}&page=${pageParam}&limit=6`
@@ -79,7 +97,6 @@ const PetListing = () => {
               <option value="reptile">Reptile</option>
               <option value="bird">Bird</option>
               <option value="livestock">Livestock</option>
-              {/* Add other categories as needed */}
             </select>
           </div>
 

@@ -39,7 +39,7 @@ const DonationCampaignForm = ({
                   name="name"
                   id="name"
                   type="text"
-                  placeholder="Plant Name"
+                  placeholder=" Name"
                   required
                 />
               </div>
@@ -53,7 +53,7 @@ const DonationCampaignForm = ({
                 </label>
                 <textarea
                   id="shortDescription"
-                  placeholder="Write plant description here..."
+                  placeholder="Write donation campaign description here..."
                   className="block rounded-md focus:lime-300 w-full h-20 px-4 py-3   bg-lCard dark:bg-dCard "
                   name="shortDescription"
                 ></textarea>
@@ -68,7 +68,7 @@ const DonationCampaignForm = ({
                 </label>
                 <textarea
                   id="longDescription"
-                  placeholder="Write plant description here..."
+                  placeholder="Write donation campaign description here..."
                   className="block rounded-md focus:lime-300 w-full h-32 px-4 py-3  bg-lCard dark:bg-dCard  "
                   name="longDescription"
                 ></textarea>

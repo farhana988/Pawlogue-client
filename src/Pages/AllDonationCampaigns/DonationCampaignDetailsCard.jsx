@@ -2,7 +2,7 @@
 
 
 const DonationCampaignDetailsCard = ({donationDetails}) => {
-    const {email, image, amount, longDescription, name,  shortDescription, date } =
+    const { image, amount, longDescription, name,  shortDescription, date } =
     donationDetails || {};
     return (
         <div>
@@ -36,10 +36,10 @@ const DonationCampaignDetailsCard = ({donationDetails}) => {
             </p>
 
             {/* User Information */}
-            <p className="opacity-80">
+            {/* <p className="opacity-80">
               <span className="font-semibold">Created By:</span>{" "}
               {email}
-            </p>
+            </p> */}
 
             {/* Short Description */}
             <p className="opacity-80">

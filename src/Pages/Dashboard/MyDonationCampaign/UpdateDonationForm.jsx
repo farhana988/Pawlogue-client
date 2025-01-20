@@ -52,7 +52,7 @@ const UpdateDonationForm = ({
                   </label>
                   <textarea
                     id="shortDescription"
-                    placeholder="Write plant description here..."
+                    placeholder="Write donation campaign description here..."
                     className="block rounded-md focus:lime-300 w-full h-20 px-4 py-3 bg-lCard dark:bg-dCard"
                     name="shortDescription"
                     defaultValue={shortDescription} 
@@ -65,7 +65,7 @@ const UpdateDonationForm = ({
                   </label>
                   <textarea
                     id="longDescription"
-                    placeholder="Write plant description here..."
+                    placeholder="Write donation campaign description here..."
                     className="block rounded-md focus:lime-300 w-full h-32 px-4 py-3 bg-lCard dark:bg-dCard"
                     name="longDescription"
                     defaultValue={longDescription} 
