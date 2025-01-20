@@ -249,7 +249,8 @@ const MyPetsTable = ({ pets }) => {
                       <Trash size={16} />
                     </button>
                     <button
-                      className="bg-green-500 text-white px-4 py-2 rounded-md"
+                      className={`bg-green-500 text-white px-4 py-2 rounded-md
+                        ${ row.original?.adopted ? "bg-green-500" : "bg-yellow-500"}`}
                       onClick={() => handleStatus(row.original._id)}
                     >
                       {row.original.adopted === false ? (

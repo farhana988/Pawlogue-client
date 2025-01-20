@@ -76,7 +76,7 @@ const AdoptionRequest = () => {
         const response =   await axiosSecure.patch(`/changeAdopt/${petId}`);
 
         if (response.status === 200) {
-          setAcceptedPets((prev) => ({ ...prev, [petId]: true })); // Mark petId as accepted
+          setAcceptedPets((prev) => ({ ...prev, [petId]: true })); 
           refetch();
           Swal.fire("Success!", "Adoption request accepted.", "success");
         } else {
