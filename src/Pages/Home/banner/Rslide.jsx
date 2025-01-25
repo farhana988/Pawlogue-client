@@ -2,6 +2,8 @@
 
 import { Link } from "react-router-dom";
 
+
+
 const Rslide = ({ imageSrc, title, description, buttonText }) => {
   return (
     <div className="relative">

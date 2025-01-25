@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { handleImageUpload } from "../../../api/utils";
 import UpdatePetForm from "./UpdatePetForm";
 import { useParams } from "react-router-dom";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQueryClient } from "@tanstack/react-query";
-import { AuthContext } from "../../../Provider/AuthProvider";
-import SkeletonLoader from "../../../Components/loading/SkeletonLoader";
-import Heading from "../../../Components/Reusable/Heading";
+import { handleImageUpload } from "../../../../api/utils";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { AuthContext } from "../../../../Provider/AuthProvider";
+import SkeletonLoader from "../../../../Components/loading/SkeletonLoader";
+import Heading from "../../../../Components/Reusable/Heading";
 
 const UpdatePet = () => {
   const { id } = useParams();

@@ -5,17 +5,13 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Social/Login";
 import Registration from "../Pages/Social/Register";
 import DashboardLayout from "../Layout/DashboardLayout";
-import MyPets from "../Pages/Dashboard/MyAddedPets/MyPets";
 import AddPet from "../Pages/Dashboard/AddPet/AddPet";
 import PrivateRoute from "./PrivateRoute";
-import UpdatePet from "../Pages/Dashboard/MyAddedPets/UpdatePet";
-import DonationCampaign from "../Pages/Dashboard/AddDonationCampaign/DonationCampaign";
-import MyDonationCampaign from "../Pages/Dashboard/MyAddedDonationCampaign/MyDonationCampaign";
-import UpdateDonation from "../Pages/Dashboard/MyAddedDonationCampaign/UpdateDonationCampaign/UpdateDonation";
+
 import AllUsers from "../Pages/Dashboard/AdminOnly/AllUsers/AllUsers";
 import AllPets from "../Pages/Dashboard/AdminOnly/AllPets/AllPets";
 import AllDonations from "../Pages/Dashboard/AdminOnly/AllDonations/AllDonations";
-import PetListing from "../Pages/PetListing/PetListing";
+import PetListing from "../Pages/PetListing/PetListing/PetListing";
 import AllDonationCampaigns from "../Pages/AllDonationCampaigns/AllDonationCampaigns/AllDonationCampaigns";
 import PetDetails from "../Pages/PetListing/petDetails/PetDetails";
 import MyDonation from "../Pages/Dashboard/MyDonation/MyDonation";
@@ -23,6 +19,11 @@ import AdoptionRequest from "../Pages/Dashboard/AdoptionRequest/AdoptionRequest"
 import DonationCampaignDetails from "../Pages/AllDonationCampaigns/DonationCampaignDetails/DonationCampaignDetails";
 import AdminRoute from "./AdminRoute";
 import Statistics from "../Pages/Dashboard/Statistics";
+import MyPets from "../Pages/Dashboard/MyAddedPets/MyPets/MyPets";
+import UpdatePet from "../Pages/Dashboard/MyAddedPets/UpdatePets/UpdatePet";
+import DonationCampaign from "../Pages/Dashboard/AddDonationCampaign/DonationCampaign";
+import MyDonationCampaign from "../Pages/Dashboard/MyAddedDonationCampaign/MyDonationCampaign/MyDonationCampaign";
+import UpdateDonation from "../Pages/Dashboard/MyAddedDonationCampaign/UpdateDonationCampaign/UpdateDonation";
 
 export const router = createBrowserRouter([
   {
@@ -75,109 +76,64 @@ export const router = createBrowserRouter([
       {
         path: "add-pet",
         element: (
-          <PrivateRoute>
-            <AddPet></AddPet>
-          </PrivateRoute>
+          <PrivateRoute><AddPet></AddPet></PrivateRoute>
         ),
       },
       {
         path: "my-pets",
         element: (
-          <PrivateRoute>
-            {" "}
-            <MyPets></MyPets>{" "}
-          </PrivateRoute>
+          <PrivateRoute>  <MyPets></MyPets>  </PrivateRoute>
         ),
       },
       {
         path: "updatePet/:id",
         element: (
-          <PrivateRoute>
-            {" "}
-            <UpdatePet></UpdatePet>{" "}
-          </PrivateRoute>
+          <PrivateRoute> <UpdatePet></UpdatePet>   </PrivateRoute>
         ),
       },
-
+     
       {
         path: "create-donation",
         element: (
-          <PrivateRoute>
-            {" "}
-            <DonationCampaign></DonationCampaign>{" "}
-          </PrivateRoute>
+          <PrivateRoute>     <DonationCampaign></DonationCampaign>  </PrivateRoute>
         ),
       },
       {
         path: "my-donations-camp",
         element: (
-          <PrivateRoute>
-            {" "}
-            <MyDonationCampaign></MyDonationCampaign>{" "}
-          </PrivateRoute>
+          <PrivateRoute>   <MyDonationCampaign></MyDonationCampaign>  </PrivateRoute>
         ),
       },
       {
         path: "updateDonation/:id",
         element: (
-          <PrivateRoute>
-            {" "}
-            <UpdateDonation></UpdateDonation>{" "}
-          </PrivateRoute>
+          <PrivateRoute>    <UpdateDonation></UpdateDonation>  </PrivateRoute>
         ),
       },
       {
         path: "my-donations",
-        element: (
-          <PrivateRoute>
-            {" "}
-            <MyDonation></MyDonation>{" "}
-          </PrivateRoute>
-        ),
+        element: <PrivateRoute> <MyDonation></MyDonation> </PrivateRoute>,
       },
       {
         path: "adoptionReq",
-        element: (
-          <PrivateRoute>
-            {" "}
-            <AdoptionRequest></AdoptionRequest>{" "}
-          </PrivateRoute>
-        ),
+        element: <PrivateRoute> <AdoptionRequest></AdoptionRequest>  </PrivateRoute>,
       },
       {
         path: "allUsers",
         element: (
-          <PrivateRoute>
-            {" "}
-            <AdminRoute>
-              {" "}
-              <AllUsers></AllUsers>{" "}
-            </AdminRoute>
-          </PrivateRoute>
+          <PrivateRoute> <AdminRoute> <AllUsers></AllUsers>  </AdminRoute></PrivateRoute>
         ),
       },
       {
         path: "allPets",
         element: (
-          <PrivateRoute>
-            {" "}
-            <AdminRoute>
-              {" "}
-              <AllPets></AllPets>{" "}
-            </AdminRoute>{" "}
-          </PrivateRoute>
+          <PrivateRoute> <AdminRoute>  <AllPets></AllPets>  </AdminRoute>  </PrivateRoute>
         ),
       },
       {
         path: "allDonations",
         element: (
-          <PrivateRoute>
-            {" "}
-            <AdminRoute>
-              {" "}
-              <AllDonations></AllDonations>
-            </AdminRoute>{" "}
-          </PrivateRoute>
+          <PrivateRoute> <AdminRoute> <AllDonations></AllDonations></AdminRoute>   </PrivateRoute>
         ),
       },
     ],

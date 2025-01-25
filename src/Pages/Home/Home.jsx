@@ -1,10 +1,10 @@
 import { useLocation } from "react-router-dom";
 import AboutUs from "./AboutUs";
-import Banner from "./Banner";
 import CallToAction from "./CallToAction";
 import PawCareTips from "./PawCareTips/PawCareTips";
 import PetsCategory from "./PetsCategorySection/PetsCategory";
 import SuccessStories from "./SuccessStories/SuccessStories";
+import Banner from "./banner/Banner";
 // import Volunteer from "./Volunteer";
 
 const Home = () => {

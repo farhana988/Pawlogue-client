@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useContext, useState } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
+import { AuthContext } from "../../../Provider/AuthProvider";
+
 
 const AdoptModal = ({ petDetails, isOpen, onClose, onSubmit }) => {
   const [phone, setPhone] = useState("");

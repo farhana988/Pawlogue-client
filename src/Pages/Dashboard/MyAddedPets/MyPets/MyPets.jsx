@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
-import { AuthContext } from "../../../Provider/AuthProvider";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import MyPetsTable from "./MyPetsTable";
-import Heading from "../../../Components/Reusable/Heading";
-import DashboardNoData from "../../../Components/Reusable/DashboardNoData";
+import { AuthContext } from "../../../../Provider/AuthProvider";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import Heading from "../../../../Components/Reusable/Heading";
+import DashboardNoData from "../../../../Components/Reusable/DashboardNoData";
 
 const MyPets = () => {
   const { user } = useContext(AuthContext);

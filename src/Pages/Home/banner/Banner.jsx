@@ -1,10 +1,11 @@
 import { Carousel } from "flowbite-react";
-import slide1 from "../../assets/slides/slide1.jpg";
-import slide2 from "../../assets/slides/slide2.jpg";
-import slide3 from "../../assets/slides/slide3.jpg";
-import slide4 from "../../assets/slides/slide4.jpg";
-import slide5 from "../../assets/slides/slide5.webp";
-import Rslide from "../../Components/Reusable/Rslide";
+import slide1 from "../../../assets/slides/slide1.jpg";
+import slide2 from "../../../assets/slides/slide2.jpg";
+import slide3 from "../../../assets/slides/slide3.jpg";
+import slide4 from "../../../assets/slides/slide4.jpg";
+import slide5 from "../../../assets/slides/slide5.webp";
+import Rslide from "./Rslide";
+
 
 const Banner = () => {
   return (
