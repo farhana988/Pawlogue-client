@@ -5,7 +5,7 @@ import PawCareTips from "./PawCareTips/PawCareTips";
 import PetsCategory from "./PetsCategorySection/PetsCategory";
 import SuccessStories from "./SuccessStories/SuccessStories";
 import Banner from "./banner/Banner";
-// import Volunteer from "./Volunteer";
+import Volunteer from "./Volunteer";
 
 const Home = () => {
   const location = useLocation();
@@ -24,7 +24,7 @@ const Home = () => {
       <AboutUs></AboutUs>
       <SuccessStories></SuccessStories>
       <PawCareTips></PawCareTips>
-      {/* <Volunteer></Volunteer> */}
+      <Volunteer></Volunteer>
     </div>
   );
 };

@@ -6,6 +6,8 @@ import SuccessStoriesCard from "./SuccessStoriesCard";
 import Heading from "../../../Components/Reusable/Heading";
 import Container from "../../../Components/Reusable/Container";
 import Swal from "sweetalert2";
+import Lottie from "lottie-react";
+import quote from "../../../assets/lottie/quote.json";
 
 const SuccessStories = () => {
   const [stories, setStories] = useState([]);
@@ -66,9 +68,16 @@ const SuccessStories = () => {
     ],
   };
   return (
-    <div>
+    <Container>
+      <section className="relative">
       <Heading title={" Success Stories of Little Paw Paw"} />
-      <Container>
+       {/*  Image */}
+       <div className="hidden md:flex absolute w-14 lg:w-16 -top-5 md:left-5 lg:left-28">
+           <Lottie animationData={quote}></Lottie>
+         </div>
+      </section>
+   
+     
         {/* React Slick Carousel */}
         <Slider {...sliderSettings}>
           {stories.map((story, index) => (
@@ -77,8 +86,8 @@ const SuccessStories = () => {
             </div>
           ))}
         </Slider>
-      </Container>
-    </div>
+    
+    </Container>
   );
 };
 

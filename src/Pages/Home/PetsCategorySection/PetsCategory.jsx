@@ -32,54 +32,51 @@ const PetsCategory = () => {
   return (
     <div>
       <Container>
-        <section className="max-w-7xl mx-auto ">
-          <Heading title={" Explore Pet Categories"}></Heading>
+        <Heading title={" Explore Pet Categories"}></Heading>
 
-          {/* Category Buttons */}
-          <div className="flex flex-wrap justify-center mb-10 gap-4 p-6">
-            {[
-              "cat",
-              "dog",
-              "rabbit",
-              "fish",
-              "reptile",
-              "bird",
-              "livestock",
-              "Exotic Pets",
-            ].map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-3 md:px-5 lg:px-8 py-1  rounded-tr-3xl rounded-bl-3xl rounded-lg
+        {/* Category Buttons */}
+        <div className="flex flex-wrap justify-center mb-10 gap-4">
+          {[
+            "cat",
+            "dog",
+            "rabbit",
+            "fish",
+            "reptile",
+            "bird",
+            "livestock",
+            "Exotic Pets",
+          ].map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-3 md:px-5 lg:px-8 py-1  rounded-tr-3xl rounded-bl-3xl rounded-lg
                    border-2 border-lBtn
                    dark:border-dBtn
-                     text-sm md:text-base lg:text-2xl ${
-                        selectedCategory === category
-                          ? "bg-lBtn dark:bg-dBtn  text-white"
-                          : "bg-gray-200 text-gray-700 dark:bg-dCard dark:text-ivory"
-                      } hover:bg-lBtn hover:dark:bg-dBtn  transition duration-300`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+                     text-sm md:text-base lg:text-xl ${
+                       selectedCategory === category
+                         ? "bg-lBtn dark:bg-dBtn  text-white"
+                         : "bg-gray-200 text-gray-700 dark:bg-dCard dark:text-ivory"
+                     } hover:bg-lBtn hover:dark:bg-dBtn  transition duration-300`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
 
-          {/* Pets Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
-            {filteredPets.length > 0 ? (
-              filteredPets.slice(0, 4).map((pet) => (
-                <PetsCategoryCard
-                key={pet._id}
-                pet={pet}
-                ></PetsCategoryCard>
+        {/* Pets Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+          {filteredPets.length > 0 ? (
+            filteredPets
+              .slice(0, 4)
+              .map((pet) => (
+                <PetsCategoryCard key={pet._id} pet={pet}></PetsCategoryCard>
               ))
-            ) : (
-              <div className=" ">
-                <NoData title={"No pets found !"}></NoData>
-              </div>
-            )}
-          </div>
-        </section>
+          ) : (
+            <div className=" ">
+              <NoData title={"No pets found !"}></NoData>
+            </div>
+          )}
+        </div>
       </Container>
     </div>
   );

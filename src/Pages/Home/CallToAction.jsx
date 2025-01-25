@@ -20,9 +20,9 @@ const CallToAction = () => {
               adorable companions and make a lasting positive impact.
             </p>
             <button
-              className="font-semibold px-5 py-2 rounded-full
+              className="font-semibold px-5 py-2  rounded-tr-3xl rounded-bl-3xl rounded-lg
                 text-sm lg:text-base 
-               bg-lBtn dark:bg-dBtn transition transform hover:scale-105"
+               bg-lBtn dark:bg-dBtn transition transform hover:scale-125"
             >
               <Link to='/petListing'>
               Adopt Now
@@ -37,8 +37,8 @@ const CallToAction = () => {
               src={call}
               alt="Adopt a pet"
               className="w-full h-72 md:h-60 lg:h-96 object-cover rounded-b-[190px] rounded-l-[190px] rounded-tr-xl
-               shadow-2xl 
-              transform transition-all hover:scale-105"
+               shadow-2xl animate__animated animate__pulse animate__infinite animate__slower
+         "
             />
           </div>
         </div>

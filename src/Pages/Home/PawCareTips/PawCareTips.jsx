@@ -36,9 +36,9 @@ const PawCareTips = () => {
   );
 
   return (
-    <div className="">
-      <Heading title={"Pet Care Tips"}></Heading>
-      <Container>
+    <Container>
+      <Heading title={"Paw Care Tips"}></Heading>
+    
         <div className="flex flex-wrap justify-center gap-4 mb-6">
           {/* category btn */}
           {data?.map((category) => (
@@ -63,14 +63,14 @@ const PawCareTips = () => {
         </div>
 
         {selectedCategory && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {selectedCategoryData?.tips?.slice(0,6)?.map((tip, index) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
+            {selectedCategoryData?.tips?.slice(0,4)?.map((tip, index) => (
               <PawCareTipsCard key={index} tip={tip}></PawCareTipsCard>
             ))}
           </div>
         )}
-      </Container>
-    </div>
+    
+    </Container>
   );
 };
 

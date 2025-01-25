@@ -1,3 +1,4 @@
+import { ReactTyped } from "react-typed";
 import Heading from "../../Components/Reusable/Heading";
 import bg from "../../assets/images/about.png";
 
@@ -22,14 +23,29 @@ const AboutUs = () => {
             className="text-xl lg:text-2xl text-gray-800 dark:text-gray-300 mb-4 md:px-20
             font-bold"
           >
-            We are a passionate team working to connect loving families with
-            pets in need of a home. Our platform makes pet adoption easy and
-            accessible. Whether you are looking for a cat, dog, rabbit, or other
-            pets, our goal is to help animals find their forever homes.
+            <ReactTyped
+              strings={[
+                "We are a passionate team working to connect loving families with pets in need of a home. Our platform makes pet adoption easy and accessible. Whether you are looking for a cat, dog, rabbit, or other pets, our goal is to help animals find their forever homes. ",
+              ]}
+              typeSpeed={30} // Speed at which typing happens (ms per letter)
+              backSpeed={50} // Speed at which backspacing happens
+              backDelay={1000} // Delay before backspace starts
+              startDelay={100} // Delay before typing starts
+              // Loop the typing animation
+              showCursor={true} // Show the typing cursor
+            />
           </p>
           <p className="md:text-lg  text-gray-700 dark:text-gray-400 font-semibold">
-            Together, we can make the world a better place for pets and their
-            owners!
+          <ReactTyped
+                strings={[
+                  "Together, we can make the world a better place for pets and their owners!",
+                ]}
+                typeSpeed={40}
+                backSpeed={50}
+                backDelay={1000}
+                startDelay={13000}
+                showCursor={true}
+              />
           </p>
         </div>
       </div>
