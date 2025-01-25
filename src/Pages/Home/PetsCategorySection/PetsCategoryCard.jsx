@@ -37,7 +37,7 @@ const PetsCategoryCard = ({ pet }) => {
       <div className="mt-auto flex justify-end">
       <Link
         to={`/petDetails/${_id}`}
-        className=" font-semibold px-4 py-1 rounded-full 
+        className=" font-semibold px-4 py-1  rounded-tr-3xl rounded-bl-3xl rounded-lg
                   text-xs lg:text-base w-16 lg:w-20
                   bg-lBtn dark:bg-dBtn"
       >

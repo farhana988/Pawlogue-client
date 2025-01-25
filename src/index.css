@@ -6,15 +6,9 @@ html {
   scroll-behavior: smooth;
   overflow-y: scroll;
 }
-/* Tooltip on hover */
-.user-info:hover .user-name {
-  opacity: 1;
-}
-#logo {
-  font-family: "Caveat", cursive;
-}
+
 .active {
-  font-family: "Caveat", cursive;
+  font-family: "Snowburst One", cursive;
 }
 
 svg.star-svg {
@@ -24,7 +18,7 @@ svg.star-svg {
   body {
     background:  linear-gradient(to right, #c6c3f7c9,#f3f4f6 , #e4eefa);
     color: #111827;
-    font-family: "Chakra Petch";
+    font-family: "Source Code Pro";
   }
 
   .dark body {

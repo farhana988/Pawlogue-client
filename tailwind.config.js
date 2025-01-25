@@ -21,7 +21,7 @@ export default {
         lBtn: "#6db39f",
       },
       fontFamily: {
-        exo: ["Exo 2"],
+        snow: ["Snowburst One"],
       },
     },
   },

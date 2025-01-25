@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-
 import ThemeToggle from "./ThemeToggle";
 import { AuthContext } from "../../Provider/AuthProvider";
 import logo from "../../assets/images/logo.png"
 import def from "../../assets/images/default.jpg"
+import paw from "../../assets/images/paw.png"
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -27,8 +27,8 @@ const Navbar = () => {
         className={({ isActive }) =>
           ` ${
             isActive
-              ? "active text-nav dark:text-ivory md:text-xl lg:text-2xl font-extrabold"
-              : "font-medium md:text-lg lg:text-xl text-nav dark:text-ivory hover:text-[#536493] dark:hover:text-slate-300"
+              ? "active text-nav dark:text-ivory md:text-lg lg:text-xl font-extrabold"
+              : "font-medium  lg:text-lg text-nav dark:text-ivory hover:text-[#536493] dark:hover:text-slate-300"
           }`
         }
       >
@@ -41,8 +41,8 @@ const Navbar = () => {
         className={({ isActive }) =>
           ` ${
             isActive
-              ? "active text-nav dark:text-ivory md:text-xl lg:text-2xl font-extrabold"
-              : "font-medium md:text-lg lg:text-xl text-nav dark:text-ivory hover:text-[#536493] dark:hover:text-slate-300"
+              ? "active text-nav dark:text-ivory md:text-lg lg:text-xl font-extrabold"
+              : "font-medium  lg:text-lg text-nav dark:text-ivory hover:text-[#536493] dark:hover:text-slate-300"
           }`
         }
       >
@@ -55,8 +55,8 @@ const Navbar = () => {
         className={({ isActive }) =>
           ` ${
             isActive
-              ? "active text-nav dark:text-ivory md:text-xl lg:text-2xl font-extrabold"
-              : "font-medium md:text-lg lg:text-xl text-nav dark:text-ivory hover:text-[#536493] dark:hover:text-slate-300"
+              ? "active text-nav dark:text-ivory md:text-lg lg:text-xl font-extrabold"
+              : "font-medium  lg:text-lg text-nav dark:text-ivory hover:text-[#536493] dark:hover:text-slate-300"
           }`
         }
       >
@@ -80,6 +80,17 @@ const Navbar = () => {
            className="w-10 lg:w-14"
             src={logo} alt="" />
           </Link>
+          <div className="text-nav dark:text-ivory font-snow lg:flex gap-4 relative
+          items-center justify-center hidden ">
+            <span>
+            Pa
+              </span>
+            <img 
+            className="w-12 -top-2 left-4  object-cover absolute -rotate-12"
+            src={paw} alt="" />
+              <span>logue</span>
+            
+            </div>
            {/* Theme Toggle */}
        
            <ThemeToggle />

@@ -31,7 +31,7 @@ const Rslide = ({ imageSrc, title, description, buttonText }) => {
           {/* btn */}
           <button className="mt-4 px-3 lg:px-5 lg:py-2 py-1 text-xs md:text-sm lg:text-lg
            text-white bg-dBtn
-            rounded-full transition duration-300">
+            rounded-tr-3xl rounded-bl-3xl rounded-lg transition duration-300">
             <Link to='/petListing'>
             {buttonText}
             </Link>

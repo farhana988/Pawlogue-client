@@ -50,7 +50,8 @@ const PetsCategory = () => {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-3 md:px-5 lg:px-8 py-1 rounded-full border-2 border-lBtn
+                className={`px-3 md:px-5 lg:px-8 py-1  rounded-tr-3xl rounded-bl-3xl rounded-lg
+                   border-2 border-lBtn
                    dark:border-dBtn
                      text-sm md:text-base lg:text-2xl ${
                         selectedCategory === category
