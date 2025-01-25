@@ -7,13 +7,12 @@ const MainLayout = () => {
   return (
     <div>
       <Navbar></Navbar>
+      
       <div className="min-h-screen">
-      <Outlet></Outlet>
+        <Outlet></Outlet>
       </div>
-    
 
       <FooterComp></FooterComp>
-
     </div>
   );
 };

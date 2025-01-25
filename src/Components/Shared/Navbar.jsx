@@ -80,6 +80,7 @@ const Navbar = () => {
            className="w-10 lg:w-14"
             src={logo} alt="" />
           </Link>
+          {/* name */}
           <div className="text-nav dark:text-ivory font-snow lg:flex gap-4 relative
           items-center justify-center hidden ">
             <span>

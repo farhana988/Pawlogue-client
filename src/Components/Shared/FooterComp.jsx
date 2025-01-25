@@ -15,6 +15,7 @@ import {
   BsTwitter,
 } from "react-icons/bs";
 import Container from "../Reusable/Container";
+import paw from "../../assets/images/paw.png";
 
 const FooterComp = () => {
   return (
@@ -30,8 +31,19 @@ const FooterComp = () => {
               className="pb-5 md:pb-0 md:w-96 lg:w-[600px] md:pr-10 lg:pr-0
             "
             >
-              <h2 className="font-bold opacity-90  text-xl">Pawlogue </h2>
-              <p className="opacity-70">
+              <div
+                className="font-extrabold dark:text-ivory font-snow flex gap-4 relative
+          items-center text-lg lg:text-2xl "
+              >
+                <span>Pa</span>
+                <img
+                  className="w-9 lg:w-12 -top-2 left-3 lg:left-4  object-cover absolute -rotate-12"
+                  src={paw}
+                  alt=""
+                />
+                <span>logue</span>
+              </div>
+              <p className="opacity-70 text-sm lg:text-base">
                 To provide a comprehensive platform for pet lovers, enabling
                 them to adopt, review, and explore pet-related services while
                 fostering a community of responsible pet ownership
