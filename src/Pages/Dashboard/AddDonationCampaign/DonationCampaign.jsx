@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import Heading from "../../../Components/Reusable/Heading";
 
 const DonationCampaign = () => {
   const { user } = useContext(AuthContext);
@@ -59,10 +60,9 @@ const DonationCampaign = () => {
       setLoading(false);
     }
   };
-
-  
   return (
-    <div>
+    <div className=" mx-auto">
+       <Heading title={"Create Donation Campaign"}></Heading>
       <DonationCampaignForm
         handleSubmit={handleSubmit}
         uploadImage={uploadImage}

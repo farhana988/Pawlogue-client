@@ -34,39 +34,39 @@ const AddPetForm = ({
           className="text-red-500 text-sm"
         />
       </div>
+      <section className="flex gap-3 w-full justify-between">
+        {/* Pet Name */}
+        <div>
+          <label className="block mb-1">Pet Name</label>
+          <Field
+            type="text"
+            name="name"
+            className="w-full lg:w-72 p-2 border rounded bg-lCard dark:bg-dCard "
+            placeholder="Enter pet name"
+          />
+          <ErrorMessage
+            name="name"
+            component="p"
+            className="text-red-500 text-sm"
+          />
+        </div>
 
-      {/* Pet Name */}
-      <div>
-        <label className="block mb-1">Pet Name</label>
-        <Field
-          type="text"
-          name="name"
-          className="w-full p-2 border rounded bg-lCard dark:bg-dCard "
-          placeholder="Enter pet name"
-        />
-        <ErrorMessage
-          name="name"
-          component="p"
-          className="text-red-500 text-sm"
-        />
-      </div>
-
-      {/* Pet Age */}
-      <div>
-        <label className="block mb-1">Pet Age</label>
-        <Field
-          type="number"
-          name="age"
-          className="w-full p-2 border rounded bg-lCard dark:bg-dCard "
-          placeholder="Enter pet age"
-        />
-        <ErrorMessage
-          name="age"
-          component="p"
-          className="text-red-500 text-sm"
-        />
-      </div>
-
+        {/* Pet Age */}
+        <div>
+          <label className="block mb-1">Pet Age</label>
+          <Field
+            type="number"
+            name="age"
+            className="w-full lg:w-72 p-2 border rounded bg-lCard dark:bg-dCard "
+            placeholder="Enter pet age"
+          />
+          <ErrorMessage
+            name="age"
+            component="p"
+            className="text-red-500 text-sm"
+          />
+        </div>
+      </section>
       {/* Pet Category */}
       <div>
         <label className="block mb-1 ">Pet Category</label>
@@ -78,7 +78,7 @@ const AddPetForm = ({
           options={petCategories}
           onChange={(option) => setFieldValue("category", option.value)}
           placeholder="Select category"
-        className=" text-black"
+          className=" text-black"
         />
         <ErrorMessage
           name="category"
@@ -119,7 +119,6 @@ const AddPetForm = ({
         />
       </div>
 
-    
       {/* Long Description - WYSIWYG Editor */}
       <div>
         <label className="block mb-1">Long Description</label>
@@ -136,7 +135,6 @@ const AddPetForm = ({
         />
       </div>
 
-
       {/* Submit Button */}
       <div>
         <button
@@ -147,9 +145,11 @@ const AddPetForm = ({
                bg-lBtn dark:bg-dBtn"
           disabled={isSubmitting || uploading}
         >
-          {isSubmitting || uploading ? 
-          <FaSpinner className="animate-spin" />
-          : "Add Pet"}
+          {isSubmitting || uploading ? (
+            <FaSpinner className="animate-spin" />
+          ) : (
+            "Add Pet"
+          )}
         </button>
       </div>
     </Form>

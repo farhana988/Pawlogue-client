@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { useEffect, useState } from "react";
-import Heading from "../../../Components/Reusable/Heading";
+
 import { FaSpinner } from "react-icons/fa";
 
 const DonationCampaignForm = ({
@@ -23,7 +23,7 @@ const DonationCampaignForm = ({
 
   return (
     <div>
-         <Heading title={"Create Donation Campaign"}></Heading>
+        
       <div className="  flex flex-col justify-center mx-5 p-7 mb-20
       items-center rounded-xl  bg-lCard dark:bg-dCard ">
         <form onSubmit={handleSubmit}>

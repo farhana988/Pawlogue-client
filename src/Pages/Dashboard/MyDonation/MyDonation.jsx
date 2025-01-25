@@ -54,7 +54,7 @@ const MyDonation = () => {
   };
 
   return (
-    <div>
+    <div className="mx-auto">
       <Heading title={"  My Donations"}></Heading>
     <div className="max-w-[420px] md:max-w-[610px] lg:max-w-7xl mx-auto px-5 overflow-x-auto
     mb-20">

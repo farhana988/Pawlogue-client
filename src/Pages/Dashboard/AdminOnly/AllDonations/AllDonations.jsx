@@ -8,7 +8,7 @@ const AllDonations = () => {
   const axiosSecure = useAxiosSecure();
   const {
     data: donations = [],
-   
+
     error,
     refetch,
   } = useQuery({
@@ -18,14 +18,11 @@ const AllDonations = () => {
 
       return data;
     },
-   
   });
-  
+
   if (error) return <div>Error: {error.message}</div>;
 
   const handleDelete = async (donationId) => {
-  
-
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
@@ -51,8 +48,7 @@ const AllDonations = () => {
           );
         }
       }
-    } catch  {
-  
+    } catch {
       Swal.fire(
         "Error",
         "An error occurred while deleting the donation.",
@@ -62,33 +58,30 @@ const AllDonations = () => {
   };
 
   return (
-    <div>
-      <div className="container mx-auto p-6 mb-20">
-      <Heading title={"Donation Campaigns"}></Heading>
-       
+    <div className=" mx-auto p-6 mb-20">
+      <Heading title={"All Donation Campaigns"}></Heading>
 
-        <table className="min-w-full table-auto border-collapse border border-gray-200">
-          <thead>
-            <tr className=" bg-lCard dark:bg-dCard  text-left">
-              <th className="px-4 py-2 border border-gray-300">Name</th>
-           
-              <th className="px-4 py-2 border border-gray-300">Amount</th>
-              <th className="px-4 py-2 border border-gray-300">Status</th>
-              <th className="px-4 py-2 border border-gray-300">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {donations?.map((donation) => 
-             <AllDonationsTable
-             key={donation._id}
-             donation={donation}
-             handleDelete={handleDelete}
-             refetch={refetch}
-             ></AllDonationsTable>
-            )}
-          </tbody>
-        </table>
-      </div>
+      <table className="min-w-full table-auto border-collapse border border-gray-200">
+        <thead>
+          <tr className=" bg-lCard dark:bg-dCard  text-left">
+            <th className="px-4 py-2 border border-gray-300">Name</th>
+
+            <th className="px-4 py-2 border border-gray-300">Amount</th>
+            <th className="px-4 py-2 border border-gray-300">Status</th>
+            <th className="px-4 py-2 border border-gray-300">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {donations?.map((donation) => (
+            <AllDonationsTable
+              key={donation._id}
+              donation={donation}
+              handleDelete={handleDelete}
+              refetch={refetch}
+            ></AllDonationsTable>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
