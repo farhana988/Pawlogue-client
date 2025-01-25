@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import Heading from "../../../../Components/Reusable/Heading";
+import Container from "../../../../Components/Reusable/Container";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -47,30 +48,27 @@ const AllUsers = () => {
     }
   };
   return (
-    <div className="container mx-auto p-4 mb-20">
+    <Container>
    
       
    <Heading title={"  All Users"}></Heading>
-      <table className="max-w-[420px] md:max-w-[610px] lg:max-w-7xl mx-auto px-5 overflow-x-auto
+    <div className="max-w-[420px] md:max-w-[610px] lg:max-w-4xl mx-auto  overflow-x-auto mb-20">
+      <table className="table-auto w-full
         bg-lCard dark:bg-dCard  border border-gray-200 
       rounded-lg shadow-md">
         <thead className=" bg-lCard dark:bg-dCard ">
           <tr>
+            <th className="px-6 py-3 text-left text-sm font-medium">
+              Image
+            </th>
             <th className="px-6 py-3 text-left text-sm font-medium">Name</th>
             <th className="px-6 py-3 text-left text-sm font-medium">Email</th>
-            <th className="px-6 py-3 text-left text-sm font-medium">
-              Profile Picture
-            </th>
             <th className="px-6 py-3 text-left text-sm font-medium">Action</th>
           </tr>
         </thead>
         <tbody>
           {users?.map((user) => (
             <tr key={user._id} className="border-b ">
-              <td className="px-6 py-4 text-sm ">{user.name?.substring(0,20)}</td>
-              <td className="px-6 py-4 text-sm "
-              title={user?.email}
-              >{user.email?.substring(0,20)}</td>
               <td className="px-6 py-4 text-center">
                 <img
                   src={user.image || "/default-avatar.png"}
@@ -78,10 +76,14 @@ const AllUsers = () => {
                   className="w-10 h-10 rounded-full object-cover"
                 />
               </td>
+              <td className="px-6 py-4 text-xs lg:text-sm ">{user.name?.substring(0,20)}</td>
+              <td className="px-6 py-4 text-xs lg:text-sm "
+              title={user?.email}
+              >{user.email?.substring(0,20)}</td>
               <td className="px-6 py-4 text-center">
                 <button
                   onClick={() => handleMakeAdmin(user?.email)}
-                  className={`px-4 py-2 rounded-md text-white ${
+                  className={`px-4 py-2 rounded-md text-white text-xs lg:text-base ${
                     user.role === "admin"
                       ? "bg-gray-400 cursor-not-allowed"
                       : "bg-blue-500 hover:bg-blue-600"
@@ -96,6 +98,7 @@ const AllUsers = () => {
         </tbody>
       </table>
     </div>
+    </Container>
   );
 };
 

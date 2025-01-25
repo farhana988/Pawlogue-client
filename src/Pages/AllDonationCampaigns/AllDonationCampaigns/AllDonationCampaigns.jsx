@@ -45,37 +45,33 @@ const AllDonationCampaigns = () => {
   }
 
   return (
-    <div>
+    <Container>
       <Heading title={" All Donation Campaigns "}></Heading>
-      <Container>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {data.pages.map((page) =>
-            page.campaigns.map((campaign) => (
-              <AllDonationCampaignsCard
-                key={campaign._id}
-                campaign={campaign}
-              />
-            ))
-          )}
-        </div>
 
-        {/* Loader and Load More Button */}
-        <div ref={ref} className="flex justify-center mt-6">
-          {isFetchingNextPage ? (
-            <div>Loading more...</div>
-          ) : hasNextPage ? (
-            <button
-              onClick={() => fetchNextPage()}
-              className="px-4 py-2 bg-blue-500 text-white rounded"
-            >
-              Load More
-            </button>
-          ) : (
-            <div>No more campaigns to load.</div>
-          )}
-        </div>
-      </Container>
-    </div>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
+        {data.pages.map((page) =>
+          page.campaigns.map((campaign) => (
+            <AllDonationCampaignsCard key={campaign._id} campaign={campaign} />
+          ))
+        )}
+      </div>
+
+      {/* Loader and Load More Button */}
+      <div ref={ref} className="flex justify-center mt-6">
+        {isFetchingNextPage ? (
+          <div>Loading more...</div>
+        ) : hasNextPage ? (
+          <button
+            onClick={() => fetchNextPage()}
+            className="px-4 py-2 bg-blue-500 text-white rounded"
+          >
+            Load More
+          </button>
+        ) : (
+          <div>No more campaigns to load.</div>
+        )}
+      </div>
+    </Container>
   );
 };
 

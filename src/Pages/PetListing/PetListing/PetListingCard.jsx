@@ -4,46 +4,55 @@
 import { FaLocationDot } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
-const PetListingCard = ({pet}) => {
-  const {_id,image,age,name,location}=pet || {}
-    return (
-        <div>
-            <div
-             
-              className=" rounded shadow-lg p-4 relative
+const PetListingCard = ({ pet }) => {
+  const { _id, image, age, name, location } = pet || {};
+  return (
+    <div>
+      <div
+        className=" rounded shadow-lg p-4 relative
                bg-lCard dark:bg-dCard "
+      >
+        {/* image */}
+        <img
+          src={image}
+          alt={name}
+          className="w-full  h-20 md:h-28 lg:h-40 object-cover rounded-xl mb-2"
+        />
+        <div className=" flex flex-col flex-grow">
+          {/* name */}
+          <h3 className="lg:text-xl font-semibold " title={name}>
+            {name?.substring(0, 20)}
+          </h3>
+
+          {/* age */}
+          <p
+            className="absolute text-black font-semibold px-5 py-1 text-xs lg:text-base
+                   rounded-bl-2xl z-10 bg-lBtn dark:bg-dBtn
+                   top-0 right-0"
+          >
+            Age: {age}
+          </p>
+
+          {/* location */}
+          <p className="text-xs lg:text-base flex gap-2 my-1">
+            <FaLocationDot /> {location?.substring(0, 39)}
+          </p>
+
+          {/* btn */}
+          <div className="mt-auto flex justify-end">
+            <Link
+              to={`/petDetails/${_id}`}
+              className=" font-semibold px-2 lg:px-4 py-1  rounded-tr-3xl rounded-bl-3xl rounded-lg
+                  text-xs lg:text-base w-16 lg:w-24
+                  bg-lBtn dark:bg-dBtn"
             >
-              {/* image */}
-              <img
-                src={image}
-                alt={name}
-                className="w-full h-48 object-cover rounded-xl mb-2"
-              />
-              {/* name */}
-              <h3 className="text-lg font-semibold mb-2">{name?.substring(0,30)}</h3>
-
-              {/* location */}
-              <p className="text-sm opacity-80 flex gap-2 mb-2">
-                <FaLocationDot />
-                {location?.substring(0,39)}
-              </p>
-
-              {/* age */}
-              <p
-                className="absolute font-semibold  px-5 py-1 
-                rounded-bl-2xl  bg-lBtn dark:bg-dBtn text-black dark:text-ivory 
-                top-0 right-0"
-              >
-                Age: {age}
-              </p>
-              <button className="font-semibold px-3 lg:px-5 py-1 lg:py-2 rounded-full
-                text-sm lg:text-base 
-               bg-lBtn dark:bg-dBtn">
-                <Link to={`/petDetails/${_id}`}>Pet details</Link>
-              </button>
-            </div>
+              Details
+            </Link>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default PetListingCard;
