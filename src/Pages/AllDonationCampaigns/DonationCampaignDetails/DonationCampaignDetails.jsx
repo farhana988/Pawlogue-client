@@ -1,15 +1,15 @@
 import { useNavigate, useParams } from "react-router-dom";
-import Container from "../../Components/Reusable/Container";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Container from "../../../Components/Reusable/Container";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import DonationModal from "./DonationModal";
-import RecommendedCampaigns from "./RecommendedCampaigns";
-import { AuthContext } from "../../Provider/AuthProvider";
+import DonationModal from "../donationModal/DonationModal";
+import RecommendedCampaigns from "../RecommendedCampaigns/RecommendedCampaigns";
+import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
-import LoadingSpinner from "../../Components/Reusable/LoadingSpinner";
+import LoadingSpinner from "../../../Components/loading/LoadingSpinner";
 import DonationCampaignDetailsCard from "./DonationCampaignDetailsCard";
-import Heading from "../../Components/Reusable/Heading";
+import Heading from "../../../Components/Reusable/Heading";
 
 const DonationCampaignDetails = () => {
   const axiosSecure = useAxiosSecure();
@@ -54,30 +54,29 @@ const DonationCampaignDetails = () => {
     setIsModalOpen(true);
   };
 
-    // dynamic title
-    if (location.pathname === `/donationCampaignDetails/${id}`) {
-      document.title = "Pawlogue | Donation Campaign Details";
-    }
-  
+  // dynamic title
+  if (location.pathname === `/donationCampaignDetails/${id}`) {
+    document.title = "Pawlogue | Donation Campaign Details";
+  }
 
   return (
     <div className="">
-         <Heading title={"Donation Campaign Details"}></Heading>
+      <Heading title={"Donation Campaign Details"}></Heading>
       <Container>
-
         {/* donation card  */}
         <DonationCampaignDetailsCard
-        donationDetails={donationDetails}
+          donationDetails={donationDetails}
         ></DonationCampaignDetailsCard>
-        
+
         {/* Donate Button */}
         <button
           className={`text-white md:ml-7 lg:ml-0
             font-semibold px-3 lg:px-5 py-1 lg:py-2 rounded-full
                 text-sm lg:text-base  ${
-            isPaused || isExpired ? "bg-gray-400  cursor-not-allowed" : 
-            " bg-lBtn dark:bg-dBtn "
-          }`}
+                  isPaused || isExpired
+                    ? "bg-gray-400  cursor-not-allowed"
+                    : " bg-lBtn dark:bg-dBtn "
+                }`}
           onClick={handleDonateClick}
           disabled={isPaused || isExpired}
         >
@@ -90,7 +89,6 @@ const DonationCampaignDetails = () => {
 
         {/* Recommended Campaigns Section */}
         <RecommendedCampaigns></RecommendedCampaigns>
-        
       </Container>
 
       {/*  donation  Modal*/}

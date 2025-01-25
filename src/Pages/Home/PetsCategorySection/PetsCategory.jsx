@@ -4,7 +4,7 @@ import Container from "../../../Components/Reusable/Container";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import NoData from "../../../Components/Reusable/NoData";
-import CardSkeleton from "../../../Components/Reusable/CardSkeleton";
+import CardSkeleton from "../../../Components/loading/CardSkeleton";
 import Heading from "../../../Components/Reusable/Heading";
 import { FaLocationDot } from "react-icons/fa6";
 
@@ -66,7 +66,7 @@ const PetsCategory = () => {
           {/* Pets Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPets.length > 0 ? (
-              filteredPets.slice(0,3).map((pet) => (
+              filteredPets.slice(0, 3).map((pet) => (
                 <div
                   key={pet._id}
                   className="bg-lCard dark:bg-dCard  shadow-lg rounded-lg overflow-hidden 

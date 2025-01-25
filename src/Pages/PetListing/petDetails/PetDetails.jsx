@@ -1,14 +1,14 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import Container from "../../Components/Reusable/Container";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Container from "../../../Components/Reusable/Container";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { useContext, useState } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
-import AdoptModal from "./AdoptModal";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import AdoptModal from "../AdoptModal";
 import Swal from "sweetalert2";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
-import LoadingSpinner from "../../Components/Reusable/LoadingSpinner";
-import Heading from "../../Components/Reusable/Heading";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import LoadingSpinner from "../../../Components/loading/LoadingSpinner";
+import Heading from "../../../Components/Reusable/Heading";
 import PetDetailsCard from "./PetDetailsCard";
 
 const PetDetails = () => {

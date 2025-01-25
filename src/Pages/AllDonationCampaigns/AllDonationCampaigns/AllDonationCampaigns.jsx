@@ -1,10 +1,10 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import AllDonationCampaignsCard from "./AllDonationCampaignsCard";
-import CardSkeleton from "../../Components/Reusable/CardSkeleton";
-import Container from "../../Components/Reusable/Container";
-import Heading from "../../Components/Reusable/Heading";
+import CardSkeleton from "../../../Components/loading/CardSkeleton";
+import Container from "../../../Components/Reusable/Container";
+import Heading from "../../../Components/Reusable/Heading";
 import { useLocation } from "react-router-dom";
 
 const AllDonationCampaigns = () => {

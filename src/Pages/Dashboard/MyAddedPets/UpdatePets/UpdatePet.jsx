@@ -3,22 +3,22 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { handleImageUpload } from "../../../api/utils";
 import UpdatePetForm from "./UpdatePetForm";
-import { useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQueryClient } from "@tanstack/react-query";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import SkeletonLoader from "../../../Components/Reusable/SkeletonLoader";
+import SkeletonLoader from "../../../Components/loading/SkeletonLoader";
 import Heading from "../../../Components/Reusable/Heading";
 
 const UpdatePet = () => {
-  const { id } = useParams(); 
-  const { user } = useContext(AuthContext); 
+  const { id } = useParams();
+  const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
-  const [petData, setPetData] = useState(null); 
+  const [petData, setPetData] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
-  const queryClient = useQueryClient(); 
+  const queryClient = useQueryClient();
 
   const petCategories = [
     { value: "cat", label: "Cat" },
@@ -31,24 +31,21 @@ const UpdatePet = () => {
   ];
 
   useEffect(() => {
-    
     const fetchPetData = async () => {
       try {
         const response = await axiosSecure.get(`/pet/${id}`);
-        setPetData(response.data); 
-
+        setPetData(response.data);
       } catch {
         setErrorMsg("Failed to fetch pet data.");
       }
     };
 
     fetchPetData();
-  }, [axiosSecure, id]); 
+  }, [axiosSecure, id]);
 
   if (!petData) {
-    return <SkeletonLoader></SkeletonLoader>; 
+    return <SkeletonLoader></SkeletonLoader>;
   }
-
 
   const initialValues = {
     image: petData.image,
@@ -72,16 +69,14 @@ const UpdatePet = () => {
     longDescription: Yup.string().required("Long description is required"),
   });
 
-  const handleSubmit = async (
-    values,
-    { setSubmitting, }
-  ) => {
+  const handleSubmit = async (values, { setSubmitting }) => {
     try {
       setErrorMsg(null);
       setSuccessMsg(null);
 
-
-      const imageUrl = values.image ? await handleImageUpload(values.image) : petData.image;
+      const imageUrl = values.image
+        ? await handleImageUpload(values.image)
+        : petData.image;
 
       const updatedPetData = {
         image: imageUrl,
@@ -95,13 +90,11 @@ const UpdatePet = () => {
         owner: petData.owner,
       };
 
-
       await axiosSecure.put(`/updatePet/${id}`, updatedPetData);
 
       setSuccessMsg("Pet updated successfully!");
-        // Invalidate the query to force a refetch of the pets list in MyPets
-        queryClient.invalidateQueries(["pets", user?.email]); 
-    
+      // Invalidate the query to force a refetch of the pets list in MyPets
+      queryClient.invalidateQueries(["pets", user?.email]);
     } catch (error) {
       setErrorMsg(error.response?.data?.message || "Something went wrong");
     } finally {
@@ -111,30 +104,33 @@ const UpdatePet = () => {
 
   return (
     <>
-    <div className="lg:max-w-7xl mx-auto rounded">
-     <Heading title={"Update a Pet"}></Heading>
-    
+      <div className="lg:max-w-7xl mx-auto rounded">
+        <Heading title={"Update a Pet"}></Heading>
 
-      {errorMsg && <p className="text-red-500 mb-4">{errorMsg}</p>}
-      {successMsg && <p className="text-green-500 text-xl mx-5 md:mx-0 mb-4">{successMsg}</p>}
-
-      <Formik
-        initialValues={initialValues} 
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}
-      >
-        {({ setFieldValue, isSubmitting, values }) => (
-          <UpdatePetForm
-            setUploading={setUploading}
-            setFieldValue={setFieldValue}
-            isSubmitting={isSubmitting}
-            uploading={uploading}
-            petCategories={petCategories}
-            values={values}
-          />
+        {errorMsg && <p className="text-red-500 mb-4">{errorMsg}</p>}
+        {successMsg && (
+          <p className="text-green-500 text-xl mx-5 md:mx-0 mb-4">
+            {successMsg}
+          </p>
         )}
-      </Formik>
-    </div>
+
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ setFieldValue, isSubmitting, values }) => (
+            <UpdatePetForm
+              setUploading={setUploading}
+              setFieldValue={setFieldValue}
+              isSubmitting={isSubmitting}
+              uploading={uploading}
+              petCategories={petCategories}
+              values={values}
+            />
+          )}
+        </Formik>
+      </div>
     </>
   );
 };

@@ -2,17 +2,13 @@
 
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import CheckoutForm from "./CheckoutForm";
+import CheckoutForm from "../CheckoutForm";
 import { useState } from "react";
 import Swal from "sweetalert2";
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 
-const DonationModal = ({
-  donationDetails,
-  onClose,
-}) => {
-
+const DonationModal = ({ donationDetails, onClose }) => {
   const [donationAmount, setDonationAmount] = useState("");
   const maxDonationAmount = donationDetails?.amount;
 
@@ -48,13 +44,13 @@ const DonationModal = ({
 
           {/* Donation Amount Input */}
           <input
-           type="number"
-           value={donationAmount}
-           onChange={handleDonationAmountChange}
-           placeholder={`Enter amount (Max: $${maxDonationAmount})`}
-           name="Donation Amount"
-           className="border border-gray-300 rounded px-4 py-2 my-5 w-full bg-lCard dark:bg-dCard"
-           required
+            type="number"
+            value={donationAmount}
+            onChange={handleDonationAmountChange}
+            placeholder={`Enter amount (Max: $${maxDonationAmount})`}
+            name="Donation Amount"
+            className="border border-gray-300 rounded px-4 py-2 my-5 w-full bg-lCard dark:bg-dCard"
+            required
           />
 
           {/* main stripe function */}

@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import DonatorsModal from "./DonatorsModal";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import useDonations from "../../../hooks/useDonations";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import useDonations from "../../../../hooks/useDonations";
 import Swal from "sweetalert2";
 
 const DonationCampaignTable = ({ myDonationCampaign }) => {
@@ -33,12 +33,11 @@ const DonationCampaignTable = ({ myDonationCampaign }) => {
       await axiosSecure.patch(`/donationCampaign/${_id}`, {
         paused: newPausedState,
       });
-    } catch  {
+    } catch {
       Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Error updating paused state: Please try again later.',
-      
+        icon: "error",
+        title: "Error",
+        text: "Error updating paused state: Please try again later.",
       });
     }
   };
@@ -125,8 +124,10 @@ const DonationCampaignTable = ({ myDonationCampaign }) => {
           </span>
 
           {/* Edit button */}
-          <span className="relative cursor-pointer inline-block px-3 py-1 font-semibold  dark:text-ivory
-           leading-tight">
+          <span
+            className="relative cursor-pointer inline-block px-3 py-1 font-semibold  dark:text-ivory
+           leading-tight"
+          >
             <span
               aria-hidden="true"
               className="absolute inset-0 bg-green-200  opacity-50 rounded-full"

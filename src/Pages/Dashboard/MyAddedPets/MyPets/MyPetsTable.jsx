@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { useNavigate } from "react-router-dom";
 // import Swal from "sweetalert2";
 

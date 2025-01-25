@@ -1,37 +1,35 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../../Provider/AuthProvider";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import {useParams } from "react-router-dom";
-import { handleImageUpload } from "../../../api/utils";
+import { AuthContext } from "../../../../Provider/AuthProvider";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { useParams } from "react-router-dom";
+import { handleImageUpload } from "../../../../api/utils";
 import UpdateDonationForm from "./UpdateDonationForm";
 import Swal from "sweetalert2";
-import SkeletonLoader from "../../../Components/Reusable/SkeletonLoader";
-
+import SkeletonLoader from "../../../../Components/loading/SkeletonLoader";
 
 const UpdateDonation = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
 
-
   const [campaignData, setCampaignData] = useState();
-  const [uploadImage, setUploadImage] = useState({ image: { name: 'Upload Button' } });
+  const [uploadImage, setUploadImage] = useState({
+    image: { name: "Upload Button" },
+  });
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    
     const fetchPetData = async () => {
       try {
         const response = await axiosSecure.get(`/donationCampaign/${id}`);
-        setCampaignData(response.data); 
-
+        setCampaignData(response.data);
       } catch {
-           Swal.fire("Something went wrong!");
+        Swal.fire("Something went wrong!");
       }
     };
 
     fetchPetData();
-  }, [axiosSecure, id]); 
+  }, [axiosSecure, id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,7 +42,7 @@ const UpdateDonation = () => {
     const amount = parseFloat(form.amount.value);
 
     let image = form.image.files[0];
-    let imageUrl = campaignData?.image; 
+    let imageUrl = campaignData?.image;
     if (image) {
       imageUrl = await handleImageUpload(image);
     }
@@ -61,28 +59,30 @@ const UpdateDonation = () => {
     };
 
     try {
-      await axiosSecure.put(`/updateDonationCampaign/${id}`, updatedCampaignData);
- Swal.fire({
+      await axiosSecure.put(
+        `/updateDonationCampaign/${id}`,
+        updatedCampaignData
+      );
+      Swal.fire({
         position: "top-end",
         icon: "success",
         title: "Donation updated Successfully",
         showConfirmButton: false,
         timer: 1500,
       });
-    } catch  {
-        Swal.fire("Something went wrong!");
+    } catch {
+      Swal.fire("Something went wrong!");
     } finally {
       setLoading(false);
     }
   };
 
   if (!campaignData) {
-    return <SkeletonLoader></SkeletonLoader> 
+    return <SkeletonLoader></SkeletonLoader>;
   }
 
   return (
     <div>
-    
       <UpdateDonationForm
         campaignData={campaignData}
         handleSubmit={handleSubmit}

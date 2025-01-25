@@ -3,7 +3,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-import SkeletonLoader from "../../../Components/Reusable/SkeletonLoader";
+import SkeletonLoader from "../../../Components/loading/SkeletonLoader";
 import Heading from "../../../Components/Reusable/Heading";
 import DashboardNoData from "../../../Components/Reusable/DashboardNoData";
 
@@ -54,15 +54,12 @@ const AdoptionRequest = () => {
       }
     } catch {
       Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Failed to delete adoption information. Please try again later.',
-      
+        icon: "error",
+        title: "Error",
+        text: "Failed to delete adoption information. Please try again later.",
       });
-     
     }
   };
-
 
   // edit function
   const handleUpdateAdoptInfo = async (petId) => {
@@ -77,17 +74,17 @@ const AdoptionRequest = () => {
         confirmButtonText: "Yes, update it!",
       });
       if (result.isConfirmed) {
-        const response =   await axiosSecure.patch(`/changeAdopt/${petId}`);
+        const response = await axiosSecure.patch(`/changeAdopt/${petId}`);
 
         if (response.status === 200) {
-          setAcceptedPets((prev) => ({ ...prev, [petId]: true })); 
+          setAcceptedPets((prev) => ({ ...prev, [petId]: true }));
           refetch();
           Swal.fire("Success!", "Adoption request accepted.", "success");
         } else {
           Swal.fire("Error!", "Failed to update adoption request.", "error");
         }
       }
-    } catch  {
+    } catch {
       Swal.fire("Error!", "Sorry, Someone just Adopted it", "error");
     }
   };
@@ -95,8 +92,10 @@ const AdoptionRequest = () => {
   return (
     <div>
       <Heading title={" Adoption Requests for Your Pets"}></Heading>
-      <div className="max-w-[420px] md:max-w-[610px] lg:max-w-7xl mx-auto px-5 
-      overflow-x-auto mb-20">
+      <div
+        className="max-w-[420px] md:max-w-[610px] lg:max-w-7xl mx-auto px-5 
+      overflow-x-auto mb-20"
+      >
         {adoptPets?.length > 0 ? (
           <div className="overflow-x-auto  bg-lCard dark:bg-dCard  shadow-lg rounded-lg">
             <table className="min-w-full table-auto">
@@ -123,53 +122,58 @@ const AdoptionRequest = () => {
                 </tr>
               </thead>
               <tbody>
-                {adoptPets
-                  .map((pet) => (
-                    <tr key={pet._id} className="border-b ">
-                      <td className="py-4 px-4 text-sm font-medium ">
-                        {pet.petName?.substring(0, 20)}
-                      </td>
-                      <td className="py-4 px-4 text-sm font-medium ">
-                        {pet.adoptUser?.substring(0, 20)}
-                      </td>
-                      <td className="py-4 px-4 text-sm opacity-80"
-                      title={pet.adoptEmail}>
-                        {pet.adoptEmail?.substring(0, 20)}
-                      </td>
-                      <td className="py-4 px-4 text-sm opacity-80">
-                        {pet.phone}
-                      </td>
-                      <td className="py-4 px-4 text-sm opacity-80">
-                        {pet.address?.substring(0, 20)}
-                      </td>
-                      <td className="py-4 px-4 text-sm opacity-80 flex space-x-2">
-                        <button
-                          onClick={() => handleDeleteAdoptInfo(pet._id)}
-                          className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 focus:outline-none"
-                        >
-                          Delete
-                        </button>
-                        <button
-                        onClick={() => handleUpdateAdoptInfo(pet.petId)} 
-                        disabled={acceptedPets[pet.petId] || pet.adopted === true} 
+                {adoptPets.map((pet) => (
+                  <tr key={pet._id} className="border-b ">
+                    <td className="py-4 px-4 text-sm font-medium ">
+                      {pet.petName?.substring(0, 20)}
+                    </td>
+                    <td className="py-4 px-4 text-sm font-medium ">
+                      {pet.adoptUser?.substring(0, 20)}
+                    </td>
+                    <td
+                      className="py-4 px-4 text-sm opacity-80"
+                      title={pet.adoptEmail}
+                    >
+                      {pet.adoptEmail?.substring(0, 20)}
+                    </td>
+                    <td className="py-4 px-4 text-sm opacity-80">
+                      {pet.phone}
+                    </td>
+                    <td className="py-4 px-4 text-sm opacity-80">
+                      {pet.address?.substring(0, 20)}
+                    </td>
+                    <td className="py-4 px-4 text-sm opacity-80 flex space-x-2">
+                      <button
+                        onClick={() => handleDeleteAdoptInfo(pet._id)}
+                        className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 focus:outline-none"
+                      >
+                        Delete
+                      </button>
+                      <button
+                        onClick={() => handleUpdateAdoptInfo(pet.petId)}
+                        disabled={
+                          acceptedPets[pet.petId] || pet.adopted === true
+                        }
                         className={`px-4 py-2 rounded-md text-white ${
                           acceptedPets[pet.petId] || pet.adopted === true
                             ? "bg-gray-400 cursor-not-allowed"
                             : "bg-green-600 hover:bg-green-700"
                         }`}
                       >
-                        {acceptedPets[pet.petId] || pet.adopted === true ? "Accepted" : "Accept"} 
+                        {acceptedPets[pet.petId] || pet.adopted === true
+                          ? "Accepted"
+                          : "Accept"}
                       </button>
-                      </td>
-                    </tr>
-                  ))}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
         ) : (
-         <DashboardNoData
-         title={'No Adoption Requests Found'}
-         ></DashboardNoData>
+          <DashboardNoData
+            title={"No Adoption Requests Found"}
+          ></DashboardNoData>
         )}
       </div>
     </div>
