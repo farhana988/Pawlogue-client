@@ -71,20 +71,23 @@ const DonationCampaignDetails = () => {
         {/* Donate Button */}
         <button
           className={`text-white md:ml-7 lg:ml-0
-            font-semibold px-3 lg:px-5 py-1 lg:py-2 rounded-full
+             rounded-tr-3xl rounded-bl-3xl rounded-lg
+            font-semibold px-3 lg:px-5 py-1 lg:py-2
                 text-sm lg:text-base  ${
-                  isPaused || isExpired
-                    ? "bg-gray-400  cursor-not-allowed"
+                  isPaused || isExpired|| user?.email === donationDetails?.email
+                    ? "bg-gray-400 text-zinc-800  cursor-not-allowed"
                     : " bg-lBtn dark:bg-dBtn "
                 }`}
           onClick={handleDonateClick}
-          disabled={isPaused || isExpired}
+          disabled={isPaused || isExpired|| user?.email === donationDetails?.email}
         >
-          {isPaused
-            ? "Campaign Paused"
-            : isExpired
-            ? "Campaign Expired"
-            : "Donate Now"}
+          {user?.email === donationDetails?.email
+    ? "You created the campaign"
+    : isPaused
+    ? "Campaign Paused"
+    : isExpired
+    ? "Campaign Expired"
+    : "Donate Now"}
         </button>
 
         {/* Recommended Campaigns Section */}

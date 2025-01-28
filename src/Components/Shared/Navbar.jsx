@@ -2,9 +2,9 @@ import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 import { AuthContext } from "../../Provider/AuthProvider";
-import logo from "../../assets/images/logo.png"
-import def from "../../assets/images/default.jpg"
-import paw from "../../assets/images/paw.png"
+import logo from "../../assets/images/logo.png";
+import def from "../../assets/images/default.jpg";
+import paw from "../../assets/images/paw.png";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -21,8 +21,8 @@ const Navbar = () => {
 
   const links = (
     <>
-        {/* home */}
-        <NavLink
+      {/* home */}
+      <NavLink
         to="/"
         className={({ isActive }) =>
           ` ${
@@ -62,47 +62,45 @@ const Navbar = () => {
       >
         Donation Campaigns
       </NavLink>
-      
     </>
   );
 
   return (
-    <header className=" text-black dark:text-white  backdrop-blur-xl bg-ivory/50 
-    dark:bg-dCard
-     shadow-md sticky top-0 z-50
-    ">
-      <nav className="max-w-screen-xl mx-auto px-5 lg:px-0 py-4 flex items-center justify-between">
+    <header
+      className=" text-black dark:text-white  backdrop-blur-xl bg-ivory/50 
+    dark:bg-dCard shadow-md sticky top-0 z-50"
+    >
+      <nav
+        className="max-w-screen-xl xl:max-w-full xl:px-24 mx-auto px-5 lg:px-0 py-4 
+      flex items-center justify-between"
+      >
         {/* Logo */}
         <div className="text-2xl flex justify-center items-center gap-2 font-semibold">
           {/* website logo */}
-          <Link to={'/'}>
-           <img 
-           className="w-10 lg:w-14"
-            src={logo} alt="" />
+          <Link to={"/"}>
+            <img className="w-10 lg:w-14" src={logo} alt="" />
           </Link>
           {/* name */}
-          <div className="text-nav dark:text-ivory font-snow lg:flex gap-4 relative
-          items-center justify-center hidden ">
-            <span>
-            Pa
-              </span>
-            <img 
-            className="w-12 -top-2 left-4  object-cover absolute -rotate-12"
-            src={paw} alt="" />
-              <span>logue</span>
-            
-            </div>
-           {/* Theme Toggle */}
-       
-           <ThemeToggle />
+          <div
+            className="text-nav dark:text-ivory font-snow lg:flex gap-4 relative
+          items-center justify-center hidden "
+          >
+            <span>Pa</span>
+            <img
+              className="w-12 -top-2 left-4  object-cover absolute -rotate-12"
+              src={paw}
+              alt=""
+            />
+            <span>logue</span>
+          </div>
+          {/* Theme Toggle */}
+          <ThemeToggle />
         </div>
-        
 
         {/* Desktop Navigation Links */}
         <div className="hidden md:flex space-x-8 items-center">
           {links}
 
-         
           {/* Displayed when the user is logged in */}
           {user ? (
             <div className="relative">
@@ -110,8 +108,14 @@ const Navbar = () => {
               <img
                 className="rounded-full cursor-pointer w-8 h-8 object-cover"
                 referrerPolicy="no-referrer"
-                src={user.photoURL ? user.photoURL : 
-                  <><img src={def} alt="" /></>
+                src={
+                  user.photoURL ? (
+                    user.photoURL
+                  ) : (
+                    <>
+                      <img src={def} alt="" />
+                    </>
+                  )
                 } // Default image
                 alt="profile"
                 onClick={handleDropdownToggle}
@@ -119,8 +123,10 @@ const Navbar = () => {
 
               {/* Dropdown Menu for user options (Dashboard, Logout) */}
               {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 text-black dark:text-white  
-                bg-ivory dark:bg-black shadow-lg rounded-md">
+                <div
+                  className="absolute right-0 mt-2 w-48 text-black dark:text-white  
+                bg-ivory dark:bg-black shadow-lg rounded-md"
+                >
                   <Link
                     to="/dashboard"
                     className="block px-4 py-2 text-sm hover:bg-slate-300 dark:hover:bg-gray-800"
@@ -152,7 +158,6 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center">
-        
           <button
             onClick={handleToggleMenu}
             className="text-black dark:text-white focus:outline-none"
@@ -207,11 +212,8 @@ const Navbar = () => {
               </Link>
             </>
           )}
-          
         </div>
-        
       )}
-      
     </header>
   );
 };

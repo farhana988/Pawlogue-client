@@ -103,11 +103,19 @@ const PetDetails = () => {
         ></PetDetailsCard>
         <button
           onClick={handleAdoptButton}
-          className="font-semibold px-3 lg:px-5 py-1 lg:py-2 rounded-full
-                text-sm lg:text-base md:ml-7 lg:ml-0
-               bg-lBtn dark:bg-dBtn"
+          className={`font-semibold px-3 lg:px-5 py-1 lg:py-2 
+            text-sm lg:text-base md:ml-7 lg:ml-0
+             rounded-tr-3xl rounded-bl-3xl rounded-lg
+            ${
+              user?.email === petDetails?.owner?.email
+                ? "bg-gray-400 text-zinc-800 cursor-not-allowed"
+                : "bg-lBtn dark:bg-dBtn"
+            }`}
+          disabled={user?.email === petDetails?.owner?.email}
         >
-          Adopt
+          {user?.email === petDetails?.owner?.email
+            ? "You are the owner"
+            : "Adopt"}
         </button>
       </Container>
 
