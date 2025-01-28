@@ -53,7 +53,7 @@ const FooterComp = () => {
               <div>
                 <FooterTitle title="about" />
                 <FooterLinkGroup col>
-                  <FooterLink href="#">Website Overview</FooterLink>
+                  <FooterLink href="/overview">Website Overview</FooterLink>
                   <FooterLink href="#">Contact Information</FooterLink>
                 </FooterLinkGroup>
               </div>

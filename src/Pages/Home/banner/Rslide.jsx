@@ -44,7 +44,7 @@ const Rslide = ({ imageSrc, title, description, buttonText, slideIndex }) => {
           {/* btn */}
           <button
             className="mt-4 px-3 lg:px-5 lg:py-2 py-1 text-xs md:text-sm lg:text-lg
-           text-white bg-dBtn
+           text-black dark:text-white font-semibold bg-lBtn dark:bg-dBtn
             rounded-tr-3xl rounded-bl-3xl rounded-lg transition duration-300
           animate__animated  animate__jackInTheBox animate__delay-1s"
           >

@@ -26,7 +26,7 @@ const Volunteer = () => {
             Your time and support can make a big difference! Join us in giving
             pets a second chance at a better life.
           </p>
-          <button className=" text-black px-6 py-2 font-semibold
+          <button className=" text-black dark:text-ivory px-6 py-2 font-semibold
            text-xs  lg:text-lg 
           rounded-tr-3xl rounded-bl-3xl rounded-lg  bg-lBtn dark:bg-dBtn
            ">
