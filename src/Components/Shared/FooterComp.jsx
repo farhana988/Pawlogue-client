@@ -54,7 +54,7 @@ const FooterComp = () => {
                 <FooterTitle title="about" />
                 <FooterLinkGroup col>
                   <FooterLink href="/overview">Website Overview</FooterLink>
-                  <FooterLink href="#">Contact Information</FooterLink>
+                  <FooterLink href="/contact">Contact Information</FooterLink>
                 </FooterLinkGroup>
               </div>
               <div>

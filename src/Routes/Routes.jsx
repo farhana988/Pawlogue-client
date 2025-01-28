@@ -25,6 +25,7 @@ import DonationCampaign from "../Pages/Dashboard/AddDonationCampaign/DonationCam
 import MyDonationCampaign from "../Pages/Dashboard/MyAddedDonationCampaign/MyDonationCampaign/MyDonationCampaign";
 import UpdateDonation from "../Pages/Dashboard/MyAddedDonationCampaign/UpdateDonationCampaign/UpdateDonation";
 import WebsiteOverview from "../Components/footer/WebsiteOverview";
+import ContactInfo from "../Components/footer/ContactInfo";
 
 export const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ export const router = createBrowserRouter([
       {
         path: "/overview",
         element: <WebsiteOverview></WebsiteOverview>,
+      },
+      {
+        path: "/contact",
+        element: <ContactInfo></ContactInfo>,
       },
     ],
   },
