@@ -60,15 +60,19 @@ const FooterComp = () => {
               <div>
                 <FooterTitle title="Follow us" />
                 <FooterLinkGroup col>
-                  <FooterLink href="#">Github</FooterLink>
-                  <FooterLink href="#">Discord</FooterLink>
+                  <FooterLink href="https://github.com/yourusername">
+                    Github
+                  </FooterLink>
+                  <FooterLink href="https://discord.com/invite/yourinvitecode">
+                    Discord
+                  </FooterLink>
                 </FooterLinkGroup>
               </div>
               <div>
                 <FooterTitle title="Legal" />
                 <FooterLinkGroup col>
-                  <FooterLink href="#">Privacy Policy</FooterLink>
-                  <FooterLink href="#">Terms &amp; Conditions</FooterLink>
+                  <FooterLink href="/privacy">Privacy Policy</FooterLink>
+                  <FooterLink href="/terms">Terms &amp; Conditions</FooterLink>
                 </FooterLinkGroup>
               </div>
             </div>
@@ -77,11 +81,23 @@ const FooterComp = () => {
           <div className="w-full sm:flex sm:items-center sm:justify-between">
             <FooterCopyright href="#" by="Pawlogue™" year={2025} />
             <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-              <FooterIcon href="#" icon={BsFacebook} />
-              <FooterIcon href="#" icon={BsInstagram} />
-              <FooterIcon href="#" icon={BsTwitter} />
-              <FooterIcon href="#" icon={BsGithub} />
-              <FooterIcon href="#" icon={BsDribbble} />
+              <FooterIcon href="https://facebook.com" icon={BsFacebook} />
+              <FooterIcon
+                href="https://instagram.com/yourprofile"
+                icon={BsInstagram}
+              />
+              <FooterIcon
+                href="https://twitter.com/yourprofile"
+                icon={BsTwitter}
+              />
+              <FooterIcon
+                href="https://github.com/yourusername"
+                icon={BsGithub}
+              />
+              <FooterIcon
+                href="https://dribbble.com/yourprofile"
+                icon={BsDribbble}
+              />
             </div>
           </div>
         </Container>

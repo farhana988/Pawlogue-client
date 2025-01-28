@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-// import React from 'react';
 
 const PawCareTipsCard = ({ tip }) => {
   const { title, description } = tip || {};
@@ -13,7 +12,7 @@ const PawCareTipsCard = ({ tip }) => {
       {description?.substring(0,68)}</p>
     
     {/* Learn more link positioned at the bottom */}
-    <a href="/" className="text-sm lg:text-base text-blue-500 hover:underline italic mt-auto">
+    <a href="https://www.learnMore.com" className="text-sm lg:text-base text-blue-500 hover:underline italic mt-auto">
       Learn more
     </a>
   </div>

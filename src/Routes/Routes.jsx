@@ -26,6 +26,8 @@ import MyDonationCampaign from "../Pages/Dashboard/MyAddedDonationCampaign/MyDon
 import UpdateDonation from "../Pages/Dashboard/MyAddedDonationCampaign/UpdateDonationCampaign/UpdateDonation";
 import WebsiteOverview from "../Components/footer/WebsiteOverview";
 import ContactInfo from "../Components/footer/ContactInfo";
+import PrivacyPolicy from "../Components/footer/PrivacyPolicy";
+import TermsAndConditions from "../Components/footer/TermsAndConditions";
 
 export const router = createBrowserRouter([
   {
@@ -69,6 +71,14 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactInfo></ContactInfo>,
+      },
+      {
+        path: "/privacy",
+        element: <PrivacyPolicy></PrivacyPolicy>,
+      },
+      {
+        path: "/terms",
+        element: <TermsAndConditions></TermsAndConditions>,
       },
     ],
   },
