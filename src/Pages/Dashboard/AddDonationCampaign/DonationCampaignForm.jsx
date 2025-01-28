@@ -128,7 +128,8 @@ const DonationCampaignForm = ({
                         id="image"
                         accept="image/*"
                       />
-                      <div className="font-semibold px-3 lg:px-5 py-1 lg:py-2 rounded-full
+                      <div className="font-semibold px-3 lg:px-5 py-1 lg:py-2 
+                       rounded-tr-3xl rounded-bl-3xl rounded-lg
                 text-sm lg:text-base 
                bg-lBtn dark:bg-dBtn">
                         Upload Image
@@ -147,7 +148,8 @@ const DonationCampaignForm = ({
               {/* Submit Button */}
               <button
                 type="submit"
-                className="font-semibold px-3 lg:px-5 py-1 lg:py-2 rounded-full
+                className="font-semibold w-52 px-3 lg:px-5 py-1 lg:py-2 
+                 rounded-tr-3xl rounded-bl-3xl rounded-lg
                 text-sm lg:text-base 
                bg-lBtn dark:bg-dBtn"
               >

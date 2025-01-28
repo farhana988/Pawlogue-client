@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
-import { Pause,  } from "lucide-react";
+import { Edit, Pause, Trash } from "lucide-react";
 import { IoMdArrowDroprightCircle } from "react-icons/io";
 
 const AllDonationsTable = ({ donation, handleDelete, refetch }) => {
@@ -47,41 +47,44 @@ const AllDonationsTable = ({ donation, handleDelete, refetch }) => {
           {paused ? "Paused" : "Active"}
         </td>
         <td className="px-4 py-2 border border-gray-300">
-          <div className="flex space-x-2">
+          <div className="flex space-x-2 justify-center">
             {/* Pause/Unpause button */}
             <span
               onClick={togglePause}
-              className={`relative cursor-pointer inline-block px-3 py-1 font-semibold text-${
-                isPaused ? "gray" : "green"
-              }-900 leading-tight`}
+              className={`relative cursor-pointer inline-block px-2 py-2 rounded-full text-zinc-800
+                ${isPaused ? "gray" : "green"} leading-tight`}
             >
               <span
                 aria-hidden="true"
-                className={`absolute inset-0 bg-${
-                  isPaused ? "gray" : "green"
-                }-200 opacity-50 rounded-full`}
+                className={`absolute inset-0 ${
+                  isPaused ? "bg-gray-300" : "bg-green-500"
+                } opacity-50 rounded-full`}
               ></span>
               <span className="relative">
-                {isPaused ? 
-                
-                <>
-                <IoMdArrowDroprightCircle />
-                </>
-                : 
-                <Pause size={16}></Pause>
-               
-                }
+                {isPaused ? (
+                  <>
+                    <IoMdArrowDroprightCircle />
+                  </>
+                ) : (
+                  <Pause size={16}></Pause>
+                )}
               </span>
             </span>
+            {/* delete */}
             <button
               onClick={() => handleDelete(_id)}
-              className="px-3 py-1 rounded-md bg-red-500 text-white hover:bg-red-600"
+              className="px-2 py-2 rounded-full bg-red-500 text-white hover:bg-red-600"
             >
-              Delete
+              <Trash size={16} />
             </button>
-            <button className="px-3 py-1 rounded-md bg-blue-500
-             text-white hover:bg-blue-600">
-              <Link to={`/dashboard/updateDonation/${_id}`}>Edit</Link>
+            {/* edit */}
+            <button
+              className="px-2 py-2 rounded-full bg-blue-500
+             text-white hover:bg-blue-600"
+            >
+              <Link to={`/dashboard/updateDonation/${_id}`}>
+                <Edit size={16} />
+              </Link>
             </button>
           </div>
         </td>

@@ -24,6 +24,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { useNavigate } from "react-router-dom";
+import Container from "../../../../Components/Reusable/Container";
 // import Swal from "sweetalert2";
 
 const columnHelper = createColumnHelper();
@@ -162,10 +163,10 @@ const MyPetsTable = ({ pets }) => {
   };
 
   return (
-    <div>
+    <Container>
       {/* Table container */}
       <div
-        className="flex flex-col min-h-screen max-w-[420px] md:max-w-[610px] lg:max-w-7xl
+        className="flex flex-col min-h-screen max-w-[390px] md:max-w-[530px] lg:max-w-7xl
        mx-auto px-5 "
       >
         {/*  search */}
@@ -321,7 +322,7 @@ const MyPetsTable = ({ pets }) => {
           </div>
         )}
       </div>
-    </div>
+    </Container>
   );
 };
 

@@ -3,6 +3,8 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import Heading from "../../../../Components/Reusable/Heading";
 import Container from "../../../../Components/Reusable/Container";
+import { MdAdminPanelSettings } from "react-icons/md";
+import { FaUserAltSlash } from "react-icons/fa";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -69,28 +71,33 @@ const AllUsers = () => {
         <tbody>
           {users?.map((user) => (
             <tr key={user._id} className="border-b ">
-              <td className="px-6 py-4 text-center">
+              <td className="px-4 py-2 border text-center">
                 <img
                   src={user.image || "/default-avatar.png"}
                   alt={user.name}
                   className="w-10 h-10 rounded-full object-cover"
                 />
               </td>
-              <td className="px-6 py-4 text-xs lg:text-sm ">{user.name?.substring(0,20)}</td>
-              <td className="px-6 py-4 text-xs lg:text-sm "
+              <td className="px-4 py-2 border text-xs lg:text-sm ">{user.name?.substring(0,20)}</td>
+              <td className="px-4 py-2 border text-xs lg:text-sm "
               title={user?.email}
-              >{user.email?.substring(0,20)}</td>
-              <td className="px-6 py-4 text-center">
+              >{user?.email?.substring(0,20)}</td>
+              <td className="px-4 py-2 border text-center">
                 <button
                   onClick={() => handleMakeAdmin(user?.email)}
-                  className={`px-4 py-2 rounded-md text-white text-xs lg:text-base ${
+                  className={`px-2 py-2 rounded-full text-white text-xs lg:text-base ${
                     user.role === "admin"
                       ? "bg-gray-400 cursor-not-allowed"
                       : "bg-blue-500 hover:bg-blue-600"
                   }`}
-                  disabled={user.role === "admin"}
+                  disabled={user?.role === "admin"}
+                  title={user?.role === "admin" ? "Admin" : "User"} 
                 >
-                  {user.role === "admin" ? "Admin" : "Make Admin"}
+                  {user?.role === "admin" ? <>
+                    <MdAdminPanelSettings size={30} />
+                    </> : 
+                    <><FaUserAltSlash size={24} />
+</>}
                 </button>
               </td>
             </tr>

@@ -68,7 +68,7 @@ const AllDonations = () => {
 
             <th className="px-4 py-2 border border-gray-300">Amount</th>
             <th className="px-4 py-2 border border-gray-300">Status</th>
-            <th className="px-4 py-2 border border-gray-300">Actions</th>
+            <th className="px-4 py-2 border border-gray-300">Action Buttons</th>
           </tr>
         </thead>
         <tbody>

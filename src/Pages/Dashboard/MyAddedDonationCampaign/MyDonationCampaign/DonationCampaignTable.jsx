@@ -5,6 +5,9 @@ import DonatorsModal from "./DonatorsModal";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useDonations from "../../../../hooks/useDonations";
 import Swal from "sweetalert2";
+import { Edit, Pause } from "lucide-react";
+import { BiSolidDonateHeart } from "react-icons/bi";
+import { IoMdArrowDroprightCircle } from "react-icons/io";
 
 const DonationCampaignTable = ({ myDonationCampaign }) => {
   const axiosSecure = useAxiosSecure();
@@ -65,7 +68,7 @@ const DonationCampaignTable = ({ myDonationCampaign }) => {
                 <img
                   alt="profile"
                   src={image}
-                  className="w-16 h-16 object-cover rounded-full"
+                  className="w-12 h-12 lg:w-20 lg:h-20 object-cover rounded-full"
                 />
               </div>
             </div>
@@ -91,49 +94,63 @@ const DonationCampaignTable = ({ myDonationCampaign }) => {
 
         {/* action buttons  */}
         <td
-          className="space-y-3 lg:space-x-6 px-5 py-5 text-center
+          className="space-y-3 lg:space-x-6 px-5 py-5 text-center 
         border-b border-gray-200  bg-lCard dark:bg-dCard  text-sm lg:text-base"
         >
           {/* View Donators button */}
           <span
             onClick={openModal}
-            className="relative cursor-pointer inline-block px-3 py-1 font-semibold  dark:text-ivory
+            title="donors"
+            className="relative cursor-pointer inline-block px-2 py-2 rounded-full font-semibold  dark:text-ivory
              leading-tight"
           >
             <span
               aria-hidden="true"
-              className="absolute inset-0 bg-red-200  opacity-50 rounded-full"
+              className="absolute inset-0 bg-red-300  opacity-50 rounded-full"
             ></span>
-            <span className="relative">Donators</span>
+            <span className="relative">
+              <BiSolidDonateHeart size={18} />
+            </span>
           </span>
 
           {/* Pause/Unpause button */}
           <span
             onClick={togglePause}
-            className={`relative cursor-pointer inline-block px-3 dark:text-ivory py-1 font-semibold text-${
-              isPaused ? "gray" : "green"
-            }-900 leading-tight`}
+            className={`relative cursor-pointer inline-block font-semibold px-2 py-2 rounded-full text-zinc-800
+              ${isPaused ? "gray" : "green"} leading-tight`}
           >
             <span
               aria-hidden="true"
-              className={`absolute inset-0 bg-${
-                isPaused ? "gray" : "green"
-              }-200 opacity-50 rounded-full`}
+              className={`absolute inset-0 ${
+                isPaused ? "bg-gray-300" : "bg-green-500"
+              } opacity-50 rounded-full`}
             ></span>
-            <span className="relative">{isPaused ? "Unpause" : "Pause"}</span>
+            <span className="relative">
+              {isPaused ? (
+                <>
+                  <IoMdArrowDroprightCircle />
+                </>
+              ) : (
+                <Pause size={16}></Pause>
+              )}
+            </span>
           </span>
 
           {/* Edit button */}
           <span
-            className="relative cursor-pointer inline-block px-3 py-1 font-semibold  dark:text-ivory
+            className="relative cursor-pointer inline-block px-2 py-2 bg-blue-600
+             text-white rounded-full  font-semibold
+                   hover:bg-blue-700
            leading-tight"
           >
             <span
               aria-hidden="true"
-              className="absolute inset-0 bg-green-200  opacity-50 rounded-full"
+              className="absolute inset-0  opacity-50 rounded-full"
             ></span>
             <span className="relative">
-              <Link to={`/dashboard/updateDonation/${_id}`}> Edit</Link>
+              <Link to={`/dashboard/updateDonation/${_id}`}>
+                <Edit size={16} />
+              </Link>
             </span>
           </span>
         </td>

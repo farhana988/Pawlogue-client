@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import Heading from "../../../Components/Reusable/Heading";
 import DashboardNoData from "../../../Components/Reusable/DashboardNoData";
+import { RiRefund2Fill } from "react-icons/ri";
 
 const MyDonation = () => {
   const { user } = useContext(AuthContext);
@@ -101,9 +102,11 @@ const MyDonation = () => {
                 <td className="px-6 py-4 text-center border-b dark:border-gray-700">
                   <button
                     onClick={() => handleRefund(donation._id)}
-                    className="bg-red-500 text-white font-medium px-4 py-2 rounded-lg text-sm lg:text-base hover:bg-red-600 transition"
+                    title="refund"
+                    className="bg-red-500 text-white font-medium px-2 py-2 rounded-full
+                     text-sm lg:text-base hover:bg-red-600 transition"
                   >
-                    Refund
+                    <RiRefund2Fill size={24} />
                   </button>
                 </td>
               </tr>

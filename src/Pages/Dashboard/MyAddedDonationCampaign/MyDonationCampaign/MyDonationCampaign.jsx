@@ -5,6 +5,7 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { AuthContext } from "../../../../Provider/AuthProvider";
 import Heading from "../../../../Components/Reusable/Heading";
 import DashboardNoData from "../../../../Components/Reusable/DashboardNoData";
+import Container from "../../../../Components/Reusable/Container";
 
 const MyDonationCampaign = () => {
   const axiosSecure = useAxiosSecure();
@@ -19,7 +20,7 @@ const MyDonationCampaign = () => {
   });
 
   return (
-    <div>
+    <Container>
       <Heading title={"My Donation Campaign"}></Heading>
       <div
         className=" max-w-[420px] md:max-w-[610px] lg:max-w-7xl
@@ -63,10 +64,10 @@ const MyDonationCampaign = () => {
 
                       <th
                         scope="col"
-                        className="px-5 py-3 bg-lCard dark:bg-dCard   border-b border-gray-200
+                        className=" bg-lCard dark:bg-dCard   border-b border-gray-200
                         text-left text-sm lg:text-lg uppercase font-normal"
                       >
-                        Action button
+                        Action buttons
                       </th>
                     </tr>
                   </thead>
@@ -89,7 +90,7 @@ const MyDonationCampaign = () => {
           )}
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 

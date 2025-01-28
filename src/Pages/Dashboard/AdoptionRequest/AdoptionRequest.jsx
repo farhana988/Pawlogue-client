@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 import SkeletonLoader from "../../../Components/loading/SkeletonLoader";
 import Heading from "../../../Components/Reusable/Heading";
 import DashboardNoData from "../../../Components/Reusable/DashboardNoData";
+import { Check, CheckCheck, Trash } from "lucide-react";
+import Container from "../../../Components/Reusable/Container";
 
 const AdoptionRequest = () => {
   const { user } = useContext(AuthContext);
@@ -90,7 +92,7 @@ const AdoptionRequest = () => {
   };
 
   return (
-    <div>
+    <Container>
       <Heading title={" Adoption Requests for Your Pets"}></Heading>
       <div
         className="max-w-[420px] md:max-w-[610px] lg:max-w-7xl mx-auto px-5 
@@ -145,24 +147,26 @@ const AdoptionRequest = () => {
                     <td className="py-4 px-4 text-sm opacity-80 flex space-x-2">
                       <button
                         onClick={() => handleDeleteAdoptInfo(pet._id)}
-                        className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 focus:outline-none"
+                        className="bg-red-600 text-white px-2 py-2 rounded-full hover:bg-red-700 focus:outline-none"
                       >
-                        Delete
+                       <Trash size={16} />
                       </button>
                       <button
                         onClick={() => handleUpdateAdoptInfo(pet.petId)}
                         disabled={
                           acceptedPets[pet.petId] || pet.adopted === true
                         }
-                        className={`px-4 py-2 rounded-md text-white ${
+                        title={acceptedPets[pet.petId] || pet.adopted === true? 
+                          "adopted":"not Adopted"}
+                        className={`px-2 py-2 rounded-full text-white ${
                           acceptedPets[pet.petId] || pet.adopted === true
-                            ? "bg-gray-400 cursor-not-allowed"
-                            : "bg-green-600 hover:bg-green-700"
+                            ? "bg-green-500 cursor-not-allowed"
+                            : "bg-yellow-500"
                         }`}
                       >
                         {acceptedPets[pet.petId] || pet.adopted === true
-                          ? "Accepted"
-                          : "Accept"}
+                          ?  <CheckCheck size={16} />
+                          :  <Check size={16} />}
                       </button>
                     </td>
                   </tr>
@@ -176,7 +180,7 @@ const AdoptionRequest = () => {
           ></DashboardNoData>
         )}
       </div>
-    </div>
+    </Container>
   );
 };
 

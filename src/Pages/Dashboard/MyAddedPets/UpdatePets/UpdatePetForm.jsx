@@ -141,7 +141,7 @@ const UpdatePetForm = ({
       <div>
         <button
           type="submit"
-          className=" p-3   rounded
+          className=" p-3  rounded-tr-3xl rounded-bl-3xl rounded-lg
           font-semibold px-3 lg:px-5 py-1 lg:py-2 
                 text-sm lg:text-base 
                bg-lBtn dark:bg-dBtn"
