@@ -11,7 +11,7 @@
 
 - **Live URL:**  https://pawlogue-51325.web.app
 
-## Purpose
+## 🎯 Purpose
 The purpose of this project is to create a platform that connects individuals with pets in need of loving homes, while also allowing users to contribute to donation campaigns that support the well-being of these animals. The site aims to provide a user-friendly experience for pet adoption and charitable giving, making it easier for people to help pets in need and improve their lives.
 
 ## 🛠️ Main Technologies
@@ -25,7 +25,7 @@ The purpose of this project is to create a platform that connects individuals wi
   - **react-icons** – For using vector icons in the UI
   - **sweetalert2** – For showing beautiful and customizable alerts
 
-## Key Features
+## 🔑 Key Features
 - **Pet Listings**: Browse and adopt pets from various categories like cats, dogs, rabbits, and more.
 - **CRUD Operations**: Users can add, edit, and delete pets or any donation campaign they have added.
 - **Search and Filter**: Efficient searching and filtering system for users to find the pets they want.
