@@ -67,17 +67,18 @@ npm install
  ```
  
 3. **Set up Stripe keys:** 
-- Go to the Stripe Dashboard to get your Publishable Key and Secret Key.
-- Create a .env file in the root directory of the project (if it doesn't exist) and add the following:
+  - Go to the Stripe Dashboard to get your Publishable Key and Secret Key.
+  - Create a .env file in the root directory of the project (if it doesn't exist) and add the following:
 
  ```bash
 VITE_Payment_Gateway_PK=your_publishable_key
 
  ```
 
-4. **Set up ImageBB key:** 
-- Go to ImageBB and sign in or create an account. Then visit the ImageBB API page. Click on Get Your API Key to generate your key.
-- Add the following in the .env file
+4. **Set up ImageBB key:**  
+  - Go to ImageBB and sign in or create an account. Then visit the ImageBB API page. Click on Get Your API Key to generate your key.
+  - Add the following in the .env file
+
  ```bash
 VITE_IMGBB_API_KEY=your_imagebb_api_key
 
