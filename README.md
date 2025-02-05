@@ -10,6 +10,7 @@
 
 
 - **Live URL:**  https://pawlogue-51325.web.app
+- Admin Email : ggg@gmail.com  (password - 123456aA)
 
 ## 🎯 Purpose
 The purpose of this project is to create a platform that connects individuals with pets in need of loving homes, while also allowing users to contribute to donation campaigns that support the well-being of these animals. The site aims to provide a user-friendly experience for pet adoption and charitable giving, making it easier for people to help pets in need and improve their lives.

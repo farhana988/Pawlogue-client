@@ -29,13 +29,13 @@ const Sidebar = () => {
       >
 
         {/* logo */}  {/* name */}
-        <div className="flex items-center gap-2 mb-6">
+        <Link to={'/'} className="flex items-center gap-2 mb-6">
           {" "}
           
           <img className="w-10 lg:w-16" src={logo} alt="" />
         
           <h2 className="lg:text-2xl font-bold ">Pawlogue </h2>
-        </div>
+        </Link>
 
        
         {/* name of the dashboard */}
