@@ -5,8 +5,8 @@
 
 
 
- ![Pawlogue Screenshot](https://i.ibb.co/CpRTXPSK/p1.png)
- <img src="https://i.ibb.co/CpRTXPSK/p1.png" alt="Pawlogue Screenshot" style="width: 100%; max-width: 800px;"/>
+ <!-- ![Pawlogue Screenshot](https://i.ibb.co/zh2trScB/pawl.jpg) -->
+ <img src="https://i.ibb.co/zh2trScB/pawl.jpg" alt="Pawlogue Screenshot" style="width: 100%; max-width: 800px;"/>
 
 
 - **Live URL:**  https://pawlogue-51325.web.app
@@ -60,10 +60,12 @@ Follow these steps to run this project on your local machine:
  ```bash
  git clone https://github.com/farhana988/Pawlogue-client.git
  ```
+
 2. **Install dependencies:** First, make sure you have Node.js installed. Then, run the following command to install all the necessary dependencies:
  ```bash
 npm install
  ```
+ 
 3. **Set up Stripe keys:** 
 - Go to the Stripe Dashboard to get your Publishable Key and Secret Key.
 - Create a .env file in the root directory of the project (if it doesn't exist) and add the following:
@@ -72,7 +74,17 @@ npm install
 VITE_Payment_Gateway_PK=your_publishable_key
 
  ```
-3. **Start the application:** After the installation is complete, you can start the application by running:
+
+4. **Set up ImageBB key:** 
+- Go to ImageBB and sign in or create an account. Then visit the ImageBB API page. Click on Get Your API Key to generate your key.
+- Add the following in the .env file
+ ```bash
+VITE_IMGBB_API_KEY=your_imagebb_api_key
+
+
+ ```
+
+5. **Start the application:** Now you can start the application by running:
 
  ```bash
 npm run dev
