@@ -28,6 +28,7 @@ import WebsiteOverview from "../Components/footer/WebsiteOverview";
 import ContactInfo from "../Components/footer/ContactInfo";
 import PrivacyPolicy from "../Components/footer/PrivacyPolicy";
 import TermsAndConditions from "../Components/footer/TermsAndConditions";
+import BookVet from "../Pages/BookVet/BookVet";
 
 export const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ export const router = createBrowserRouter([
       {
         path: "/donationCampaignDetails/:id",
         element: <DonationCampaignDetails></DonationCampaignDetails>,
+      },
+      {
+        path: "/bookVet",
+        element: <PrivateRoute> <BookVet></BookVet> </PrivateRoute>,
       },
       // footer links
       {

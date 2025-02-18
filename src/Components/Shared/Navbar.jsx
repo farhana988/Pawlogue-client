@@ -62,6 +62,22 @@ const Navbar = () => {
       >
         Donation Campaigns
       </NavLink>
+
+      {/* book a vet */}
+      {user && (
+        <NavLink
+          to="/bookVet"
+          className={({ isActive }) =>
+            ` ${
+              isActive
+                ? "active m text-nav dark:text-ivory md:text-lg lg:text-xl font-extrabold"
+                : "font-medium  lg:text-lg text-nav dark:text-ivory hover:text-[#536493] dark:hover:text-slate-300"
+            }`
+          }
+        >
+          Book a Vet
+        </NavLink>
+      )}
     </>
   );
 
