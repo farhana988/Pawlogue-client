@@ -6,7 +6,7 @@ import PetsCategory from "./PetsCategorySection/PetsCategory";
 import SuccessStories from "./SuccessStories/SuccessStories";
 import Banner from "./banner/Banner";
 import Volunteer from "./Volunteer";
-import LazyLoad from "react-lazyload";
+import MeetOurTeam from "./MeetOurTeam";
 
 const Home = () => {
   const location = useLocation();
@@ -21,11 +21,10 @@ const Home = () => {
       <Banner></Banner>
       <PetsCategory></PetsCategory>
       <CallToAction></CallToAction>
-      <LazyLoad height={200} debounce={500} once>
-        <AboutUs></AboutUs>
-      </LazyLoad>
+      <AboutUs></AboutUs>
       <SuccessStories></SuccessStories>
       <PawCareTips></PawCareTips>
+      <MeetOurTeam></MeetOurTeam>
       <Volunteer></Volunteer>
     </div>
   );
