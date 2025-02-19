@@ -112,7 +112,7 @@ const DonationCampaignForm = ({
 
               {/* Image Upload */}
               <div className="p-4 w-full m-auto rounded-lg flex-grow">
-                <div className="file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg">
+                <div className="file_upload px-5 py-3 relative  rounded-lg">
                   <div className="flex flex-col w-max mx-auto text-center">
                     <label>
                       <input
