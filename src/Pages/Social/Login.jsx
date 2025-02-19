@@ -1,6 +1,6 @@
 // import React from 'react';
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
@@ -10,10 +10,10 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 import GoogleLogin from "./SocialLogin/GoogleLogin";
 import GithubLOgin from "./SocialLogin/GithubLOgin";
 
-
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const from = location?.state || "/";
   const { signIn } = useContext(AuthContext);
 
@@ -53,19 +53,32 @@ const Login = () => {
 
   return (
     <div className="pt-10 px-5">
-     
-      <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-14
-       text-lBtn dark:text-dBtn text-center">
-      Login Form
+      <h2
+        className="text-3xl md:text-5xl lg:text-7xl font-bold mb-14
+       text-lBtn dark:text-dBtn text-center"
+      >
+        Login Form
       </h2>
-      <div className="flex flex-col lg:flex-row justify-center items-center space-y-10
-       lg:space-y-0 ">
+      <div className="text-center">
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300"
+        >
+          Credentials
+        </button>
+      </div>
+      <div
+        className="flex flex-col lg:flex-row justify-center items-center space-y-10
+       lg:space-y-0 "
+      >
         <div className="w-80 lg:w-1/3 ">
           <Lottie animationData={log} loop={true} />
         </div>
         <div className="w-full lg:w-1/3">
-          <div className="card bg-lCard dark:bg-dCard w-full max-w-lg 
-          shrink-0 shadow-2xl shadow-primary rounded-lg p-8 md:ml-32 lg:ml-0">
+          <div
+            className="card bg-lCard dark:bg-dCard w-full max-w-lg 
+          shrink-0 shadow-2xl shadow-primary rounded-lg p-8 md:ml-32 lg:ml-0"
+          >
             <form onSubmit={handleSignIn} className="space-y-6">
               <div className="form-control">
                 <label className="label">
@@ -124,16 +137,36 @@ const Login = () => {
                 </Link>
               </h2>
             </form>
-              <h2 className="text-center font-bold text-xl italic"> OR</h2>
-            <div className="text-center border-b-2 border-dashed pb-3 dark:opacity-50  dark:text-ivory ">
-             
-            </div>
+            <h2 className="text-center font-bold text-xl italic"> OR</h2>
+            <div className="text-center border-b-2 border-dashed pb-3 dark:opacity-50  dark:text-ivory "></div>
             <hr className="pb-3 opacity-0" />
             <GoogleLogin />
             <GithubLOgin></GithubLOgin>
           </div>
         </div>
       </div>
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-80 text-center">
+            <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
+              Modal Title
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300">
+              Text 1: Example content
+            </p>
+            <p className="text-gray-600 dark:text-gray-300 mt-2">
+              Text 2: Another example
+            </p>
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 mt-4"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
