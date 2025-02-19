@@ -114,7 +114,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden md:flex space-x-8 items-center">
+        <div className="hidden md:flex space-x-4 lg:space-x-8 items-center">
           {links}
 
           {/* Displayed when the user is logged in */}
