@@ -29,6 +29,7 @@ import ContactInfo from "../Components/footer/ContactInfo";
 import PrivacyPolicy from "../Components/footer/PrivacyPolicy";
 import TermsAndConditions from "../Components/footer/TermsAndConditions";
 import BookVet from "../Pages/BookVet/BookVet";
+import Profile from "../Pages/Dashboard/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -97,6 +98,12 @@ export const router = createBrowserRouter([
           <PrivateRoute>
             <Statistics></Statistics>
           </PrivateRoute>
+        ),
+      },
+      {
+        path: "profile",
+        element: (
+          <PrivateRoute><Profile></Profile></PrivateRoute>
         ),
       },
       {

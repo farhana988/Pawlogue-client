@@ -48,6 +48,18 @@ const Sidebar = () => {
           <ul className="lg:space-y-4 mt-7">
             <li>
               <NavLink
+                to="/dashboard/profile"
+                className={({ isActive }) =>
+                  `block py-2 px-4 rounded text-sm lg:text-base ${
+                    isActive ? "bg-[#1f9c779a] dark:bg-[#8d2323a6]" : ""
+                  }`
+                }
+              >
+                Profile
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to="/dashboard/add-pet"
                 className={({ isActive }) =>
                   `block py-2 px-4 rounded text-sm lg:text-base ${
