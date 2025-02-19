@@ -59,14 +59,7 @@ const Login = () => {
       >
         Login Form
       </h2>
-      <div className="text-center">
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300"
-        >
-          Credentials
-        </button>
-      </div>
+
       <div
         className="flex flex-col lg:flex-row justify-center items-center space-y-10
        lg:space-y-0 "
@@ -145,18 +138,30 @@ const Login = () => {
           </div>
         </div>
       </div>
+      {/* credential btn */}
+      <div className="text-center lg:ml-[490px] mt-5">
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className=" rounded-md
+                font-semibold px-5 py-2  bg-lBtn dark:bg-dBtn
+                text-sm lg:text-base"
+        >
+         Admin Credentials
+        </button>
+      </div>
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-80 text-center">
-            <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
-              Modal Title
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-96 lg:w-[500px]
+          text-center">
+            <h3 className="text-2xl lg:text-3xl font-semibold mb-4 text-gray-800 dark:text-white">
+              Admin Credentials
             </h3>
-            <p className="text-gray-600 dark:text-gray-300">
-              Text 1: Example content
+            <p className="text-gray-600 dark:text-gray-300 lg:text-xl">
+              Email: ggg@gmail.com
             </p>
-            <p className="text-gray-600 dark:text-gray-300 mt-2">
-              Text 2: Another example
+            <p className="text-gray-600 dark:text-gray-300 lg:text-xl mt-2">
+              Password: 123456aA
             </p>
             <button
               onClick={() => setIsModalOpen(false)}
