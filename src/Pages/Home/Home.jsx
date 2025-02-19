@@ -7,6 +7,7 @@ import SuccessStories from "./SuccessStories/SuccessStories";
 import Banner from "./banner/Banner";
 import Volunteer from "./Volunteer";
 import MeetOurTeam from "./MeetOurTeam";
+import CorporateSponsorships from "./CorporateSponsorships";
 
 const Home = () => {
   const location = useLocation();
@@ -25,6 +26,7 @@ const Home = () => {
       <SuccessStories></SuccessStories>
       <PawCareTips></PawCareTips>
       <MeetOurTeam></MeetOurTeam>
+      <CorporateSponsorships></CorporateSponsorships>
       <Volunteer></Volunteer>
     </div>
   );

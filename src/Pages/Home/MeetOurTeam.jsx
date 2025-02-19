@@ -6,28 +6,33 @@ const MeetOurTeam = () => {
     {
       name: "Alice Johnson",
       role: "Founder",
-      image: "/images/alice.jpg",
+      image: "https://i.ibb.co/3mwSZh4x/Alice-Johnson.jpg",
       bio: "Passionate animal lover and advocate for adoption.",
     },
     {
       name: "John Smith",
       role: "Program Manager",
-      image: "/images/john.jpg",
+      image: "https://i.ibb.co/5385YFz/John-Doe.jpg",
       bio: "Expert in animal welfare programs and fostering.",
     },
     {
       name: "Emily Davis",
       role: "Volunteer Coordinator",
-      image: "/images/emily.jpg",
+      image: "https://i.ibb.co/4gpxhsJ0/Emily-Davis.jpg",
       bio: "Connecting volunteers with animals in need.",
     },
     {
       name: "Michael Brown",
       role: "Fundraising Manager",
-      image: "/images/michael.jpg",
+      image: "https://i.ibb.co/KpknxkgD/Michael-Brown.jpg",
       bio: "Dedicated to raising funds and awareness for animal rescue efforts.",
     },
   ];
+
+
+
+
+
   return (
     <Container>
       <Heading title={"Meet Our Team"}></Heading>
@@ -43,7 +48,7 @@ const MeetOurTeam = () => {
               <img
                 src={member.image}
                 alt={member.name}
-                className="w-32 h-32 rounded-full mx-auto"
+                className="w-20 lg:w-32 h-20 lg:h-32 rounded-full mx-auto"
               />
               <h3 className=" lg:text-xl font-semibold ">{member.name}</h3>
               <p className="text-sm lg:text-lg">{member.role}</p>
