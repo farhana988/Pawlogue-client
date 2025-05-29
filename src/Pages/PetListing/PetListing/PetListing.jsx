@@ -1,12 +1,12 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import PetListingCard from "./PetListingCard";
 import { useLocation } from "react-router-dom";
 import Container from "../../../Components/Reusable/Container";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import CardSkeleton from "../../../Components/loading/CardSkeleton";
 import Heading from "../../../Components/Reusable/Heading";
+import ContentCard from "../../../Components/card/ContentCard";
 
 const useDebounce = (value, delay) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
@@ -105,7 +105,15 @@ const PetListing = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
           {data.pages.map((page) =>
             page.pets.map((pet) => (
-              <PetListingCard key={pet?._id} pet={pet}></PetListingCard>
+              <ContentCard key={pet?._id}   image={pet?.image}
+      name={pet?.name}
+      age={pet?.age}
+      location={pet?.location}
+      link={`/petDetails/${pet?._id}`}
+      buttonText="Details"
+      detailsPath={`/petDetails/${pet?._id}`}
+      showLocation={true}
+      showAge={true}/>
             ))
           )}
         </div>

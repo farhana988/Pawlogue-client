@@ -8,8 +8,8 @@ import RecommendedCampaigns from "../RecommendedCampaigns/RecommendedCampaigns";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import LoadingSpinner from "../../../Components/loading/LoadingSpinner";
-import DonationCampaignDetailsCard from "./DonationCampaignDetailsCard";
 import Heading from "../../../Components/Reusable/Heading";
+import DetailsCard from "../../../Components/card/DetailsCard";
 
 const DonationCampaignDetails = () => {
   const axiosSecure = useAxiosSecure();
@@ -64,9 +64,15 @@ const DonationCampaignDetails = () => {
       <Heading title={"Donation Campaign Details"}></Heading>
       <Container>
         {/* donation card  */}
-        <DonationCampaignDetailsCard
-          donationDetails={donationDetails}
-        ></DonationCampaignDetailsCard>
+        <DetailsCard
+          image={donationDetails?.image}
+          title={donationDetails?.name}
+          amount={donationDetails?.amount}
+          date={donationDetails?.date}
+          shortDescription={donationDetails?.shortDescription}
+          longDescription={donationDetails?.longDescription}
+          type="donation"
+        ></DetailsCard>
 
         {/* Donate Button */}
         <button
@@ -74,20 +80,24 @@ const DonationCampaignDetails = () => {
              rounded-tr-3xl rounded-bl-3xl rounded-lg
             font-semibold px-3 lg:px-5 py-1 lg:py-2
                 text-sm lg:text-base  ${
-                  isPaused || isExpired|| user?.email === donationDetails?.email
+                  isPaused ||
+                  isExpired ||
+                  user?.email === donationDetails?.email
                     ? "bg-gray-400 text-zinc-800  cursor-not-allowed"
                     : " bg-lBtn dark:bg-dBtn "
                 }`}
           onClick={handleDonateClick}
-          disabled={isPaused || isExpired|| user?.email === donationDetails?.email}
+          disabled={
+            isPaused || isExpired || user?.email === donationDetails?.email
+          }
         >
           {user?.email === donationDetails?.email
-    ? "You created the campaign"
-    : isPaused
-    ? "Campaign Paused"
-    : isExpired
-    ? "Campaign Expired"
-    : "Donate Now"}
+            ? "You created the campaign"
+            : isPaused
+            ? "Campaign Paused"
+            : isExpired
+            ? "Campaign Expired"
+            : "Donate Now"}
         </button>
 
         {/* Recommended Campaigns Section */}

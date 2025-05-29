@@ -1,34 +1,32 @@
-import { useLocation } from "react-router-dom";
-import AboutUs from "./AboutUs";
-import CallToAction from "./CallToAction";
-import PawCareTips from "./PawCareTips/PawCareTips";
-import PetsCategory from "./PetsCategorySection/PetsCategory";
-import SuccessStories from "./SuccessStories/SuccessStories";
-import Banner from "./banner/Banner";
-import Volunteer from "./Volunteer";
-import MeetOurTeam from "./MeetOurTeam";
-import CorporateSponsorships from "./CorporateSponsorships";
+import PetsCategory from "../../Components/Home/PetsCategory";
+import CallToAction from "../../Components/Home/CallToAction";
+import AboutUs from "../../Components/Home/AboutUs";
+import PawCareTips from "../../Components/Home/PawCareTips";
+import MeetOurTeam from "../../Components/Home/MeetOurTeam";
+import CorporateSponsorships from "../../Components/Home/CorporateSponsorships";
+import Volunteer from "../../Components/Home/Volunteer";
+import SuccessStories from "../../Components/Home/SuccessStories";
+import Banner from "../../Components/Home/Banner";
+import usePageTitle from "../../hooks/usePageTitle";
 
 const Home = () => {
-  const location = useLocation();
-
   // dynamic title
-  if (location.pathname === "/") {
-    document.title = "Pawlogue | Home";
-  }
+  usePageTitle("Home");
 
   return (
-    <div>
+    <>
       <Banner></Banner>
-      <PetsCategory></PetsCategory>
-      <CallToAction></CallToAction>
-      <AboutUs></AboutUs>
-      <SuccessStories></SuccessStories>
-      <PawCareTips></PawCareTips>
-      <MeetOurTeam></MeetOurTeam>
-      <CorporateSponsorships></CorporateSponsorships>
-      <Volunteer></Volunteer>
-    </div>
+      <div className="container mx-auto px-5 lg:px-0">
+        <PetsCategory></PetsCategory>
+        <CallToAction></CallToAction>
+        <AboutUs></AboutUs>
+        <SuccessStories></SuccessStories>
+        <PawCareTips></PawCareTips>
+        <MeetOurTeam></MeetOurTeam>
+        <CorporateSponsorships></CorporateSponsorships>
+        <Volunteer></Volunteer>
+      </div>
+    </>
   );
 };
 

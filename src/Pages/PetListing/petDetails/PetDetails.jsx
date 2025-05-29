@@ -1,4 +1,4 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Container from "../../../Components/Reusable/Container";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
@@ -8,18 +8,19 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import LoadingSpinner from "../../../Components/loading/LoadingSpinner";
 import Heading from "../../../Components/Reusable/Heading";
-import PetDetailsCard from "./PetDetailsCard";
 import AdoptModal from "./AdoptModal";
+import DetailsCard from "../../../Components/card/DetailsCard";
+import usePageTitle from "../../../hooks/usePageTitle";
 
 const PetDetails = () => {
-  const location = useLocation();
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
   const { id } = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-
+  // dynamic title
+  usePageTitle(" Pet Details");
   const {
     data: petDetails = [],
     isLoading,
@@ -34,11 +35,6 @@ const PetDetails = () => {
   });
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
   if (error) return <div>Error: {error.message}</div>;
-
-  // dynamic title
-  if (location.pathname === `/petDetails/${id}`) {
-    document.title = "Pawlogue | Pet Details";
-  }
 
   const handleAdoptSubmit = async ({ phone, address }) => {
     const adoptionData = {
@@ -94,13 +90,20 @@ const PetDetails = () => {
   };
 
   return (
-    <div>
+    <>
       <Heading title={"Pet Details"}></Heading>
       <Container>
-        <PetDetailsCard
-          petDetails={petDetails}
+        <DetailsCard
+          image={petDetails?.image}
+          title={petDetails?.name}
+          age={petDetails?.age}
+          location={petDetails?.location}
+          category={petDetails?.category}
+          shortDescription={petDetails?.shortDescription}
+          date={petDetails?.date}
           formatDate={formatDate}
-        ></PetDetailsCard>
+          type="pet"
+        ></DetailsCard>
         <button
           onClick={handleAdoptButton}
           className={`font-semibold px-3 lg:px-5 py-1 lg:py-2 
@@ -126,7 +129,7 @@ const PetDetails = () => {
         onClose={() => setIsModalOpen(false)}
         onSubmit={handleAdoptSubmit}
       />
-    </div>
+    </>
   );
 };
 

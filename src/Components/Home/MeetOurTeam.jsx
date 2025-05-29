@@ -1,5 +1,5 @@
-import Container from "../../Components/Reusable/Container";
-import Heading from "../../Components/Reusable/Heading";
+import SmCard from "../card/SmCard";
+import Heading from "../Reusable/Heading";
 
 const MeetOurTeam = () => {
   const teamMembers = [
@@ -29,35 +29,25 @@ const MeetOurTeam = () => {
     },
   ];
 
-
-
-
-
   return (
-    <Container>
+    <>
       <Heading title={"Meet Our Team"}></Heading>
-
       <div className=" text-center ">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
           {teamMembers.map((member, index) => (
-            <div
+            <SmCard
               key={index}
-              className="bg-lCard dark:bg-dCard shadow-lg rounded-lg
-               overflow-hidden hover:shadow-xl  p-3 lg:p-6 space-y-1"
-            >
-              <img
-                src={member.image}
-                alt={member.name}
-                className="w-20 lg:w-32 h-20 lg:h-32 rounded-full mx-auto"
-              />
-              <h3 className=" lg:text-xl font-semibold ">{member.name}</h3>
-              <p className="text-sm lg:text-lg">{member.role}</p>
-              <p className="text-xs lg:text-base">{member?.bio}</p>
-            </div>
+              image={member.image}
+              title={member.name}
+              description={member.role}
+              extraContent={
+                <p className="text-xs lg:text-base">{member?.bio}</p>
+              }
+            />
           ))}
         </div>
       </div>
-    </Container>
+    </>
   );
 };
 

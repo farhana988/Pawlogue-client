@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import Container from "../../Components/Reusable/Container";
+import Container from "../Reusable/Container";
 import vol from "../../assets/images/vol.png";
+import FillBtn from "../button/FillBtn";
 
 const Volunteer = () => {
   return (
@@ -21,14 +21,11 @@ const Volunteer = () => {
               Your time and support can make a big difference! Join us in giving
               pets a second chance at a better life.
             </p>
-            <button
-              className=" text-black dark:text-ivory px-6 py-2 font-semibold
-           text-xs  lg:text-lg 
-          rounded-tr-3xl rounded-bl-3xl rounded-lg  bg-lBtn dark:bg-dBtn
-           "
-            >
-              <Link to="/contact">Sign Up to Volunteer</Link>
-            </button>
+            <FillBtn
+              text="Sign Up to Volunteer"
+              link="/contact"
+              additionalStyles="text-black dark:text-ivory px-6 py-2 font-semibold text-xs lg:text-lg rounded-tr-3xl rounded-bl-3xl rounded-lg bg-lBtn dark:bg-dBtn"
+            />
           </div>
         </div>
       </Container>

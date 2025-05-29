@@ -1,11 +1,11 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import AllDonationCampaignsCard from "./AllDonationCampaignsCard";
 import CardSkeleton from "../../../Components/loading/CardSkeleton";
 import Container from "../../../Components/Reusable/Container";
 import Heading from "../../../Components/Reusable/Heading";
 import { useLocation } from "react-router-dom";
+import ContentCard from "../../../Components/card/ContentCard";
 
 const AllDonationCampaigns = () => {
   const location = useLocation();
@@ -51,7 +51,17 @@ const AllDonationCampaigns = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
         {data.pages.map((page) =>
           page.campaigns.map((campaign) => (
-            <AllDonationCampaignsCard key={campaign._id} campaign={campaign} />
+            <ContentCard
+              key={campaign._id}
+              image={campaign?.image}
+              name={campaign?.name}
+              link={`/donationCampaignDetails/${campaign?._id}`}
+              buttonText="Details"
+              detailsPath={`/donationCampaignDetails/${campaign?._id}`}
+              additionalContent={campaign?.additionalContent}
+              showLocation={false}
+              showAge={false}
+            />
           ))
         )}
       </div>

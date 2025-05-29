@@ -1,10 +1,10 @@
 import { ReactTyped } from "react-typed";
-import Heading from "../../Components/Reusable/Heading";
+import Heading from "../Reusable/Heading";
 import bg from "../../assets/images/about.png";
 
 const AboutUs = () => {
   return (
-    <div className="pt-20 container mx-auto">
+    <div className="pt-20">
       <div
         className="relative bg-center bg-fixed pb-20"
         style={{

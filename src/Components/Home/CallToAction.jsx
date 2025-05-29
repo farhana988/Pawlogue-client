@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
-import Container from "../../Components/Reusable/Container";
-import Heading from "../../Components/Reusable/Heading";
+import Heading from "../Reusable/Heading";
 import call from "../../assets/images/call-to-action.jpg";
+import FillBtn from "../button/FillBtn";
 
 const CallToAction = () => {
   return (
-    <Container>
+    <>
       <Heading title={"Call to action"}></Heading>
       <section className="">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:gap-7 items-center px-4">
@@ -19,16 +18,7 @@ const CallToAction = () => {
               them a second chance at life. Provide a safe, loving home to these
               adorable companions and make a lasting positive impact.
             </p>
-            <button
-              className="font-semibold px-5 py-2  rounded-tr-3xl rounded-bl-3xl rounded-lg
-                text-sm lg:text-base 
-               bg-lBtn dark:bg-dBtn transition transform hover:scale-125"
-            >
-              <Link to='/petListing'>
-              Adopt Now
-              </Link>
-             
-            </button>
+            <FillBtn text="Adopt Now" link="/petListing" />
           </div>
 
           {/* Image Section */}
@@ -43,7 +33,7 @@ const CallToAction = () => {
           </div>
         </div>
       </section>
-    </Container>
+    </>
   );
 };
 
