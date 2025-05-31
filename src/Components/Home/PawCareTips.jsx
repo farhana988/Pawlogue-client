@@ -1,34 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Heading from "../Reusable/Heading";
-import Swal from "sweetalert2";
 import SmCard from "../card/SmCard";
+import { useLoaderData } from "react-router-dom";
 
 const PawCareTips = () => {
-  const [data, setData] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-
-  useEffect(() => {
-    fetch("./petCare.json")
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-
-        setSelectedCategory(data[0]?.category);
-      })
-      .catch(() => {
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: "Error fetching data. Please try again later.",
-        });
-      });
-  }, []);
+  const { petCare = [] } = useLoaderData();
+  const [selectedCategory, setSelectedCategory] = useState(
+    petCare[0]?.category || null
+  );
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
 
-  const selectedCategoryData = data.find(
+  const selectedCategoryData = petCare.find(
     (category) => category.category === selectedCategory
   );
 
@@ -38,17 +23,17 @@ const PawCareTips = () => {
 
       <div className="flex flex-wrap justify-center gap-4 mb-6">
         {/* category btn */}
-        {data?.map((category) => (
+        {petCare?.map((category) => (
           <button
             key={category.category}
             onClick={() => handleCategoryClick(category.category)}
             className={` rounded-full h-24 w-24
-                      lg:text-2xl 
-                            ${
-                              selectedCategory === category.category
-                                ? "bg-lBtn dark:bg-dBtn  "
-                                : "bg-gray-200 dark:bg-dCard"
-                            } hover:bg-lBtn hover:dark:bg-dBtn  transition duration-300`}
+                lg:text-2xl 
+                ${
+                  selectedCategory === category.category
+                    ? "bg-lBtn dark:bg-dBtn  "
+                    : "bg-gray-200 dark:bg-dCard"
+                } hover:bg-lBtn hover:dark:bg-dBtn  transition duration-300`}
           >
             <img
               src={category.image}
@@ -58,14 +43,14 @@ const PawCareTips = () => {
           </button>
         ))}
       </div>
-
+      {/* tips card  */}
       {selectedCategory && (
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
           {selectedCategoryData?.tips?.slice(0, 4)?.map((tip, index) => (
             <SmCard
               key={index}
-              title={tip.title}
-              description={tip.description}
+              title={tip?.title}
+              description={tip?.description}
               extraContent={null}
             />
           ))}

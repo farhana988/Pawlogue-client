@@ -8,7 +8,7 @@ import quote from "../../assets/lottie/quote.json";
 import { useLoaderData } from "react-router-dom";
 
 const SuccessStories = () => {
-const stories = useLoaderData()
+  const { stories } = useLoaderData();
 
   const sliderSettings = {
     infinite: true,
