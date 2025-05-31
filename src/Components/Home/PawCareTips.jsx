@@ -27,7 +27,7 @@ const PawCareTips = () => {
           <button
             key={category.category}
             onClick={() => handleCategoryClick(category.category)}
-            className={` rounded-full h-24 w-24
+            className={` rounded-full h-20 w-20
                 lg:text-2xl 
                 ${
                   selectedCategory === category.category
@@ -38,7 +38,7 @@ const PawCareTips = () => {
             <img
               src={category.image}
               alt={category.category}
-              className="w-16 h-16 object-cover ml-4 rounded-full"
+              className="w-16 h-16 object-cover ml-2 rounded-full"
             />
           </button>
         ))}

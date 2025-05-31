@@ -6,7 +6,6 @@ import MeetOurTeam from "../../Components/Home/MeetOurTeam";
 import CorporateSponsorships from "../../Components/Home/CorporateSponsorships";
 import Volunteer from "../../Components/Home/Volunteer";
 import SuccessStories from "../../Components/Home/SuccessStories";
-import Banner from "../../Components/Home/Banner";
 import usePageTitle from "../../hooks/usePageTitle";
 
 const Home = () => {
@@ -15,17 +14,14 @@ const Home = () => {
 
   return (
     <>
-      <Banner></Banner>
-      <div className="container mx-auto px-5 lg:px-0">
-        <PetsCategory></PetsCategory>
-        <CallToAction></CallToAction>
-        <AboutUs></AboutUs>
-        <SuccessStories></SuccessStories>
-        <PawCareTips></PawCareTips>
-        <MeetOurTeam></MeetOurTeam>
-        <CorporateSponsorships></CorporateSponsorships>
-        <Volunteer></Volunteer>
-      </div>
+      <PetsCategory></PetsCategory>
+      <CallToAction></CallToAction>
+      <AboutUs></AboutUs>
+      <SuccessStories></SuccessStories>
+      <PawCareTips></PawCareTips>
+      <MeetOurTeam></MeetOurTeam>
+      <CorporateSponsorships></CorporateSponsorships>
+      <Volunteer></Volunteer>
     </>
   );
 };

@@ -40,9 +40,9 @@ const MeetOurTeam = () => {
               image={member.image}
               title={member.name}
               description={member.role}
-              extraContent={
-                <p className="text-xs lg:text-base">{member?.bio}</p>
-              }
+              extraContent=
+               {member?.bio}
+              
             />
           ))}
         </div>

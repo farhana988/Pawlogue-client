@@ -1,4 +1,4 @@
-import Container from "../Reusable/Container";
+
 import vol from "../../assets/images/vol.png";
 import FillBtn from "../button/FillBtn";
 
@@ -6,7 +6,7 @@ const Volunteer = () => {
   return (
     <>
       <div className="mt-20"></div>
-      <Container>
+   
         <div
           className="py-5 bg-cover bg-center relative w-full h-80 lg:h-[430px]"
           style={{
@@ -17,7 +17,7 @@ const Volunteer = () => {
             <h2 className="text-xl lg:text-4xl font-bold  mb-2 italic">
               Become a Volunteer
             </h2>
-            <p className="text-xs lg:text-xl  mb-2 px-6 md:px-20 lg:px-40">
+            <p className="text-xs lg:text-base xl:text-xl  mb-4 px-6 md:px-20 lg:px-40">
               Your time and support can make a big difference! Join us in giving
               pets a second chance at a better life.
             </p>
@@ -28,7 +28,7 @@ const Volunteer = () => {
             />
           </div>
         </div>
-      </Container>
+     
     </>
   );
 };

@@ -72,7 +72,7 @@ const Registration = () => {
         <div className="w-96 lg:w-1/3">
           <Lottie animationData={reg} loop={true} />
         </div>
-        <div className="flex-col w-full lg:w-1/3">
+        <div className="flex-col w-full lg:w-2/3">
           <AuthForm
             isRegister={true}
             onSubmit={handleSignUp}

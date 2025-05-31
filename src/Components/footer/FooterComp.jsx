@@ -43,7 +43,7 @@ const FooterComp = () => {
                 />
                 <span>logue</span>
               </div>
-              <p className="opacity-70 text-sm lg:text-base">
+              <p className="opacity-70 text-sm xl:text-base">
                 To provide a comprehensive platform for pet lovers, enabling
                 them to adopt, review, and explore pet-related services while
                 fostering a community of responsible pet ownership

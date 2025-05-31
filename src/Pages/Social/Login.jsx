@@ -52,7 +52,7 @@ const Login = () => {
         <div className="w-80 lg:w-1/3 ">
           <Lottie animationData={log} loop={true} />
         </div>
-        <div className="w-full lg:w-1/3">
+        <div className="w-full lg:w-2/3 ">
           <AuthForm
             onSubmit={handleSignIn}
             altLinkText="No account yet?"

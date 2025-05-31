@@ -18,7 +18,7 @@ const AdminLogin = ({ redirectTo = "/" }) => {
     }
   };
   return (
-    <div className="text-center lg:ml-[490px] mt-5">
+    <div className="text-center lg:ml-[320px] xl:ml-[420px] 2xl:ml-[490px] mt-5">
       <button
         onClick={handleAdminLogin}
         className="rounded-md font-semibold px-5 py-2 bg-lBtn dark:bg-dBtn

@@ -14,7 +14,8 @@ const AuthForm = ({
   altLinkCTA,
 }) => {
   return (
-    <div className="card bg-lCard dark:bg-dCard w-full max-w-lg p-8 shadow-xl rounded-lg">
+    <div className="card bg-lCard dark:bg-dCard w-full max-w-lg mx-auto
+    p-8 shadow-xl rounded-lg">
       <form onSubmit={onSubmit} className="space-y-6">
         {isRegister && <InputField name="name" label="Name" />}
         <InputField name="email" label="Email" type="email" />

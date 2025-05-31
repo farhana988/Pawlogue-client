@@ -10,8 +10,11 @@ import Swal from "sweetalert2";
 import LoadingSpinner from "../../../Components/loading/LoadingSpinner";
 import Heading from "../../../Components/Reusable/Heading";
 import DetailsCard from "../../../Components/card/DetailsCard";
+import usePageTitle from "../../../hooks/usePageTitle";
 
 const DonationCampaignDetails = () => {
+  // dynamic title
+  usePageTitle("Donation Campaign Details");
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -54,13 +57,8 @@ const DonationCampaignDetails = () => {
     setIsModalOpen(true);
   };
 
-  // dynamic title
-  if (location.pathname === `/donationCampaignDetails/${id}`) {
-    document.title = "Pawlogue | Donation Campaign Details";
-  }
-
   return (
-    <div className="">
+    <>
       <Heading title={"Donation Campaign Details"}></Heading>
       <Container>
         {/* donation card  */}
@@ -112,7 +110,7 @@ const DonationCampaignDetails = () => {
           donationDetails={donationDetails}
         />
       )}
-    </div>
+    </>
   );
 };
 

@@ -2,13 +2,13 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import CardSkeleton from "../../../Components/loading/CardSkeleton";
-import Container from "../../../Components/Reusable/Container";
 import Heading from "../../../Components/Reusable/Heading";
-import { useLocation } from "react-router-dom";
 import ContentCard from "../../../Components/card/ContentCard";
+import usePageTitle from "../../../hooks/usePageTitle";
 
 const AllDonationCampaigns = () => {
-  const location = useLocation();
+  // dynamic title
+  usePageTitle(" Donation Campaigns");
   const axiosSecure = useAxiosSecure();
   const { ref, inView } = useInView();
 
@@ -39,13 +39,8 @@ const AllDonationCampaigns = () => {
   if (isLoading) return <CardSkeleton></CardSkeleton>;
   if (error) return <div>Error: {error.message}</div>;
 
-  // dynamic title
-  if (location.pathname === "/donationCampaigns") {
-    document.title = "Pawlogue | Donation Campaigns";
-  }
-
   return (
-    <Container>
+    <>
       <Heading title={" All Donation Campaigns "}></Heading>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
@@ -81,7 +76,7 @@ const AllDonationCampaigns = () => {
           <div>No more campaigns to load.</div>
         )}
       </div>
-    </Container>
+    </>
   );
 };
 

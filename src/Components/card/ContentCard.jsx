@@ -8,7 +8,6 @@ const ContentCard = ({
   name,
   location,
   age,
-  link,
   buttonText,
   additionalContent,
   detailsPath,
@@ -30,20 +29,21 @@ const ContentCard = ({
 
       <div className="px-3 lg:px-6 py-2 lg:py-4 flex flex-col flex-grow">
         {/* Name */}
-        <h3 className="lg:text-xl font-semibold" title={name}>
+        <h3 className="xl:text-xl font-semibold" title={name}>
           {name?.substring(0, 20)}
         </h3>
 
         {/* Age */}
         {showAge && (
-          <p className="absolute text-black font-semibold px-5 py-1 text-sm lg:text-base rounded-bl-2xl z-10 bg-lBtn dark:bg-dBtn top-0 right-0">
+          <p className="absolute text-black font-semibold px-5 py-1 text-sm
+           xl:text-base rounded-bl-2xl z-10 bg-lBtn dark:bg-dBtn top-0 right-0">
             Age: {age}
           </p>
         )}
 
         {/* Location */}
         {showLocation && (
-          <p className="text-xs lg:text-base flex gap-2 my-1">
+          <p className="text-xs xl:text-base flex gap-2 my-1 mb-3">
             <FaLocationDot /> {location?.substring(0, 39)}
           </p>
         )}

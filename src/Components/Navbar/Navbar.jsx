@@ -29,24 +29,25 @@ const Navbar = () => {
       <NavLinkItem to="/petListing" label="Pet Listing" />
       {/* Donation Campaigns */}
       <NavLinkItem to="/donationCampaigns" label="Donation Campaigns" />
-      {/* Book a Vet (only if user is logged in) */}
+      {/* Book a Vet */}
       {user && <NavLinkItem to="/bookVet" label="Book a Vet" />}
     </>
   );
+  
   return (
     <header
       className=" text-black dark:text-white  backdrop-blur-xl bg-ivory/50 
     dark:bg-dCard shadow-md sticky top-0 z-50"
     >
       <nav
-        className="max-w-screen-xl xl:max-w-full xl:px-24 mx-auto px-5 lg:px-0 py-4 
-      flex items-center justify-between"
+        className="max-w-screen-xl xl:max-w-full xl:px-24 mx-auto px-5 py-2 
+      flex items-center justify-between "
       >
         {/* Logo */}
-         <div className="text-2xl flex justify-center items-center gap-2 font-semibold">
+        <div className="text-2xl flex justify-center items-center gap-2 font-semibold">
           <Link to="/" className="flex items-center gap-2">
             {/* Website Logo */}
-            <img className="w-10 lg:w-14" src={logo} alt="Pawlogue Logo" />
+            <img className="w-10 xl:w-14" src={logo} alt="Pawlogue Logo" />
             {/* Name */}
             <div className="text-nav dark:text-ivory font-snow lg:flex gap-4 relative items-center justify-center hidden">
               <span>Pa</span>

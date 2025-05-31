@@ -13,32 +13,34 @@ const SmCard = ({
   children,
 }) => {
   return (
-    <div className="bg-lCard dark:bg-dCard shadow-lg rounded-lg p-3 lg:p-6 flex flex-col justify-between h-full">
+    <div
+      className="bg-lCard dark:bg-dCard shadow-lg rounded-lg p-3 lg:p-6 flex flex-col
+     justify-between h-full"
+    >
       {/* Image Section */}
       {image && (
         <img
           src={image}
           alt={altText || "Card Image"}
           className={
-            imageClass || "w-20 lg:w-32 h-20 lg:h-32 rounded-full mx-auto"
+            imageClass || "w-20 xl:w-32 h-20 xl:h-32 rounded-full mx-auto"
           }
         />
       )}
 
       {/* Title Section */}
-      {title && <h3 className="lg:text-xl font-semibold mb-4">{title}</h3>}
+      {title && <h3 className="xl:text-xl font-semibold mb-2">{title}</h3>}
 
       {/* Description Section */}
       {description && (
-        <p className="mb-4 text-xs lg:text-base">{description}</p>
+        <p className="mb-2 text-xs xl:text-base ">{description}</p>
       )}
-
       {/* Extra content if passed (e.g., tips for PawCareTipsCard) */}
-      {extraContent}
+      {extraContent && <p className="mb-2 text-xs ">{extraContent}</p>}
 
       {/* Button Section */}
       {buttonText && buttonLink && (
-        <div className="mt-auto">
+        <div className="mt-2">
           <FillBtn text={buttonText} link={buttonLink} />
         </div>
       )}

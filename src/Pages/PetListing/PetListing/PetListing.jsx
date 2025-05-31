@@ -1,12 +1,11 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { useLocation } from "react-router-dom";
-import Container from "../../../Components/Reusable/Container";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import CardSkeleton from "../../../Components/loading/CardSkeleton";
 import Heading from "../../../Components/Reusable/Heading";
 import ContentCard from "../../../Components/card/ContentCard";
+import usePageTitle from "../../../hooks/usePageTitle";
 
 const useDebounce = (value, delay) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
@@ -25,7 +24,8 @@ const useDebounce = (value, delay) => {
 };
 
 const PetListing = () => {
-  const location = useLocation();
+  // dynamic title
+  usePageTitle(" Pet Listing");
   const axiosPublic = useAxiosPublic();
   const [filter, setFilter] = useState("");
   const [search, setSearch] = useState("");
@@ -61,13 +61,8 @@ const PetListing = () => {
   if (isLoading) return <CardSkeleton></CardSkeleton>;
   if (error) return <div>Error: {error.message}</div>;
 
-  // dynamic title
-  if (location.pathname === "/petListing") {
-    document.title = "Pawlogue | Pet Listing";
-  }
-
   return (
-    <Container>
+    <>
       <Heading title={"Available Pets For Adoption"}></Heading>
 
       <div>
@@ -105,15 +100,18 @@ const PetListing = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
           {data.pages.map((page) =>
             page.pets.map((pet) => (
-              <ContentCard key={pet?._id}   image={pet?.image}
-      name={pet?.name}
-      age={pet?.age}
-      location={pet?.location}
-      link={`/petDetails/${pet?._id}`}
-      buttonText="Details"
-      detailsPath={`/petDetails/${pet?._id}`}
-      showLocation={true}
-      showAge={true}/>
+              <ContentCard
+                key={pet?._id}
+                image={pet?.image}
+                name={pet?.name}
+                age={pet?.age}
+                location={pet?.location}
+                link={`/petDetails/${pet?._id}`}
+                buttonText="Details"
+                detailsPath={`/petDetails/${pet?._id}`}
+                showLocation={true}
+                showAge={true}
+              />
             ))
           )}
         </div>
@@ -135,7 +133,7 @@ const PetListing = () => {
           )}
         </div>
       </div>
-    </Container>
+    </>
   );
 };
 
