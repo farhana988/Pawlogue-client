@@ -1,11 +1,11 @@
 import { useContext, useRef, useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { handleImageUpload } from "../../../api/utils";
-import { AuthContext } from "../../../Provider/AuthProvider";
-import AddPetForm from "./AddPetForm";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import Heading from "../../../Components/Reusable/Heading";
+import { handleImageUpload } from "../../api/utils";
+import { AuthContext } from "../../Provider/AuthProvider";
+import AddPetForm from "../../Components/form/AddPetForm";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Heading from "../../Components/Reusable/Heading";
 
 const AddPet = () => {
   const axiosSecure = useAxiosSecure();
@@ -24,7 +24,6 @@ const AddPet = () => {
     { value: "reptile", label: "Reptile" },
     { value: "bird", label: "Bird" },
     { value: "livestock", label: "Livestock" },
-   
   ];
 
   const initialValues = {
@@ -92,13 +91,12 @@ const AddPet = () => {
   };
 
   return (
-    <>
-      
-   
-    <div className="lg:max-w-7xl mx-auto rounded">
-    <Heading title={"Add a Pet"}></Heading>
+    <div className="lg:max-w-3xl mx-auto rounded">
+      <Heading title={"Add a Pet"}></Heading>
       {errorMsg && <p className="text-red-500 mb-4">{errorMsg}</p>}
-      {successMsg && <p className="text-green-500 text-xl mx-5 md:mx-0 mb-4">{successMsg}</p>}
+      {successMsg && (
+        <p className="text-green-500 text-xl mx-5 md:mx-0 mb-4">{successMsg}</p>
+      )}
 
       <Formik
         initialValues={initialValues}
@@ -118,7 +116,6 @@ const AddPet = () => {
         )}
       </Formik>
     </div>
-    </>
   );
 };
 

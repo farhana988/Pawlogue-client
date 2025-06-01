@@ -24,9 +24,6 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { useNavigate } from "react-router-dom";
-import Container from "../../../../Components/Reusable/Container";
-// import Swal from "sweetalert2";
-
 const columnHelper = createColumnHelper();
 
 const columns = [
@@ -116,8 +113,7 @@ const MyPetsTable = ({ pets }) => {
           Swal.fire("Deleted!", "Your pet has been deleted.", "success");
         }
       }
-    } catch  {
-     
+    } catch {
       Swal.fire("Error", "An error occurred while deleting the pet.", "error");
     }
   };
@@ -153,21 +149,21 @@ const MyPetsTable = ({ pets }) => {
         }
       }
     } catch {
- Swal.fire({
-      icon: 'error',
-      title: 'Error',
-      text: 'Failed to delete adoption information. Please try again later.',
-      
-    });
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Failed to delete adoption information. Please try again later.",
+      });
     }
   };
 
   return (
-    <Container>
+    <>
       {/* Table container */}
       <div
-        className="flex flex-col min-h-screen max-w-[390px] md:max-w-[530px] lg:max-w-7xl
-       mx-auto px-5 "
+        className="flex flex-col min-h-screen max-w-[390px] md:max-w-[520px]
+        lg:max-w-2xl xl:max-w-[1100px]
+       mx-auto "
       >
         {/*  search */}
         <div className="mb-4 relative">
@@ -255,7 +251,11 @@ const MyPetsTable = ({ pets }) => {
                     </button>
                     <button
                       className={`bg-green-500 text-white px-4 py-2 rounded-md
-                        ${ row.original?.adopted ? "bg-green-500" : "bg-yellow-500"}`}
+                        ${
+                          row.original?.adopted
+                            ? "bg-green-500"
+                            : "bg-yellow-500"
+                        }`}
                       onClick={() => handleStatus(row.original._id)}
                     >
                       {row.original.adopted === false ? (
@@ -322,7 +322,7 @@ const MyPetsTable = ({ pets }) => {
           </div>
         )}
       </div>
-    </Container>
+    </>
   );
 };
 

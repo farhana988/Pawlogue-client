@@ -5,7 +5,6 @@ import { AuthContext } from "../../../../Provider/AuthProvider";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import Heading from "../../../../Components/Reusable/Heading";
 import DashboardNoData from "../../../../Components/Reusable/DashboardNoData";
-import Container from "../../../../Components/Reusable/Container";
 
 const MyPets = () => {
   const { user } = useContext(AuthContext);
@@ -27,14 +26,14 @@ const MyPets = () => {
   if (error) return <div>Error loading pets</div>;
 
   return (
-    <Container>
+    <>
       <Heading title={"My Added Pets"}></Heading>
       {pets?.length > 0 ? (
         <MyPetsTable pets={pets} />
       ) : (
         <DashboardNoData title={"No Pets Found !"} />
       )}
-    </Container>
+    </>
   );
 };
 

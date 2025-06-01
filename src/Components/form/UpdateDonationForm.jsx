@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { FaSpinner } from "react-icons/fa";
-import Heading from "../../../../Components/Reusable/Heading";
+import Heading from "../Reusable/Heading";
 
 const UpdateDonationForm = ({
   campaignData,
@@ -19,21 +19,19 @@ const UpdateDonationForm = ({
     image = "",
   } = campaignData || {};
 
-
-  
   return (
-    <div>
+    <>
       <Heading title={" Update Donation Campaign"}></Heading>
-      <div
-        className="  flex flex-col justify-center mx-5 p-7 mb-20
-      items-center rounded-xl  bg-lCard dark:bg-dCard "
-      >
+      <div className="mb-20 rounded-xl bg-lCard dark:bg-dCard ">
         <form onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 p-5">
             <div className="space-y-6">
               {/* Name */}
-              <div className="space-y-1 text-sm">
-                <label htmlFor="name" className="block ">
+              <div className="space-y-1 ">
+                <label
+                  htmlFor="name"
+                  className="block font-semibold xl:text-xl mb-2"
+                >
                   Name
                 </label>
                 <input
@@ -47,8 +45,11 @@ const UpdateDonationForm = ({
                 />
               </div>
               {/* Short Description */}
-              <div className="space-y-1 text-sm">
-                <label htmlFor="shortDescription" className="block ">
+              <div className="space-y-1 ">
+                <label
+                  htmlFor="shortDescription"
+                  className="block font-semibold xl:text-xl mb-2"
+                >
                   Short Description
                 </label>
                 <textarea
@@ -60,8 +61,11 @@ const UpdateDonationForm = ({
                 ></textarea>
               </div>
               {/* Long Description */}
-              <div className="space-y-1 text-sm">
-                <label htmlFor="longDescription" className="block ">
+              <div className="space-y-1 ">
+                <label
+                  htmlFor="longDescription"
+                  className="block font-semibold xl:text-xl mb-2"
+                >
                   Long Description
                 </label>
                 <textarea
@@ -76,37 +80,42 @@ const UpdateDonationForm = ({
 
             <div className="space-y-6 flex flex-col">
               {/* Maximum donation amount */}
-              <div className="flex justify-between gap-2">
-                <div className="space-y-1 text-sm">
-                  <label htmlFor="amount" className="block ">
-                    Maximum donation amount
-                  </label>
-                  <input
-                    className="w-full px-4 py-3 bg-lCard dark:bg-dCard"
-                    name="amount"
-                    id="amount"
-                    type="number"
-                    placeholder="Enter amount"
-                    required
-                    defaultValue={amount}
-                  />
-                </div>
 
-                {/* Last date of donation */}
-                <div className="space-y-1 text-sm">
-                  <label htmlFor="date" className="block ">
-                    Last date of donation
-                  </label>
-                  <input
-                    className="w-full px-4 py-3 bg-lCard dark:bg-dCard"
-                    name="date"
-                    id="date"
-                    type="date"
-                    placeholder="Available date"
-                    required
-                    defaultValue={date}
-                  />
-                </div>
+              <div className="space-y-1 ">
+                <label
+                  htmlFor="amount"
+                  className="block font-semibold xl:text-xl mb-2"
+                >
+                  Maximum donation amount
+                </label>
+                <input
+                  className="w-full px-4 py-3 bg-lCard dark:bg-dCard"
+                  name="amount"
+                  id="amount"
+                  type="number"
+                  placeholder="Enter amount"
+                  required
+                  defaultValue={amount}
+                />
+              </div>
+
+              {/* Last date of donation */}
+              <div className="space-y-1 ">
+                <label
+                  htmlFor="date"
+                  className="block font-semibold xl:text-xl mb-2"
+                >
+                  Last date of donation
+                </label>
+                <input
+                  className="w-full px-4 py-3 bg-lCard dark:bg-dCard"
+                  name="date"
+                  id="date"
+                  type="date"
+                  placeholder="Available date"
+                  required
+                  defaultValue={date}
+                />
               </div>
 
               {/* Image Upload */}
@@ -128,8 +137,8 @@ const UpdateDonationForm = ({
                         accept="image/*"
                       />
                       <div
-                        className="font-semibold px-3 lg:px-5 py-1 lg:py-2 rounded-full
-                text-sm lg:text-base 
+                        className="font-semibold px-3 lg:px-5 py-1 
+                text-sm lg:text-base    rounded-tr-3xl rounded-bl-3xl rounded-lg
                bg-lBtn dark:bg-dBtn"
                       >
                         Upload Image
@@ -156,8 +165,9 @@ const UpdateDonationForm = ({
               {/* Submit Button */}
               <button
                 type="submit"
-                className="font-semibold px-3 lg:px-5 py-1 lg:py-2 rounded-full
+                className="font-semibold px-3 lg:px-5 py-1
                   text-sm lg:text-base 
+                     rounded-tr-3xl rounded-bl-3xl rounded-lg
                  bg-lBtn dark:bg-dBtn"
               >
                 {loading ? (
@@ -170,7 +180,7 @@ const UpdateDonationForm = ({
           </div>
         </form>
       </div>
-    </div>
+    </>
   );
 };
 

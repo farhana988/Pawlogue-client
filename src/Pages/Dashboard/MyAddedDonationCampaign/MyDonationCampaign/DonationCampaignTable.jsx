@@ -61,7 +61,8 @@ const DonationCampaignTable = ({ myDonationCampaign }) => {
   return (
     <>
       <tr>
-        <td className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard  text-sm">
+        <td className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard 
+         text-xs xl:text-sm">
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <div className="block relative">
@@ -74,13 +75,16 @@ const DonationCampaignTable = ({ myDonationCampaign }) => {
             </div>
           </div>
         </td>
-        <td className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard  text-sm">
+        <td className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard 
+         text-xs xl:text-sm">
           <p className=" whitespace-no-wrap">{name?.substring(0, 20)}</p>
         </td>
-        <td className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard  text-sm">
+        <td className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard 
+         text-xs xl:text-sm">
           <p className=" whitespace-no-wrap">{goalAmount}</p>
         </td>
-        <td className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard  text-sm">
+        <td className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard 
+         text-xs xl:text-sm">
           <p className=" whitespace-no-wrap">
             ${totalDonationAmount} / ${goalAmount}
           </p>
@@ -94,8 +98,8 @@ const DonationCampaignTable = ({ myDonationCampaign }) => {
 
         {/* action buttons  */}
         <td
-          className="space-y-3 lg:space-x-6 px-5 py-5 text-center 
-        border-b border-gray-200  bg-lCard dark:bg-dCard  text-sm lg:text-base"
+          className=" px-5 py-7 text-center flex items-center justify-center gap-3
+         bg-lCard dark:bg-dCard text-xs xl:text-sm lg:text-base "
         >
           {/* View Donators button */}
           <span

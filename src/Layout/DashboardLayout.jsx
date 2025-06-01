@@ -1,21 +1,22 @@
-import { Outlet, useLocation } from "react-router-dom";
-import Sidebar from "../Pages/Dashboard/Sidebar";
+import { Outlet } from "react-router-dom";
+import Sidebar from "../Components/Dashboard/Sidebar/Sidebar";
+import usePageTitle from "../hooks/usePageTitle";
+import Container from "../Components/Reusable/Container";
 
 const DashboardLayout = () => {
-  const location = useLocation();
   // dynamic title
-  if (location.pathname === `/dashboard`) {
-    document.title = "Pawlogue | dashboard";
-  }
+  usePageTitle("dashboard");
 
   return (
     <>
-      <div className="flex min-h-screen">
+      <div className="flex min-h-screen max-w-[1600px] mx-auto shadow-2xl">
         {/* Sidebar */}
         <Sidebar />
 
         {/* Page Content */}
-        <Outlet />
+        <Container>
+          <Outlet />
+        </Container>
       </div>
     </>
   );

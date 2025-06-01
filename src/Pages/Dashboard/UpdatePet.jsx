@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import UpdatePetForm from "./UpdatePetForm";
+import UpdatePetForm from "../../Components/form/UpdatePetForm";
 import { useParams } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
-import { handleImageUpload } from "../../../../api/utils";
-import useAxiosSecure from "../../../../hooks/useAxiosSecure";
-import { AuthContext } from "../../../../Provider/AuthProvider";
-import SkeletonLoader from "../../../../Components/loading/SkeletonLoader";
-import Heading from "../../../../Components/Reusable/Heading";
+import { handleImageUpload } from "../../api/utils";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { AuthContext } from "../../Provider/AuthProvider";
+import SkeletonLoader from "../../Components/loading/SkeletonLoader";
+import Heading from "../../Components/Reusable/Heading";
 
 const UpdatePet = () => {
   const { id } = useParams();
@@ -104,7 +104,7 @@ const UpdatePet = () => {
 
   return (
     <>
-      <div className="lg:max-w-7xl mx-auto rounded">
+      <div className="lg:max-w-3xl mx-auto rounded">
         <Heading title={"Update a Pet"}></Heading>
 
         {errorMsg && <p className="text-red-500 mb-4">{errorMsg}</p>}

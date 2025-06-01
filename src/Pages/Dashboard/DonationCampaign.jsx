@@ -1,10 +1,10 @@
-import { handleImageUpload } from "../../../api/utils";
-import DonationCampaignForm from "./DonationCampaignForm";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { handleImageUpload } from "../../api/utils";
+import DonationCampaignForm from "../../Components/form/DonationCampaignForm";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useContext, useState } from "react";
-import { AuthContext } from "../../../Provider/AuthProvider";
-import Swal from "sweetalert2";
-import Heading from "../../../Components/Reusable/Heading";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Heading from "../../Components/Reusable/Heading";
+import { swalAlert } from "../../utils/swalAlert";
 
 const DonationCampaign = () => {
   const { user } = useContext(AuthContext);
@@ -39,30 +39,26 @@ const DonationCampaign = () => {
       createdAt: new Date().toISOString(),
     };
 
-    
-
     try {
       await axiosSecure.post("/donationCampaign", donationData);
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
+      swalAlert({
+        type: "success",
         title: "Donation created Successfully",
-        showConfirmButton: false,
-        timer: 1500,
       });
-      form.reset()
-        setUploadImage({ image: { name: "Upload Button" } });
-    } catch{
- 
-      Swal.fire("Something went wrong!");
-
+      form.reset();
+      setUploadImage({ image: { name: "Upload Button" } });
+    } catch {
+      swalAlert({
+        type: "error",
+        title: "Something went wrong!",
+      });
     } finally {
       setLoading(false);
     }
   };
   return (
-    <div className=" mx-auto">
-       <Heading title={"Create Donation Campaign"}></Heading>
+    <div className="lg:max-w-4xl mx-auto rounded">
+      <Heading title={"Create Donation Campaign"}></Heading>
       <DonationCampaignForm
         handleSubmit={handleSubmit}
         uploadImage={uploadImage}

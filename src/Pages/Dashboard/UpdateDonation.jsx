@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../../../Provider/AuthProvider";
-import { handleImageUpload } from "../../../../api/utils";
-import UpdateDonationForm from "./UpdateDonationForm";
-import SkeletonLoader from "../../../../Components/loading/SkeletonLoader";
-import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { handleImageUpload } from "../../api/utils";
+import UpdateDonationForm from "../../Components/form/UpdateDonationForm";
+import SkeletonLoader from "../../Components/loading/SkeletonLoader";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const UpdateDonation = () => {
   const { user } = useContext(AuthContext);
@@ -81,10 +81,8 @@ const UpdateDonation = () => {
     return <SkeletonLoader></SkeletonLoader>;
   }
 
-
-
   return (
-    <div>
+    <div className="lg:max-w-4xl mx-auto rounded">
       <UpdateDonationForm
         campaignData={campaignData}
         handleSubmit={handleSubmit}
