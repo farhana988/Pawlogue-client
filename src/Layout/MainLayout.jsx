@@ -8,10 +8,10 @@ const MainLayout = () => {
   const location = useLocation();
 
   return (
-    <div className="max-w-[1600px] mx-auto shadow-2xl">
+    <div className="max-w-[1600px] mx-auto ">
       <Navbar></Navbar>
       {location.pathname == "/" ? <Banner /> : ""}
-      
+
       <Container className="min-h-screen">
         <Outlet></Outlet>
       </Container>
