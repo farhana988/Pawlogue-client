@@ -6,7 +6,7 @@ import { useLoaderData } from "react-router-dom";
 const PawCareTips = () => {
   const { petCare = [] } = useLoaderData();
   const [selectedCategory, setSelectedCategory] = useState(
-    petCare[0]?.category || null
+    petCare[0]?.category || null,
   );
 
   const handleCategoryClick = (category) => {
@@ -14,11 +14,11 @@ const PawCareTips = () => {
   };
 
   const selectedCategoryData = petCare.find(
-    (category) => category.category === selectedCategory
+    (category) => category.category === selectedCategory,
   );
 
   return (
-    <>
+    <div>
       <Heading title={"Paw Care Tips"}></Heading>
 
       <div className="flex flex-wrap justify-center gap-4 mb-6">
@@ -56,7 +56,7 @@ const PawCareTips = () => {
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

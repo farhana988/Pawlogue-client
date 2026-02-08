@@ -30,7 +30,7 @@ const MeetOurTeam = () => {
   ];
 
   return (
-    <>
+    <div>
       <Heading title={"Meet Our Team"}></Heading>
       <div className=" text-center ">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
@@ -40,14 +40,12 @@ const MeetOurTeam = () => {
               image={member.image}
               title={member.name}
               description={member.role}
-              extraContent=
-               {member?.bio}
-              
+              extraContent={member?.bio}
             />
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

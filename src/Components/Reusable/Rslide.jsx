@@ -25,7 +25,7 @@ const Rslide = ({ imageSrc, title, description, buttonText, slideIndex }) => {
         <div className="bg-opacity-70 p-6">
           {/* title */}
           <h2
-            className="text-lg md:text-2xl lg:text-4xl xl:text-5xl font-bold text-ivory
+            className="text-lg md:text-2xl lg:text-3xl xl:text-4xl font-bold text-ivory
           animate__animated animate__fadeInDown"
           >
             {title}
@@ -33,7 +33,7 @@ const Rslide = ({ imageSrc, title, description, buttonText, slideIndex }) => {
 
           {/* des */}
           <p
-            className="mt-2 text-xs md:text-sm lg:text-lg xl:text-xl
+            className="mt-2 text-xs md:text-sm lg:text-base xl:text-lg
           w-64 md:w-96 lg:w-[450px] xl:w-[650px] text-ivory
          animate__animated animate__fadeInRightBig animate__delay-0.5s
          "
@@ -43,7 +43,7 @@ const Rslide = ({ imageSrc, title, description, buttonText, slideIndex }) => {
 
           {/* btn */}
           <button
-            className="mt-4 px-3 lg:px-5 lg:py-2 py-1 text-xs md:text-sm lg:text-lg
+            className="mt-4 px-3 lg:px-4 lg:py-1.5 py-1 text-xs md:text-sm lg:text-base
            text-black dark:text-white font-semibold bg-lBtn dark:bg-dBtn
             rounded-tr-3xl rounded-bl-3xl rounded-lg transition duration-300
           animate__animated  animate__jackInTheBox animate__delay-1s"

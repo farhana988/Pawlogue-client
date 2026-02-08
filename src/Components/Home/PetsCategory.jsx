@@ -34,14 +34,14 @@ const PetsCategory = () => {
   });
   // Filter pets based on selected category
   const filteredPets = pets.filter(
-    (pet) => pet?.category === selectedCategory && pet?.adopted === false
+    (pet) => pet?.category === selectedCategory && pet?.adopted === false,
   );
   // Handle error states
   if (isLoading) return <CardSkeleton />;
   if (error) return <div>Error loading pets data.</div>;
 
   return (
-    <>
+    <div className="mt-10">
       <Heading title={" Explore Pet Categories"}></Heading>
 
       {/* Category Buttons */}
@@ -57,10 +57,10 @@ const PetsCategory = () => {
       </div>
 
       {/* Pets Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 lg:gap-6">
         {filteredPets.length > 0 ? (
           filteredPets
-            .slice(0, 4)
+            .slice(0, 5)
             .map((pet) => (
               <ContentCard
                 key={pet?._id}
@@ -77,7 +77,7 @@ const PetsCategory = () => {
           <NoData title={"No pets found !"} />
         )}
       </div>
-    </>
+    </div>
   );
 };
 

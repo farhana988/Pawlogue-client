@@ -7,9 +7,9 @@ const PetsCategoryBtn = ({
   return (
     <button
       onClick={() => setSelectedCategory(category)}
-      className={`px-3 md:px-5 lg:px-8 py-1 rounded-tr-3xl rounded-bl-3xl rounded-lg
+      className={`px-3 md:px-5 py-0 rounded-tr-3xl rounded-bl-3xl rounded-lg
       border-2 border-lBtn dark:border-dBtn
-      text-sm md:text-base xl:text-xl ${
+      text-sm md:text-base ${
         selectedCategory === category
           ? "bg-lBtn dark:bg-dBtn text-white"
           : "bg-gray-200 text-gray-700 dark:bg-dCard dark:text-ivory"

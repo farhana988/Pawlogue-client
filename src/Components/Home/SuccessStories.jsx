@@ -45,12 +45,14 @@ const SuccessStories = () => {
     ],
   };
   return (
-    <>
+    <div>
       <section className="relative">
         <Heading title={" Success Stories of Little Paw Paw"} />
         {/*  Image */}
-        <div className="hidden md:flex absolute w-14 xl:w-16 -top-5 md:left-5 
-        lg:left-20 xl:left-28">
+        <div
+          className="hidden md:flex absolute w-14 xl:w-16 -top-5 md:left-5 
+        lg:left-20 xl:left-28"
+        >
           <Lottie animationData={quote}></Lottie>
         </div>
       </section>
@@ -63,7 +65,7 @@ const SuccessStories = () => {
           </div>
         ))}
       </Slider>
-    </>
+    </div>
   );
 };
 

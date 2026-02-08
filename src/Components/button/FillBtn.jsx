@@ -5,8 +5,8 @@ const FillBtn = ({ text, link, additionalStyles = "" }) => {
   return (
     <Link
       to={link}
-      className={`font-semibold px-4 lg:px-6 py-2 rounded-tr-3xl rounded-bl-3xl rounded-lg 
-        text-xs xl:text-base bg-lBtn dark:bg-dBtn transition 
+      className={`font-semibold px-4  py-1 rounded-tr-3xl rounded-bl-3xl rounded-lg 
+        text-xs xl:text-sm bg-lBtn dark:bg-dBtn transition 
         transform hover:scale-105 ${additionalStyles}`}
     >
       {text || "Details"}

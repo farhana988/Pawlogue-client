@@ -13,7 +13,7 @@ const Home = () => {
   usePageTitle("Home");
 
   return (
-    <>
+    <div className="space-y-16 xl:space-y-20">
       <PetsCategory></PetsCategory>
       <CallToAction></CallToAction>
       <AboutUs></AboutUs>
@@ -22,7 +22,7 @@ const Home = () => {
       <MeetOurTeam></MeetOurTeam>
       <CorporateSponsorships></CorporateSponsorships>
       <Volunteer></Volunteer>
-    </>
+    </div>
   );
 };
 

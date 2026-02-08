@@ -4,7 +4,7 @@ import bg from "../../assets/images/about.png";
 
 const AboutUs = () => {
   return (
-    <div className="pt-20">
+    <div>
       <div
         className="relative bg-center bg-fixed pb-20"
         style={{

@@ -25,7 +25,7 @@ const sponsorshipLevels = [
 
 const CorporateSponsorships = () => {
   return (
-    <>
+    <div>
       <Heading
         title="Corporate Sponsorships"
         subtitle={
@@ -46,7 +46,7 @@ const CorporateSponsorships = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
