@@ -29,14 +29,12 @@ const SmCard = ({
       )}
 
       {/* Title Section */}
-      {title && <h3 className="xl:text-xl font-semibold mb-2">{title}</h3>}
+      {title && <h3 className="xl:text-lg font-semibold mb-2">{title}</h3>}
 
       {/* Description Section */}
-      {description && (
-        <p className="mb-2 text-xs xl:text-base ">{description}</p>
-      )}
+      {description && <p className="mb-2 text-xs">{description}</p>}
       {/* Extra content if passed (e.g., tips for PawCareTipsCard) */}
-      {extraContent && <p className="mb-2 text-xs ">{extraContent}</p>}
+      {extraContent && <p className="mb-2 text-xs">{extraContent}</p>}
 
       {/* Button Section */}
       {buttonText && buttonLink && (

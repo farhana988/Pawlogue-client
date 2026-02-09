@@ -20,7 +20,7 @@ const AboutUs = () => {
         <div className="relative container mx-auto text-center p-8 rounded-lg">
           <Heading title={"About Us"}></Heading>
           <p
-            className="text-xl lg:text-2xl text-gray-800 dark:text-gray-300 mb-4 md:px-20
+            className="text-xl xl:text-2xl text-gray-800 dark:text-gray-300 mb-4 md:px-20
             font-bold"
           >
             <ReactTyped
@@ -34,7 +34,7 @@ const AboutUs = () => {
               showCursor={true}
             />
           </p>
-          <p className="md:text-lg  text-gray-700 dark:text-gray-400 font-semibold">
+          <p className="lg:text-lg  text-gray-700 dark:text-gray-400 font-semibold">
             <ReactTyped
               strings={[
                 "Together, we can make the world a better place for pets and their owners!",
