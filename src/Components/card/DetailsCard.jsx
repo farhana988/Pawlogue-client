@@ -12,7 +12,6 @@ const DetailsCard = ({
   longDescription,
   location,
   age,
-  category,
   formatDate,
   type = "default", // default | pet | donation
 }) => {

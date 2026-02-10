@@ -14,8 +14,10 @@ const AuthForm = ({
   altLinkCTA,
 }) => {
   return (
-    <div className="card bg-lCard dark:bg-dCard w-full max-w-lg mx-auto
-    p-8 shadow-xl rounded-lg">
+    <div
+      className="card bg-lCard dark:bg-dCard w-full max-w-lg mx-auto
+    p-8 shadow-xl rounded-lg"
+    >
       <form onSubmit={onSubmit} className="space-y-6">
         {isRegister && <InputField name="name" label="Name" />}
         <InputField name="email" label="Email" type="email" />
@@ -39,11 +41,11 @@ const AuthForm = ({
         </button>
       </form>
 
-      <div className="text-center mt-4 text-lg">
+      <div className="text-center mt-4 text-sm">
         {altLinkText}{" "}
         <Link
           to={altLinkPath}
-          className="text-lBtn dark:text-ivory font-extrabold flex 
+          className="text-lBtn dark:text-ivory font-semibold flex text-base
         items-center justify-center gap-2"
         >
           <FaLongArrowAltRight /> {altLinkCTA}
@@ -51,8 +53,10 @@ const AuthForm = ({
       </div>
 
       <h2 className="text-center font-bold text-xl italic">OR</h2>
-      <div className="text-center border-b-2 border-dashed dark:opacity-50
-       dark:text-ivory my-4" />
+      <div
+        className="text-center border-b-2 border-dashed dark:opacity-50
+       dark:text-ivory my-4"
+      />
       <GoogleLogin />
       <GithubLOgin />
     </div>
