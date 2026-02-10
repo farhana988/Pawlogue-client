@@ -45,7 +45,7 @@ const PetListing = () => {
     queryKey: ["allPets", { filter, search: debouncedSearch }],
     queryFn: async ({ pageParam = 1 }) => {
       const { data } = await axiosPublic(
-        `/allPets?filter=${filter}&search=${search}&page=${pageParam}&limit=6`
+        `/allPets?filter=${filter}&search=${search}&page=${pageParam}&limit=6`,
       );
       return data;
     },
@@ -62,7 +62,7 @@ const PetListing = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <>
+    <div className="mt-10">
       <Heading title={"Available Pets For Adoption"}></Heading>
 
       <div>
@@ -85,19 +85,25 @@ const PetListing = () => {
                 bg-lCard dark:bg-dCard w-40 lg:w-52
                  text-xs lg:text-lg"
           >
-            <option value="">All Categories</option>
-            <option value="cat">Cat</option>
-            <option value="dog">Dog</option>
-            <option value="rabbit">Rabbit</option>
-            <option value="fish">Fish</option>
-            <option value="reptile">Reptile</option>
-            <option value="bird">Bird</option>
-            <option value="livestock">Livestock</option>
+            {[
+              { value: "", label: "All Categories" },
+              { value: "cat", label: "Cat" },
+              { value: "dog", label: "Dog" },
+              { value: "rabbit", label: "Rabbit" },
+              { value: "fish", label: "Fish" },
+              { value: "reptile", label: "Reptile" },
+              { value: "bird", label: "Bird" },
+              { value: "livestock", label: "Livestock" },
+            ].map((category) => (
+              <option key={category.value} value={category.value}>
+                {category.label}
+              </option>
+            ))}
           </select>
         </div>
 
         {/* Pet Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 lg:gap-6">
           {data.pages.map((page) =>
             page.pets.map((pet) => (
               <ContentCard
@@ -112,7 +118,7 @@ const PetListing = () => {
                 showLocation={true}
                 showAge={true}
               />
-            ))
+            )),
           )}
         </div>
 
@@ -123,8 +129,7 @@ const PetListing = () => {
           ) : hasNextPage ? (
             <button
               onClick={() => fetchNextPage()}
-              className="px-4 py-2 bg-blue-500
-           text-white rounded"
+              className="px-4 py-2 bg-blue-500 text-white rounded"
             >
               Load More
             </button>
@@ -133,7 +138,7 @@ const PetListing = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

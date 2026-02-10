@@ -23,7 +23,7 @@ const AllDonationCampaigns = () => {
     queryKey: ["allDonationCampaign"],
     queryFn: async ({ pageParam = 1 }) => {
       const { data } = await axiosSecure(
-        `/allDonationCampaign?page=${pageParam}&limit=6`
+        `/allDonationCampaign?page=${pageParam}&limit=6`,
       );
       return data;
     },
@@ -40,10 +40,10 @@ const AllDonationCampaigns = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <>
+    <div className="mt-10">
       <Heading title={" All Donation Campaigns "}></Heading>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 lg:gap-6">
         {data.pages.map((page) =>
           page.campaigns.map((campaign) => (
             <ContentCard
@@ -57,7 +57,7 @@ const AllDonationCampaigns = () => {
               showLocation={false}
               showAge={false}
             />
-          ))
+          )),
         )}
       </div>
 
@@ -76,7 +76,7 @@ const AllDonationCampaigns = () => {
           <div>No more campaigns to load.</div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

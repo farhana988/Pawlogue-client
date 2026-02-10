@@ -29,7 +29,7 @@ const ContentCard = ({
 
       <div className="px-3 py-2 flex flex-col flex-grow">
         {/* Name */}
-        <h3 className="xl:text-xl font-semibold" title={name}>
+        <h3 className="xl:text-lg font-semibold" title={name}>
           {name?.substring(0, 25)}
         </h3>
 
@@ -45,7 +45,7 @@ const ContentCard = ({
 
         {/* Location */}
         {showLocation && (
-          <p className="text-xs xl:text-base flex gap-2 my-1 mb-3">
+          <p className="text-xs xl:text-sm flex gap-2 my-1 mb-3">
             <FaLocationDot /> {location?.substring(0, 39)}
           </p>
         )}

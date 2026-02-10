@@ -24,8 +24,8 @@ const RecommendedCampaigns = () => {
   return (
     <div className="mt-32">
       <h3 className="text-2xl font-bold mb-6">Recommended Campaigns</h3>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
-        {recommendedCampaigns.slice(0, 4).map((campaign) => (
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 lg:gap-6">
+        {recommendedCampaigns.slice(0, 5).map((campaign) => (
           <ContentCard
             key={campaign._id}
             image={campaign.image}

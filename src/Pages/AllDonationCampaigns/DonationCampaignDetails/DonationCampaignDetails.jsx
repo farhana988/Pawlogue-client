@@ -1,5 +1,4 @@
 import { useNavigate, useParams } from "react-router-dom";
-import Container from "../../../Components/Reusable/Container";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -58,23 +57,23 @@ const DonationCampaignDetails = () => {
   };
 
   return (
-    <>
+    <div className="pt-10">
       <Heading title={"Donation Campaign Details"}></Heading>
-      <Container>
-        {/* donation card  */}
-        <DetailsCard
-          image={donationDetails?.image}
-          title={donationDetails?.name}
-          amount={donationDetails?.amount}
-          date={donationDetails?.date}
-          shortDescription={donationDetails?.shortDescription}
-          longDescription={donationDetails?.longDescription}
-          type="donation"
-        ></DetailsCard>
 
-        {/* Donate Button */}
-        <button
-          className={`text-white md:ml-7 lg:ml-0
+      {/* donation card  */}
+      <DetailsCard
+        image={donationDetails?.image}
+        title={donationDetails?.name}
+        amount={donationDetails?.amount}
+        date={donationDetails?.date}
+        shortDescription={donationDetails?.shortDescription}
+        longDescription={donationDetails?.longDescription}
+        type="donation"
+      ></DetailsCard>
+
+      {/* Donate Button */}
+      <button
+        className={`text-white md:ml-7 lg:ml-0
              rounded-tr-3xl rounded-bl-3xl rounded-lg
             font-semibold px-3 lg:px-5 py-1 lg:py-2
                 text-sm lg:text-base  ${
@@ -84,23 +83,22 @@ const DonationCampaignDetails = () => {
                     ? "bg-gray-400 text-zinc-800  cursor-not-allowed"
                     : " bg-lBtn dark:bg-dBtn "
                 }`}
-          onClick={handleDonateClick}
-          disabled={
-            isPaused || isExpired || user?.email === donationDetails?.email
-          }
-        >
-          {user?.email === donationDetails?.email
-            ? "You created the campaign"
-            : isPaused
+        onClick={handleDonateClick}
+        disabled={
+          isPaused || isExpired || user?.email === donationDetails?.email
+        }
+      >
+        {user?.email === donationDetails?.email
+          ? "You created the campaign"
+          : isPaused
             ? "Campaign Paused"
             : isExpired
-            ? "Campaign Expired"
-            : "Donate Now"}
-        </button>
+              ? "Campaign Expired"
+              : "Donate Now"}
+      </button>
 
-        {/* Recommended Campaigns Section */}
-        <RecommendedCampaigns></RecommendedCampaigns>
-      </Container>
+      {/* Recommended Campaigns Section */}
+      <RecommendedCampaigns></RecommendedCampaigns>
 
       {/*  donation  Modal*/}
       {isModalOpen && (
@@ -110,7 +108,7 @@ const DonationCampaignDetails = () => {
           donationDetails={donationDetails}
         />
       )}
-    </>
+    </div>
   );
 };
 
