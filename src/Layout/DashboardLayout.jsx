@@ -9,13 +9,16 @@ const DashboardLayout = () => {
 
   return (
     <>
-      <div className="flex min-h-screen max-w-[1600px] mx-auto shadow-2xl">
+      <div className="flex min-h-screen max-w-[1600px] mx-auto">
         {/* Sidebar */}
         <Sidebar />
 
         {/* Page Content */}
+
         <Container>
-          <Outlet />
+          <div className="pt-10">
+            <Outlet />
+          </div>
         </Container>
       </div>
     </>
