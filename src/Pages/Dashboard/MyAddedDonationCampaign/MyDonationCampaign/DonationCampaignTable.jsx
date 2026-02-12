@@ -61,30 +61,38 @@ const DonationCampaignTable = ({ myDonationCampaign }) => {
   return (
     <>
       <tr>
-        <td className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard 
-         text-xs xl:text-sm">
+        <td
+          className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard 
+         text-xs xl:text-sm"
+        >
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <div className="block relative">
                 <img
                   alt="profile"
                   src={image}
-                  className="w-12 h-12 lg:w-20 lg:h-20 object-cover rounded-full"
+                  className="w-12 h-12 object-cover rounded-full"
                 />
               </div>
             </div>
           </div>
         </td>
-        <td className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard 
-         text-xs xl:text-sm">
+        <td
+          className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard 
+         text-xs xl:text-sm"
+        >
           <p className=" whitespace-no-wrap">{name?.substring(0, 20)}</p>
         </td>
-        <td className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard 
-         text-xs xl:text-sm">
+        <td
+          className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard 
+         text-xs xl:text-sm"
+        >
           <p className=" whitespace-no-wrap">{goalAmount}</p>
         </td>
-        <td className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard 
-         text-xs xl:text-sm">
+        <td
+          className="px-5 py-5 border-b border-gray-200  bg-lCard dark:bg-dCard 
+         text-xs xl:text-sm"
+        >
           <p className=" whitespace-no-wrap">
             ${totalDonationAmount} / ${goalAmount}
           </p>

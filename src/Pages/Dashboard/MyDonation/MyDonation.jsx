@@ -40,81 +40,80 @@ const MyDonation = () => {
           Swal.fire(
             "Error!",
             "Could not process the refund. Please try again.",
-            "error"
+            "error",
           );
         }
       }
     } catch {
-   
       Swal.fire(
         "Error!",
         "An error occurred while processing the refund.",
-        "error"
+        "error",
       );
     }
   };
 
   return (
     <div className="mx-auto">
-      <Heading title={"  My Donations"}></Heading>
-    <div className="max-w-[420px] md:max-w-[610px] lg:max-w-7xl mx-auto px-5 overflow-x-auto
-    mb-20">
-      {donations?.length === 0 ? (
-        <DashboardNoData
-        title={'No Donation Found'}
-        ></DashboardNoData>
-      ) : (
-        <table className="table-auto w-full border-collapse  bg-lCard dark:bg-dCard  text-gray-700 dark:text-gray-300">
-          <thead>
-            <tr>
-              <th className="px-6 py-4 text-left border-b dark:border-gray-700  text-gray-800 dark:text-gray-300 font-semibold">
-                Image
-              </th>
-              <th className="px-6 py-4 text-left border-b dark:border-gray-700  text-gray-800 dark:text-gray-300 font-semibold">
-                Name
-              </th>
-              <th className="px-6 py-4 text-left border-b dark:border-gray-700  text-gray-800 dark:text-gray-300 font-semibold">
-                Amount
-              </th>
-              <th className="px-6 py-4 text-center border-b dark:border-gray-700  text-gray-800 dark:text-gray-300 font-semibold">
-                Action
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {donations?.map((donation) => (
-              <tr key={donation.transactionId} className="">
-                <td className="px-6 py-4 border-b dark:border-gray-700">
-                  <img
-                    src={donation.petImage}
-                    alt={donation.petName}
-                    className="w-12 h-12 md:w-16 md:h-16 object-cover rounded-full border border-gray-200 dark:border-gray-700"
-                  />
-                </td>
-                <td className="px-6 py-4 border-b dark:border-gray-700">
-                  {donation.petName?.substring(0, 20)}
-                </td>
-                <td className="px-6 py-4 border-b dark:border-gray-700">
-                  <span className="font-semibold text-green-600 dark:text-green-400">
-                    $ {donation.donatedAmount}
-                  </span>
-                </td>
-                <td className="px-6 py-4 text-center border-b dark:border-gray-700">
-                  <button
-                    onClick={() => handleRefund(donation._id)}
-                    title="refund"
-                    className="bg-red-500 text-white font-medium px-2 py-2 rounded-full
-                     text-sm lg:text-base hover:bg-red-600 transition"
-                  >
-                    <RiRefund2Fill size={24} />
-                  </button>
-                </td>
+      <Heading title={"My Donations"}></Heading>
+      <div
+        className="max-w-[420px] md:max-w-[610px] lg:max-w-7xl mx-auto px-5 overflow-x-auto
+    mb-20"
+      >
+        {donations?.length === 0 ? (
+          <DashboardNoData title={"No Donation Found"}></DashboardNoData>
+        ) : (
+          <table className="table-auto w-full border-collapse  bg-lCard dark:bg-dCard  text-gray-700 dark:text-gray-300">
+            <thead>
+              <tr>
+                <th className="px-6 py-4 text-left border-b dark:border-gray-700  text-gray-800 dark:text-gray-300 font-semibold">
+                  Image
+                </th>
+                <th className="px-6 py-4 text-left border-b dark:border-gray-700  text-gray-800 dark:text-gray-300 font-semibold">
+                  Name
+                </th>
+                <th className="px-6 py-4 text-left border-b dark:border-gray-700  text-gray-800 dark:text-gray-300 font-semibold">
+                  Amount
+                </th>
+                <th className="px-6 py-4 text-center border-b dark:border-gray-700  text-gray-800 dark:text-gray-300 font-semibold">
+                  Action
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-    </div>
+            </thead>
+            <tbody>
+              {donations?.map((donation) => (
+                <tr key={donation.transactionId} className="">
+                  <td className="px-6 py-4 border-b dark:border-gray-700">
+                    <img
+                      src={donation.petImage}
+                      alt={donation.petName}
+                      className="w-12 h-12 md:w-16 md:h-16 object-cover rounded-full border border-gray-200 dark:border-gray-700"
+                    />
+                  </td>
+                  <td className="px-6 py-4 border-b dark:border-gray-700">
+                    {donation.petName?.substring(0, 20)}
+                  </td>
+                  <td className="px-6 py-4 border-b dark:border-gray-700">
+                    <span className="font-semibold text-green-600 dark:text-green-400">
+                      $ {donation.donatedAmount}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 text-center border-b dark:border-gray-700">
+                    <button
+                      onClick={() => handleRefund(donation._id)}
+                      title="refund"
+                      className="bg-red-500 text-white font-medium px-2 py-2 rounded-full
+                     text-sm lg:text-base hover:bg-red-600 transition"
+                    >
+                      <RiRefund2Fill size={24} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
     </div>
   );
 };

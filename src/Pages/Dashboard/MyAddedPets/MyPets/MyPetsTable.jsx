@@ -69,7 +69,7 @@ const MyPetsTable = ({ pets }) => {
 
   const currentPageData = data.slice(
     pageIndex * pageSize,
-    (pageIndex + 1) * pageSize
+    (pageIndex + 1) * pageSize,
   );
 
   const table = useReactTable({
@@ -137,14 +137,14 @@ const MyPetsTable = ({ pets }) => {
         const response = await axiosSecure.patch(`/changeAdopt/${petId}`);
         if (response.status === 200) {
           const updatedPets = data.map((pet) =>
-            pet._id === petId ? { ...pet, adopted: !pet.adopted } : pet
+            pet._id === petId ? { ...pet, adopted: !pet.adopted } : pet,
           );
           setData(updatedPets);
 
           Swal.fire(
             "Success!",
             "You have updated the adoption status.",
-            "success"
+            "success",
           );
         }
       }
@@ -162,8 +162,7 @@ const MyPetsTable = ({ pets }) => {
       {/* Table container */}
       <div
         className="flex flex-col min-h-screen max-w-[390px] md:max-w-[520px]
-        lg:max-w-2xl xl:max-w-[1100px]
-       mx-auto "
+        lg:max-w-2xl xl:max-w-[1100px] mx-auto "
       >
         {/*  search */}
         <div className="mb-4 relative">
@@ -182,7 +181,7 @@ const MyPetsTable = ({ pets }) => {
         </div>
 
         {/* Table */}
-        <div className="overflow-x-auto  bg-lCard dark:bg-dCard  shadow-md rounded-lg mt-5">
+        <div className="overflow-x-auto bg-lCard dark:bg-dCard shadow-md rounded-lg mt-5">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className=" bg-lCard dark:bg-dCard ">
               {table.getHeaderGroups().map((headerGroup) => (
@@ -203,7 +202,7 @@ const MyPetsTable = ({ pets }) => {
                       >
                         {flexRender(
                           header.column.columnDef.header,
-                          header.getContext()
+                          header.getContext(),
                         )}
                         <ArrowUpDown className="ml-2" size={14} />
                       </div>
@@ -228,7 +227,7 @@ const MyPetsTable = ({ pets }) => {
                         ? row.index + 1 + pageIndex * pageSize
                         : flexRender(
                             cell.column.columnDef.cell,
-                            cell.getContext()
+                            cell.getContext(),
                           )}
                     </td>
                   ))}

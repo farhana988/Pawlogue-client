@@ -67,7 +67,7 @@ const AllPets = () => {
           Swal.fire(
             "congo!",
             "You have accepted the adoption request.",
-            "success"
+            "success",
           );
         }
       }
@@ -85,17 +85,18 @@ const AllPets = () => {
       <Heading title={"All Pets"}></Heading>
       <div className="overflow-x-auto mb-20">
         <table
-          className="max-w-[420px] md:max-w-[410px] lg:max-w-7xl mx-auto 
+          className="max-w-[420px] md:max-w-[410px] lg:max-w-7xl mx-auto  
         bg-lCard dark:bg-dCard  table-auto border-collapse border border-gray-300"
         >
           <thead>
             <tr className=" text-left">
-              <th className="px-4 py-2 border">Image</th>
-              <th className="px-4 py-2 border">Name</th>
-              <th className="px-4 py-2 border">Age</th>
-              <th className="px-4 py-2 border">Category</th>
-           
-              <th className="px-4 py-2 border">Action Buttons</th>
+              {["Image", "Name", "Age", "Category", "Action Buttons"].map(
+                (header, index) => (
+                  <th key={index} className="px-4 py-2 border">
+                    {header}
+                  </th>
+                ),
+              )}
             </tr>
           </thead>
           <tbody>
@@ -105,25 +106,30 @@ const AllPets = () => {
                   <img
                     src={pet.image}
                     alt={pet.name}
-                    className="w-12 h-12 lg:w-20 lg:h-20 object-cover rounded-full"
+                    className="w-12 h-12 object-cover rounded-full"
                   />
                 </td>
-                <td className="px-4 py-2 border text-sm lg:text-base">{pet.name?.substring(0, 20)}</td>
+                <td className="px-4 py-2 border text-sm lg:text-base">
+                  {pet.name?.substring(0, 20)}
+                </td>
                 <td className="px-4 py-2 border">{pet.age}</td>
-                <td className="px-4 py-2 border text-sm lg:text-base">{pet.category}</td>
-               
-                <td className="px-4 py-4 lg:py-8 flex gap-2">
-                    {/* status */}
-                    <button
+                <td className="px-4 py-2 border text-sm lg:text-base">
+                  {pet.category}
+                </td>
+
+                <td className="px-4 py-4 flex gap-2">
+                  {/* status */}
+                  <button
                     onClick={() => {
                       handleAdopt(pet._id);
                     }}
                     className={`px-2 py-2 rounded-full text-white  ${
-                      pet.adopted ? "bg-green-500 cursor-not-allowed" : "bg-yellow-500"
+                      pet.adopted
+                        ? "bg-green-500 cursor-not-allowed"
+                        : "bg-yellow-500"
                     }`}
                     disabled={pet.adopted}
-                    title={pet.adopted? 
-                      "adopted":"not Adopted"}
+                    title={pet.adopted ? "adopted" : "not Adopted"}
                   >
                     {pet.adopted ? (
                       <CheckCheck size={16} />

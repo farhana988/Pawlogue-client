@@ -23,3 +23,28 @@ export const swalAlert = ({
     });
   }
 };
+
+// Confirmation
+
+export const swalConfirm = async ({
+  title = "Are you sure?",
+  text = "You won't be able to revert this!",
+  icon = "warning",
+  confirmButtonText = "Yes",
+  cancelButtonText = "Cancel",
+  confirmButtonColor = "#3085d6",
+  cancelButtonColor = "#d33",
+}) => {
+  const result = await Swal.fire({
+    title,
+    text,
+    icon,
+    showCancelButton: true,
+    confirmButtonText,
+    cancelButtonText,
+    confirmButtonColor,
+    cancelButtonColor,
+  });
+
+  return result.isConfirmed;
+};

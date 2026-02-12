@@ -9,15 +9,15 @@ const Profile = () => {
         <img
           src={user?.photoURL || "/default-avatar.png"}
           alt="Profile"
-          className="w-32 md:w-52 xl:w-96 h-32 md:h-52 xl:h-96 rounded-full mx-auto 
+          className="w-32 h-32 rounded-full mx-auto 
           border-4  "
         />
-        <h2 className="text-xl xl:text-4xl">
-          <span className="font-semibold text-2xl xl:text-5xl"> Name:</span>
+        <h2 className="text-xl">
+          <span className="font-semibold text-2xl "> Name:</span>
           {""} {user?.displayName || "User Name"}
         </h2>
-        <p className="text-xl xl:text-4xl">
-          <span className="font-semibold text-2xl xl:text-5xl "> Email:</span>
+        <p className="text-xl">
+          <span className="font-semibold text-2xl  "> Email:</span>
           {""} {user?.email || "user@example.com"}
         </p>
       </div>

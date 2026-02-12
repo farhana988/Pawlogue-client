@@ -33,7 +33,6 @@ const AddPetForm = ({
           component="p"
           className="text-red-500 text-sm"
         />
-        
       </div>
       <section className="flex gap-3 w-full justify-between">
         {/* Pet Name */}
@@ -79,7 +78,7 @@ const AddPetForm = ({
           options={petCategories}
           onChange={(option) => setFieldValue("category", option.value)}
           placeholder="Select category"
-          className=" text-black"
+          className=" text-black  "
         />
         <ErrorMessage
           name="category"
@@ -140,10 +139,8 @@ const AddPetForm = ({
       <div>
         <button
           type="submit"
-          className=" p-3   rounded-tr-3xl rounded-bl-3xl rounded-lg
-          font-semibold px-3 lg:px-5 py-1 lg:py-2 
-                text-sm lg:text-base 
-               bg-lBtn dark:bg-dBtn"
+          className="rounded-tr-3xl rounded-bl-3xl rounded-lg font-semibold px-4 py-1 
+          text-xs xl:text-sm bg-lBtn dark:bg-dBtn"
           disabled={isSubmitting || uploading}
         >
           {isSubmitting || uploading ? (
