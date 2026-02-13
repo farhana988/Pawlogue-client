@@ -7,24 +7,17 @@ import {
   FooterLinkGroup,
   FooterTitle,
 } from "flowbite-react";
-import {
-  BsDribbble,
-  BsFacebook,
-  BsGithub,
-  BsInstagram,
-  BsTwitter,
-} from "react-icons/bs";
-import Container from "../Reusable/Container";
+import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
 import paw from "../../assets/images/paw.png";
 
 const FooterComp = () => {
   return (
     <div className="pt-20 ">
       <Footer container className="bg-inherit dark:bg-inherit">
-        <Container>
+        <div className="w-full">
           <div
             className=" grid w-full justify-between sm:flex sm:justify-between
-           md:flex md:grid-cols-1 "
+           md:flex md:grid-cols-1 gap-5"
           >
             {/* details */}
             <div
@@ -43,7 +36,7 @@ const FooterComp = () => {
                 />
                 <span>logue</span>
               </div>
-              <p className="opacity-70 text-sm xl:text-base">
+              <p className="opacity-70 text-xs xl:text-sm">
                 To provide a comprehensive platform for pet lovers, enabling
                 them to adopt, review, and explore pet-related services while
                 fostering a community of responsible pet ownership
@@ -78,9 +71,9 @@ const FooterComp = () => {
             </div>
           </div>
           <FooterDivider />
-          <div className="w-full sm:flex sm:items-center sm:justify-between">
+          <div className="w-full flex items-center justify-between">
             <FooterCopyright href="#" by="Pawlogue™" year={2025} />
-            <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
+            <div className=" flex space-x-3 justify-center">
               <FooterIcon href="https://facebook.com" icon={BsFacebook} />
               <FooterIcon
                 href="https://instagram.com/yourprofile"
@@ -90,17 +83,9 @@ const FooterComp = () => {
                 href="https://twitter.com/yourprofile"
                 icon={BsTwitter}
               />
-              <FooterIcon
-                href="https://github.com/yourusername"
-                icon={BsGithub}
-              />
-              <FooterIcon
-                href="https://dribbble.com/yourprofile"
-                icon={BsDribbble}
-              />
             </div>
           </div>
-        </Container>
+        </div>
       </Footer>
     </div>
   );

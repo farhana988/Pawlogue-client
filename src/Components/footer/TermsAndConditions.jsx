@@ -98,7 +98,7 @@ const TermsAndConditions = () => {
           </p>
         </div>
 
-        <div className="">
+        <div className="mb-8">
           <h3 className="text-xl font-semibold mb-4">8. Termination</h3>
           <p className="text-sm">
             We reserve the right to suspend or terminate your access to our
@@ -109,14 +109,10 @@ const TermsAndConditions = () => {
         </div>
       </section>
       <div className="text-center mb-8">
-        <p className="text-sm">
+        <p className="text-sm mb-4">
           By continuing to use our services, you acknowledge that you have read,
           understood, and agree to abide by these Terms and Conditions.
         </p>
-      </div>
-
-      <div className="mb-8">
-        <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
         <p className="text-sm">
           If you have any questions or concerns about these Terms and
           Conditions, please contact us at <strong>contact@pawlogue.com</strong>
