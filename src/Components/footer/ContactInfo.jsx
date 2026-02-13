@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Container from "../Reusable/Container";
 import Heading from "../Reusable/Heading";
 import location from "../../assets/images/location.jpg";
 import Swal from "sweetalert2";
@@ -123,7 +122,7 @@ const ContactInfo = () => {
                 <div className="text-center">
                   <button
                     type="submit"
-                    className="bg-lBtn dark:bg-dBtn py-2 px-6 rounded-lg text-lg font-semibold transition duration-300"
+                    className="bg-lBtn dark:bg-dBtn py-1 px-6 rounded-lg font-semibold transition duration-300"
                   >
                     Send Message
                   </button>
