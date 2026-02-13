@@ -24,19 +24,19 @@ const BookVet = () => {
     reset();
     navigate("/");
   };
-usePageTitle("Book A Vet")
+  usePageTitle("Book A Vet");
   return (
-    <>
+    <div className="mt-10">
       <Heading title={"  Book a Vet Appointment"}></Heading>
-      <div className="max-w-lg mx-auto mt-10 p-6 bg-lCard dark:bg-dCard shadow-lg rounded-lg">
-      <BookVetForm
-      onSubmit={onSubmit}
-      errors={errors}
-      register={register}
-       handleSubmit={ handleSubmit}
-      />
+      <div className="max-w-4xl mx-auto mt-10 p-6 bg-lCard dark:bg-dCard shadow-lg rounded-lg">
+        <BookVetForm
+          onSubmit={onSubmit}
+          errors={errors}
+          register={register}
+          handleSubmit={handleSubmit}
+        />
       </div>
-    </>
+    </div>
   );
 };
 
