@@ -23,7 +23,8 @@ const SmCard = ({
           src={image}
           alt={altText || "Card Image"}
           className={
-            imageClass || "w-20 xl:w-32 h-20 xl:h-32 rounded-full mx-auto"
+            imageClass ||
+            "w-20 xl:w-32 h-20 xl:h-32 rounded-full mx-auto object-cover"
           }
         />
       )}

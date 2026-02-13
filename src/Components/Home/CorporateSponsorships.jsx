@@ -21,6 +21,11 @@ const sponsorshipLevels = [
     description:
       "Even a small contribution helps provide care and shelter for pets in need.",
   },
+  {
+    title: "Friend Sponsor",
+    description:
+      "A meaningful way for individuals to show their support and help us provide daily care for rescued animals.",
+  },
 ];
 
 const CorporateSponsorships = () => {
@@ -34,7 +39,7 @@ const CorporateSponsorships = () => {
       />
       <div className="text-center">
         <p className="text-lg mb-4"></p>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 lg:gap-6">
           {sponsorshipLevels.map((sponsor, index) => (
             <SmCard
               key={index}

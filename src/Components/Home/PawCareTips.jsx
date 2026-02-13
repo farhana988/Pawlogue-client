@@ -45,8 +45,8 @@ const PawCareTips = () => {
       </div>
       {/* tips card  */}
       {selectedCategory && (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
-          {selectedCategoryData?.tips?.slice(0, 4)?.map((tip, index) => (
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 lg:gap-6">
+          {selectedCategoryData?.tips?.slice(0, 5)?.map((tip, index) => (
             <SmCard
               key={index}
               title={tip?.title}

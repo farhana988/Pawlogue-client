@@ -27,13 +27,19 @@ const MeetOurTeam = () => {
       image: "https://i.ibb.co/KpknxkgD/Michael-Brown.jpg",
       bio: "Dedicated to raising funds and awareness for animal rescue efforts.",
     },
+    {
+      name: "Sarah Wilson",
+      role: "Veterinary Consultant",
+      image: "https://i.ibb.co.com/YBS7yggg/Sarah-Wilson.jpg",
+      bio: "Experienced veterinarian ensuring the health and well-being of all rescued animals.",
+    },
   ];
 
   return (
     <div>
       <Heading title={"Meet Our Team"}></Heading>
       <div className=" text-center ">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 lg:gap-6">
           {teamMembers.map((member, index) => (
             <SmCard
               key={index}
