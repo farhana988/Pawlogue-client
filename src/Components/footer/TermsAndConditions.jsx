@@ -13,8 +13,8 @@ const TermsAndConditions = () => {
           read them carefully before using our platform.
         </p>
       </div>
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="">
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 lg:mb-0">
+        <div className="lg:mb-6">
           <h3 className="text-xl font-semibold mb-4">1. Acceptance of Terms</h3>
           <p className="text-sm">
             By accessing or using the Pawlogue website and services, you agree
@@ -24,7 +24,7 @@ const TermsAndConditions = () => {
           </p>
         </div>
 
-        <div className="">
+        <div className="lg:mb-6">
           <h3 className="text-xl font-semibold mb-4">2. Use of Services</h3>
           <p className="text-sm">
             You agree to use our services only for lawful purposes and in
@@ -41,8 +41,8 @@ const TermsAndConditions = () => {
           </ul>
         </div>
       </section>
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="">
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 lg:mb-0">
+        <div className="lg:mb-6">
           <h3 className="text-xl font-semibold mb-4">3. User Account</h3>
           <p className="text-sm">
             In order to access certain features of our services, you may need to
@@ -52,7 +52,7 @@ const TermsAndConditions = () => {
           </p>
         </div>
 
-        <div className="">
+        <div className="lg:mb-6">
           <h3 className="text-xl font-semibold mb-4">4. Privacy Policy</h3>
           <p className="text-sm">
             Our Privacy Policy governs the collection and use of personal data.
@@ -61,8 +61,8 @@ const TermsAndConditions = () => {
           </p>
         </div>
       </section>
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="">
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 lg:mb-0">
+        <div className="lg:mb-6">
           <h3 className="text-xl font-semibold mb-4">
             5. Intellectual Property
           </h3>
@@ -75,7 +75,7 @@ const TermsAndConditions = () => {
           </p>
         </div>
 
-        <div className="">
+        <div className="lg:mb-6">
           <h3 className="text-xl font-semibold mb-4">
             6. Limitation of Liability
           </h3>
@@ -87,8 +87,8 @@ const TermsAndConditions = () => {
           </p>
         </div>
       </section>
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="">
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 ">
+        <div className="lg:mb-6">
           <h3 className="text-xl font-semibold mb-4">7. Modifications</h3>
           <p className="text-sm">
             Pawlogue reserves the right to modify or update these Terms and

@@ -14,8 +14,8 @@ const PrivacyPolicy = () => {
           take to safeguard your data.
         </p>
       </div>
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="">
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 lg:mb-0">
+        <div className="lg:mb-6">
           <h3 className="text-xl font-semibold mb-4">Information We Collect</h3>
           <p className=" text-sm">
             We may collect the following types of information:
@@ -34,7 +34,7 @@ const PrivacyPolicy = () => {
           </ul>
         </div>
 
-        <div className="">
+        <div className="lg:mb-6">
           <h3 className="text-xl font-semibold mb-4">
             How We Use Your Information
           </h3>
@@ -50,8 +50,8 @@ const PrivacyPolicy = () => {
           </ul>
         </div>
       </section>
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="">
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 lg:mb-0">
+        <div className="lg:mb-6">
           <h3 className="text-xl font-semibold mb-4">Data Security</h3>
           <p className=" text-sm">
             We take the security of your data seriously and use reasonable
@@ -61,7 +61,7 @@ const PrivacyPolicy = () => {
           </p>
         </div>
 
-        <div className="">
+        <div className="lg:mb-6">
           <h3 className="text-xl font-semibold mb-4">Third-Party Services</h3>
           <p className="text-sm">
             We may share your information with trusted third-party partners who
@@ -71,8 +71,8 @@ const PrivacyPolicy = () => {
           </p>
         </div>
       </section>
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="">
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 lg:mb-0">
+        <div className="lg:mb-6">
           <h3 className="text-xl font-semibold mb-4">Your Rights</h3>
           <p className="text-sm">You have the right to:</p>
           <ul className="list-disc list-inside text-sm">
@@ -82,7 +82,7 @@ const PrivacyPolicy = () => {
           </ul>
         </div>
 
-        <div className="">
+        <div className="lg:mb-6">
           <h3 className="text-xl font-semibold mb-4">
             Changes to This Privacy Policy
           </h3>
